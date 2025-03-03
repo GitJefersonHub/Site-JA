@@ -1,0 +1,168 @@
+/* Estilos Gerais */
+body { 
+    background-color: black;
+}
+
+/* Estilo do Cabeçalho */
+nav {
+    color: white;
+}
+
+nav .logo {
+    background-color: blue;   
+}
+
+nav .logo a {
+    color: white;
+}
+
+nav ul li {
+    background-color: orange;
+}
+
+nav ul li a {
+    color: white;
+}
+
+nav ul li a.disabled {
+    color: grey;
+}
+
+/* Estilos para Títulos */
+h1 {
+    color: white;
+    font-size: 170%;
+}
+
+h2 {
+    color: yellow;
+}
+
+h3 {
+    color: brown;
+}
+
+h4 {
+    color: white; 
+}
+
+h5 {
+    color: #007BFF;
+}
+
+/* Estilos para Parágrafos */
+.p1 {
+    color: gold; 
+}
+
+.p2 {
+    color: red;
+}
+
+.p3 {
+    color: blue;
+}
+
+/* Estilos para os Botões */
+.btn-tecnologia, .btn-serigrafia {
+    background-color: green;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-tecnologia, .btn-serigrafia {
+    background-color: green;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-tecnologia:hover, .btn-serigrafia:hover {
+    background-color: #007BFF;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn1, .btn2 {
+    background-color: #007BFF;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn1:hover, .btn2:hover {
+    background-color: #45a049;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn3 {
+    background-color: #28A745;
+  
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn3:hover {
+    background-color: #218838;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn-enviar {
+    background-color: #45a049;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-enviar:hover {
+    background-color: #007BFF;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo das Colunas */
+.row {
+    color: white;
+}
+
+.column {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); 
+}
+
+li {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para Containers */
+.container2 {
+    color: pink;
+}
+
+.container3 {
+    color: white; 
+}
+
+.container4 {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+}
+
+/* Estilo do Formulário */
+.form-container4 {
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-field input, .form-field textarea {
+    border: 1px solid #ccc;
+}
+
+/* Estilo do Rodapé */
+footer {
+    background-color: blue;
+    color: white;
+}

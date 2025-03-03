@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeferson Alves!</title>
+    <link rel="stylesheet" href="css/ja.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h1><a href="index.html">Jeferson Alves</a></h1>
+        </div>
+        <ul>
+            <li><a href="TEC.html" id="tecnologia-link" onclick="alert('Preencha o formulário de contato!'); return false;" class="btn-tecnologia">Tecnologia</a></li>
+            <li><a href="SER.html" id="serigrafia-link" onclick="alert('Preencha o formulário de contato!'); return false;" class="btn-serigrafia">Serigrafia</a></li>
+        </ul>
+    </nav>
+
+    <main>
+    <div class="containerJA">
+        <img src="img/J1.png" alt="J1">
+        <div id="weather" class="weather-info">Carregando...</div>
+    </div>
+    <script>
+        const weatherApiKey = 'b8e1ca208ba37b685082aa9f5ab4d284'; // Chave de API do OpenWeatherMap
+        const exchangeRateApiKey = '5a6fefb706ee7746e76d8c16'; // Chave de API do ExchangeRate-API aqui
+
+        function getWeather(latitude, longitude) {
+            const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${weatherApiKey}&lang=pt_br`;
+
+            fetch(weatherUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const weatherDiv = document.getElementById('weather');
+                    const temperature = data.main.temp;
+                    const description = data.weather[0].description;
+                    const city = data.name;
+
+                    // Obter a data, a hora e o dia da semana atuais de Brasília
+                    const options = { timeZone: 'America/Sao_Paulo', hour: '2-digit', minute: '2-digit', second: '2-digit', day: '2-digit', month: 'long', year: 'numeric', weekday: 'long' };
+                    const date = new Date().toLocaleString('pt-BR', options);
+
+                    // Obter a cotação do dólar
+                    getExchangeRate().then(exchangeRate => {
+                        weatherDiv.innerHTML = `
+                            ${city}, ${new Date().getDate()} de ${new Date().toLocaleString('pt-BR', { month: 'long' })}, de ${new Date().getFullYear()}. ${new Date().toLocaleString('pt-BR', { weekday: 'long' })} ${new Date().toLocaleString('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' })}(Brasília)<br>
+                            ${temperature}°C. ${description}.<br>
+                            Dólar: R$ ${exchangeRate}`;
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao obter dados meteorológicos:', error);
+                });
+        }
+
+        function getExchangeRate() {
+            const exchangeRateUrl = `https://v6.exchangerate-api.com/v6/${exchangeRateApiKey}/latest/USD`;
+
+            return fetch(exchangeRateUrl)
+                .then(response => response.json())
+                .then(data => data.conversion_rates.BRL)
+                .catch(error => {
+                    console.error('Erro ao obter a cotação do dólar:', error);
+                    return 'N/A';
+                });
+        }
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    getWeather(latitude, longitude);
+                });
+            } else {
+                document.getElementById('weather').innerHTML = 'Geolocalização não suportada pelo seu navegador.';
+            }
+        }
+
+        window.onload = getLocation;
+    </script>
+        <section>
+            <p class="p1">No decorrer da minha jornada do herói que aqui estarei apresentando como minhas experiências profissionais, passei por diversas situações, como aborrecimentos, desafios, conquistas e alegrias. Essa linha do tempo me trouxe ao conhecimento, me fazendo inovar, empreender, intraempreender.</p>
+            <p class="p1">Baseado a estas experiências, estarei por aqui interagindo com colaboradores com perfis: empreendedores, intraempreendedores, fornecedores, clientes e inovadores.</p>
+            <h5>Admirador de tecnologias e serigrafia;</h5>
+            <h4>TECNOLOGIA (área de TI)</h4>
+            <p class="p1">Formado no Curso Superior De Tecnologia em Defesa Cibernética, e com outros estudos em andamento. Uma área muito ampla e muito complexa. Um território vasto e em constante evolução, sendo adaptado, atualizado, para atender cada vez mais as nossas necessidades, o nosso dia-a-dia. A área de tecnologia da informação (TI) é uma fonte que uso como guia para explorar e extrair recursos para agregar valor ao meu empreendimento.</p>
+            <h5>Tecnologias exploradas:</h5>
+            
+            <div class="row">
+                <div class="column">
+                    <ul>
+                        <li>Administração em sistemas Windows e Linux</li>
+                        <li>Ameaças Cibernéticas</li>
+                        <li>Arquitetura de Servidores</li>
+                        <li>Desenvolvimento de Sistemas WEB</li>
+                        <li>Direito cibernético</li>
+                        <li>Empreendedorismo</li>
+                        <li>Estatística</li>
+                        <li>Ética e Prática Profissional</li>
+                        <li>Fundamentos de Sistemas de Informação</li>
+                        <li>Fundamentos de redes de computadores</li>
+                        <li>Inteligência artificial</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <ul>
+                        <li>Introdução a Programação</li>
+                        <li>Organização e Arquitetura de Computadores</li>
+                        <li>Programação RAD</li>
+                        <li>Programação Orientada a Objeto (POO)</li>
+                        <li>Programação para dispositivos móveis</li>
+                        <li>Sistemas operacionais</li>
+                        <li>Segurança da Informação</li>
+                        <li>Serviços de Rede em Sistemas Windows e Linux</li>
+                        <li>Sistemas Distribuídos e Redes de Computadores</li>
+                        <li>Storytelling</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <p class="p2">Certificados!</p>
+            <button class="btn1" onclick="window.location.href='https://drive.google.com/file/d/1J_nhBFGh4s6sRh2RFwYkjxRLHF6DLBBG/view?usp=sharing'">Certificados:</button>
+            
+            <div class="container2">
+                <ol>
+                    <li>Atualizando os sistemas do passado.</li>
+                    <li>Comemorando as conquistas do presente.</li>
+                    <li>De olho nas tecnologias do futuro.</li>
+                </ol>
+            </div>
+        
+            <p class="p2">Espaço reservado!</p>
+            <button class="btn2" onclick="window.location.href='https://drive.google.com/file/d/1CX5NaOATh81lEjddsb4QEoxsAGPrM-4v/view?usp=sharing'">Reflexão:</button>
+        
+            <p class="p1">Dedicado para refletir, pensar e agir em benefício da humanidade.</p>
+
+            <h4>SERIGRAFIA (Silk screen):</h4>
+            <p class="p1">Técnica utilizada para imprimir artes gráficas em diversos materiais como tecidos, papéis, plásticos e outros materiais. Com um campo muito amplo e muito complexo em oportunidades, por aqui exploro essa técnica baseado nas experiências que tenho.</p>
+            <h5>Habilidades exploradas:</h5>
+            <div class="container3">
+                <ul>
+                    <li>Impressões em <strong>tecidos</strong></li>
+                    <li>Impressões em <strong>papéis</strong></li>
+                    <li>Impressões em <strong>plásticos</strong></li>
+                    <li>Impressões em <strong>outros</strong> materiais</li>
+                </ul>
+            </div>
+        </section>  
+
+        <div class="container4">
+            <h3>Bem-vindo!</h3>
+            <p class="p3">Estamos muito felizes em tê-lo aqui😃.</p>
+            <p class="p3">Aproveite, preencha o nosso formulário de contato para explorar nossos conteúdos.</p>
+            <p class="p3">Deixe uma mensagem, responderemos assim que possível.</p>
+            <p class="p3">Obrigado...😊</p>
+
+            <h3>Contato!</h3>
+            <div class="form-container">
+                <form id="form-contato" method="post">
+                    <div class="form-field">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="telefone">Telefone:</label>
+                        <input type="tel" id="telefone" name="telefone" required pattern="[0-9]{10,15}" title="Por favor, insira apenas números, com 10 a 15 dígitos.">
+                    </div>
+                    <div class="form-field">
+                        <label for="mensagem">Mensagem:</label>
+                        <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+                    </div>
+                    <input type="submit" value="Enviar" class="btn-enviar">
+                </form>
+                <div class="nav-buttons" style="display: none; margin-top: 20px;">
+                    <button class="button1" onclick="window.location.href='TEC.html'">Tecnologia: Serigrafia:</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>&copy; 2025 Todos os direitos reservados.</footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#form-contato').on('submit', function(event) {
+                event.preventDefault(); // Impede o envio padrão do formulário
+
+                $.ajax({
+                    url: 'processa_formulario.php',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        alert('Informações salvas com sucesso!'); // Exibe a resposta de sucesso
+                        $('.btn-submit').hide(); // Esconde o botão Enviar
+                        $('.nav-buttons').show(); // Mostra os botões de navegação
+                        $('#form-contato').find('input[type="text"], input[type="email"], input[type="tel"], textarea').val(''); // Esconde as informações dos campos de input
+                        window.location.href = 'TEC.html'; // Redireciona para TEC.html
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Erro ao enviar o formulário: ' + error);
+                    }
+                });
+            });
+
+            // Desativa os links Tecnologia e Serigrafia inicialmente
+            $('#tecnologia-link, #serigrafia-link').on('click', function(event) {
+                if ($(this).hasClass('disabled')) {
+                    event.preventDefault();
+                    alert('Insira o seu contato no fim da página!');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
