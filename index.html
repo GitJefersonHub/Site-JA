@@ -23,7 +23,7 @@
     <main>
     <div class="containerJA">
         <img src="img/J1.png" alt="J1">
-        <div id="weather" class="weather-info">Carregando...</div>
+        <div id="weather" class="weather-info">Espaço reservado para informações, (se permitido a localização do dispositivo). Plataforma dedicada a trazer informações sobre tecnologia e serigrafia. Alinhado às leis vigentes, o site busca informar e inspirar seus usuários.</div> <br>
     </div>
     <script>
         const weatherApiKey = 'b8e1ca208ba37b685082aa9f5ab4d284'; // Chave de API do OpenWeatherMap
@@ -31,6 +31,7 @@
 
         function getWeather(latitude, longitude) {
             const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${weatherApiKey}&lang=pt_br`;
+            const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${weatherApiKey}&lang=pt_br`;
 
             fetch(weatherUrl)
                 .then(response => response.json())
@@ -46,10 +47,35 @@
 
                     // Obter a cotação do dólar
                     getExchangeRate().then(exchangeRate => {
-                        weatherDiv.innerHTML = `
-                            ${city}, ${new Date().getDate()} de ${new Date().toLocaleString('pt-BR', { month: 'long' })}, de ${new Date().getFullYear()}. ${new Date().toLocaleString('pt-BR', { weekday: 'long' })} ${new Date().toLocaleString('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' })}(Brasília)<br>
-                            ${temperature}°C. ${description}.<br>
-                            Dólar: R$ ${exchangeRate}`;
+                        // Obter a previsão do tempo para os próximos dois dias
+                        fetch(forecastUrl)
+                            .then(response => response.json())
+                            .then(forecastData => {
+                                const nextTwoDays = forecastData.list.filter((item, index) => index % 8 === 0).slice(1, 3);
+                                const forecastHtml = nextTwoDays.map(day => {
+                                    const date = new Date(day.dt * 1000);
+                                    const options = { weekday: 'long', month: 'long', day: 'numeric' };
+                                    const dayOfWeek = date.toLocaleDateString('pt-BR', { weekday: 'long' });
+                                    const temp = day.main.temp;
+                                    const desc = day.weather[0].description;
+                                    return `${dayOfWeek}: ${temp}°C / ${desc}`;
+                                }).join('<br>');
+
+                                weatherDiv.innerHTML = `
+                                    
+                                     * ${city}, ${new Date().getDate()} de ${new Date().toLocaleString('pt-BR', { month: 'long' })} de ${new Date().getFullYear()}.<br>
+                                    ${new Date().toLocaleString('pt-BR', { weekday: 'long' })}: ${temperature}°C / ${description}<br><br>
+                                     * Dólar: R$ ${exchangeRate}<br>
+                                     * Previsão dos próximos dias:<br>
+                                    ${forecastHtml}`;
+                            })
+                            .catch(error => {
+                                console.error('Erro ao obter a previsão do tempo:', error);
+                            });
+                    })
+                    .catch(error => {
+                        console.error('Erro ao obter a cotação do dólar:', error);
+                        return 'N/A';
                     });
                 })
                 .catch(error => {
@@ -122,7 +148,7 @@
                     </ul>
                 </div>
             </div>
-        
+        <br>
             <p class="p2">Certificados!</p>
             <button class="btn1" onclick="window.location.href='https://drive.google.com/file/d/1J_nhBFGh4s6sRh2RFwYkjxRLHF6DLBBG/view?usp=sharing'">Certificados:</button>
             
@@ -133,12 +159,6 @@
                     <li>De olho nas tecnologias do futuro.</li>
                 </ol>
             </div>
-        
-            <p class="p2">Espaço reservado!</p>
-            <button class="btn2" onclick="window.location.href='https://drive.google.com/file/d/1CX5NaOATh81lEjddsb4QEoxsAGPrM-4v/view?usp=sharing'">Reflexão:</button>
-        
-            <p class="p1">Dedicado para refletir, pensar e agir em benefício da humanidade.</p>
-
             <h4>SERIGRAFIA (Silk screen):</h4>
             <p class="p1">Técnica utilizada para imprimir artes gráficas em diversos materiais como tecidos, papéis, plásticos e outros materiais. Com um campo muito amplo e muito complexo em oportunidades, por aqui exploro essa técnica baseado nas experiências que tenho.</p>
             <h5>Habilidades exploradas:</h5>
@@ -150,6 +170,11 @@
                     <li>Impressões em <strong>outros</strong> materiais</li>
                 </ul>
             </div>
+            <br>
+            <p class="p2">Espaço reservado!</p>
+            <button class="btn2" onclick="window.location.href='https://drive.google.com/file/d/1CX5NaOATh81lEjddsb4QEoxsAGPrM-4v/view?usp=sharing'">Reflexão:</button>
+        
+            <p class="p1">Dedicado para refletir, pensar e agir em benefício da humanidade.</p>
         </section>  
 
         <div class="container4">
@@ -207,7 +232,7 @@
                         window.location.href = 'TEC.html'; // Redireciona para TEC.html
                     },
                     error: function(xhr, status, error) {
-                        alert('Erro ao enviar o formulário: ' + error);
+                        alert('Erro ao enviar o formulário: Site em manutenção. ' + error);
                     }
                 });
             });
