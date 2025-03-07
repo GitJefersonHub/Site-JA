@@ -221,7 +221,7 @@ li {
 	.container2, .container3 {
     font-family: 'Verdana', sans-serif; /* Alternativa moderna à 'Tahoma' */
     font-size: clamp(14px, 1.2rem, 120%); /* Ajuste dinâmico de tamanho da fonte */
-    max-width: 80%; /* Garante que os containers respeitem a largura máxima */
+    max-width: 90%; /* Garante que os containers respeitem a largura máxima */
     margin: 0 auto; /* Centraliza os containers */
     padding: 1%; /* Adiciona espaçamento interno */
     line-height: 0 .6; /* Melhora a legibilidade do texto */

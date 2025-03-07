@@ -214,8 +214,68 @@
 
     <footer>&copy; 2025 Todos os direitos reservados.</footer>
 
+
+    const supabaseUrl = 'SUA_URL_DO_SUPABASE';
+const supabaseKey = 'SUA_CHAVE_DO_SUPABASE';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+const supabaseUrl = 'SUA_URL_DO_SUPABASE';
+const supabaseKey = 'SUA_CHAVE_DO_SUPABASE';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function() {
+    $('#form-contato').on('submit', async function(event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+
+        const nome = $('#nome').val();
+        const email = $('#email').val();
+        const telefone = $('#telefone').val();
+        const mensagem = $('#mensagem').val();
+
+        // Enviar os dados para o Supabase
+        const { data, error } = await supabase
+            .from('nome_da_sua_tabela')
+            .insert([
+                { nome: nome, email: email, telefone: telefone, mensagem: mensagem }
+            ]);
+
+        if (error) {
+            alert('Erro ao salvar informações: ' + error.message);
+        } else {
+            alert('Informações salvas com sucesso!');
+            $('.btn-submit').hide();
+            $('.nav-buttons').show();
+            $('#form-contato').find('input[type="text"], input[type="email"], input[type="tel"], textarea').val('');
+        }
+    });
+});
+
+
+
         $(document).ready(function() {
             $('#form-contato').on('submit', function(event) {
                 event.preventDefault(); // Impede o envio padrão do formulário
@@ -247,5 +307,6 @@
         });
     </script>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </html>
 
