@@ -15,10 +15,10 @@
         </div>
         <ul>
             <li>
-                <a href="TEC.html" id="tecnologia-link" onclick="alert('Preencha o formulário de contato!'); return false;" class="btn-tecnologia">Tecnologia</a>
+                <a href="tec.html" id="tecnologia-link" onclick="alert('Preencha o formulário de contato!'); return false;" class="btn-tecnologia">Tecnologia</a>
             </li>
             <li>
-                <a href="SER.html" id="serigrafia-link" onclick="alert('Preencha o formulário de contato!'); return false;" class="btn-serigrafia">Serigrafia</a>
+                <a href="ser.html" id="serigrafia-link" onclick="alert('Preencha o formulário de contato!'); return false;" class="btn-serigrafia">Serigrafia</a>
             </li>
         </ul>
     </nav>
@@ -108,6 +108,7 @@
             }
 
             window.onload = getLocation;
+            
         </script>
         
 
@@ -141,7 +142,7 @@
                     <input type="submit" value="Enviar" class="btn-enviar">
                 </form>
                 <div class="nav-buttons" style="display: none; margin-top: 20px;">
-                    <button class="button1" onclick="window.location.href='TEC.html'">Tecnologia: Serigrafia:</button>
+                    <button class="button1" onclick="window.location.href='tec.html'">Tecnologia: Serigrafia:</button>
                 </div>
             </div>
         </div>
@@ -176,7 +177,7 @@
                 document.querySelector('.btn-enviar').style.display = 'none'; // Esconde o botão Enviar
                 document.querySelector('.nav-buttons').style.display = 'block'; // Mostra os botões de navegação
                 document.getElementById('form-contato').reset(); // Limpa o formulário
-                window.location.href = 'TEC.html'; // Redireciona para TEC.html
+                window.location.href = 'tec.html'; // Redireciona para .html
             } else {
                 throw new Error('Erro ao salvar as informações.');
             }
