@@ -31,161 +31,85 @@
             </div>
             <br>
         </div>
-        <script>
-            const weatherApiKey = 'b8e1ca208ba37b685082aa9f5ab4d284'; // Chave de API do OpenWeatherMap
-            const exchangeRateApiKey = '5a6fefb706ee7746e76d8c16'; // Chave de API do ExchangeRate-API
 
-            function getWeather(latitude, longitude) {
-                const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${weatherApiKey}&lang=pt_br`;
-                const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${weatherApiKey}&lang=pt_br`;
-
-                fetch(weatherUrl)
-                    .then(response => response.json())
-                    .then(data => {
-                        const weatherDiv = document.getElementById('weather');
-                        const temperature = data.main.temp.toFixed(1);
-                        const description = data.weather[0].description;
-                        const city = data.name;
-
-                        Promise.all([getExchangeRate('USD'), getExchangeRate('EUR')]).then(([dollarRate, euroRate]) => {
-                            const dollarRateFormatted = dollarRate.toFixed(2);
-                            const euroRateFormatted = euroRate.toFixed(2);
-
-                            fetch(forecastUrl)
-                                .then(response => response.json())
-                                .then(forecastData => {
-                                    const nextTwoDays = forecastData.list.filter((item, index) => index % 8 === 0).slice(1, 3);
-                                    const forecastHtml = nextTwoDays.map(day => {
-                                        const date = new Date(day.dt * 1000);
-                                        const dayOfWeek = date.toLocaleDateString('pt-BR', { weekday: 'long' });
-                                        const temp = day.main.temp.toFixed(1);
-                                        const desc = day.weather[0].description;
-                                        return `${dayOfWeek}: ${temp}°C / ${desc}`;
-                                    }).join('<br>');
-
-                                    weatherDiv.innerHTML = `
-                                        ${city}, ${new Date().toLocaleDateString('pt-BR')}<br>
-                                        Hoje: ${temperature}°C / ${description}<br>
-                                        ${forecastHtml}<br><br>
-                                        Dólar: R$ ${dollarRateFormatted}<br>
-                                        Euro: R$ ${euroRateFormatted}`;
-                                })
-                                .catch(error => {
-                                    console.error('Erro ao obter a previsão do tempo:', error);
-                                });
-                        })
-                        .catch(error => {
-                            console.error('Erro ao obter as cotações:', error);
-                        });
-                    })
-                    .catch(error => {
-                        console.error('Erro ao obter dados meteorológicos:', error);
-                    });
-            }
-
-            function getExchangeRate(currency) {
-                const exchangeRateUrl = `https://v6.exchangerate-api.com/v6/${exchangeRateApiKey}/latest/${currency}`;
-
-                return fetch(exchangeRateUrl)
-                    .then(response => response.json())
-                    .then(data => data.conversion_rates.BRL)
-                    .catch(error => {
-                        console.error(`Erro ao obter a cotação de ${currency}:`, error);
-                        return 'N/A';
-                    });
-            }
-
-            function getLocation() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(position => {
-                        const latitude = position.coords.latitude;
-                        const longitude = position.coords.longitude;
-                        getWeather(latitude, longitude);
-                    });
-                } else {
-                    document.getElementById('weather').innerHTML = 'Geolocalização não suportada pelo seu navegador.';
-                }
-            }
-
-            window.onload = getLocation;
-            
-        </script>
-
-        <section>
-            <p class="p1">No decorrer da minha jornada do herói que aqui estarei apresentando como minhas experiências 
-        profissionais, passei por diversas situações, como aborrecimentos, desafios, conquistas e alegrias. Essa linha do tempo me 
-        trouxe ao conhecimento, me fazendo inovar, empreender, intraempreender.</p>
-            <p class="p1">Baseado a estas experiências, estarei por aqui interagindo com colaboradores com perfis: 
-        empreendedores, intraempreendedores, fornecedores, clientes e inovadores.</p>
-            <h5>Admirador de tecnologias e serigrafia;</h5> 
-            <h4>TECNOLOGIA (área de TI)</h4> 
-            <p class="p1">Formado no Curso Superior De Tecnologia em Defesa Cibernética, e com outros estudos em 
-        andamento. Uma área muito ampla e muito complexa. Um território vasto e em constante evolução, sendo adaptado, 
-        atualizado, para atender cada vez mais as nossas necessidades, o nosso dia-a-dia. A área de tecnologia da informação (TI) 
-        é uma fonte que uso como guia para explorar e extrair recursos para agregar valor ao meu empreendimento.</p> 
-            <h5>Tecnologias exploradas:</h5>
-            
-            <div class="row">
-                <div class="column">
-                    <ul> 
-                        <li>Administração em sistemas Windows e Linux</li> 
-                        <li>Ameaças Cibernéticas</li> 
-                        <li>Arquitetura de Servidores</li> 
-                        <li>Desenvolvimento de Sistemas WEB</li> 
-                        <li>Direito cibernético</li> 
-                        <li>Empreendedorismo</li> 
-                        <li>Estatística</li> 
-                        <li>Ética e Prática Profissional</li> 
-                        <li>Fundamentos de Sistemas de Informação</li> 
-                        <li>Fundamentos de redes de computadores</li> 
-                        <li>Inteligência artificial</li> 
-                    </ul> 
-                </div>
-                <div class="column">
-                    <ul> 
-                        <li>Introdução a Programação</li> 
-                        <li>Organização e Arquitetura de Computadores</li> 
-                        <li>Programação RAD</li> 
-                        <li>Programação Orientada a Objeto (POO)</li> 
-                        <li>Programação para dispositivos móveis</li> 
-                        <li>Sistemas operacionais</li> 
-                        <li>Segurança da Informação</li> 
-                        <li>Serviços de Rede em Sistemas Windows e Linux</li> 
-                        <li>Sistemas Distribuídos e Redes de Computadores</li> 
-                        <li>Storytelling</li> 
-                    </ul> 
-                </div> 
-            </div>
-            <br>
-            <p class="p2">Certificados!</p>
-            <button class="btn1"onclick="window.location.href='https://drive.google.com/file/d/1J_nhBFGh4s6sRh2RFwYkjxRLHF6DLBBG/view?usp=sharing'">Certificados:</button>
-            <div class="container2">
-                <ol> 
-                    <li>Atualizando os sistemas do passado.</li> 
-                    <li>Comemorando as conquistas do presente.</li> 
-                    <li>De olho nas tecnologias do futuro.</li> 
-                </ol>
-            </div>
-            <h4>SERIGRAFIA (Silk screen):</h4>
-            <p class="p1">Técnica utilizada para imprimir artes gráficas em diversos materiais como tecidos, papéis, plásticos e 
-        outros materiais. Com um campo muito amplo e muito complexo em oportunidades, por aqui exploro essa técnica baseado 
-        nas experiências que tenho.</p> 
-            <h5>Habilidades exploradas:</h5>
-            <div class="container3"> 
-                <ul> 
-                    <li>Impressões em <strong>tecidos</strong></li> 
-                    <li>Impressões em <strong>papéis</strong></li> 
-                    <li>Impressões em <strong>plásticos</strong></li> 
-                    <li>Impressões em <strong>outros</strong> materiais</li> 
-                </ul> 
-            </div> 
-            <br>
-            <p class="p2">Espaço reservado!</p>
-            <button class="btn2"onclick="window.location.href='https://drive.google.com/file/d/1CX5NaOATh81lEjddsb4QEoxsAGPrM4v/view?usp=sharing'">Reflexão:</button>
-            
-            <p class="p1">Dedicado para refletir, pensar e agir em benefício da humanidade.</p>
-        </section>  
-
+        <!-- Container atualizado -->
+        <div class="code-container">
+            <!-- Aqui você pode inserir seus códigos -->
+            <section>
+                <p class="p1">No decorrer da minha jornada do herói que aqui estarei apresentando como minhas experiências 
+                    profissionais, passei por diversas situações, como aborrecimentos, desafios, conquistas e alegrias. Essa linha do tempo me 
+                    trouxe ao conhecimento, me fazendo inovar, empreender, intraempreender.</p>
+                        <p class="p1">Baseado a estas experiências, estarei por aqui interagindo com colaboradores com perfis: 
+                    empreendedores, intraempreendedores, fornecedores, clientes e inovadores.</p>
+                        <h5>Admirador de tecnologias e serigrafia;</h5> 
+                        <h4>TECNOLOGIA (área de TI)</h4> 
+                        <p class="p1">Formado no Curso Superior De Tecnologia em Defesa Cibernética, e com outros estudos em 
+                    andamento. Uma área muito ampla e muito complexa. Um território vasto e em constante evolução, sendo adaptado, 
+                    atualizado, para atender cada vez mais as nossas necessidades, o nosso dia-a-dia. A área de tecnologia da informação (TI) 
+                    é uma fonte que uso como guia para explorar e extrair recursos para agregar valor ao meu empreendimento.</p> 
+                        <h5>Tecnologias exploradas:</h5>
+                        
+                        <div class="row">
+                            <div class="column">
+                                <ul> 
+                                    <li>Administração em sistemas Windows e Linux</li> 
+                                    <li>Ameaças Cibernéticas</li> 
+                                    <li>Arquitetura de Servidores</li> 
+                                    <li>Desenvolvimento de Sistemas WEB</li> 
+                                    <li>Direito cibernético</li> 
+                                    <li>Empreendedorismo</li> 
+                                    <li>Estatística</li> 
+                                    <li>Ética e Prática Profissional</li> 
+                                    <li>Fundamentos de Sistemas de Informação</li> 
+                                    <li>Fundamentos de redes de computadores</li> 
+                                    <li>Inteligência artificial</li> 
+                                </ul> 
+                            </div>
+                            <div class="column">
+                                <ul> 
+                                    <li>Introdução a Programação</li> 
+                                    <li>Organização e Arquitetura de Computadores</li> 
+                                    <li>Programação RAD</li> 
+                                    <li>Programação Orientada a Objeto (POO)</li> 
+                                    <li>Programação para dispositivos móveis</li> 
+                                    <li>Sistemas operacionais</li> 
+                                    <li>Segurança da Informação</li> 
+                                    <li>Serviços de Rede em Sistemas Windows e Linux</li> 
+                                    <li>Sistemas Distribuídos e Redes de Computadores</li> 
+                                    <li>Storytelling</li> 
+                                </ul> 
+                            </div> 
+                        </div>
+                        <br>
+                        <p class="p2">Certificados!</p>
+                        <button class="btn1"onclick="window.location.href='https://drive.google.com/file/d/1J_nhBFGh4s6sRh2RFwYkjxRLHF6DLBBG/view?usp=sharing'">Certificados:</button>
+                        <div class="container2">
+                            <ol> 
+                                <li>Atualizando os sistemas do passado.</li> 
+                                <li>Comemorando as conquistas do presente.</li> 
+                                <li>De olho nas tecnologias do futuro.</li> 
+                            </ol>
+                        </div>
+                        <h4>SERIGRAFIA (Silk screen):</h4>
+                        <p class="p1">Técnica utilizada para imprimir artes gráficas em diversos materiais como tecidos, papéis, plásticos e 
+                    outros materiais. Com um campo muito amplo e muito complexo em oportunidades, por aqui exploro essa técnica baseado 
+                    nas experiências que tenho.</p> 
+                        <h5>Habilidades exploradas:</h5>
+                        <div class="container3"> 
+                            <ul> 
+                                <li>Impressões em <strong>tecidos</strong></li> 
+                                <li>Impressões em <strong>papéis</strong></li> 
+                                <li>Impressões em <strong>plásticos</strong></li> 
+                                <li>Impressões em <strong>outros</strong> materiais</li> 
+                            </ul> 
+                        </div> 
+                        <br>
+                        <p class="p2">Espaço reservado!</p>
+                        <button class="btn2"onclick="window.location.href='https://drive.google.com/file/d/1CX5NaOATh81lEjddsb4QEoxsAGPrM4v/view?usp=sharing'">Reflexão:</button>
+                        
+                        <p class="p1">Dedicado para refletir, pensar e agir em benefício da humanidade.</p>
+            </section> 
+        </div>
 
         <div class="container4">
             <h3>Bem-vindo!</h3>
@@ -221,45 +145,8 @@
             </div>
         </div>
     </main>
-    
     <footer>&copy; 2025 Todos os direitos reservados.</footer>
-    <script>
-    const supabaseUrl = 'https://obnecttnvjzjnsclqxky.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ibmVjdHRudmp6am5zY2xxeGt5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE1MjIwMTQsImV4cCI6MjA1NzA5ODAxNH0.4OF_suBrFG-8MQp1y2PMyYmq7EfWWs3v-WUclwwYygw';
-    
-    document.getElementById('form-contato').addEventListener('submit', async function (event) {
-        event.preventDefault(); // Impede o envio padrão do formulário
-
-        const nome = document.getElementById('nome').value;
-        const email = document.getElementById('email').value;
-        const telefone = document.getElementById('telefone').value;
-        const mensagem = document.getElementById('mensagem').value;
-        
-        try {
-            const response = await fetch(`${supabaseUrl}/rest/v1/contatos`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'apikey': supabaseKey,
-                    'Authorization': `Bearer ${supabaseKey}`,
-                },
-                body: JSON.stringify({ nome, email, telefone, mensagem }),
-            });
-
-            if (response.ok) {
-                alert('Informações salvas com sucesso!');
-                document.querySelector('.btn-enviar').style.display = 'none'; // Esconde o botão Enviar
-                document.querySelector('.nav-buttons').style.display = 'block'; // Mostra os botões de navegação
-                document.getElementById('form-contato').reset(); // Limpa o formulário
-                window.location.href = 'tec.html'; // Redireciona para .html
-            } else {
-                throw new Error('Erro ao salvar as informações.');
-            }
-        } catch (error) {
-            alert('Erro ao salvar as informações: Site em manutenção.');
-        }
-    });
-    </script>
-
+    <script src="js/weather.js"></script>
+    <script src="js/formulario.js"></script>
 </body>
 </html>
