@@ -54,7 +54,7 @@ h4 {
 }
 
 h5 {
-    color: #007BFF;
+    color: #4B0082;
 }
 
 /* Estilos para Parágrafos */
@@ -63,7 +63,7 @@ h5 {
 }
 
 .p2 {
-    color: red;
+    color: pink;
 }
 
 .p3 {
@@ -126,7 +126,8 @@ h5 {
 
 /* Estilo das Colunas */
 .row {
-    color: white;
+    color: green;
+    background-color: silver;
 }
 
 .column {

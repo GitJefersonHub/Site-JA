@@ -194,6 +194,7 @@ img {
     width: 100%;
     margin: 0 auto; /* Centraliza horizontalmente */
     flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+	border-radius: 2%;
 }
 
 .column {
@@ -280,7 +281,7 @@ li {
 
 /* Celular grande*/ /* Celular grande*/ /* Celular grande*/ /* Celular grande*/ /* Celular grande*/ /* Celular grande*/ /* Celular grande*/
   @media only screen and (min-width: 481px) and (max-width: 768px) {
-  /* Estilos Gerais */
+	/* Estilos Gerais */
 	body {
 	    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	    justify-content: center;
@@ -474,6 +475,7 @@ img {
     width: 100%;
     margin: 0 auto; /* Centraliza horizontalmente */
     flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+	border-radius: 2%;
 }
 
 .column {
@@ -556,7 +558,7 @@ li {
 	    font-size: 80%;
 	}
 }
-	
+  
 
 
 /* Tablet*/ /* Tablet*/ /* Tablet*/ /* Tablet*/ /* Tablet*/ /* Tablet*/ /* Tablet*/
@@ -755,6 +757,7 @@ img {
     width: 100%;
     margin: 0 auto; /* Centraliza horizontalmente */
     flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+	border-radius: 2%;
 }
 
 .column {
@@ -1035,6 +1038,7 @@ img {
     width: 100%;
     margin: 0 auto; /* Centraliza horizontalmente */
     flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+	border-radius: 2%;
 }
 
 .column {
@@ -1117,6 +1121,7 @@ li {
 	    font-size: 80%;
 	}
 }
+	
 
 /*Desktops*/ /*Desktops*/ /*Desktops*/ /*Desktops*/ /*Desktops*/ /*Desktops*/ /*Desktops*/
 @media only screen and (min-width: 1201px) {
@@ -1314,6 +1319,7 @@ img {
     width: 100%;
     margin: 0 auto; /* Centraliza horizontalmente */
     flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+	border-radius: 2%;
 }
 
 .column {
@@ -1396,3 +1402,4 @@ li {
 	    font-size: 80%;
 	}
 }
+	
