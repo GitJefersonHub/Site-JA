@@ -34,39 +34,38 @@
 
         <div class="code-container">
             <section>
-                <p class="p1"> Aqui você ajuda uma pessoa que precisa e concorre a premios!</p>
-                <p class="p2">R$: 20,00</p>
+                <p class="p1">Aqui você ajuda uma pessoa que precisa e concorre a prêmios!</p>
                 <p class="p2">Adquira quantos números quiser.</p>
                 <style>
+                    /* Estilização para a lista de participantes */
+                    #lista-participantes {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        list-style-type: none; /* Remove os marcadores */
+                        padding: 0;
+                        margin: 20px 0;
+                        color: yellow;
+                    }
 
+                    #lista-participantes li {
+                        background-color: #f9f9f9;
+                        border: 1px solid #ddd;
+                        border-radius: 5px;
+                        padding: 10px 20px;
+                        margin: 10px;
+                        font-size: 16px;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    }
 
-
-
-/* Estilização para a lista de participantes */
-#lista-participantes {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style-type: none; /* Remove os marcadores */
-    padding: 0;
-    margin: 20px 0;
-    color: yellow;
-}
-
-#lista-participantes li {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-
-
-                    h1, h2 {
+                    h1 {
                         color: white;
+                        font-size: 140%;
+                    }
+
+                    h2 {
+                        color: white;
+                        font-size: 100%;
                     }
 
                     .pa, .pb, .pc, .pd, .pe {
@@ -119,27 +118,35 @@
                     }
                 </style>
 
-<h1>Rifa Atualizada</h1>
-<p class="p1">Valor arrecadado: R$<span id="valor-arrecadado">0.00</span></p>
-<p class="p1">José Joaquim da Silva: R$<span id="administrador">0.00</span></p>
-<p class="p2">1° ganhador: R$<span id="primeiro-ganhador">0.00</span></p>
-<p class="p2">2° ganhador: R$<span id="segundo-ganhador">0.00</span></p>
-<p class="p2">3° ganhador: R$<span id="terceiro-ganhador">0.00</span></p>
-<div class="numbers-container"></div>
-<h2>Lista de Participantes Confirmados</h2>
-<ul id="lista-participantes"></ul>
+                <h1>R$: 20,00</h1>
+                <p class="p1">Valor arrecadado: R$ <span id="valor-arrecadado">0.00</span></p>
+                <p class="p1">José Joaquim da Silva: R$ <span id="administrador">0.00</span></p>
+                <p class="p2">1° ganhador: R$ <span id="primeiro-ganhador">0.00</span></p>
+                <p class="p2">2° ganhador: R$ <span id="segundo-ganhador">0.00</span></p>
+                <p class="p2">3° ganhador: R$ <span id="terceiro-ganhador">0.00</span></p>
+                <p class="p1">
+                    A rifa vai estar sendo atualizada até o dia xx,xx,xx e o sorteio será publicado 
+                    no botão 'SORTEIO' nas próximas horas dos dias seguintes.
+                </p>
+                <div class="numbers-container"></div>
+                <h2>Lista de Participantes Confirmados</h2>
+                <ul id="lista-participantes"></ul>
 
-<script>
+                <script>
     const valorPorNumero = 20; // Valor de cada número
     let valorArrecadado = 60; // Valor inicial com alguns números já inseridos
-    const numerosConfirmados = {2: "João", 5: "Maria", 8: "Carlos", 18: "Ana", 80: "jose"}; // Números confirmados com nomes
+    let numerosConfirmados = {2: "João", 5: "Maria"}; // Números confirmados com nomes
 
     // Atualiza a página com os valores iniciais
     function atualizarValores() {
+        // Calcula o valor arrecadado com base nos números confirmados
+        valorArrecadado = Object.keys(numerosConfirmados).length * valorPorNumero;
+
         const primeiroGanhador = valorArrecadado * 0.15;
         const segundoGanhador = valorArrecadado * 0.10;
         const terceiroGanhador = valorArrecadado * 0.05;
-        const administrador = valorArrecadado - (primeiroGanhador + segundoGanhador + terceiroGanhador);
+        const administrador = valorArrecadado - 
+            (primeiroGanhador + segundoGanhador + terceiroGanhador);
 
         document.getElementById('valor-arrecadado').textContent = valorArrecadado.toFixed(2);
         document.getElementById('primeiro-ganhador').textContent = primeiroGanhador.toFixed(2);
@@ -155,9 +162,9 @@
         const listaContainer = document.getElementById('lista-participantes');
         listaContainer.innerHTML = ''; // Limpa a lista atual
 
-        const listaFlexContainer = document.createElement('div'); 
-        listaFlexContainer.style.display = 'flex'; 
-        listaFlexContainer.style.flexWrap = 'wrap'; 
+        const listaFlexContainer = document.createElement('div');
+        listaFlexContainer.style.display = 'flex';
+        listaFlexContainer.style.flexWrap = 'wrap';
         listaContainer.appendChild(listaFlexContainer);
 
         Object.entries(numerosConfirmados).forEach(([numero, nome]) => {
@@ -166,6 +173,18 @@
             listItem.textContent = `${numero}: ${nome}`;
             listaFlexContainer.appendChild(listItem);
         });
+    }
+
+    // Adiciona ou remove um número confirmado
+    function modificarNumeroConfirmado(numero, nome = null) {
+        if (nome) {
+            // Adiciona um novo número confirmado
+            numerosConfirmados[numero] = nome;
+        } else {
+            // Remove o número confirmado
+            delete numerosConfirmados[numero];
+        }
+        atualizarValores();
     }
 
     // Inicia os valores na página
@@ -180,26 +199,31 @@
         button.disabled = numerosConfirmados.hasOwnProperty(i); // Desabilita os botões para números já confirmados
 
         button.addEventListener('click', () => {
-            // Envia mensagem para o WhatsApp
-            const numeroWhatsApp = "62982502200"; // Substitua pelo número real
-            const mensagem = `Olá! Escolhi o número ${i} na rifa.`;
-            const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensagem)}`;
-            window.open(url, '_blank');
+            // Exibe um alert antes de enviar a mensagem
+            const confirmacao = confirm(`Você escolheu o número ${i}. Deseja continuar?`);
+            if (confirmacao) {
+                // Envia mensagem para o WhatsApp
+                const numeroWhatsApp = "62982502200"; // Substitua pelo número real
+                const mensagem = `Olá! Escolhi o número ${i} na rifa.`;
+                const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensagem)}`;
+                window.open(url, '_blank');
 
-    
+                // Atualiza a confirmação do número na lista
+                modificarNumeroConfirmado(i, `Participante ${i}`);
+                button.disabled = true; // Desabilita o botão após a escolha
+            }
         });
+
         numbersContainer.appendChild(button);
     }
 </script>
 
                 
-                   
+                
 
             </section>
         </div>
-
-
-        <button class="btn1" onclick="window.location.href='xxxxxxxx'">Sorteio:</button> 
+        <button class="btn1" onclick="window.location.href='xxxxxxxx'">SORTEIO:</button> 
     </main>
 
     <footer>&copy; 2025 Todos os direitos reservados.</footer>
