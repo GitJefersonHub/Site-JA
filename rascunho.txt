@@ -1,0 +1,5 @@
+b8e1ca208ba37b685082aa9f5ab4d284 // chave api
+5a6fefb706ee7746e76d8c16  // chave api
+
+const weatherApiKey = 'b8e1ca208ba37b685082aa9f5ab4d284'; // Chave de API do OpenWeatherMap
+            const exchangeRateApiKey = '5a6fefb706ee7746e76d8c16'; // Chave de API do ExchangeRate-API

@@ -11,14 +11,14 @@
 <body>
     <nav>
         <div class="logo">
-            <h1><a href="index.html">Jeferson Alves</a></h1>
+            <h1><a href="index.html">Hifa Beneficente!</a></h1>
         </div>
         <ul>
             <li>
-                <a href="tec.html" id="tecnologia-link" onclick="alert('Preencha o formulário de contato!'); return false;" class="btn-tecnologia">Tecnologia</a>
+                <a href="tec.html" id="tecnologia-link" onclick="alert('Escolha o (s) número (s) disponíveis!'); return false;" class="btn-tecnologia">R$ 20,00</a>
             </li>
             <li>
-                <a href="ser.html" id="serigrafia-link" onclick="alert('Preencha o formulário de contato!'); return false;" class="btn-serigrafia">Serigrafia</a>
+                <a href="ser.html" id="serigrafia-link" onclick="alert('Escolha o (s) número (s) disponíveis!'); return false;" class="btn-serigrafia">R$ 20,00</a>
             </li>
         </ul>
     </nav>
@@ -32,123 +32,177 @@
             <br>
         </div>
 
-        <!-- Container atualizado -->
         <div class="code-container">
-            <!-- Aqui você pode inserir seus códigos -->
-
-
-
             <section>
-                <title>Rifa</title>
-    <style>
-   
+                <p class="p1"> Aqui você ajuda uma pessoa que precisa e concorre a premios!</p>
+                <p class="p2">R$: 20,00</p>
+                <p class="p2">Adquira quantos números quiser.</p>
+                <style>
 
-        h1, h2 {
-            color: white;
-        }
 
-        .numbers-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
 
-        .number-btn {
-            width: 50px;
-            height: 50px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
 
-        .number-btn:disabled {
-            background-color: #6c757d;
-            cursor: not-allowed;
-        }
+/* Estilização para a lista de participantes */
+#lista-participantes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none; /* Remove os marcadores */
+    padding: 0;
+    margin: 20px 0;
+    color: yellow;
+}
 
-        .summary {
-            margin-top: 20px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+#lista-participantes li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        .summary p {
-            margin: 10px 0;
-            font-size: 18px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Rifa - 200 Números</h1>
-    <p class="p1">Este é um projeto de rifa beneficente, aqui você ajuda alguém participando da rifa e concorre aos prémios citado abaixo.</p>
-    <p class="p1">Valor por número: R$ 20,00.</p>
-    <p class="p1">Escolha um número abaixo:</p>
-    <p class="p1">Os prémios citado abaixo será enviado após a conclusão do processo e na mesma chave pix comprovado estar dentro do processo da rifa:</p>
 
-    <div class="numbers-container">
-        <!-- Gera 200 botões dinamicamente com JavaScript -->
-    </div>
 
-    <div class="summary">
-        <h2>Resumo</h2>
-        <p><strong>Valor Arrecadado:</strong> R$ <span id="valor-arrecadado">0.00</span></p>
-        <p><strong>Administrador:</strong> R$ <span id="administrador">0.00</span></p>
-        <p><strong>1º Ganhador (15%):</strong> R$ <span id="primeiro-ganhador">0.00</span></p>
-        <p><strong>2º Ganhador (10%):</strong> R$ <span id="segundo-ganhador">0.00</span></p>
-        <p><strong>3º Ganhador (5%):</strong> R$ <span id="terceiro-ganhador">0.00</span></p>
-    </div>
+                    h1, h2 {
+                        color: white;
+                    }
 
-    <script>
-        const valorPorNumero = 20; // Valor de cada número
-        let valorArrecadado = 0;
+                    .pa, .pb, .pc, .pd, .pe {
+                        font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                        -webkit-hyphens: auto;
+                        -moz-hyphens: auto;
+                        -ms-hyphens: auto;
+                        hyphens: auto;
+                        text-align: justify;
+                        margin: 0 1%;
+                        text-indent: 0%;
+                        font-size: clamp(12px, 4vw, 40px); /* Ajuste dinâmico da fonte */
+                    }
 
-        // Função para calcular e atualizar os valores
-        function atualizarValores() {
-            const primeiroGanhador = valorArrecadado * 0.15;
-            const segundoGanhador = valorArrecadado * 0.10;
-            const terceiroGanhador = valorArrecadado * 0.05;
-            const administrador = valorArrecadado - (primeiroGanhador + segundoGanhador + terceiroGanhador);
+                    .numbers-container {
+                        display: flex;
+                        justify-content: center;
+                        flex-wrap: wrap;
+                        gap: 10px;
+                        margin-top: 20px;
+                    }
 
-            document.getElementById('valor-arrecadado').textContent = valorArrecadado.toFixed(2);
-            document.getElementById('primeiro-ganhador').textContent = primeiroGanhador.toFixed(2);
-            document.getElementById('segundo-ganhador').textContent = segundoGanhador.toFixed(2);
-            document.getElementById('terceiro-ganhador').textContent = terceiroGanhador.toFixed(2);
-            document.getElementById('administrador').textContent = administrador.toFixed(2);
-        }
+                    .number-btn {
+                        width: 50px;
+                        height: 50px;
+                        background-color: #007bff;
+                        color: white;
+                        border: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                        cursor: pointer;
+                    }
 
-        // Cria botões dinamicamente e adiciona eventos
-        const numbersContainer = document.querySelector('.numbers-container');
-        for (let i = 1; i <= 200; i++) {
-            const button = document.createElement('button');
-            button.textContent = i;
-            button.className = 'number-btn';
-            button.addEventListener('click', () => {
-                if (!button.disabled) {
-                    valorArrecadado += valorPorNumero;
-                    button.disabled = true; // Desativa o botão escolhido
-                    atualizarValores();
-                }
-            });
-            numbersContainer.appendChild(button);
-        }
-    </script>
+                    .number-btn:disabled {
+                        background-color: #6c757d;
+                        cursor: not-allowed;
+                    }
+
+                    .summary {
+                        margin-top: 20px;
+                        background: #fff;
+                        padding: 20px;
+                        border-radius: 8px;
+                        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                    }
+
+                    .summary p {
+                        margin: 10px 0;
+                        font-size: 18px;
+                    }
+                </style>
+
+<h1>Rifa Atualizada</h1>
+<p class="p1">Valor arrecadado: R$<span id="valor-arrecadado">0.00</span></p>
+<p class="p1">José Joaquim da Silva: R$<span id="administrador">0.00</span></p>
+<p class="p2">1° ganhador: R$<span id="primeiro-ganhador">0.00</span></p>
+<p class="p2">2° ganhador: R$<span id="segundo-ganhador">0.00</span></p>
+<p class="p2">3° ganhador: R$<span id="terceiro-ganhador">0.00</span></p>
+<div class="numbers-container"></div>
+<h2>Lista de Participantes Confirmados</h2>
+<ul id="lista-participantes"></ul>
+
+<script>
+    const valorPorNumero = 20; // Valor de cada número
+    let valorArrecadado = 60; // Valor inicial com alguns números já inseridos
+    const numerosConfirmados = {2: "João", 5: "Maria", 8: "Carlos", 18: "Ana", 80: "jose"}; // Números confirmados com nomes
+
+    // Atualiza a página com os valores iniciais
+    function atualizarValores() {
+        const primeiroGanhador = valorArrecadado * 0.15;
+        const segundoGanhador = valorArrecadado * 0.10;
+        const terceiroGanhador = valorArrecadado * 0.05;
+        const administrador = valorArrecadado - (primeiroGanhador + segundoGanhador + terceiroGanhador);
+
+        document.getElementById('valor-arrecadado').textContent = valorArrecadado.toFixed(2);
+        document.getElementById('primeiro-ganhador').textContent = primeiroGanhador.toFixed(2);
+        document.getElementById('segundo-ganhador').textContent = segundoGanhador.toFixed(2);
+        document.getElementById('terceiro-ganhador').textContent = terceiroGanhador.toFixed(2);
+        document.getElementById('administrador').textContent = administrador.toFixed(2);
+
+        atualizarListaParticipantes();
+    }
+
+    // Atualiza a lista de números e nomes dos participantes
+    function atualizarListaParticipantes() {
+        const listaContainer = document.getElementById('lista-participantes');
+        listaContainer.innerHTML = ''; // Limpa a lista atual
+
+        const listaFlexContainer = document.createElement('div'); 
+        listaFlexContainer.style.display = 'flex'; 
+        listaFlexContainer.style.flexWrap = 'wrap'; 
+        listaContainer.appendChild(listaFlexContainer);
+
+        Object.entries(numerosConfirmados).forEach(([numero, nome]) => {
+            const listItem = document.createElement('div');
+            listItem.style.margin = '10px'; // Ajuste para espaçamento
+            listItem.textContent = `${numero}: ${nome}`;
+            listaFlexContainer.appendChild(listItem);
+        });
+    }
+
+    // Inicia os valores na página
+    atualizarValores();
+
+    // Cria botões dinamicamente e adiciona eventos
+    const numbersContainer = document.querySelector('.numbers-container');
+    for (let i = 1; i <= 100; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.className = 'number-btn';
+        button.disabled = numerosConfirmados.hasOwnProperty(i); // Desabilita os botões para números já confirmados
+
+        button.addEventListener('click', () => {
+            // Envia mensagem para o WhatsApp
+            const numeroWhatsApp = "62982502200"; // Substitua pelo número real
+            const mensagem = `Olá! Escolhi o número ${i} na rifa.`;
+            const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+
+    
+        });
+        numbersContainer.appendChild(button);
+    }
+</script>
 
                 
-            </section> 
+                   
 
-
-
+            </section>
         </div>
+
+
+        <button class="btn1" onclick="window.location.href='xxxxxxxx'">Sorteio:</button> 
     </main>
+
     <footer>&copy; 2025 Todos os direitos reservados.</footer>
     <script src="js/weather.js"></script>
-   
 </body>
 </html>

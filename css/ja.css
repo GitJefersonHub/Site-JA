@@ -59,15 +59,43 @@ h5 {
 
 /* Estilos para Parágrafos */
 .p1 {
-    color: gold; 
+    color: white; 
 }
 
 .p2 {
-    color: red;
+    color: yellow;
 }
 
 .p3 {
+    color: red;
+}
+
+.p4 {
     color: blue;
+}
+
+.p5 {
+    color: black;
+}
+
+.pa {
+    color: white; 
+}
+
+.pb {
+    color: yellow;
+}
+
+.pc {
+    color: red;
+}
+
+.pd {
+    color: blue;
+}
+
+.pe {
+    color: black;
 }
 
 /* Estilos para os Botões */

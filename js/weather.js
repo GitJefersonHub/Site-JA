@@ -1,5 +1,5 @@
-const weatherApiKey = 'b8e1ca208ba37b685082aa9f5ab4d284'; // Chave de API do OpenWeatherMap
-            const exchangeRateApiKey = '5a6fefb706ee7746e76d8c16'; // Chave de API do ExchangeRate-API
+const weatherApiKey = ''; // Chave de API do OpenWeatherMap
+            const exchangeRateApiKey = ''; // Chave de API do ExchangeRate-API
 
             function getWeather(latitude, longitude) {
                 const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${weatherApiKey}&lang=pt_br`;
