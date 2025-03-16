@@ -44,51 +44,53 @@
                         justify-content: center;
                         list-style-type: none; /* Remove os marcadores */
                         padding: 0;
-                        color: green;
-                        font-size: 60%;
-                        background-color: white;
+                        color: white;
+                        font-size: 3vw; /* Ajusta o tamanho da fonte com base na largura da tela */
+                        background-color: #836FFF;
                         border-radius: 10px;
                     }
-
-
+                
+                    /* Ajustes para containers de números */
                     .numbers-container {
                         display: flex;
                         justify-content: center;
                         flex-wrap: wrap;
-                        gap: 4px;
-                        margin-top: 4px;
+                        gap: 0.5vw; /* Define o espaçamento com unidade responsiva */
+                        margin-top: 1vw;
                     }
-
+                
+                    /* Estilização para botões */
                     .number-btn {
-                        width: 26px;
-                        height: 26px;
+                        width: 10vw; /* Ajusta o tamanho dos botões em relação à largura da tela */
+                        height: 10vw; /* Mantém os botões proporcionais */
                         background-color: #007bff;
                         color: white;
                         border: none;
-                        border-radius: 14px;
-                        font-size: 8px;
+                        border-radius: 50%; /* Torna os botões circulares */
+                        font-size: 4vw;
                         cursor: pointer;
                     }
-
+                
                     .number-btn:disabled {
                         background-color: #6c757d;
                         cursor: not-allowed;
                     }
-
+                
+                    /* Estilização para o resumo */
                     .summary {
-                        margin-top: 20px;
+                        margin-top: 2vw;
                         background: #fff;
-                        padding: 20px;
-                        border-radius: 8px;
+                        padding: 3vw;
+                        border-radius: 1vw;
                         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
                     }
-
+                
                     .summary p {
-                        margin: 10px 0;
-                        font-size: 18px;
+                        margin: 1.5vw 0;
+                        font-size: 2.5vw; /* Tamanho da fonte responsivo */
                     }
                 </style>
-
+                
                 <h1>R$: 20,00</h1>
                 <p class="p1">Valor arrecadado: R$ <span id="valor-arrecadado">0.00</span></p>
                 <p class="p1">Administrador: R$ <span id="administrador">0.00</span></p>
@@ -108,7 +110,7 @@
                 <script>
                     const valorPorNumero = 20; // Valor de cada número
                     let valorArrecadado = 0; // Valor inicial com alguns números já inseridos
-                    let numerosConfirmados = {2: "João", 5: "Maria", 1: "Jef", 4: "Cris", 3: "xxx", 6: "xxx", 7: "xxx", 8: "Cris", 9: "xxx", 10: "Cris", 11: "João", 12: "Maria", 13: "Jef", 14: "Cris", 15: "xxx", 16: "xxx", 17: "xxx", 18: "Cris", 19: "xxx", 20: "Cris"}; // Números confirmados com nomes
+                    let numerosConfirmados = {2: "João", 5: "Maria", 1: "Jef", 4: "Cris", 3: "xxx", 6: "xxx", 7: "xxx", 8: "Cris", 9: "xxx", 10: "Cris", 11: "João", 12: "Maria", 13: "Jef", 14: "Cris", 15: "xxx", 16: "xxx", 17: "xxx", 18: "Cris", 19: "xxx", 20: "Cris", 21: "João", 22: "Maria", 23: "Jef", 24: "Cris", 25: "xxx", 26: "xxx", 27: "xxx", 28: "Cris", 29: "xxx", 20: "Cris", 21: "João", 22: "Maria", 23: "Jef", 24: "Cris", 25: "xxx", 26: "xxx", 27: "xxx", 28: "Cris", 29: "xxx", 30: "Cris", 21: "João", 22: "Maria", 23: "Jef", 24: "Cris", 25: "xxx", 26: "xxx", 27: "xxx", 28: "Cris", 29: "xxx", 20: "Cris", 21: "João", 22: "Maria", 23: "Jef", 24: "Cris", 25: "xxx", 26: "xxx", 27: "xxx", 28: "Cris", 29: "xxx", 30: "Cris",  31: "Cris", 32: "João", 33: "Maria", 34: "Jef", 35: "Cris", 36: "xxx", 37: "xxx", 38: "xxx", 39: "Cris", 40: "xxx", 41: "Cris", 42: "João", 43: "Maria", 44: "Jef", 45: "Cris", 46: "xxx", 47: "xxx", 48: "xxx", 49: "Cris", 50: "xxx"}; // Números confirmados com nomes
 
                     // Atualiza a página com os valores iniciais
                     function atualizarValores() {
@@ -177,7 +179,7 @@
 
                         button.addEventListener('click', () => {
                             // Exibe um alert antes de enviar a mensagem
-                            const confirmacao = confirm(`Você escolheu o número ${i}. Deseja continuar?`);
+                            const confirmacao = confirm(`Número ${i}. Deseja continuar?`);
                             if (confirmacao) {
                                 // Envia mensagem para o WhatsApp
                                 const numeroWhatsApp = "62982502200"; // Substitua pelo número real
@@ -186,7 +188,7 @@
                                 window.open(url, '_blank');
 
                                 // Atualiza a confirmação do número na lista
-                                modificarNumeroConfirmado(i, `Participante ${i}`);
+                                modificarNumeroConfirmado(i, `aguardando confirmação ${i}`);
                                 button.disabled = true; // Desabilita o botão após a escolha
                             }
                         });
