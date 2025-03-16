@@ -44,58 +44,29 @@
                         justify-content: center;
                         list-style-type: none; /* Remove os marcadores */
                         padding: 0;
-                        margin: 20px 0;
-                        color: yellow;
+                        color: green;
+                        font-size: 60%;
+                        background-color: white;
+                        border-radius: 10px;
                     }
 
-                    #lista-participantes li {
-                        background-color: #f9f9f9;
-                        border: 1px solid #ddd;
-                        border-radius: 5px;
-                        padding: 10px 20px;
-                        margin: 10px;
-                        font-size: 16px;
-                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                    }
-
-                    h1 {
-                        color: white;
-                        font-size: 140%;
-                    }
-
-                    h2 {
-                        color: white;
-                        font-size: 100%;
-                    }
-
-                    .pa, .pb, .pc, .pd, .pe {
-                        font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-                        -webkit-hyphens: auto;
-                        -moz-hyphens: auto;
-                        -ms-hyphens: auto;
-                        hyphens: auto;
-                        text-align: justify;
-                        margin: 0 1%;
-                        text-indent: 0%;
-                        font-size: clamp(12px, 4vw, 40px); /* Ajuste dinâmico da fonte */
-                    }
 
                     .numbers-container {
                         display: flex;
                         justify-content: center;
                         flex-wrap: wrap;
-                        gap: 10px;
-                        margin-top: 20px;
+                        gap: 4px;
+                        margin-top: 4px;
                     }
 
                     .number-btn {
-                        width: 50px;
-                        height: 50px;
+                        width: 26px;
+                        height: 26px;
                         background-color: #007bff;
                         color: white;
                         border: none;
-                        border-radius: 5px;
-                        font-size: 16px;
+                        border-radius: 14px;
+                        font-size: 8px;
                         cursor: pointer;
                     }
 
@@ -120,12 +91,14 @@
 
                 <h1>R$: 20,00</h1>
                 <p class="p1">Valor arrecadado: R$ <span id="valor-arrecadado">0.00</span></p>
-                <p class="p1">José Joaquim da Silva: R$ <span id="administrador">0.00</span></p>
+                <p class="p1">Administrador: R$ <span id="administrador">0.00</span></p>
                 <p class="p2">1° ganhador: R$ <span id="primeiro-ganhador">0.00</span></p>
                 <p class="p2">2° ganhador: R$ <span id="segundo-ganhador">0.00</span></p>
                 <p class="p2">3° ganhador: R$ <span id="terceiro-ganhador">0.00</span></p>
+                <p class="p2">4° ganhador: R$ <span id="quarto-ganhador">0.00</span></p>
+                <p class="p2">5° ganhador: R$ <span id="quinto-ganhador">0.00</span></p>
                 <p class="p1">
-                    A rifa vai estar sendo atualizada até o dia xx,xx,xx e o sorteio será publicado 
+                    A rifa vai estar sendo atualizada até o dia xx, xx, xx e o sorteio será publicado 
                     no botão 'SORTEIO' nas próximas horas dos dias seguintes.
                 </p>
                 <div class="numbers-container"></div>
@@ -133,93 +106,94 @@
                 <ul id="lista-participantes"></ul>
 
                 <script>
-    const valorPorNumero = 20; // Valor de cada número
-    let valorArrecadado = 60; // Valor inicial com alguns números já inseridos
-    let numerosConfirmados = {2: "João", 5: "Maria"}; // Números confirmados com nomes
+                    const valorPorNumero = 20; // Valor de cada número
+                    let valorArrecadado = 0; // Valor inicial com alguns números já inseridos
+                    let numerosConfirmados = {2: "João", 5: "Maria", 1: "Jef", 4: "Cris", 3: "xxx", 6: "xxx", 7: "xxx", 8: "Cris", 9: "xxx", 10: "Cris", 11: "João", 12: "Maria", 13: "Jef", 14: "Cris", 15: "xxx", 16: "xxx", 17: "xxx", 18: "Cris", 19: "xxx", 20: "Cris"}; // Números confirmados com nomes
 
-    // Atualiza a página com os valores iniciais
-    function atualizarValores() {
-        // Calcula o valor arrecadado com base nos números confirmados
-        valorArrecadado = Object.keys(numerosConfirmados).length * valorPorNumero;
+                    // Atualiza a página com os valores iniciais
+                    function atualizarValores() {
+                        // Calcula o valor arrecadado com base nos números confirmados
+                        valorArrecadado = Object.keys(numerosConfirmados).length * valorPorNumero;
 
-        const primeiroGanhador = valorArrecadado * 0.15;
-        const segundoGanhador = valorArrecadado * 0.10;
-        const terceiroGanhador = valorArrecadado * 0.05;
-        const administrador = valorArrecadado - 
-            (primeiroGanhador + segundoGanhador + terceiroGanhador);
+                        const primeiroGanhador = valorArrecadado * 0.10;
+                        const segundoGanhador = valorArrecadado * 0.08;
+                        const terceiroGanhador = valorArrecadado * 0.06;
+                        const quartoGanhador = valorArrecadado * 0.04;
+                        const quintoGanhador = valorArrecadado * 0.02;
+                        const administrador = valorArrecadado - 
+                            (primeiroGanhador + segundoGanhador + terceiroGanhador);
 
-        document.getElementById('valor-arrecadado').textContent = valorArrecadado.toFixed(2);
-        document.getElementById('primeiro-ganhador').textContent = primeiroGanhador.toFixed(2);
-        document.getElementById('segundo-ganhador').textContent = segundoGanhador.toFixed(2);
-        document.getElementById('terceiro-ganhador').textContent = terceiroGanhador.toFixed(2);
-        document.getElementById('administrador').textContent = administrador.toFixed(2);
+                        document.getElementById('valor-arrecadado').textContent = valorArrecadado.toFixed(2);
+                        document.getElementById('primeiro-ganhador').textContent = primeiroGanhador.toFixed(2);
+                        document.getElementById('segundo-ganhador').textContent = segundoGanhador.toFixed(2);
+                        document.getElementById('terceiro-ganhador').textContent = terceiroGanhador.toFixed(2);
+                        document.getElementById('quarto-ganhador').textContent = quartoGanhador.toFixed(2);
+                        document.getElementById('quinto-ganhador').textContent = quintoGanhador.toFixed(2);
+                        document.getElementById('administrador').textContent = administrador.toFixed(2);
 
-        atualizarListaParticipantes();
-    }
+                        atualizarListaParticipantes();
+                    }
 
-    // Atualiza a lista de números e nomes dos participantes
-    function atualizarListaParticipantes() {
-        const listaContainer = document.getElementById('lista-participantes');
-        listaContainer.innerHTML = ''; // Limpa a lista atual
+                    // Atualiza a lista de números e nomes dos participantes
+                    function atualizarListaParticipantes() {
+                        const listaContainer = document.getElementById('lista-participantes');
+                        listaContainer.innerHTML = ''; // Limpa a lista atual
 
-        const listaFlexContainer = document.createElement('div');
-        listaFlexContainer.style.display = 'flex';
-        listaFlexContainer.style.flexWrap = 'wrap';
-        listaContainer.appendChild(listaFlexContainer);
+                        const listaFlexContainer = document.createElement('div');
+                        listaFlexContainer.style.display = 'flex';
+                        listaFlexContainer.style.flexWrap = 'wrap';
+                        listaContainer.appendChild(listaFlexContainer);
 
-        Object.entries(numerosConfirmados).forEach(([numero, nome]) => {
-            const listItem = document.createElement('div');
-            listItem.style.margin = '10px'; // Ajuste para espaçamento
-            listItem.textContent = `${numero}: ${nome}`;
-            listaFlexContainer.appendChild(listItem);
-        });
-    }
+                        Object.entries(numerosConfirmados).forEach(([numero, nome]) => {
+                            const listItem = document.createElement('div');
+                            listItem.style.margin = '10px'; // Ajuste para espaçamento
+                            listItem.textContent = `${numero}: ${nome}`;
+                            listaFlexContainer.appendChild(listItem);
+                        });
+                    }
 
-    // Adiciona ou remove um número confirmado
-    function modificarNumeroConfirmado(numero, nome = null) {
-        if (nome) {
-            // Adiciona um novo número confirmado
-            numerosConfirmados[numero] = nome;
-        } else {
-            // Remove o número confirmado
-            delete numerosConfirmados[numero];
-        }
-        atualizarValores();
-    }
+                    // Adiciona ou remove um número confirmado
+                    function modificarNumeroConfirmado(numero, nome = null) {
+                        if (nome) {
+                            // Adiciona um novo número confirmado
+                            numerosConfirmados[numero] = nome;
+                        } else {
+                            // Remove o número confirmado
+                            delete numerosConfirmados[numero];
+                        }
+                        atualizarValores();
+                    }
 
-    // Inicia os valores na página
-    atualizarValores();
+                    // Inicia os valores na página
+                    atualizarValores();
 
-    // Cria botões dinamicamente e adiciona eventos
-    const numbersContainer = document.querySelector('.numbers-container');
-    for (let i = 1; i <= 100; i++) {
-        const button = document.createElement('button');
-        button.textContent = i;
-        button.className = 'number-btn';
-        button.disabled = numerosConfirmados.hasOwnProperty(i); // Desabilita os botões para números já confirmados
+                    // Cria botões dinamicamente e adiciona eventos
+                    const numbersContainer = document.querySelector('.numbers-container');
+                    for (let i = 1; i <= 100; i++) {
+                        const button = document.createElement('button');
+                        button.textContent = i;
+                        button.className = 'number-btn';
+                        button.disabled = numerosConfirmados.hasOwnProperty(i); // Desabilita os botões para números já confirmados
 
-        button.addEventListener('click', () => {
-            // Exibe um alert antes de enviar a mensagem
-            const confirmacao = confirm(`Você escolheu o número ${i}. Deseja continuar?`);
-            if (confirmacao) {
-                // Envia mensagem para o WhatsApp
-                const numeroWhatsApp = "62982502200"; // Substitua pelo número real
-                const mensagem = `Olá! Escolhi o número ${i} na rifa.`;
-                const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensagem)}`;
-                window.open(url, '_blank');
+                        button.addEventListener('click', () => {
+                            // Exibe um alert antes de enviar a mensagem
+                            const confirmacao = confirm(`Você escolheu o número ${i}. Deseja continuar?`);
+                            if (confirmacao) {
+                                // Envia mensagem para o WhatsApp
+                                const numeroWhatsApp = "62982502200"; // Substitua pelo número real
+                                const mensagem = `Olá! Escolhi o número ${i} na rifa.`;
+                                const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensagem)}`;
+                                window.open(url, '_blank');
 
-                // Atualiza a confirmação do número na lista
-                modificarNumeroConfirmado(i, `Participante ${i}`);
-                button.disabled = true; // Desabilita o botão após a escolha
-            }
-        });
+                                // Atualiza a confirmação do número na lista
+                                modificarNumeroConfirmado(i, `Participante ${i}`);
+                                button.disabled = true; // Desabilita o botão após a escolha
+                            }
+                        });
 
-        numbersContainer.appendChild(button);
-    }
-</script>
-
-                
-                
+                        numbersContainer.appendChild(button);
+                    }
+                </script>
 
             </section>
         </div>
@@ -227,6 +201,6 @@
     </main>
 
     <footer>&copy; 2025 Todos os direitos reservados.</footer>
-    <script src="js/weather.js"></script>
+   
 </body>
 </html>
