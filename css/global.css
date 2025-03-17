@@ -274,18 +274,3 @@ li {
 }
 
 
-/* Celular grande*/ /* Celular grande*/ /* Celular grande*/ /* Celular grande*/ /* Celular grande*/ /* Celular grande*/ /* Celular grande*/
-  @media only screen and (min-width: 481px) and (max-width: 768px) {
-	
-
-/* Tablet*/ /* Tablet*/ /* Tablet*/ /* Tablet*/ /* Tablet*/ /* Tablet*/ /* Tablet*/
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
-	
-	
-/*laptop*/ /*laptop*/ /*laptop*/ /*laptop*/ /*laptop*/ /*laptop*/ /*laptop*/ /*laptop*/
-@media only screen and (min-width: 1025px) and (max-width: 1200px) {
-	
-	
-/*Desktops*/ /*Desktops*/ /*Desktops*/ /*Desktops*/ /*Desktops*/ /*Desktops*/ /*Desktops*/
-@media only screen and (min-width: 1201px) {
-	
