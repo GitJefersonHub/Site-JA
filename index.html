@@ -89,70 +89,7 @@
                         margin: 1.5vw 0;
                         font-size: 2.5vw; /* Tamanho da fonte responsivo */
                     }
-                    body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(120deg, #6a5acd, #836fff);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .container {
-            text-align: center;
-            max-width: 600px;
-            padding: 20px;
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-        }
-
-        h1 {
-            margin-bottom: 20px;
-            font-size: 2.5rem;
-            text-shadow: 2px 2px #000;
-        }
-
-        .cronometro {
-            font-size: 2rem;
-            margin: 20px 0;
-            background: #ffd700;
-            color: black;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-        }
-
-        .resultado {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            background: white;
-            color: black;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-        }
-
-        .resultado p {
-            margin: 10px 0;
-            font-weight: bold;
-        }
-
-        @keyframes piscar {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.4;
-            }
-        }
-
-        .efeito-piscar {
-            animation: piscar 1s infinite;
-        }
+                    
 
                 </style>
                 
@@ -168,66 +105,7 @@
                 <p class="p1">
                     A rifa vai estar sendo atualizada até o dia xx, xx, xx e o sorteio será publicado 
                     no botão 'SORTEIO' nas próximas horas dos dias seguintes.
-                </p>
-                <div class="container">
-                    <h1>Sorteio</h1>
-                    <div class="cronometro" id="cronometro">00:00:00</div>
-                    <div class="resultado" id="resultado"></div>
-                </div>
-            
-                <script>
-        // Data e hora de destino inseridas manualmente (fuso horário de Brasília)
-        const dataDestino = new Date('2025-03-17T09:00:00-03:00');
-
-        function atualizarCronometro() {
-            const agora = new Date();
-            const diferenca = dataDestino - agora;
-
-            if (diferenca > 0) {
-                const horas = String(Math.floor(diferenca / (1000 * 60 * 60))).padStart(2, '0');
-                const minutos = String(Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-                const segundos = String(Math.floor((diferenca % (1000 * 60)) / 1000)).padStart(2, '0');
-                document.getElementById('cronometro').textContent = `${horas}:${minutos}:${segundos}`;
-            } else {
-                document.getElementById('cronometro').textContent = '00:00:00';
-                sortear();
-                clearInterval(intervalo); // Parar a contagem regressiva
-            }
-        }
-
-        function sortear() {
-            const resultadoDiv = document.getElementById('resultado');
-            resultadoDiv.innerHTML = '<p class="efeito-piscar">Sorteando...</p>';
-            
-            setTimeout(() => {
-                const lista = {
-                    21: "João", 22: "Maria", 23: "Jef", 24: "Cris", 25: "xxx"
-                    // Adicione os demais valores da sua lista aqui
-                };
-                const numeros = Object.keys(lista);
-                const sorteados = [];
-
-                while (sorteados.length < 5) {
-                    const indice = Math.floor(Math.random() * numeros.length);
-                    const numeroSorteado = numeros[indice];
-                    if (!sorteados.includes(numeroSorteado)) {
-                        sorteados.push(numeroSorteado);
-                    }
-                }
-
-                const ganhadores = sorteados.map(numero => ({
-                    numero,
-                    nome: lista[numero]
-                }));
-
-                resultadoDiv.innerHTML = '<p>Ganhadores:</p>' +
-                    ganhadores.map((g, i) => `<p>${i + 1}º: ${g.nome} (Número ${g.numero})</p>`).join('');
-            }, 3000); // 3 segundos para criar suspense
-        }
-
-        // Iniciar o cronômetro
-        const intervalo = setInterval(atualizarCronometro, 1000);
-    </script>
+                
 
                 <div class="numbers-container"></div>
                 <h2>Lista de Participantes Confirmados</h2>
