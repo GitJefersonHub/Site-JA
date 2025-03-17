@@ -89,70 +89,7 @@
                         margin: 1.5vw 0;
                         font-size: 2.5vw; /* Tamanho da fonte responsivo */
                     }
-                    body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(120deg, #6a5acd, #836fff);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .container {
-            text-align: center;
-            max-width: 600px;
-            padding: 20px;
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-        }
-
-        h1 {
-            margin-bottom: 20px;
-            font-size: 2.5rem;
-            text-shadow: 2px 2px #000;
-        }
-
-        .cronometro {
-            font-size: 2rem;
-            margin: 20px 0;
-            background: #ffd700;
-            color: black;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-        }
-
-        .resultado {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            background: white;
-            color: black;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-        }
-
-        .resultado p {
-            margin: 10px 0;
-            font-weight: bold;
-        }
-
-        @keyframes piscar {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.4;
-            }
-        }
-
-        .efeito-piscar {
-            animation: piscar 1s infinite;
-        }
+                    
 
                 </style>
                 
@@ -166,10 +103,9 @@
                 <p class="p2">4° ganhador: R$ <span id="quarto-ganhador">0.00</span></p>
                 <p class="p2">5° ganhador: R$ <span id="quinto-ganhador">0.00</span></p>
                 <p class="p1">
-                    A rifa vai estar sendo atualizada até o dia xx, xx, xx e o sorteio será publicado 
-                    no botão 'SORTEIO' nas próximas horas dos dias seguintes.
+                    A rifa vai estar sendo atualizada até o dia xx, xx, xx e o sorteio será publicado nas próximas horas dos dias seguintes.
                 </p>
-                <div class="container">
+                <div class="containerSorteio">
                     <h1>Sorteio</h1>
                     <div class="cronometro" id="cronometro">00:00:00</div>
                     <div class="resultado" id="resultado"></div>
@@ -177,7 +113,7 @@
             
                 <script>
                     // Data e hora de destino inseridas manualmente (fuso horário de Brasília)
-                    const dataDestino = new Date('2025-03-17T09:00:00-03:00');
+                    const dataDestino = new Date('2025-03-17T09:00:00-20:00');
             
                     function atualizarCronometro() {
                         const agora = new Date();
@@ -201,7 +137,7 @@
                         
                         setTimeout(() => {
                             const lista = {
-                                21: "João", 22: "Maria", 23: "Jef", 24: "Cris", 25: "xxx"
+                                1: "aaa", 2: "aaa", 3: "aaa", 4: "aaa", 5: "aaa", 6: "aaa", 7: "aaa", 8: "aaa", 9: "bbb", 10: "bbb", 11: "bbb", 12: "bbb", 13: "bbb", 14: "bbb", 15: "bbb", 16: "bbb"
                                 // Adicione os demais valores da sua lista aqui
                             };
                             const numeros = Object.keys(lista);
@@ -236,7 +172,7 @@
                 <script>
                     const valorPorNumero = 20; // Valor de cada número
 let valorArrecadado = 0; // Valor inicial com alguns números já inseridos
-let numerosConfirmados = {2: "João", 5: "Maria", 1: "Jef", 4: "Cris", 3: "xxx"}; // Exemplo de números confirmados com nomes
+let numerosConfirmados = {1: "aaa", 2: "aaa", 3: "aaa", 4: "aaa", 5: "aaa", 6: "aaa", 7: "aaa", 8: "aaa", 9: "bbb", 10: "bbb", 11: "bbb", 12: "bbb", 13: "bbb", 14: "bbb", 15: "bbb", 16: "bbb"}; // Exemplo de números confirmados com nomes
 
 // Atualiza a página com os valores iniciais
 function atualizarValores() {
@@ -325,7 +261,6 @@ atualizarValores();
 
             </section>
         </div>
-        <button class="btn1" onclick="window.location.href='xxxxxxxx'">SORTEIO:</button> 
     </main>
 
     <footer>&copy; 2025 Todos os direitos reservados.</footer>
