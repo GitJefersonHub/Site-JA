@@ -1,5 +1,3 @@
-const tempoInicial = 10 * 3600; // 10 horas em segundos
-let tempoRestante;
 let sorteioRealizado = localStorage.getItem("sorteioRealizado") === "true"; // Recupera o estado do sorteio
 
 function formatarTempo(tempo) {
@@ -9,29 +7,21 @@ function formatarTempo(tempo) {
     return `${horas}:${minutos}:${segundos}`;
 }
 
-function iniciarCronometro() {
-    const cronometro = document.getElementById("cronometro");
-
-    if (!localStorage.getItem("tempoRestante")) {
-        // Define o tempo inicial na primeira execução
-        localStorage.setItem("tempoRestante", tempoInicial);
-    }
-
-    tempoRestante = parseInt(localStorage.getItem("tempoRestante"), 10);
-    cronometro.textContent = formatarTempo(tempoRestante);
-
+function diadosorteio(dia, mes, ano, hora) {
+    const sorteioData = new Date(ano, mes - 1, dia, hora); // Data e hora do sorteio
     const intervalId = setInterval(() => {
-        if (tempoRestante > 0) {
-            tempoRestante--;
-            localStorage.setItem("tempoRestante", tempoRestante); // Salva o progresso no armazenamento local
-            cronometro.textContent = formatarTempo(tempoRestante);
+        const agora = new Date(); // Hora atual
+        const diferenca = sorteioData - agora; // Diferenca em milissegundos
+
+        if (diferenca > 0) {
+            const segundosTotais = Math.floor(diferenca / 1000);
+            document.getElementById("cronometro").textContent = formatarTempo(segundosTotais);
         } else {
             clearInterval(intervalId);
-            cronometro.classList.add("finalizado");
-
+            document.getElementById("cronometro").textContent = "00:00:00";
             if (!sorteioRealizado) {
                 sorteioRealizado = true;
-                localStorage.setItem("sorteioRealizado", "true"); // Marca o sorteio como realizado
+                localStorage.setItem("sorteioRealizado", "true");
                 exibirMensagemSorteio();
             }
         }
@@ -65,9 +55,9 @@ function realizarSorteio() {
         ganhadores.map(g => `<p>Número ${g.numero}: ${g.nome}</p>`).join("");
 }
 
-// Inicia o cronômetro assim que a página carrega
+// Exemplo de uso da função diadosorteio
 if (!sorteioRealizado) {
-    iniciarCronometro();
+    diadosorteio(20, 3, 2025, 2); // Exemplo de data: 20 de março de 2025, 02:00
 } else {
     document.getElementById("cronometro").textContent = "00:00:00";
     document.getElementById("mensagem-sorteio").textContent = "Sorteio já realizado!";
