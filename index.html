@@ -1,84 +1,88 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeferson Alves!</title>
-    <link rel="stylesheet" href="css/ja.css">
-    <link rel="stylesheet" href="css/global.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-    <nav>
-        <div class="logo">
-            <h1><a href="index.html">Jeferson Alves</a></h1>
-        </div>
-        <ul>
-            <li>
-                <a href="tec.html" id="tecnologia-link"
-                    onclick="alert('Escolha o (s) número (s) disponíveis!'); return false;" class="btn tecnologia">R$ 20,00</a>
-            </li>
-            <li>
-                <a href="ser.html" id="serigrafia-link"
-                    onclick="alert('Escolha o (s) número (s) disponíveis!'); return false;" class="btn serigrafia">R$ 20,00</a>
-            </li>
-        </ul>
-    </nav>
-
-    <main>
-        <div class="containerJA">
-            <img src="img/J1.png" alt="J1">
-            <div id="weather" class="weather-info">
-                Olá, seja bem vindo... Aqui divulgo o meu trabalho afim de informar e inspirar os usuarios sobre os
-                nossos Produtos.
-            </div>
-            <br>
-        </div>
-
-        <div class="code-container">
-            <section>
-                <p class="p1">Aqui você ajuda uma pessoa e concorre a prêmios!</p>
-                <p class="p2">Adquira quantos números quiser.</p>
-
-                <h1>R$: 20,00</h1>
-                <p class="p1">Valor arrecadado: R$ <span id="valor-arrecadado">0.00</span></p>
-                <h4>Destino:</h4>
-                <p class="p1">Administrador: R$ <span id="administrador">0.00</span></p>
-                <p class="p2">1° ganhador: R$ <span id="primeiro-ganhador">0.00</span></p>
-                <p class="p2">2° ganhador: R$ <span id="segundo-ganhador">0.00</span></p>
-                <p class="p1">3° gestor: R$ <span id="terceiro-ganhador">0.00</span></p>
-                <p class="p2">4° ganhador: R$ <span id="quarto-ganhador">0.00</span></p>
-                <p class="p2">5° ganhador: R$ <span id="quinto-ganhador">0.00</span></p>
-                <p class="p1">
-                    A rifa vai estar sendo atualizada até o dia xx, xx, xx e o sorteio será publicado
-                    no botão 'SORTEIO' nas próximas horas dos dias seguintes.
-                </p>
-
-
-                <div class="container-principal">
-                    <div class="cronometro-container">
-                        <div id="cronometro">00:00</div>
-                    </div>
-                    <div id="mensagem-sorteio" class="mensagem-sorteio"></div>
-                    <div id="resultado-sorteio" class="resultado-sorteio"></div>
-                </div>
-                
-
-                <div class="numbers-container"></div>
-                <h2>Lista de Participantes Confirmados</h2>
-                <ul id="lista-participantes"></ul>
-
+<!DOCTYPE html> 
+<html lang="pt-br"> 
+ 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Jeferson Alves!</title> 
+    <link rel="stylesheet" href="css/ja.css"> 
+    <link rel="stylesheet" href="css/global.css"> 
+    <link 
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
+</head> 
+ 
+<body> 
+    <nav> 
+        <div class="logo"> 
+            <h1><a href="index.html">Jeferson Alves</a></h1> 
+        </div> 
+        <ul> 
+            <li> 
+                <a href="tec.html" id="tecnologia-link" 
+                    onclick="alert('Escolha o (s) número (s) disponíveis!'); return false;" class="btn tecnologia">R$ 20,00</a> 
+            </li> 
+            <li> 
+                <a href="ser.html" id="serigrafia-link" 
+                    onclick="alert('Escolha o (s) número (s) disponíveis!'); return false;" class="btn serigrafia">R$ 20,00</a> 
+            </li> 
+        </ul> 
+    </nav> 
+ 
+    <main> 
+        <div class="containerJA"> 
+            <img src="img/J1.png" alt="J1"> 
+            <div id="weather" class="weather-info"> 
+                Olá, seja bem vindo... Aqui divulgo o meu trabalho afim de informar e inspirar os usuarios sobre os 
+                nossos Produtos. 
+            </div> 
+            <br> 
+        </div> 
+ 
+        <div class="code-container"> 
+            <section> 
+                <p class="p1">Aqui você ajuda uma pessoa e concorre a prêmios!</p> 
+                <p class="p2">Adquira quantos números quiser.</p> 
+ 
+                <h1>R$: 20,00</h1> 
+                <p class="p1">Valor arrecadado: R$ <span id="valor-arrecadado">0.00</span></p> 
+                <h4>Destino:</h4> 
+                <p class="p1">Administrador: R$ <span id="administrador">0.00</span></p> 
+                <p class="p2">1° ganhador: R$ <span id="primeiro-ganhador">0.00</span></p> 
+                <p class="p2">2° ganhador: R$ <span id="segundo-ganhador">0.00</span></p> 
+                <p class="p1">3° gestor: R$ <span id="terceiro-ganhador">0.00</span></p> 
+                <p class="p2">4° ganhador: R$ <span id="quarto-ganhador">0.00</span></p> 
+                <p class="p2">5° ganhador: R$ <span id="quinto-ganhador">0.00</span></p> 
+                <p class="p1"> 
+                    A rifa vai estar sendo atualizada até o dia xx, xx, xx e o sorteio será publicado 
+                    no botão 'SORTEIO' nas próximas horas dos dias seguintes. 
+                </p> 
+                <br>
+ 
+                <div class="container-principal"> 
+                    <div class="cronometro-container"> 
+                        <div id="cronometro">00:00</div> 
+                    </div> 
+                    <div id="mensagem-sorteio" class="mensagem-sorteio"></div> 
+                    <div id="resultado-sorteio" class="resultado-sorteio"></div> 
+                </div> 
+                 
+ 
+                <div class="numbers-container"></div> 
+                <h2>Lista de Participantes Confirmados</h2> 
+                <ul id="lista-participantes"></ul> 
+ 
             </section>
-        </div>
-        <button class="btn1" onclick="window.location.href='xxxxxxxx'">Quero conhecer!</button>
-    </main>
-
-    <footer>&copy; 2025 Todos os direitos reservados.</footer>
-    <script src="js/script.js"></script>
-    <script src="js/cronometro.js"></script>
-
-</body>
-
-</html>
+            <button class="btn1" onclick="window.location.href='xxxxxxxx'">Quero conhecer:</button> 
+        </div> 
+        
+        <br>
+       
+    </main> 
+  <button class="btn2" onclick="window.location.href='xxxxxxxx'">Iniciar:</button>
+    <footer>&copy; 2025 Todos os direitos reservados.</footer> 
+    <script src="js/script.js"></script> 
+    <script src="js/cronometro.js"></script> 
+ 
+</body> 
+ 
+</html> 

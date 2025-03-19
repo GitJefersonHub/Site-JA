@@ -1,5 +1,4 @@
-
-const tempoInicial = 10; // Tempo do cronômetro em segundos
+const tempoInicial = 86400; // 2592000 Exemplo: 30 dias em segundos //86400 Exemplo: 1 dia em segundo
 let tempoRestante = tempoInicial;
 let intervalId;
 
@@ -20,9 +19,11 @@ function iniciarCronometro() {
 }
 
 function formatarTempo(tempo) {
-    const minutos = String(Math.floor(tempo / 60)).padStart(2, '0');
+    const dias = String(Math.floor(tempo / (60 * 60 * 24))).padStart(2, '0');
+    const horas = String(Math.floor((tempo % (60 * 60 * 24)) / (60 * 60))).padStart(2, '0');
+    const minutos = String(Math.floor((tempo % (60 * 60)) / 60)).padStart(2, '0');
     const segundos = String(tempo % 60).padStart(2, '0');
-    return `${minutos}:${segundos}`;
+    return `${dias}:${horas}:${minutos}:${segundos}`;
 }
 
 function exibirMensagemSorteio() {
@@ -49,7 +50,7 @@ function realizarSorteio() {
 
     const resultadoContainer = document.getElementById('resultado-sorteio');
     resultadoContainer.innerHTML = "<h2>Ganhadores:</h2>" +
-        ganhadores.map(g => `<p class="p1">Número ${g.numero}: ${g.nome}</p>`).join('');
+        ganhadores.map(g => `<p>Número ${g.numero}: ${g.nome}</p>`).join('');
 }
 
 // Inicia o cronômetro assim que a página carrega
