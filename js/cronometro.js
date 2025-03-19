@@ -1,8 +1,22 @@
-const tempoInicial = 86400; // 2592000 Exemplo: 30 dias em segundos //86400 Exemplo: 1 dia em segundo
-let tempoRestante = tempoInicial;
+const tempoInicial = 42000; // 10 horas em segundos
+let tempoRestante;
 let intervalId;
 
+function obterHoraAtualBrasilia() {
+    const agora = new Date();
+    const utc = agora.getTime() + agora.getTimezoneOffset() * 60000;
+    const horarioBrasilia = new Date(utc + 3 * 3600000); // Brasília está a UTC-3
+    return horarioBrasilia;
+}
+
+function calcularTempoRestante() {
+    const agora = obterHoraAtualBrasilia();
+    const dataAlvo = new Date(agora.getTime() + tempoInicial * 1000); // Adiciona 10 horas ao tempo atual
+    tempoRestante = Math.floor((dataAlvo - agora) / 1000); // Tempo restante em segundos
+}
+
 function iniciarCronometro() {
+    calcularTempoRestante();
     const cronometro = document.getElementById('cronometro');
     cronometro.textContent = formatarTempo(tempoRestante);
 
@@ -39,6 +53,8 @@ function exibirMensagemSorteio() {
 }
 
 function realizarSorteio() {
+    if (tempoRestante > 0) return; // Bloqueia novo sorteio se o tempo não terminou
+
     const ganhadores = [];
     const chavesParticipantes = Object.keys(numerosConfirmados);
 
