@@ -1,18 +1,18 @@
 const valorPorNumero = 20; // Valor de cada número 
 let valorArrecadado = 0; // Valor inicial com alguns números já inseridos 
-let numerosConfirmados = { 1: "aaa", 2: "aaa", 3: "aaa", 4: "aaa", 5: "aaa", 6: "aaa", 7: "aaa", 8: "aaa", 9: "bbb", 10: "bbb", 11: "bbb", 12: "bbb", 13: "bbb", 14: "bbb", 15: "bbb", 16: "bbb" }; // Exemplo de números confirmados com nomes 
+let numerosConfirmados = { 1: "João", 2: "Maria", 3: "Jef", 4: "Cris", 5: "xxx"}; // Exemplo de números confirmados com nomes 
 
 // Atualiza a página com os valores iniciais 
 function atualizarValores() {
     // Calcula o valor arrecadado com base nos números confirmados 
     valorArrecadado = Object.keys(numerosConfirmados).length * valorPorNumero;
 
-    const quintoGanhador = valorArrecadado * 0.05;
-    const quartoGanhador = valorArrecadado * 0.10;
-    const terceiroGanhador = valorArrecadado * 0.15;
-    const segundoGanhador = valorArrecadado * 0.20;
-    const primeiroGanhador = valorArrecadado * 0.25;
-    const administrador = valorArrecadado - (primeiroGanhador + segundoGanhador + terceiroGanhador + quartoGanhador +
+    const quintoGanhador = valorArrecadado * 0.0512;
+    const quartoGanhador = valorArrecadado * 0.0856;
+    const terceiroGanhador = valorArrecadado * 0.1294;
+    const segundoGanhador = valorArrecadado * 0.1578;
+    const primeiroGanhador = valorArrecadado * 0.1834;
+    const administrador = valorArrecadado * 0.2632; (primeiroGanhador + segundoGanhador + terceiroGanhador + quartoGanhador +
         quintoGanhador);
 
     document.getElementById('valor-arrecadado').textContent = valorArrecadado.toFixed(2);

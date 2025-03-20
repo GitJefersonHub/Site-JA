@@ -106,7 +106,7 @@ h5 {
 
 .btn1,
 .btn2 {
-    background-color: #007BFF;
+    background: linear-gradient(135deg, green, orange);
     color: white;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

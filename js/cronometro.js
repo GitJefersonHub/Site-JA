@@ -51,11 +51,14 @@ function realizarSorteio() {
     } 
  
     const resultadoContainer = document.getElementById("resultado-sorteio"); 
-    resultadoContainer.innerHTML = "<h2>Ganhadores da rifa Projéto Rifa:</h2>" + 
+    resultadoContainer.innerHTML = "<h2>Ganhadores:</h2>" + 
         ganhadores.map(g => `<p>Número ${g.numero}: ${g.nome}</p>`).join(""); 
 } 
  
 // Exemplo de uso da função diadosorteio 
 if (!sorteioRealizado) { 
-    diadosorteio(20, 3, 2025, 13); // Exemplo de data: 20 de março de 2025, 13:00 
+    diadosorteio(20, 3, 2025, 16); // Exemplo de data: 20 de março de 2025, 16:00 
+} else { 
+document.getElementById("cronometro").textContent = "00:00:00"; 
+document.getElementById("mensagem-sorteio").textContent = "Sorteio já realizado!"; 
 }
