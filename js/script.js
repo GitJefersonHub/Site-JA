@@ -61,7 +61,7 @@ atualizarValores();
 
 // Cria botões dinamicamente e adiciona eventos 
 const numbersContainer = document.querySelector('.numbers-container');
-for (let i = 1; i <= 100; i++) {
+for (let i = 1; i <= 20; i++) {
     const button = document.createElement('button');
     button.textContent = i;
     button.className = 'number-btn';

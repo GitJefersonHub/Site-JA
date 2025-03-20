@@ -23,6 +23,8 @@ function diadosorteio(dia, mes, ano, hora) {
                 sorteioRealizado = true;
                 localStorage.setItem("sorteioRealizado", "true");
                 exibirMensagemSorteio();
+            } else {
+                mostrarMensagemJaRealizado(); // Garante que a mensagem fique após os ganhadores
             }
         }
     }, 1000);
@@ -53,12 +55,19 @@ function realizarSorteio() {
     const resultadoContainer = document.getElementById("resultado-sorteio");
     resultadoContainer.innerHTML = "<h2>Ganhadores:</h2>" +
         ganhadores.map(g => `<p>Número ${g.numero}: ${g.nome}</p>`).join("");
+
+    mostrarMensagemJaRealizado(); // Exibe a mensagem após o print dos ganhadores
+}
+
+function mostrarMensagemJaRealizado() {
+    const mensagemJaRealizado = document.getElementById("mensagem-ja-realizado");
+    mensagemJaRealizado.textContent = "Sorteio já realizado!";
 }
 
 // Exemplo de uso da função diadosorteio
 if (!sorteioRealizado) {
-    diadosorteio(20, 3, 2025, 2); // Exemplo de data: 20 de março de 2025, 02:00
+    diadosorteio(20, 3, 2025, 11); // Exemplo de data: 20 de março de 2025, 11:00
 } else {
     document.getElementById("cronometro").textContent = "00:00:00";
-    document.getElementById("mensagem-sorteio").textContent = "Sorteio já realizado!";
+    realizarSorteio(); // Garantir que o print de ganhadores e mensagem sejam exibidos
 }
