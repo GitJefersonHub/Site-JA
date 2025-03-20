@@ -57,7 +57,7 @@ function realizarSorteio() {
  
 // Exemplo de uso da função diadosorteio 
 if (!sorteioRealizado) { 
-    diadosorteio(20, 3, 2025, 16); // Exemplo de data: 20 de março de 2025, 16:00 
+    diadosorteio(20, 3, 2025, 20); // Exemplo de data: 20 de março de 2025, 20:00 
 } else { 
 document.getElementById("cronometro").textContent = "00:00:00"; 
 document.getElementById("mensagem-sorteio").textContent = "Sorteio já realizado!"; 
