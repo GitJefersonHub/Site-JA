@@ -1,5 +1,44 @@
 /* Estilos Gerais */
+body {
+    color: white;
+    background: linear-gradient(135deg, #0b0336, #2a5298);
+}
 
+#lista-participantes {
+    color: white;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.number-btn {
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.number-btn:disabled {
+    background-color: #6c757d;
+}
+
+.summary {
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container-principal {
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+#cronometro {
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+#cronometro.finalizado {
+    background-color: #ff0000;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+}
 
 /* Estilo do Cabeçalho */
 nav {
@@ -92,16 +131,18 @@ h5 {
 /* Estilos para os Botões */
 .btn-tecnologia,
 .btn-serigrafia {
-    background-color: #007BFF;
+    transition: transform 0.3s, background-color 0.3s;
+    /* Animações suaves para hover */
+    background-color: #4caf50;
+    /* Cor de fundo padrão */
     color: white;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Cor do texto */
 }
 
 .btn-tecnologia:hover,
 .btn-serigrafia:hover {
-    background-color: #FF8C00;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #45a049;
+    /* Cor de fundo ao passar o mouse */
 }
 
 .btn1,
@@ -161,6 +202,16 @@ li {
 }
 
 /* Estilos para Containers */
+.weather-info {
+    color: pink;
+
+}
+
+.code-container {
+    background-color: #556B2F;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
 .container2 {
     color: pink;
 }

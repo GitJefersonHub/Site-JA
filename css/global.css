@@ -9,15 +9,6 @@
 		margin: 0;
 		padding: 0;
 		width: 100%;
-
-		color: white;
-		background: linear-gradient(135deg, #1e3c72, #2a5298);
-
-
-
-
-
-
 	}
 
 	/* Estilização para a lista de participantes */
@@ -28,12 +19,9 @@
 		list-style-type: none;
 		/* Remove os marcadores */
 		padding: 0;
-		color: white;
 		font-size: 3vw;
 		/* Ajusta o tamanho da fonte com base na largura da tela */
 		border-radius: 10px;
-		background: linear-gradient(135deg, #1e3c72, #2a5298);
-		box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 	}
 
 	/* Ajustes para containers de números */
@@ -44,7 +32,6 @@
 		gap: 0.5vw;
 		/* Define o espaçamento com unidade responsiva */
 		margin-top: 1vw;
-		
 
 	}
 
@@ -54,29 +41,23 @@
 		/* Ajusta o tamanho dos botões em relação à largura da tela */
 		height: 10vw;
 		/* Mantém os botões proporcionais */
-		background-color: #007bff;
-		color: white;
 		border: none;
 		border-radius: 50%;
 		/* Torna os botões circulares */
 		font-size: 4vw;
 		cursor: pointer;
-		box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 
 	}
 
 	.number-btn:disabled {
-		background-color: #6c757d;
 		cursor: not-allowed;
 	}
 
 	/* Estilização para o resumo */
 	.summary {
 		margin-top: 2vw;
-		background: #fff;
 		padding: 3vw;
 		border-radius: 1vw;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	}
 
 	.summary p {
@@ -85,29 +66,13 @@
 		/* Tamanho da fonte responsivo */
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	.container-principal {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
 		padding: 20px;
-		background-color: rgba(0, 0, 0, 0.5);
 		border-radius: 15px;
-		box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 	}
 
 	.cronometro-container {
@@ -115,17 +80,13 @@
 	}
 
 	#cronometro {
-		font-size: 2rem;
+		font-size: clamp(24px, 4vw, 40px);
 		padding: 20px 40px;
 		border-radius: 10px;
-		background-color: rgba(0, 0, 0, 0.5);
-		box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 		transition: all 0.5s;
 	}
 
 	#cronometro.finalizado {
-		background-color: #ff0000;
-		box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
 		transform: scale(1.2);
 		animation: pulsar 1s infinite alternate;
 	}
@@ -141,7 +102,7 @@
 	}
 
 	#mensagem-sorteio {
-		font-size: 2rem;
+		font-size: clamp(20px, 4vw, 40px);
 		margin-bottom: 20px;
 		animation: fadeInOut 1.5s infinite;
 	}
@@ -173,33 +134,6 @@
 		margin: 5px 0;
 
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	/* Estilo do Cabeçalho */
 	nav {
@@ -250,23 +184,22 @@
 
 	/* Estilos para Títulos */
 	h1,
-	h2,
 	h3,
 	h4,
 	h5 {
 		font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-		font-size: clamp(12px, 4vw, 40px);
+		font-size: clamp(20px, 4vw, 40px);
 		/* Ajuste dinâmico da fonte */
 		text-align: center;
 		margin: 0.5em 0;
 	}
 
-	h3,
-	.h5 {
-		width: 94%;
-		margin: 0.5em auto;
+	h2 {
+		font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		font-size: clamp(12px, 4vw, 40px);
 		/* Ajuste dinâmico da fonte */
+		text-align: center;
+		margin: 0.5em 0;
 	}
 
 	/* Estilos para Parágrafos */
@@ -280,23 +213,10 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: clamp(12px, 4vw, 40px);
+		font-size: clamp(14px, 4vw, 40px);
 		/* Ajuste dinâmico da fonte */
 	}
 
-	.pa,
-	.pb,
-	.pc,
-	.pd,
-	.pe {
-		font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-		hyphens: auto;
-		text-align: justify;
-		margin: 0 1%;
-		text-indent: 0%;
-		font-size: clamp(12px, 4vw, 40px);
-		/* Ajuste dinâmico da fonte */
-	}
 
 
 	/* Estilos para os Botões do cabeçalho */
@@ -316,34 +236,26 @@
 		cursor: pointer;
 		border-radius: 8px;
 		/* Bordas levemente arredondadas */
-		transition: transform 0.3s, background-color 0.3s;
-		/* Animações suaves para hover */
-		background-color: #4caf50;
-		/* Cor de fundo padrão */
-		color: white;
-		/* Cor do texto */
 	}
 
 	.btn-tecnologia:hover,
 	.btn-serigrafia:hover {
 		transform: scale(1.05);
 		/* Leve aumento no tamanho ao passar o mouse */
-		background-color: #45a049;
-		/* Cor de fundo ao passar o mouse */
 	}
 
 	.btn1,
 	.btn2 {
-		width: 60%;
+		width: 80%;
 		border: none;
 		padding: 1% 10%;
 		text-align: center;
 		text-decoration: none;
-		font-size: 100%;
 		cursor: pointer;
 		border-radius: 10px;
-		margin-left: 20%;
-		margin-right: 20%;
+		margin-left: 10%;
+		margin-right: 10%;
+		font-size: clamp(20px, 4vw, 40px);
 	}
 
 	.btn1:hover,
@@ -395,7 +307,6 @@
 		margin-left: 1%;
 		margin-top: 0%;
 		/* Espaço de 1% acima do container do texto */
-		color: pink;
 		font-size: clamp(12px, 4vw, 40px);
 		/* Ajuste dinâmico da fonte */
 		display: flex;
@@ -456,13 +367,11 @@
 
 	/* Estilos para Containers */
 	.code-container {
-		background-color: #556B2F;
 		border-radius: 10px;
 		width: 90%;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 	}
 
 	.container2,
@@ -526,3 +435,42 @@
 		font-size: 80%;
 	}
 }
+
+
+/* Celular grande*/
+/* Celular grande*/
+/* Celular grande*/
+/* Celular grande*/
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+
+
+	/* Tablet */
+	/* Tablet */
+	/* Tablet */
+	/* Tablet */
+	/* Tablet */
+	/* Tablet */
+	/* Tablet */
+	@media only screen and (min-width: 769px) and (max-width: 1024px) {
+
+
+		/* Laptops */
+		/* Laptops */
+		/* Laptops */
+		/* Laptops */
+		/* Laptops */
+		/* Laptops */
+		/* Laptops */
+		/* Laptops */
+		@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+
+
+			/* Desktops TVS*/
+			/* Desktops TVS*/
+			/* Desktops TVS*/
+			/* Desktops TVS*/
+			/* Desktops TVS*/
+			/* Desktops TVS*/
+			/* Desktops TVS*/
+			/* Desktops */
+			@media only screen and (min-width: 1201px) {
