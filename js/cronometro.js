@@ -55,15 +55,22 @@ function realizarSorteio() {
         ganhadores.push({ numero: ganhador, nome: numerosConfirmados[ganhador] }); // Adiciona o ganhador ao array
     }
 
-    const resultadoContainer = document.getElementById("resultado-sorteio"); // Seleciona o contêiner de resultado do DOM
-    resultadoContainer.innerHTML = "<h2>Projeto Rifa:</h2>" +
-        ganhadores.map(g => `<p>Num ${g.numero}: ${g.nome}</p>`).join(""); // Exibe os ganhadores no DOM
+    // Exibe os ganhadores no DOM
+    const resultadoContainer = document.getElementById("resultado-sorteio");
+    resultadoContainer.innerHTML = "<h2>Serviço social:</h2>" +
+        ganhadores.map(g => `<p> ${g.numero}: ${g.nome}</p>`).join("");
+
+    // Imprime os ganhadores no console
+    console.log("Ganhadores do sorteio:");
+    ganhadores.forEach((g, index) => {
+        console.log(`${index + 1}º Ganhador: Número ${g.numero}, Nome: ${g.nome}`);
+    });
 }
 
 // Exemplo de uso da função diadosorteio
 if (!sorteioRealizado) {
-    diadosorteio(21, 3, 2025, 6); // Configura a data e hora do sorteio
+    diadosorteio(23, 3, 2025, 10, 8); // Configura a data e hora do sorteio incluindo minutos
 } else {
-    document.getElementById("cronometro").textContent = "Projeto Rifa"; // Exibe mensagem caso o sorteio já tenha sido realizado
-    document.getElementById("mensagem-sorteio").textContent = "Sorteio já realizado!"; // Mensagem de sorteio finalizado
+    document.getElementById("cronometro").textContent = "Parabens:"; // Exibe mensagem caso o sorteio já tenha sido realizado
+    document.getElementById("mensagem-sorteio").textContent = "Sorteio já realizado! Assim que possível será publicado."; // Mensagem de sorteio finalizado
 }

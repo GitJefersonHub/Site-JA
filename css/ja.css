@@ -1,243 +1,241 @@
-/* Estilos Gerais */
-body {
-    color: white;
-    background: linear-gradient(135deg, #0b0336, #2a5298);
-}
-
-#lista-participantes {
-    color: white;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-}
-
-.number-btn {
-    background-color: #007bff;
-    color: white;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-}
-
-.number-btn:disabled {
-    background-color: #6c757d;
-}
-
-.summary {
-    background: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.container-principal {
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-}
-
-#cronometro {
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
-#cronometro.finalizado {
-    background-color: #ff0000;
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
-}
-
-/* Estilo do Cabeçalho */
-nav {
-    background-color: #333;
-    color: white;
-}
-
-nav .logo {
-    background-color: blue;
-}
-
-nav .logo a {
-    color: white;
-}
-
-nav ul li {
-    background-color: pink;
-}
-
-nav ul li a {
-    color: white;
-}
-
-nav ul li a.disabled {
-    color: grey;
-}
-
-/* Estilos para Títulos */
-h1 {
-    color: white;
-}
-
-h2 {
-    color: yellow;
-}
-
-h3 {
-    color: brown;
-}
-
-h4 {
-    color: white;
-}
-
-h5 {
-    color: #007BFF;
-}
-
-/* Estilos para Parágrafos */
-.p1 {
-    color: white;
-}
-
-.p2 {
-    color: yellow;
-}
-
-.p3 {
-    color: red;
-}
-
-.p4 {
-    color: blue;
-}
-
-.p5 {
-    color: black;
-}
-
-.pa {
-    color: white;
-}
-
-.pb {
-    color: yellow;
-}
-
-.pc {
-    color: red;
-}
-
-.pd {
-    color: blue;
-}
-
-.pe {
-    color: black;
-}
-
-/* Estilos para os Botões */
-.btn-tecnologia,
-.btn-serigrafia {
-    transition: transform 0.3s, background-color 0.3s;
-    /* Animações suaves para hover */
-    background-color: #4caf50;
-    /* Cor de fundo padrão */
-    color: white;
-    /* Cor do texto */
-}
-
-.btn-tecnologia:hover,
-.btn-serigrafia:hover {
-    background-color: #45a049;
-    /* Cor de fundo ao passar o mouse */
-}
-
-.btn1,
-.btn2 {
-    background: linear-gradient(135deg, green, orange);
-    color: white;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.btn1:hover,
-.btn2:hover {
-    background-color: #45a049;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.btn3 {
-    background-color: #28A745;
-
-    color: white;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.btn3:hover {
-    background-color: #218838;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.btn-enviar {
-    background-color: #45a049;
-    color: white;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.btn-enviar:hover {
-    background-color: #007BFF;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.btn:active {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilo das Colunas */
-.row {
-    color: white;
-}
-
-.column {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-li {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilos para Containers */
-.weather-info {
-    color: pink;
-
-}
-
-.code-container {
-    background-color: #556B2F;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-.container2 {
-    color: pink;
-}
-
-.container3 {
-    color: white;
-}
-
-.container4 {
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilo do Formulário */
-.form-container4 {
-    background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.form-field input,
-.form-field textarea {
-    border: 1px solid #ccc;
-}
-
-/* Estilo do Rodapé */
-footer {
-    background-color: blue;
-    color: white;
-}
+/* Estilos Gerais */ 
+body { 
+    color: white; 
+    background: linear-gradient(135deg, #0b0336, #2a5298); 
+} 
+ 
+#lista-participantes { 
+    color: white; 
+    background: linear-gradient(135deg, #1e3c72, #2a5298); 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); 
+} 
+ 
+.number-btn { 
+    background-color: #007bff; 
+    color: white; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); 
+} 
+ 
+.number-btn:disabled { 
+    background-color: #6c757d; 
+} 
+ 
+.summary { 
+    background: #fff; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+} 
+ 
+.container-principal { 
+    background-color: rgba(0, 0, 0, 0.5); 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); 
+} 
+ 
+#cronometro { 
+    background-color: rgba(0, 0, 0, 0.5); 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); 
+} 
+ 
+#cronometro.finalizado { 
+    background-color: #ff0000; 
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.8); 
+} 
+ 
+/* Estilo do Cabeçalho */ 
+nav { 
+    background-color: #333; 
+    color: white; 
+} 
+ 
+nav .logo { 
+    background-color: blue; 
+} 
+ 
+nav .logo a { 
+    color: white; 
+} 
+ 
+nav ul li { 
+    background-color: pink; 
+} 
+ 
+nav ul li a { 
+    color: white; 
+} 
+ 
+nav ul li a.disabled { 
+    color: grey; 
+} 
+ 
+/* Estilos para Títulos */ 
+h1 { 
+    color: white; 
+} 
+ 
+h2 { 
+    color: yellow; 
+} 
+ 
+h3 { 
+    color: brown; 
+} 
+ 
+h4 { 
+    color: white; 
+} 
+ 
+h5 { 
+    color: #007BFF; 
+} 
+ 
+/* Estilos para Parágrafos */ 
+.p1 { 
+    color: white; 
+} 
+ 
+.p2 { 
+    color: yellow; 
+} 
+ 
+.p3 { 
+    color: red; 
+} 
+ 
+.p4 { 
+    color: blue; 
+} 
+ 
+.p5 { 
+    color: black; 
+} 
+ 
+.pa { 
+    color: white; 
+} 
+ 
+.pb { 
+    color: yellow; 
+} 
+ 
+.pc { 
+    color: red; 
+} 
+ 
+.pd { 
+    color: blue; 
+} 
+ 
+.pe { 
+    color: black; 
+} 
+ 
+/* Estilos para os Botões */ 
+.btn-tecnologia, 
+.btn-serigrafia { 
+    transition: transform 0.3s, background-color 0.3s; 
+    /* Animações suaves para hover */ 
+    background-color: #4caf50; 
+    /* Cor de fundo padrão */ 
+    color: white; 
+    /* Cor do texto */ 
+} 
+ 
+.btn-tecnologia:hover, 
+.btn-serigrafia:hover { 
+    background-color: #45a049; 
+    /* Cor de fundo ao passar o mouse */ 
+} 
+ 
+.btn1, 
+.btn2 { 
+    background: linear-gradient(135deg, green, orange); 
+    color: white; 
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+} 
+ 
+.btn1:hover, 
+.btn2:hover { 
+    background-color: #45a049; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+} 
+ 
+.btn3 { 
+    background-color: #28A745; 
+ 
+    color: white; 
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+} 
+ 
+.btn3:hover { 
+    background-color: #218838; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+} 
+ 
+.btn-enviar { 
+    background-color: #45a049; 
+    color: white; 
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+} 
+ 
+.btn-enviar:hover { 
+    background-color: #007BFF; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+} 
+ 
+.btn:active { 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+} 
+ 
+/* Estilo das Colunas */ 
+.row { 
+    color: white; 
+} 
+ 
+.column { 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); 
+} 
+ 
+li { 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
+} 
+ 
+/* Estilos para Containers */ 
+.weather-info { 
+    color: pink; 
+ 
+} 
+ 
+.code-container { 
+    background-color: #556B2F; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+} 
+ 
+.container2 { 
+    color: pink; 
+} 
+ 
+.container3 { 
+    color: white; 
+} 
+ 
+.container4 { 
+    background-color: white; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+} 
+ 
+/* Estilo do Formulário */ 
+.form-container4 { 
+background-color: #f9f9f9; 
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+} 
+.form-field input, 
+.form-field textarea { 
+border: 1px solid #ccc; 
+} 
+/* Estilo do Rodapé */ 
+footer { 
+background-color: blue; 
+color: white; 
+} 

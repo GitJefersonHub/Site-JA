@@ -1,83 +1,91 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeferson Alves!</title>
-    <link rel="stylesheet" href="css/ja.css">
-    <link rel="stylesheet" href="css/global.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap"
-        rel="stylesheet">
-</head>
-
-<body>
-    <nav>
-        <div class="logo">
-            <h1><a href="index.html">Projeto Rifa:</a></h1>
-        </div>
-        <ul>
-            <li>
-                <a href="tec.html" id="tecnologia-link"
-                    onclick="alert('Escolha o (s) número (s) disponíveis!'); return false;" class="btn-tecnologia">R$
-                    20,00</a>
-            </li>
-            <li>
-                <a href="ser.html" id="serigrafia-link"
-                    onclick="alert('Escolha o (s) número (s) disponíveis!'); return false;" class="btn-serigrafia">R$
-                    20,00</a>
-            </li>
-        </ul>
-    </nav>
-    <main>
-        <div class="containerJA">
-            <img src="img/J1.png" alt="J1">
-            <div id="weather" class="weather-info">
-                Seja bem-vindo...😃 Convido você a conhecer o *Projeto Rifa*. Aqui você pode contribuir com o ambiente
-                participando da rifa, concorrendo a prêmios, ou até mesmo adquirindo a prestação de serviço da rifa para
-                ajudar alguém, alguma entidade ou algum evento programado.
-            </div>
-            <br>
-        </div>
-        <div class="code-container">
-            <section>
-                <p class="p2">Adquira quantos números quiser.</p>
-                <h1>R$: 20,00</h1>
-                <p class="p1">Valor arrecadado: R$ <span id="valor-arrecadado">0.00</span></p>
-                <h4>Destino:</h4>
-                <p class="p1">Cliente: R$ <span id="administrador">0.00</span></p>
-                <p class="p2">1° ganhador: R$ <span id="primeiro-ganhador">0.00</span></p>
-                <p class="p2">2° ganhador: R$ <span id="segundo-ganhador">0.00</span></p>
-                <p class="p2">3° ganhador: R$ <span id="terceiro-ganhador">0.00</span></p>
-                <p class="p2">4° ganhador: R$ <span id="quarto-ganhador">0.00</span></p>
-                <p class="p2">5° ganhador: R$ <span id="quinto-ganhador">0.00</span></p>
-                Os prêmios serão transferidos via pix após o sorteio e nas chaves pix dos destinatários.
-                </p>
-                <div class="container-principal">
-                    <div class="cronometro-container">
-                        <div id="cronometro">00:00</div>
-                    </div>
-                    <div id="mensagem-sorteio" class="mensagem-sorteio"></div>
-                    <div id="resultado-sorteio" class="resultado-sorteio"></div>
-                </div>
-                <br>
-                <button class="btn2"
-                    onclick="window.location.href='https://www.instagram.com/serigrafiafrenteverso?igsh=MXU1N3Z4cmZmOHF6ag=='">Sorteios:</button>
-                <br>
-                <br>
-
-                <div class="numbers-container"></div>
-                <h2>Lista de Participantes Confirmados</h2>
-                <ul id="lista-participantes"></ul>
-
-            </section>
-        </div>
-    </main>
-    <button class="btn2" onclick="window.location.href='https://ja.tec.br/'">Saiba mais...</button>
-    <footer>&copy; 2025 Todos os direitos reservados.</footer>
-    <script src="js/script.js"></script>
-    <script src="js/cronometro.js"></script>
-</body>
-
-</html>
+<!DOCTYPE html> 
+<html lang="pt-br"> 
+ 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Jeferson Alves!</title> 
+    <link rel="stylesheet" href="css/ja.css"> 
+    <link rel="stylesheet" href="css/global.css"> 
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap" 
+        rel="stylesheet"> 
+</head> 
+ 
+<body> 
+    <nav> 
+        <div class="logo"> 
+            <h1><a href="index.html">Serviço social:</a></h1> 
+        </div> 
+        <ul> 
+            <li> 
+                <a href="tec.html" id="tecnologia-link" 
+                    onclick="alert('Escolha o (s) número (s) disponíveis!'); return false;" class="btn-tecnologia">R$ 
+                    20,00</a> 
+            </li> 
+            <li> 
+                <a href="ser.html" id="serigrafia-link" 
+                    onclick="alert('Escolha o (s) número (s) disponíveis!'); return false;" class="btn-serigrafia">R$ 
+                    20,00</a> 
+            </li> 
+        </ul> 
+    </nav> 
+    <main> 
+        <div class="containerJA"> 
+            <img src="img/J1.png" alt="J1"> 
+            <div id="weather" class="weather-info"> 
+                Seja bem-vindo...        Convido você a conhecer o *Projeto Rifa*. Aqui você pode contribuir com o ambiente 
+                participando da rifa, concorrendo a prêmios, ou até mesmo adquirindo a prestação de serviço da rifa para 
+                um processo beneficente para uma pessoa, entidade, evento etc. 
+            </div> 
+            <br> 
+        </div> 
+        <div class="code-container"> 
+            <section> 
+                <p class="p2">Adquira quantos números quiser.</p> 
+                <h1>R$: 20,00</h1> 
+                <p class="p1">Valor arrecadado: R$ <span id="valor-arrecadado">0.00</span></p> 
+                <h4>Destino:</h4> 
+ 
+                <p class="p1">Serviço social: R$ <span id="cliente">0.00</span></p> 
+                <p class="p2">1° ganhador: R$ <span id="primeiro-ganhador">0.00</span></p> 
+                <p class="p2">2° ganhador: R$ <span id="segundo-ganhador">0.00</span></p> 
+                <p class="p2">3° ganhador: R$ <span id="terceiro-ganhador">0.00</span></p> 
+                <p class="p2">4° ganhador: R$ <span id="quarto-ganhador">0.00</span></p> 
+                <p class="p2">5° ganhador: R$ <span id="quinto-ganhador">0.00</span></p> 
+                <p class="p1">Manutenção: R$ <span id="manutenção">0.00</span></p> 
+                <br> 
+                <p class="p1"> 
+                    Os prêmios serão transferidos via chave pix dos destinatários. 
+                </p> 
+                <br> 
+                <div class="container-principal"> 
+                    <div class="cronometro-container"> 
+                        <div id="cronometro">00:00</div> 
+                    </div> 
+                    <div id="mensagem-sorteio" class="mensagem-sorteio"></div> 
+                    <div id="resultado-sorteio" class="resultado-sorteio"></div> 
+                </div> 
+                <br> 
+                <button class="btn2" 
+                    onclick="window.location.href='https://www.instagram.com/serigrafiafrenteverso?igsh=MXU1N3Z4cmZmOHF6ag=='">Sorteios:</button> 
+                <br> 
+                <br> 
+ 
+                <div class="numbers-container"></div> 
+                <br> 
+                <h2>Lista de Participantes Confirmados</h2> 
+                <ul id="lista-participantes"></ul> 
+                <br> 
+ 
+            </section> 
+        </div> 
+    </main> 
+    <button class="btn2" onclick="window.location.href='https://ja.tec.br/'">Saiba mais...</button> 
+    <footer>&copy; 2025 Todos os direitos reservados.</footer> 
+    <script src="js/script.js"></script> 
+    <script src="js/cronometro.js"></script> 
+</body> 
+ 
+</html> 
+ 
