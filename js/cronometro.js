@@ -10,8 +10,8 @@ function formatarTempo(tempo) {
 }
 
 // Define a data e hora do sorteio e inicia o cronômetro para contagem regressiva
-function diadosorteio(dia, mes, ano, hora) {
-    const sorteioData = new Date(ano, mes - 1, dia, hora); // Cria o objeto Date com a data e hora do sorteio
+function diadosorteio(dia, mes, ano, hora, minuto) {
+    const sorteioData = new Date(ano, mes - 1, dia, hora, minuto); // Cria o objeto Date com data, hora e minutos do sorteio
     const intervalId = setInterval(() => {
         const agora = new Date(); // Obtém a hora atual
         const diferenca = sorteioData - agora; // Calcula a diferença de tempo em milissegundos
