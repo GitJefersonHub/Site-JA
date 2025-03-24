@@ -1,6 +1,7 @@
 /* Estilos Gerais */
-body { 
+body {
     background-color: rgb(16, 18, 56);
+    background: linear-gradient(135deg, #0b0336, #2a5298);
 }
 
 /* Estilo do Cabeçalho */
@@ -10,7 +11,7 @@ nav {
 }
 
 nav .logo {
-    background-color: blue;   
+    background-color: blue;
 }
 
 nav .logo a {
@@ -44,20 +45,20 @@ h3 {
 }
 
 h4 {
-    color: white; 
+    color: white;
 }
 
 h5 {
-    color: #4B0082;
+    color: pink;
 }
 
 /* Estilos para Parágrafos */
 .p1 {
-    color: gold; 
+    color: yellow;
 }
 
 .p2 {
-    color: pink;
+    color: red;
 }
 
 .p3 {
@@ -65,33 +66,37 @@ h5 {
 }
 
 /* Estilos para os Botões */
-.btn-tecnologia, .btn-serigrafia {
+.btn-tecnologia,
+.btn-serigrafia {
     background-color: #007BFF;
     color: white;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.btn-tecnologia:hover, .btn-serigrafia:hover {
+.btn-tecnologia:hover,
+.btn-serigrafia:hover {
     background-color: #FF8C00;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.btn1, .btn2 {
+.btn1,
+.btn2 {
     background-color: #007BFF;
     color: white;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.btn1:hover, .btn2:hover {
+.btn1:hover,
+.btn2:hover {
     background-color: #45a049;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .btn3 {
     background-color: #28A745;
-  
+
     color: white;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -120,8 +125,8 @@ h5 {
 
 /* Estilo das Colunas */
 .row {
-    color: green;
-    background-color: silver;
+    color: #007BFF;
+
 }
 
 .column {
@@ -133,17 +138,10 @@ li {
 }
 
 /* Estilos para Containers */
-.container2 {
-    color: pink;
-}
-
-.container3 {
-    color: white; 
-}
 
 .container4 {
     background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilo do Formulário */
@@ -152,8 +150,33 @@ li {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.form-field input, .form-field textarea {
+.form-field input,
+.form-field textarea {
     border: 1px solid #ccc;
+}
+
+.code-container0 {
+
+    background-color: green;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.code-container1 {
+    color: #007BFF;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.code-container2 {
+    color: #007BFF;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.code-container3 {
+    color: #007BFF;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilo do Rodapé */
