@@ -1,17 +1,16 @@
 /* Estilos Gerais */
 body {
-    background-color: rgb(16, 18, 56);
-    background: linear-gradient(135deg, #0b0336, #2a5298);
+    background: linear-gradient(135deg, #2a5298, #0b0336);
 }
 
 /* Estilo do Cabeçalho */
 nav {
-    background-color: #333;
+    background-color: black;
     color: white;
 }
 
 nav .logo {
-    background-color: blue;
+    background: linear-gradient(135deg, yellow, blue);
 }
 
 nav .logo a {
@@ -68,7 +67,7 @@ h5 {
 /* Estilos para os Botões */
 .btn-tecnologia,
 .btn-serigrafia {
-    background-color: #007BFF;
+    background: linear-gradient(135deg, yellow, blue);
     color: white;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -77,15 +76,16 @@ h5 {
 .btn-tecnologia:hover,
 .btn-serigrafia:hover {
     background-color: #FF8C00;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .btn1,
 .btn2 {
-    background-color: #007BFF;
+    background: linear-gradient(135deg, yellow, blue);
     color: white;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+
 }
 
 .btn1:hover,
@@ -111,7 +111,7 @@ h5 {
     background-color: #45a049;
     color: white;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .btn-enviar:hover {
@@ -126,15 +126,6 @@ h5 {
 /* Estilo das Colunas */
 .row {
     color: #007BFF;
-
-}
-
-.column {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-li {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos para Containers */
