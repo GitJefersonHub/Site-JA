@@ -69,7 +69,7 @@ function realizarSorteio() {
 
 // Exemplo de uso da função diadosorteio
 if (!sorteioRealizado) {
-    diadosorteio(23, 3, 2025, 10, 8); // Configura a data e hora do sorteio incluindo minutos
+    diadosorteio(26, 3, 2025, 20, 20); // Configura a data e hora do sorteio incluindo minutos
 } else {
     document.getElementById("cronometro").textContent = "Parabens:"; // Exibe mensagem caso o sorteio já tenha sido realizado
     document.getElementById("mensagem-sorteio").textContent = "Sorteio já realizado! Assim que possível será publicado."; // Mensagem de sorteio finalizado
