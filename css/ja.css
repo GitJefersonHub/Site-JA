@@ -10,7 +10,7 @@ nav {
 }
 
 nav .logo {
-    background: linear-gradient(135deg, yellow, blue);
+    background: linear-gradient(135deg, yellowgreen, blue);
 }
 
 nav .logo a {
@@ -67,7 +67,7 @@ h5 {
 /* Estilos para os Botões */
 .btn-tecnologia,
 .btn-serigrafia {
-    background: linear-gradient(135deg, yellow, blue);
+    background: linear-gradient(135deg, yellowgreen, blue);
     color: white;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -81,7 +81,7 @@ h5 {
 
 .btn1,
 .btn2 {
-    background: linear-gradient(135deg, yellow, blue);
+    background: linear-gradient(135deg, yellowgreen, blue);
     color: white;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
@@ -91,19 +91,6 @@ h5 {
 .btn1:hover,
 .btn2:hover {
     background-color: #45a049;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.btn3 {
-    background-color: #28A745;
-
-    color: white;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.btn3:hover {
-    background-color: #218838;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
