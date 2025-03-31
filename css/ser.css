@@ -17,7 +17,7 @@ nav .logo a {
 }
 
 nav ul li {
-    background-color: orange;
+    background-color: pink;
 }
 
 nav ul li a {
@@ -52,7 +52,7 @@ h5 {
 
 /* Estilos para Parágrafos */
 .p1 {
-    color: gold; 
+    color: yellow; 
 }
 
 .p2 {
@@ -152,8 +152,9 @@ h5 {
 }
 
 /* Estilos para os Botões */
-.btn-tecnologia, .btn-serigrafia {
-    background-color: #007BFF;
+.btn-tecnologia,
+.btn-serigrafia {
+    background: linear-gradient(135deg, yellowgreen, blue);
     color: white;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -164,11 +165,13 @@ h5 {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.btn1, .btn2 {
-    background-color: #007BFF;
+.btn1,
+.btn2 {
+    background: linear-gradient(135deg, yellowgreen, blue);
     color: white;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+
 }
 
 .btn1:hover, .btn2:hover {
@@ -203,19 +206,6 @@ h5 {
 
 .btn:active {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilo das Colunas */
-.row {
-    color: white;
-}
-
-.column {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); 
-}
-
-li {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos para Containers */

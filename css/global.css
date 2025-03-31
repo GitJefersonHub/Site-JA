@@ -71,7 +71,7 @@
 		margin: 0.5em 0;
 	}
 
-	h3,
+	.h3,
 	.h5 {
 		width: 94%;
 		margin: 0.5em auto;
@@ -305,9 +305,13 @@
 		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 	}
 
+	.containerJa,
+	.weather-info,
 	.container1,
 	.container2,
-	.container3 {
+	.container3,
+	.container4
+	{
 		font-size: clamp(12px, 4vw, 40px);
 		/* Ajuste dinâmico da fonte */
 	}
@@ -1746,7 +1750,8 @@
 
 	.container1,
 	.container2,
-	.container3 {
+	.container3,
+	.container4{
 		font-size: clamp(12px, 4vw, 40px);
 		/* Ajuste dinâmico da fonte */
 	}
