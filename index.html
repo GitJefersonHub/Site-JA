@@ -52,8 +52,8 @@
 
             <h3>Contato!</h3>
             <div class="form-container">
-
-                <form id="form-contato" action="https://script.google.com/macros/s/AKfycbwSorBjHWSlN4hoVj3H7y3hBFQ0UJIqskPfgdFArR8MqbQJikxYfQ1HFOcZVzgl_-aqEQ/exec" method="POST"> <!-- Substitua pelo URL correto -->
+                <!-- Formulário -->
+                <form id="form-contato">
                     <div class="form-field">
                         <label for="nome">Nome:</label>
                         <input type="text" id="nome" name="nome" required>
@@ -71,14 +71,43 @@
                         <label for="mensagem">Mensagem:</label>
                         <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
                     </div>
-                    <input type="submit" value="Enviar" class="btn-enviar">
+                    <button type="button" id="btn-enviar" class="btn-enviar">Enviar</button>
                 </form>
             </div>
         </div>
     </main>
 
     <footer>&copy; 2025 Todos os direitos reservados.</footer>
-    <script src="js/weather.js"></script>
-    <script src="js/formulario.js"></script>
+
+    <script>
+        document.getElementById("btn-enviar").addEventListener("click", function () {
+            const nome = document.getElementById("nome").value;
+            const email = document.getElementById("email").value;
+            const telefone = document.getElementById("telefone").value;
+            const mensagem = document.getElementById("mensagem").value;
+
+            const dados = {
+                nome: nome,
+                email: email,
+                telefone: telefone,
+                mensagem: mensagem
+            };
+
+            fetch("https://script.google.com/macros/s/AKfycbwSorBjHWSlN4hoVj3H7y3hBFQ0UJIqskPfgdFArR8MqbQJikxYfQ1HFOcZVzgl_-aqEQ/exec", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dados)
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert("Mensagem enviada com sucesso: " + data);
+            })
+            .catch(error => {
+                alert("Erro ao enviar mensagem: " + error);
+            });
+        });
+    </script>
 </body>
 </html>
