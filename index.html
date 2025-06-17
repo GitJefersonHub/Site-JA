@@ -21,12 +21,12 @@
             <li>
                 <a href="tec.html" id="tecnologia-link"
                     onclick="alert('Preencha o formulário de contato!'); return false;"
-                    class="btn-tecnologia">Tecnologia</a>
+                    class="btn-tecnologia">16 06</a>
             </li>
             <li>
                 <a href="ser.html" id="serigrafia-link"
                     onclick="alert('Preencha o formulário de contato!'); return false;"
-                    class="btn-serigrafia">Serigrafia</a>
+                    class="btn-serigrafia">2025</a>
             </li>
         </ul>
     </nav>
@@ -80,34 +80,38 @@
     <footer>&copy; 2025 Todos os direitos reservados.</footer>
 
     <script>
-        document.getElementById("btn-enviar").addEventListener("click", function () {
-            const nome = document.getElementById("nome").value;
-            const email = document.getElementById("email").value;
-            const telefone = document.getElementById("telefone").value;
-            const mensagem = document.getElementById("mensagem").value;
+document.getElementById("btn-enviar").addEventListener("click", function () {
+    const nome = document.getElementById("nome").value;
+    const email = document.getElementById("email").value;
+    const telefone = document.getElementById("telefone").value;
+    const mensagem = document.getElementById("mensagem").value;
 
-            const dados = {
-                nome: nome,
-                email: email,
-                telefone: telefone,
-                mensagem: mensagem
-            };
+    const dados = {
+        nome: nome,
+        email: email,
+        telefone: telefone,
+        mensagem: mensagem
+    };
 
-            fetch("https://script.google.com/macros/s/AKfycbwSorBjHWSlN4hoVj3H7y3hBFQ0UJIqskPfgdFArR8MqbQJikxYfQ1HFOcZVzgl_-aqEQ/exec", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(dados)
-            })
-            .then(response => response.text())
-            .then(data => {
-                alert("Mensagem enviada com sucesso: " + data);
-            })
-            .catch(error => {
-                alert("Erro ao enviar mensagem: " + error);
-            });
-        });
-    </script>
+    console.log(dados); // Exibir os dados no console para verificação
+
+    fetch("https://script.google.com/macros/s/AKfycbx8wPOK6wftPPHRrwIwW84qKA6WK1wRdQhqwPXg0hxxlUr5r-lJ5_nuYtbEd2fSA0ms/exec", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        mode: "no-cors", // Adicionando essa linha para evitar o bloqueio
+        body: JSON.stringify(dados)
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert("Mensagem enviada com sucesso: " + data);
+    })
+    .catch(error => {
+        alert("Erro ao enviar mensagem: " + error);
+    });
+});
+</script>
+
 </body>
 </html>
