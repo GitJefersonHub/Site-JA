@@ -152,26 +152,29 @@ h5 {
 }
 
 /* Estilos para os Botões */
-.btn-tecnologia,
-.btn-serigrafia {
-    background: linear-gradient(135deg, yellowgreen, blue);
-    color: white;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 .btn-tecnologia:hover, .btn-serigrafia:hover {
     background-color: green;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .btn1,
-.btn2 {
-    background: linear-gradient(135deg, yellowgreen, blue);
+.btn2,
+.btn-tecnologia,
+.btn-serigrafia {
+    animation: blinkAlert 1s infinite alternate;
     color: white;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: transform 0.3s ease;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
 
+@keyframes blinkAlert {
+    0% {
+        background-color: green;
+    }
+    100% {
+        background-color: white;
+        color: blue;
+    }
 }
 
 .btn1:hover, .btn2:hover {
