@@ -124,43 +124,32 @@ h5 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo das Colunas */
-.row {
-    color: white;
-}
-
-.column {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-li {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
 /* Estilos para Containers */
-.container2 {
-    color: pink;
-}
+	.container0 {
+        color: white;
+		background-color: green;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+	}
 
-.container3 {
-    color: white;
-}
+	.container1 {
+		background-color: white;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+	}
 
-.container4 {
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+	.container2 {
+		background-color: white;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+	}
 
-/* Estilo do Formulário */
-.form-container4 {
-    background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+	.container3 {
+		background-color: white;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+	}
 
-.form-field input,
-.form-field textarea {
-    border: 1px solid #ccc;
-}
+	.container4 {
+		border-radius: 10px;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+	}
 
 /* Estilo do Rodapé */
 footer {
