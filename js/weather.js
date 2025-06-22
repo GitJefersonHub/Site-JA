@@ -1,76 +1,80 @@
-const weatherApiKey = 'b8e1ca208ba37b685082aa9f5ab4d284'; // Chave de API do OpenWeatherMap
-            const exchangeRateApiKey = '5a6fefb706ee7746e76d8c16'; // Chave de API do ExchangeRate-API
+const weatherApiKey = 'b8e1ca208ba37b685082aa9f5ab4d284';
+const exchangeRateApiKey = '5a6fefb706ee7746e76d8c16';
 
-            function getWeather(latitude, longitude) {
-                const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${weatherApiKey}&lang=pt_br`;
-                const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${weatherApiKey}&lang=pt_br`;
+async function getWeather(latitude, longitude) {
+    try {
+        const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${weatherApiKey}&lang=pt_br`;
+        const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${weatherApiKey}&lang=pt_br`;
 
-                fetch(weatherUrl)
-                    .then(response => response.json())
-                    .then(data => {
-                        const weatherDiv = document.getElementById('weather');
-                        const temperature = data.main.temp.toFixed(1);
-                        const description = data.weather[0].description;
-                        const city = data.name;
+        const [weatherRes, forecastRes, selicRate, dollarRate, euroRate] = await Promise.all([
+            fetch(weatherUrl).then(res => res.json()),
+            fetch(forecastUrl).then(res => res.json()),
+            getSelicRate(),
+            getExchangeRate('USD'),
+            getExchangeRate('EUR')
+        ]);
 
-                        Promise.all([getExchangeRate('USD'), getExchangeRate('EUR')]).then(([dollarRate, euroRate]) => {
-                            const dollarRateFormatted = dollarRate.toFixed(2);
-                            const euroRateFormatted = euroRate.toFixed(2);
+        const temperature = weatherRes.main.temp.toFixed(1);
+        const description = weatherRes.weather[0].description;
+        const city = weatherRes.name;
 
-                            fetch(forecastUrl)
-                                .then(response => response.json())
-                                .then(forecastData => {
-                                    const nextTwoDays = forecastData.list.filter((item, index) => index % 8 === 0).slice(1, 3);
-                                    const forecastHtml = nextTwoDays.map(day => {
-                                        const date = new Date(day.dt * 1000);
-                                        const dayOfWeek = date.toLocaleDateString('pt-BR', { weekday: 'long' });
-                                        const temp = day.main.temp.toFixed(1);
-                                        const desc = day.weather[0].description;
-                                        return `${dayOfWeek}: ${temp}°C / ${desc}`;
-                                    }).join('<br>');
+        const forecastHtml = forecastRes.list
+            .filter((item, index) => item.dt_txt.includes("12:00:00")) // previsões do meio-dia
+            .slice(0, 2)
+            .map(day => {
+                const date = new Date(day.dt * 1000);
+                const dayOfWeek = date.toLocaleDateString('pt-BR', { weekday: 'long' });
+                const temp = day.main.temp.toFixed(1);
+                const desc = day.weather[0].description;
+                return `${dayOfWeek}: ${temp}°C / ${desc}`;
+            }).join('<br>');
 
-                                    weatherDiv.innerHTML = `
-                                        ${city}, ${new Date().toLocaleDateString('pt-BR')}<br>
-                                        Hoje: ${temperature}°C / ${description}<br>
-                                        ${forecastHtml}<br><br>
-                                        Dólar: R$ ${dollarRateFormatted}<br>
-                                        Euro: R$ ${euroRateFormatted}`;
-                                })
-                                .catch(error => {
-                                    console.error('Erro ao obter a previsão do tempo:', error);
-                                });
-                        })
-                        .catch(error => {
-                            console.error('Erro ao obter as cotações:', error);
-                        });
-                    })
-                    .catch(error => {
-                        console.error('Erro ao obter dados meteorológicos:', error);
-                    });
-            }
+        document.getElementById('weather').innerHTML = `
+            ${city}, ${new Date().toLocaleDateString('pt-BR')}<br>
+            Hoje: ${temperature}°C / ${description}<br>
+            ${forecastHtml}<br>
+            * Taxa SELIC: ${selicRate.toFixed(2)}%<br>
+            * Dólar: R$ ${dollarRate.toFixed(2)}<br>
+            * Euro: R$ ${euroRate.toFixed(2)}`;
+    } catch (error) {
+        console.error('Erro ao obter dados:', error);
+        document.getElementById('weather').innerHTML = 'Erro ao carregar informações.';
+    }
+}
 
-            function getExchangeRate(currency) {
-                const exchangeRateUrl = `https://v6.exchangerate-api.com/v6/${exchangeRateApiKey}/latest/${currency}`;
+async function getExchangeRate(currency) {
+    try {
+        const url = `https://v6.exchangerate-api.com/v6/${exchangeRateApiKey}/latest/${currency}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        return data.conversion_rates.BRL;
+    } catch (error) {
+        console.error(`Erro ao obter a cotação de ${currency}:`, error);
+        return NaN;
+    }
+}
 
-                return fetch(exchangeRateUrl)
-                    .then(response => response.json())
-                    .then(data => data.conversion_rates.BRL)
-                    .catch(error => {
-                        console.error(`Erro ao obter a cotação de ${currency}:`, error);
-                        return 'N/A';
-                    });
-            }
+async function getSelicRate() {
+    try {
+        const response = await fetch('https://brasilapi.com.br/api/taxas/v1/selic');
+        const data = await response.json();
+        return parseFloat(data.valor);
+    } catch (error) {
+        console.error('Erro ao obter a taxa SELIC:', error);
+        return NaN;
+    }
+}
 
-            function getLocation() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(position => {
-                        const latitude = position.coords.latitude;
-                        const longitude = position.coords.longitude;
-                        getWeather(latitude, longitude);
-                    });
-                } else {
-                    document.getElementById('weather').innerHTML = 'Geolocalização não suportada pelo seu navegador.';
-                }
-            }
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            getWeather(position.coords.latitude, position.coords.longitude);
+        }, () => {
+            document.getElementById('weather').innerHTML = 'Previsão do tempo atual e finanças se a localização do dispositivo for acessada.';
+        });
+    } else {
+        document.getElementById('weather').innerHTML = 'Geolocalização não suportada.';
+    }
+}
 
-            window.onload = getLocation;
+window.onload = getLocation;
