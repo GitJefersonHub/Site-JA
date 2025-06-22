@@ -31,7 +31,7 @@ async function getWeather(latitude, longitude) {
 
         document.getElementById('weather').innerHTML = `
             ${city}, ${new Date().toLocaleDateString('pt-BR')}<br>
-            Hoje: ${temperature}°C / ${description}<br>
+            hoje: ${temperature}°C / ${description}<br>
             ${forecastHtml}<br>
             * Taxa SELIC: ${selicRate.toFixed(2)}%<br>
             * Dólar: R$ ${dollarRate.toFixed(2)}<br>
