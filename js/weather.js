@@ -1,7 +1,6 @@
-const weatherApiKey = 'b8e1ca208ba37b685082aa9f5ab4d284'; // Chave da API do tempo
-const exchangeRateApiKey = '5a6fefb706ee7746e76d8c16'; // Chave da API de câmbio
+const weatherApiKey = CONFIG.WEATHER_API_KEY;
+const exchangeRateApiKey = CONFIG.EXCHANGE_RATE_API_KEY;
 
-// Função para obter clima, previsão e dados financeiros
 async function getWeather(latitude, longitude) {
     try {
         // URLs das APIs de tempo atual e previsão
