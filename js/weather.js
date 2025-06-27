@@ -51,7 +51,7 @@
     `;
   } catch (error) {
     console.error('Erro ao obter dados:', error);
-    document.getElementById('weather').innerHTML = 'Erro ao carregar informações.';
+    document.getElementById('weather').innerHTML = 'Ambiente em manutenção.';
   }
 }
     window.onload = getLocation;
