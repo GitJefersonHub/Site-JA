@@ -45,7 +45,7 @@
       ${city}, ${new Date().toLocaleDateString('pt-BR')}<br>
       hoje: ${temperature}°C / ${description}<br>
       ${forecastHtml}<br>
-      * Taxa SELIC: ${selicRateRes.selic.toFixed(2)}%<br>
+      * Taxa SELIC: ${selicRateRes.selic.toFixed(2)}% ao ano.<br>
       * Dólar: R$ ${dollarRes.brl.toFixed(2)}<br>
       * Euro: R$ ${euroRes.brl.toFixed(2)}
     `;
