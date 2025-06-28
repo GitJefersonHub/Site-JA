@@ -1,23 +1,30 @@
-  function getLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-          getWeather(position.coords.latitude, position.coords.longitude);
-        }, () => {
-          document.getElementById('weather').innerHTML =
-            'Não foi possível acessar a localização.';
-        });
-      } else {
-        document.getElementById('weather').innerHTML =
-          'Seu navegador não suporta geolocalização.';
-      }
-    }
-    async function getWeather(latitude, longitude) {
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(position => {
+      getWeather(position.coords.latitude, position.coords.longitude);
+    }, () => {
+      document.getElementById('weather').innerHTML =
+        'Não foi possível acessar a localização.';
+    });
+  } else {
+    document.getElementById('weather').innerHTML =
+      'Seu navegador não suporta geolocalização.';
+  }
+}
+
+async function getWeather(latitude, longitude) {
   try {
     // Chamada para função serverless getWeather
     const weatherRes = await fetch(`/.netlify/functions/getWeather?lat=${latitude}&lon=${longitude}`);
     const weatherData = await weatherRes.json();
-    const current = weatherData.weather;
+
+    const current = weatherData; // Corrigido: não acessar weatherData.weather
     const forecast = weatherData.forecast;
+
+    // Validação defensiva
+    if (!current.main || !current.weather || !forecast || !forecast.list) {
+      throw new Error("Dados incompletos recebidos da API.");
+    }
 
     // Chamada para cotação do dólar e euro
     const [selicRateRes, dollarRes, euroRes] = await Promise.all([
@@ -54,5 +61,5 @@
     document.getElementById('weather').innerHTML = 'Ambiente em manutenção.';
   }
 }
-    window.onload = getLocation;
-  
+
+window.onload = getLocation;
