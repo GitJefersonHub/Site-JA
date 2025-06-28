@@ -16,6 +16,16 @@ exports.handler = async (event) => {
     const currentData = await currentRes.json();
     const forecastData = await forecastRes.json();
 
+    // Validação dos dados de clima atual
+    if (currentData.cod !== 200 || !currentData.main || !currentData.weather) {
+      throw new Error('Dados incompletos recebidos da API (clima atual).');
+    }
+
+    // Validação dos dados de previsão
+    if (forecastData.cod !== "200" || !forecastData.list) {
+      throw new Error('Dados incompletos recebidos da API (previsão).');
+    }
+
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -26,7 +36,7 @@ exports.handler = async (event) => {
   } catch (error) {
     return {
       statusCode: 500,
-      body: 'Erro ao buscar clima.'
+      body: `Erro ao buscar clima: ${error.message}`
     };
   }
 };
