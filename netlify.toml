@@ -1,11 +1,7 @@
-[build]
-  functions = "netlify/functions"
-  publish = "public"
-
 [dev]
-  env = { WEATHER_API_KEY = "sua_chave_aqui" }
+functions = "functions"
+port = 8888
+envFiles = [".env"]
 
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
+[build]
+functions = "functions"

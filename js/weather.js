@@ -20,7 +20,7 @@ async function getWeather(latitude, longitude) {
       throw new Error("Dados incompletos recebidos da API.");
     }
 
-    const [selicRateRes, dollarRes, euroRes] = await Promise.all([
+    const [selicRateRes, dollarRes, euroRes] = await Promise.allSettled([
       fetch('/.netlify/functions/getSelicRate').then(res => res.json()),
       fetch('/.netlify/functions/getExchangeRate?currency=USD').then(res => res.json()),
       fetch('/.netlify/functions/getExchangeRate?currency=EUR').then(res => res.json()),
@@ -41,16 +41,50 @@ async function getWeather(latitude, longitude) {
         return `${dayOfWeek}: ${temp}°C / ${desc}`;
       }).join('<br>');
 
+    const selic = selicRateRes.status === 'fulfilled' && typeof selicRateRes.value?.selic === 'number'
+      ? `${selicRateRes.value.selic.toFixed(2)}% ao ano`
+      : 'indisponível';
+
+    const dollar = dollarRes.status === 'fulfilled' && typeof dollarRes.value?.brl === 'number'
+      ? `R$ ${dollarRes.value.brl.toFixed(2)}`
+      : 'indisponível';
+
+    const euro = euroRes.status === 'fulfilled' && typeof euroRes.value?.brl === 'number'
+      ? `R$ ${euroRes.value.brl.toFixed(2)}`
+      : 'indisponível';
+
+    console.log("SELIC:", selicRateRes);
+    console.log("Dólar:", dollarRes);
+    console.log("Euro:", euroRes);
+
     document.getElementById('weather').innerHTML = `
       ${city}, ${new Date().toLocaleDateString('pt-BR')}<br>
       hoje: ${temperature}°C / ${description}<br>
       ${forecastHtml}<br>
-      * Taxa SELIC: ${selicRateRes.selic.toFixed(2)}% ao ano.<br>
-      * Dólar: R$ ${dollarRes.brl.toFixed(2)}<br>
-      * Euro: R$ ${euroRes.brl.toFixed(2)}
+      * Taxa SELIC: ${selic}<br>
+      * Dólar: ${dollar}<br>
+      * Euro: ${euro}
     `;
   } catch (error) {
     console.error('Erro ao obter dados:', error);
     document.getElementById('weather').innerHTML = 'Ambiente em manutenção.';
   }
 }
+
+// Chamada automática ao carregar a página
+window.addEventListener('DOMContentLoaded', () => {
+  if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const { latitude, longitude } = position.coords;
+        getWeather(latitude, longitude);
+      },
+      error => {
+        console.error('Erro ao obter localização:', error);
+        document.getElementById('weather').innerHTML = 'Localização não permitida.';
+      }
+    );
+  } else {
+    document.getElementById('weather').innerHTML = 'Geolocalização não suportada.';
+  }
+});
