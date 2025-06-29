@@ -1,0 +1,37 @@
+{
+  "name": "site-ja",
+  "version": "1.0.0",
+  "description": "Projeto pessoal de Jeferson Alves com funções serverless e integração com APIs.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "netlify dev",
+    "start": "netlify dev",
+    "build": "echo 'Nenhuma etapa de build definida'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GitJefersonHub/Site-JA.git"
+  },
+  "keywords": [
+    "netlify",
+    "serverless",
+    "openweathermap",
+    "brasilapi",
+    "exchange-rate",
+    "javascript"
+  ],
+  "author": "Jeferson Alves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GitJefersonHub/Site-JA/issues"
+  },
+  "homepage": "https://github.com/GitJefersonHub/Site-JA#readme",
+  "type": "commonjs",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^22.2.1"
+  }
+}
+
