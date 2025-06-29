@@ -1,0 +1,12 @@
+{
+  "name": "meu-projeto",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'Nenhuma etapa de build definida'",
+    "start": "netlify dev"
+  },
+  "devDependencies": {
+    "netlify-cli": "^22.2.1"
+  }
+}
