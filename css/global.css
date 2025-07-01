@@ -170,31 +170,35 @@
 	}
 
 	/* Estilo da Imagem */
-	.containerJA {
-		display: flex;
-		align-items: flex-start;
-		margin-top: 0%;
-	}
-
-	.weather-info {
-		hyphens: auto;
-		width: 70%;
-		margin-left: 1%;
-		margin-right: 1%;
-		margin-top: 0%;
-		color: pink;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		font-size: clamp(12px, 4vw, 40px);
-	}
-
 	img {
-		width: 30%;
-		height: auto;
-		margin-left: 1%;
-		margin-top: 0%;
-	}
+    width: 30%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+	margin-top: 1%;
+}
+
+.weather-info {
+    hyphens: auto;
+    text-align: justify;
+    width: 90%;
+    margin: 1% auto;
+    padding: 0.5rem;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: 5.1vw;
+    background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
+    background-size: 300% 300%;
+    animation: skyPulse 12s ease infinite;
+}
+
+@keyframes skyPulse {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
 	/* Estilo das colunas */
 	.row {
@@ -315,8 +319,7 @@
 
 /* Celular grande*/
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-	/* Estilos Gerais */
-	body {
+		body {
 		justify-content: center;
 		align-items: center;
 		margin: 0;
@@ -485,31 +488,35 @@
 	}
 
 	/* Estilo da Imagem */
-	.containerJA {
-		display: flex;
-		align-items: flex-start;
-		margin-top: 0%;
-	}
-
-	.weather-info {
-		hyphens: auto;
-		width: 70%;
-		margin-left: 1%;
-		margin-right: 1%;
-		margin-top: 0%;
-		color: pink;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		font-size: clamp(12px, 4vw, 40px);
-	}
-
 	img {
-		width: 30%;
-		height: auto;
-		margin-left: 1%;
-		margin-top: 0%;
-	}
+    width: 30%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+	margin-top: 1%;
+}
+
+.weather-info {
+    hyphens: auto;
+    text-align: justify;
+    width: 90%;
+    margin: 1% auto;
+    padding: 0.5rem;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: 5.1vw;
+    background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
+    background-size: 300% 300%;
+    animation: skyPulse 12s ease infinite;
+}
+
+@keyframes skyPulse {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
 	/* Estilo das colunas */
 	.row {
@@ -626,12 +633,12 @@
 		font-size: 80%;
 	}
 }
+
 
 
 	/* Tablet */
 	@media only screen and (min-width: 769px) and (max-width: 1024px) {
-		/* Estilos Gerais */
-	body {
+			body {
 		justify-content: center;
 		align-items: center;
 		margin: 0;
@@ -800,31 +807,35 @@
 	}
 
 	/* Estilo da Imagem */
-	.containerJA {
-		display: flex;
-		align-items: flex-start;
-		margin-top: 0%;
-	}
-
-	.weather-info {
-		hyphens: auto;
-		width: 70%;
-		margin-left: 1%;
-		margin-right: 1%;
-		margin-top: 0%;
-		color: pink;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		font-size: clamp(12px, 4vw, 40px);
-	}
-
 	img {
-		width: 30%;
-		height: auto;
-		margin-left: 1%;
-		margin-top: 0%;
-	}
+    width: 30%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+	margin-top: 1%;
+}
+
+.weather-info {
+    hyphens: auto;
+    text-align: justify;
+    width: 90%;
+    margin: 1% auto;
+    padding: 0.5rem;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: 5.1vw;
+    background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
+    background-size: 300% 300%;
+    animation: skyPulse 12s ease infinite;
+}
+
+@keyframes skyPulse {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
 	/* Estilo das colunas */
 	.row {
@@ -941,12 +952,12 @@
 		font-size: 80%;
 	}
 }
+
 
 
 		/* Laptops */
 		@media only screen and (min-width: 1025px) and (max-width: 1200px) {
-			/* Estilos Gerais */
-	body {
+				body {
 		justify-content: center;
 		align-items: center;
 		margin: 0;
@@ -1115,31 +1126,35 @@
 	}
 
 	/* Estilo da Imagem */
-	.containerJA {
-		display: flex;
-		align-items: flex-start;
-		margin-top: 0%;
-	}
-
-	.weather-info {
-		hyphens: auto;
-		width: 70%;
-		margin-left: 1%;
-		margin-right: 1%;
-		margin-top: 0%;
-		color: pink;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		font-size: clamp(12px, 4vw, 40px);
-	}
-
 	img {
-		width: 30%;
-		height: auto;
-		margin-left: 1%;
-		margin-top: 0%;
-	}
+    width: 30%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+	margin-top: 1%;
+}
+
+.weather-info {
+    hyphens: auto;
+    text-align: justify;
+    width: 90%;
+    margin: 1% auto;
+    padding: 0.5rem;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: 5.1vw;
+    background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
+    background-size: 300% 300%;
+    animation: skyPulse 12s ease infinite;
+}
+
+@keyframes skyPulse {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
 	/* Estilo das colunas */
 	.row {
@@ -1256,12 +1271,12 @@
 		font-size: 80%;
 	}
 }
+	
 
 
 			/* Desktops TVS*/
 			@media only screen and (min-width: 1201px) {
-				/* Estilos Gerais */
-	body {
+					body {
 		justify-content: center;
 		align-items: center;
 		margin: 0;
@@ -1430,31 +1445,35 @@
 	}
 
 	/* Estilo da Imagem */
-	.containerJA {
-		display: flex;
-		align-items: flex-start;
-		margin-top: 0%;
-	}
-
-	.weather-info {
-		hyphens: auto;
-		width: 70%;
-		margin-left: 1%;
-		margin-right: 1%;
-		margin-top: 0%;
-		color: pink;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		font-size: clamp(12px, 4vw, 40px);
-	}
-
 	img {
-		width: 30%;
-		height: auto;
-		margin-left: 1%;
-		margin-top: 0%;
-	}
+    width: 30%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+	margin-top: 1%;
+}
+
+.weather-info {
+    hyphens: auto;
+    text-align: justify;
+    width: 90%;
+    margin: 1% auto;
+    padding: 0.5rem;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: 5.1vw;
+    background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
+    background-size: 300% 300%;
+    animation: skyPulse 12s ease infinite;
+}
+
+@keyframes skyPulse {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
 	/* Estilo das colunas */
 	.row {

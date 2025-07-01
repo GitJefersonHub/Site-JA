@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 
 exports.handler = async () => {
   try {
-    const res = await fetch('https://brasilapi.com.br/api/taxas/v1/selic');
+    const res = await fetch('https://brasilapi.com.br/api/taxas/v1');
 
     if (!res.ok) {
       const errorText = await res.text();
@@ -11,11 +11,15 @@ exports.handler = async () => {
 
     const data = await res.json();
 
-    console.log("Resposta bruta da API SELIC:", JSON.stringify(data, null, 2));
+    const selic = data.find(taxa => taxa.nome === 'Selic');
+
+    if (!selic || typeof selic.valor !== 'number') {
+      throw new Error('Taxa Selic não encontrada ou inválida.');
+    }
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ dadosRecebidos: data })
+      body: JSON.stringify({ selic: selic.valor })
     };
   } catch (error) {
     console.error("Erro ao buscar SELIC:", error.message);
