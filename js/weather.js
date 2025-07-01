@@ -24,6 +24,7 @@ async function getNextHoliday() {
 }
 
 
+
 async function getWeather(latitude, longitude) {
   try {
     const weatherRes = await fetch(`/.netlify/functions/getWeather?lat=${latitude}&lon=${longitude}`);
