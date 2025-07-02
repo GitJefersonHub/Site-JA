@@ -1,45 +1,24 @@
-async function getNextHoliday() {
+async function getNextHoliday(lat, lon) {
   try {
-    const res = await fetch('/.netlify/functions/getHoliday');
+    const res = await fetch(`/.netlify/functions/getHoliday?lat=${lat}&lon=${lon}`);
     if (!res.ok) throw new Error('Erro ao buscar feriados');
-    const holidays = await res.json();
-
-    const today = new Date();
-    const upcoming = holidays
-      .map(h => ({ ...h, date: new Date(h.date) }))
-      .filter(h => h.date >= today)
-      .sort((a, b) => a.date - b.date)[0];
-
-    if (!upcoming) return '📅 Nenhum feriado próximo encontrado.';
-
-    const date = upcoming.date;
-    const dateStr = date.toLocaleDateString('pt-BR');
-    const weekday = date.toLocaleDateString('pt-BR', { weekday: 'long' });
-
-    return `📅 Próximo feriado: ${upcoming.name} (${upcoming.type}) em ${weekday}, ${dateStr}`;
+    const data = await res.json();
+    return data.message || '📅 Feriado indisponível.';
   } catch (err) {
     console.error('Erro ao obter feriado:', err);
     return '📅 Feriado indisponível.';
   }
 }
 
-
-
 async function getWeather(latitude, longitude) {
   try {
     const weatherRes = await fetch(`/.netlify/functions/getWeather?lat=${latitude}&lon=${longitude}`);
-
     if (!weatherRes.ok) {
       const errorText = await weatherRes.text();
       throw new Error(`Erro na API do clima: ${errorText}`);
     }
 
     const weatherData = await weatherRes.json();
-
-    if (weatherData.error) {
-      throw new Error(weatherData.message);
-    }
-
     const current = weatherData;
     const forecast = weatherData.forecast;
 
@@ -51,7 +30,7 @@ async function getWeather(latitude, longitude) {
       fetch('/.netlify/functions/getSelicRate').then(res => res.json()),
       fetch('/.netlify/functions/getExchangeRate?currency=USD').then(res => res.json()),
       fetch('/.netlify/functions/getExchangeRate?currency=EUR').then(res => res.json()),
-      getNextHoliday()
+      getNextHoliday(latitude, longitude)
     ]);
 
     const temperature = current.main.temp.toFixed(1);
@@ -85,12 +64,13 @@ async function getWeather(latitude, longitude) {
 
     document.getElementById('weather').innerHTML = `
       ${city}, ${new Date().toLocaleDateString('pt-BR')}<br>
-      ${feriado}<br>
+      ${feriado}<br><br>
       hoje: ${temperature}°C / ${description}<br>
-      ${forecastHtml}<br>
       * Taxa SELIC: ${selic}<br>
       * Dólar: ${dollar}<br>
-      * Euro: ${euro}
+      * Euro: ${euro}<br><br>
+      ${forecastHtml}
+      
     `;
   } catch (error) {
     console.error('Erro ao obter dados:', error);
@@ -98,7 +78,6 @@ async function getWeather(latitude, longitude) {
   }
 }
 
-// Chamada automática ao carregar a página
 window.addEventListener('DOMContentLoaded', () => {
   if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(
