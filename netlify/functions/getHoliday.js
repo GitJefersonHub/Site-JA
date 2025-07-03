@@ -3,25 +3,32 @@ const fetch = require('node-fetch');
 exports.handler = async (event) => {
   const year = new Date().getFullYear();
   const token = process.env.INVERTEXTO_API_KEY;
-
   const { lat, lon } = event.queryStringParameters || {};
 
+  // 🔐 Verificação da chave da API
   if (!token) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: true, message: 'Chave da API Invertexto não configurada.' })
+      body: JSON.stringify({
+        error: true,
+        message: 'Chave da API Invertexto não configurada.'
+      })
     };
   }
 
+  // 📍 Validação de coordenadas
   if (!lat || !lon) {
     return {
       statusCode: 400,
-      body: JSON.stringify({ error: true, message: 'Latitude e longitude são obrigatórias.' })
+      body: JSON.stringify({
+        error: true,
+        message: 'Latitude e longitude são obrigatórias.'
+      })
     };
   }
 
   try {
-    // 1. Obter cidade e estado via geocodificação reversa
+    // 🌍 Geocodificação reversa
     const geoRes = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&accept-language=pt`);
     const geoData = await geoRes.json();
 
@@ -32,15 +39,18 @@ exports.handler = async (event) => {
       throw new Error('Não foi possível determinar cidade ou estado a partir da localização.');
     }
 
-    // 2. Buscar feriados com base em cidade e estado
+    // 📅 Consulta de feriados
     const holidayUrl = `https://api.invertexto.com/v1/holidays/${year}?token=${token}&state=${state}&city=${city}`;
     const holidayRes = await fetch(holidayUrl);
 
-    if (!holidayRes.ok) throw new Error('Erro ao buscar feriados');
+    if (!holidayRes.ok) {
+      const errorText = await holidayRes.text();
+      throw new Error(`Erro HTTP da API de feriados: ${holidayRes.status} - ${errorText}`);
+    }
 
     const holidays = await holidayRes.json();
 
-    // 3. Filtrar o próximo feriado
+    // 🔎 Filtrar próximo feriado
     const today = new Date();
     const upcoming = holidays
       .map(h => ({ ...h, dateObj: new Date(h.date) }))
@@ -57,36 +67,27 @@ exports.handler = async (event) => {
     const dateStr = upcoming.dateObj.toLocaleDateString('pt-BR');
     const weekday = upcoming.dateObj.toLocaleDateString('pt-BR', { weekday: 'long' });
 
-    // 4. Formatar o nível do feriado
-    let nivelFormatado = '';
-    switch (upcoming.level) {
-      case 'facultativo':
-        nivelFormatado = 'facultativo';
-        break;
-      case 'municipal':
-        nivelFormatado = 'municipal';
-        break;
-      case 'estadual':
-        nivelFormatado = 'estadual';
-        break;
-      case 'nacional':
-        nivelFormatado = 'nacional';
-        break;
-      default:
-        nivelFormatado = 'feriado';
-    }
+    const nivelFormatado = {
+      facultativo: 'facultativo',
+      municipal: 'municipal',
+      estadual: 'estadual',
+      nacional: 'nacional'
+    }[upcoming.level] || 'feriado';
 
-    const description = `📅Feriado ${nivelFormatado}: ${upcoming.name}.  ${dateStr} ${weekday}.`;
-
+    const description = `📅Feriado ${nivelFormatado}: ${upcoming.name}. ${dateStr} ${weekday}.`;
 
     return {
       statusCode: 200,
       body: JSON.stringify({ message: description })
     };
   } catch (err) {
+    console.error('Erro ao buscar feriados:', err);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: true, message: `Erro ao buscar feriados: ${err.message}` })
+      body: JSON.stringify({
+        error: true,
+        message: `Erro ao buscar feriados: ${err.message}`
+      })
     };
   }
 };

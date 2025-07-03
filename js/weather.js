@@ -10,7 +10,50 @@ async function getNextHoliday(lat, lon) {
   }
 }
 
+// 🔄 Fallbacks visuais
+const showLoading = () => {
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('error').style.display = 'none';
+  document.getElementById('weather-content').style.display = 'none';
+  document.getElementById('weather-default').style.display = 'none';
+};
+
+const showError = (message) => {
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('error').textContent = message;
+  document.getElementById('error').style.display = 'block';
+  document.getElementById('weather-content').style.display = 'none';
+  document.getElementById('weather-default').style.display = 'none';
+};
+
+const showWeather = (html) => {
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('error').style.display = 'none';
+  const content = document.getElementById('weather-content');
+  content.innerHTML = html;
+  content.style.display = 'block';
+  document.getElementById('weather-default').style.display = 'none';
+};
+
+// 💾 Cache local
+const loadCachedWeather = () => {
+  const cached = localStorage.getItem('cachedWeather');
+  if (cached) {
+    const { html, timestamp } = JSON.parse(cached);
+    const age = (Date.now() - timestamp) / 1000 / 60; // minutos
+    if (age < 60) {
+      showWeather(html + '<br><small>⏳ Dados em cache</small>');
+      return true;
+    }
+  }
+  return false;
+};
+
 async function getWeather(latitude, longitude) {
+  showLoading();
+
+  if (loadCachedWeather()) return;
+
   try {
     const weatherRes = await fetch(`/.netlify/functions/getWeather?lat=${latitude}&lon=${longitude}`);
     if (!weatherRes.ok) {
@@ -26,7 +69,7 @@ async function getWeather(latitude, longitude) {
       throw new Error("Dados incompletos recebidos da API.");
     }
 
-    const [selicRateRes, dollarRes, euroRes, holidayText] = await Promise.allSettled([
+    const [selicRateRes, dollarRes, euroRes, holidayRes] = await Promise.allSettled([
       fetch('/.netlify/functions/getSelicRate').then(res => res.json()),
       fetch('/.netlify/functions/getExchangeRate?currency=USD').then(res => res.json()),
       fetch('/.netlify/functions/getExchangeRate?currency=EUR').then(res => res.json()),
@@ -60,9 +103,9 @@ async function getWeather(latitude, longitude) {
       ? `R$ ${euroRes.value.brl.toFixed(2)}`
       : 'indisponível';
 
-    const feriado = holidayText.status === 'fulfilled' ? holidayText.value : '📅 Feriado indisponível.';
+    const feriado = holidayRes.status === 'fulfilled' ? holidayRes.value : '📅 Feriado indisponível.';
 
-    document.getElementById('weather').innerHTML = `
+    const html = `
       ${city}, ${new Date().toLocaleDateString('pt-BR')}<br>
       ${feriado}<br><br>
       hoje: ${temperature}°C / ${description}<br>
@@ -70,27 +113,43 @@ async function getWeather(latitude, longitude) {
       * Dólar: ${dollar}<br>
       * Euro: ${euro}<br><br>
       ${forecastHtml}
-      
     `;
+
+    showWeather(html);
+
+    // 💾 Salvar no cache
+    localStorage.setItem('cachedWeather', JSON.stringify({
+      html,
+      timestamp: Date.now()
+    }));
+
   } catch (error) {
     console.error('Erro ao obter dados:', error);
-    document.getElementById('weather').innerHTML = 'Ambiente em manutenção.';
+    if (!loadCachedWeather()) {
+      showError('⚠️ Ambiente em manutenção.');
+    }
   }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  // Exibe o conteúdo padrão imediatamente
+  document.getElementById('weather-default').style.display = 'block';
+
   if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(
       position => {
+        // Oculta o conteúdo padrão somente após o usuário permitir
+        document.getElementById('weather-default').style.display = 'none';
         const { latitude, longitude } = position.coords;
         getWeather(latitude, longitude);
       },
       error => {
         console.error('Erro ao obter localização:', error);
-        document.getElementById('weather').innerHTML = 'Localização não permitida.';
+        // Mantém o conteúdo padrão visível e exibe erro
+        showError('⚠️ Localização não permitida.');
       }
     );
   } else {
-    document.getElementById('weather').innerHTML = 'Geolocalização não suportada.';
+    showError('⚠️ Geolocalização não suportada.');
   }
 });
