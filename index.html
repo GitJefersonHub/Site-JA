@@ -10,7 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap"
         rel="stylesheet">
-        <link rel="icon" href="data:,">
+    <link rel="icon" href="data:,">
 
 </head>
 
@@ -34,11 +34,17 @@
     </nav>
 
     <main>
-            <img src="img/J1.png" alt="J1">
-            <div id="weather" class="weather-info">
-                Espaço reservado para informações, (se permitido a localização do dispositivo).<br>
-                Plataforma dedicada a trazer informações sobre tecnologia e serigrafia.<br>
-                Alinhado às leis vigentes, o site busca informar e inspirar seus usuários.
+        <img src="img/J1.png" alt="J1">
+        <div id="weather" class="weather-info">
+            <p id="loading">🔄 Carregando informações...</p>
+            <p id="error" style="display: none;">⚠️ Não foi possível carregar os dados.</p>
+            <div id="weather-content" style="display: none;"></div>
+
+            <!-- Conteúdo padrão exibido antes de qualquer carregamento -->
+            <div id="weather-default" style="display: block;">
+                <p class="p1">Espaço reservado para informações, (se permitido a localização do dispositivo).</p>
+                <p class="p1">Plataforma dedicada a trazer informações sobre comunicação e informação.</p>
+                <p class="p1">Alinhado às leis vigentes, o site busca informar e inspirar seus usuários.</p>
             </div>
         </div>
         <div class="container0">
@@ -174,4 +180,5 @@
     <script src="js/formulario.js"></script>
     <script src="js/weather.js"></script>
 </body>
+
 </html>
