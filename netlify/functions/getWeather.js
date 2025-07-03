@@ -4,9 +4,6 @@ exports.handler = async (event) => {
   const { lat, lon } = event.queryStringParameters || {};
   const weatherApiKey = process.env.WEATHER_API_KEY;
 
-  // 🧪 Log de verificação da variável de ambiente (parcial, por segurança)
-  console.log('🔑 WEATHER_API_KEY:', weatherApiKey ? `${weatherApiKey.slice(0, 4)}...${weatherApiKey.slice(-4)}` : 'undefined');
-
   // 🧭 Validação de parâmetros
   if (!lat || !lon) {
     return {
