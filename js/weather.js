@@ -1,30 +1,56 @@
+// Retorna emoji baseado na descrição do clima
+function getWeatherIcon(description) {
+  const desc = description.toLowerCase();
+  if (desc.includes('céu limpo')) return '☀️';
+  if (desc.includes('nublado') && !desc.includes('parcial')) return '☁️';
+  if (desc.includes('algumas nuvens') || desc.includes('parcial')) return '⛅';
+  if (desc.includes('chuva leve')) return '🌦️';
+  if (desc.includes('chuva') || desc.includes('tempestade')) return '🌧️';
+  if (desc.includes('neve')) return '❄️';
+  if (desc.includes('névoa') || desc.includes('neblina')) return '🌫️';
+  return '🌡️';
+}
+
+// Aplica tema escuro se for noite
+function aplicarTemaAutomatico() {
+  const hora = new Date().getHours();
+  const body = document.body;
+  if (hora < 6 || hora >= 18) {
+    body.classList.add('tema-escuro');
+  } else {
+    body.classList.remove('tema-escuro');
+  }
+}
+
+// Busca próximo feriado com base na localização
 async function getNextHoliday(lat, lon) {
   try {
     const res = await fetch(`/.netlify/functions/getHoliday?lat=${lat}&lon=${lon}`);
-    if (!res.ok) throw new Error('Erro ao buscar feriados');
+    if (!res.ok) throw new Error();
     const data = await res.json();
     return data.message || '📅 Feriado indisponível.';
-  } catch (err) {
-    console.error('Erro ao obter feriado:', err);
+  } catch {
     return '📅 Feriado indisponível.';
   }
 }
 
+// Formata número com dois dígitos
+const formatTwoDigits = value => parseInt(value).toString().padStart(2, '0');
+
+// Busca dados climáticos e econômicos e atualiza o DOM
 async function getWeather(latitude, longitude) {
   try {
-    const weatherRes = await fetch(`/.netlify/functions/getWeather?lat=${latitude}&lon=${longitude}`);
-    if (!weatherRes.ok) {
-      const errorText = await weatherRes.text();
-      throw new Error(`Erro na API do clima: ${errorText}`);
-    }
+    aplicarTemaAutomatico();
 
+    const weatherRes = await fetch(`/.netlify/functions/getWeather?lat=${latitude}&lon=${longitude}`);
+    if (!weatherRes.ok) throw new Error(await weatherRes.text());
     const weatherData = await weatherRes.json();
+
     const current = weatherData;
     const forecast = weatherData.forecast;
+    const extras = weatherData.extras || { uv: 'indisponível', aqi: 'indisponível' };
 
-    if (!current.main || !current.weather || !forecast || !forecast.list) {
-      throw new Error("Dados incompletos recebidos da API.");
-    }
+    if (!current.main || !current.weather || !forecast?.list) throw new Error();
 
     const [selicRateRes, dollarRes, euroRes, holidayText] = await Promise.allSettled([
       fetch('/.netlify/functions/getSelicRate').then(res => res.json()),
@@ -35,12 +61,17 @@ async function getWeather(latitude, longitude) {
 
     const temperature = current.main.temp.toFixed(1);
     const description = current.weather[0].description;
+    const icon = getWeatherIcon(description);
     const city = current.name;
 
     const now = new Date();
-    const todayDateStr = now.toISOString().split('T')[0];
+    const localTime = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+    const day = now.toLocaleDateString('pt-BR', { day: 'numeric' });
+    const month = now.toLocaleDateString('pt-BR', { month: 'long' });
+    const year = now.getFullYear();
+    const weekday = now.toLocaleDateString('pt-BR', { weekday: 'long' });
+    const formattedDate = `${day} de ${month} de ${year} (${weekday})`;
 
-    // 🔟 Previsão das próximas 5 horas
     const hourlyForecast = forecast.list
       .filter(item => new Date(item.dt_txt) > now)
       .slice(0, 5)
@@ -49,45 +80,51 @@ async function getWeather(latitude, longitude) {
         const hour = date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
         const temp = item.main.temp.toFixed(1);
         const desc = item.weather[0].description;
-        return `🕒 ${hour}: ${temp}°C / ${desc}`;
+        return `🕒 ${hour}: ${temp} °C ${getWeatherIcon(desc)} ${desc}`;
       }).join('<br>');
 
-    // 📅 Previsão dos próximos dias ao meio-dia
-    const forecastHtml = forecast.list
-      .filter(item => item.dt_txt.includes("12:00:00"))
+    const forecastByDay = {};
+    forecast.list.forEach(item => {
+      const date = new Date(item.dt_txt).toISOString().split('T')[0];
+      if (!forecastByDay[date]) forecastByDay[date] = { temps: [], descriptions: [] };
+      forecastByDay[date].temps.push(item.main.temp);
+      forecastByDay[date].descriptions.push(item.weather[0].description);
+    });
+
+    const forecastHtml = Object.entries(forecastByDay)
       .slice(0, 6)
-      .map(day => {
-        const date = new Date(day.dt * 1000);
+      .map(([dateStr, data]) => {
+        const date = new Date(dateStr);
         const dayOfWeek = date.toLocaleDateString('pt-BR', { weekday: 'long' });
-        const temp = day.main.temp.toFixed(1);
-        const desc = day.weather[0].description;
-        return `📆 ${dayOfWeek}: ${temp}°C / ${desc}`;
+        const min = Math.min(...data.temps).toFixed(1);
+        const max = Math.max(...data.temps).toFixed(1);
+        const icon = getWeatherIcon(data.descriptions[0]);
+        return `📆 ${dayOfWeek}: (${formatTwoDigits(min)} / ${formatTwoDigits(max)}) °C ${icon}`;
       }).join('<br>');
 
     const selic = selicRateRes.status === 'fulfilled' && typeof selicRateRes.value?.selic === 'number'
-      ? `${selicRateRes.value.selic.toFixed(2)}% ao ano`
-      : 'indisponível';
+      ? `${selicRateRes.value.selic.toFixed(2)}% ao ano` : 'indisponível';
 
     const dollar = dollarRes.status === 'fulfilled' && typeof dollarRes.value?.brl === 'number'
-      ? `R$ ${dollarRes.value.brl.toFixed(2)}`
-      : 'indisponível';
+      ? `R$ ${dollarRes.value.brl.toFixed(2)}` : 'indisponível';
 
     const euro = euroRes.status === 'fulfilled' && typeof euroRes.value?.brl === 'number'
-      ? `R$ ${euroRes.value.brl.toFixed(2)}`
-      : 'indisponível';
+      ? `R$ ${euroRes.value.brl.toFixed(2)}` : 'indisponível';
 
     const feriado = holidayText.status === 'fulfilled' ? holidayText.value : '📅 Feriado indisponível.';
 
-       document.getElementById('weather').innerHTML = `
-      ${city}, ${new Date().toLocaleDateString('pt-BR')}<br>
+    document.getElementById('weather').innerHTML = `
+      ${city}, ${formattedDate}<br><br>
       ${feriado}<br><br>
-      hoje: ${temperature}°C / ${description}<br>
-      🌤️ próximas horas:<br>
+      Previsão para hoje:<br>
+      🕒 ${localTime}: ${temperature} °C ${icon} ${description}<br>
+      💡 Índice UV: ${extras.uv}<br>
+      🌫️ Qualidade do ar: ${extras.aqi}<br><br>
       ${hourlyForecast}<br><br>
       💰 Taxa SELIC: ${selic}<br>
       💵 Dólar: ${dollar}<br>
       💶 Euro: ${euro}<br><br>
-      Próximos dias:<br>
+      Próximos dias (Min/Max):<br>
       ${forecastHtml}<br>
     `;
   } catch (error) {
@@ -96,17 +133,12 @@ async function getWeather(latitude, longitude) {
   }
 }
 
+// Obtém localização ao carregar a página
 window.addEventListener('DOMContentLoaded', () => {
   if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(
-      position => {
-        const { latitude, longitude } = position.coords;
-        getWeather(latitude, longitude);
-      },
-      error => {
-        console.error('Erro ao obter localização:', error);
-        document.getElementById('weather').innerHTML = 'Localização não permitida.';
-      }
+      pos => getWeather(pos.coords.latitude, pos.coords.longitude),
+      () => document.getElementById('weather').innerHTML = 'Localização não permitida.'
     );
   } else {
     document.getElementById('weather').innerHTML = 'Geolocalização não suportada.';
