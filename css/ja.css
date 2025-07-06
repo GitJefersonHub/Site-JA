@@ -173,3 +173,13 @@ footer {
     background-color: blue;
     color: white;
 }
+
+/*estilo para a previsão*/
+.tema-escuro {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+.tema-escuro a {
+  color: #90caf9;
+}
