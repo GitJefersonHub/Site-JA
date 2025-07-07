@@ -1,3 +1,4 @@
+//frontend
 // Retorna emoji baseado na descrição do clima
 function getWeatherIcon(description) {
   const desc = description.toLowerCase();
@@ -70,7 +71,7 @@ async function getWeather(latitude, longitude) {
     const month = now.toLocaleDateString('pt-BR', { month: 'long' });
     const year = now.getFullYear();
     const weekday = now.toLocaleDateString('pt-BR', { weekday: 'long' });
-    const formattedDate = `${day} de ${month} de ${year} (${weekday})`;
+    const formattedDate = `${day} de ${month} de ${year}.`;
 
     const hourlyForecast = forecast.list
       .filter(item => new Date(item.dt_txt) > now)
@@ -124,7 +125,7 @@ async function getWeather(latitude, longitude) {
       💰 Taxa SELIC: ${selic}<br>
       💵 Dólar: ${dollar}<br>
       💶 Euro: ${euro}<br><br>
-      Próximos dias (Min/Max):<br>
+      Próximos dias (Min / Max):<br>
       ${forecastHtml}<br>
     `;
   } catch (error) {
