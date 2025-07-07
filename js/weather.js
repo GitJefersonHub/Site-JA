@@ -29,9 +29,9 @@ async function getNextHoliday(lat, lon) {
     const res = await fetch(`/.netlify/functions/getHoliday?lat=${lat}&lon=${lon}`);
     if (!res.ok) throw new Error();
     const data = await res.json();
-    return data.message || '📅 Feriado indisponível.';
+    return data.message || '🗓 Feriado indisponível.';
   } catch {
-    return '📅 Feriado indisponível.';
+    return '🗓 Feriado indisponível.';
   }
 }
 
@@ -100,7 +100,7 @@ async function getWeather(latitude, longitude) {
         const min = Math.min(...data.temps).toFixed(1);
         const max = Math.max(...data.temps).toFixed(1);
         const icon = getWeatherIcon(data.descriptions[0]);
-        return `🗓📅📆 ${dayOfWeek}: (${formatTwoDigits(min)} / ${formatTwoDigits(max)}) °C ${icon}`;
+        return `🗓 ${dayOfWeek}: (${formatTwoDigits(min)} / ${formatTwoDigits(max)}) °C ${icon}`;
       }).join('<br>');
 
     const selic = selicRateRes.status === 'fulfilled' && typeof selicRateRes.value?.selic === 'number'
@@ -112,7 +112,7 @@ async function getWeather(latitude, longitude) {
     const euro = euroRes.status === 'fulfilled' && typeof euroRes.value?.brl === 'number'
       ? `R$ ${euroRes.value.brl.toFixed(2)}` : 'indisponível';
 
-    const feriado = holidayText.status === 'fulfilled' ? holidayText.value : '📅 Feriado indisponível.';
+    const feriado = holidayText.status === 'fulfilled' ? holidayText.value : '🗓 Feriado indisponível.';
 
     document.getElementById('weather').innerHTML = `
       ${city}, ${formattedDate}<br><br>

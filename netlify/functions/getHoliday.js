@@ -58,7 +58,7 @@ exports.handler = async (event) => {
     if (!selected.length) {
       return {
         statusCode: 200,
-        body: JSON.stringify({ message: '📅 Nenhum feriado futuro encontrado até o final do ano.' })
+        body: JSON.stringify({ message: '🗓 Nenhum feriado futuro encontrado até o final do ano.' })
       };
     }
 
@@ -72,7 +72,7 @@ exports.handler = async (event) => {
         estadual: 'Feriado estadual:',
         nacional: 'Feriado nacional:'
       }[h.level] || 'Feriado:';
-      return `📅${tipo} ${dateStr} (${weekday}) ${h.name}`;
+      return `🗓${tipo} ${dateStr} (${weekday}) ${h.name}`;
     };
 
     const message = selected.map(formatHoliday).join('\n');
