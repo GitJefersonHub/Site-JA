@@ -100,7 +100,7 @@ async function getWeather(latitude, longitude) {
         const min = Math.min(...data.temps).toFixed(1);
         const max = Math.max(...data.temps).toFixed(1);
         const icon = getWeatherIcon(data.descriptions[0]);
-        return `📆 ${dayOfWeek}: (${formatTwoDigits(min)} / ${formatTwoDigits(max)}) °C ${icon}`;
+        return `🗓📅📆 ${dayOfWeek}: (${formatTwoDigits(min)} / ${formatTwoDigits(max)}) °C ${icon}`;
       }).join('<br>');
 
     const selic = selicRateRes.status === 'fulfilled' && typeof selicRateRes.value?.selic === 'number'
