@@ -6,7 +6,7 @@ let cacheTimestamp = null;
 const CACHE_DURATION_MS = 60 * 60 * 1000; // 1 hora
 
 exports.handler = async (event) => {
-  const { lat, lon } = event.queryStringParameters || {};
+  const { lat, lon, force } = event.queryStringParameters || {};
   const weatherApiKey = process.env.WEATHER_API_KEY;
 
   if (!lat || !lon) {
@@ -25,8 +25,9 @@ exports.handler = async (event) => {
 
   const now = Date.now();
 
-  // ✅ Retorna do cache se ainda estiver válido
+  // ✅ Retorna do cache se ainda estiver válido e não for forçado
   if (
+    !force &&
     cachedWeather &&
     cacheTimestamp &&
     now - cacheTimestamp < CACHE_DURATION_MS &&
@@ -74,11 +75,11 @@ exports.handler = async (event) => {
     const uv = typeof uvData.value === 'number' ? uvData.value.toFixed(1) : 'indisponível';
     const aqi = airData.list?.[0]?.main?.aqi;
     const qualidadeAr = {
-      1: 'Boa',
-      2: 'Razoável',
-      3: 'Moderada',
-      4: 'Ruim',
-      5: 'Muito ruim'
+      1: 'Boa 😃',
+      2: 'Razoável 🙂',
+      3: 'Moderada 😌',
+      4: 'Ruim 😟',
+      5: 'Muito ruim 😡'
     }[aqi] || 'Desconhecida';
 
     const combinedData = {

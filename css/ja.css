@@ -128,12 +128,12 @@ h5 {
 /* Estilos para Containers */
 	.container0 {
 		background-color: green;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+		color: blue;
 	}
 
 	.container1 {
 		background-color: white;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+		color: green;
 	}
 
 	.container2 {
@@ -146,12 +146,8 @@ h5 {
 		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 	}
 
-	.container4 {
-		border-radius: 10px;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-	}
-
 .container4 {
+    border-radius: 10px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -174,12 +170,3 @@ footer {
     color: white;
 }
 
-/*estilo para a previsão*/
-.tema-escuro {
-  background-color: #121212;
-  color: #f0f0f0;
-}
-
-.tema-escuro a {
-  color: #90caf9;
-}
