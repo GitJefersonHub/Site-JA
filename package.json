@@ -28,10 +28,10 @@
   "homepage": "https://github.com/GitJefersonHub/Site-JA#readme",
   "type": "commonjs",
   "dependencies": {
+    "ioredis": "^5.6.1",
     "node-fetch": "^2.7.0"
   },
   "devDependencies": {
     "netlify-cli": "^22.2.1"
   }
 }
-

@@ -1,58 +1,29 @@
-//frontend
-// Retorna emoji baseado na descrição do clima
-function getWeatherIcon(description) {
-  const desc = description.toLowerCase();
-  if (desc.includes('céu limpo')) return '☀️';
-  if (desc.includes('nublado') && !desc.includes('parcial')) return '☁️';
-  if (desc.includes('algumas nuvens') || desc.includes('parcial')) return '⛅';
-  if (desc.includes('chuva leve')) return '🌦️';
-  if (desc.includes('chuva') || desc.includes('tempestade')) return '🌧️';
-  if (desc.includes('neve')) return '❄️';
-  if (desc.includes('névoa') || desc.includes('neblina')) return '🌫️';
-  return '🌡️';
-}
+// Importa funções auxiliares
+import { getTemperatureFeelingIcon } from './utils.js';
+import { aplicarTemaAutomatico } from './tema.js'; // Aplica tema escuro com base no horário
+import { getNextHoliday } from './feriados.js';    // Busca o próximo feriado via API
+import { getWeatherIcon, formatTwoDigits } from './utils.js'; // Ícones e formatação
 
-// Aplica tema escuro se for noite
-function aplicarTemaAutomatico() {
-  const hora = new Date().getHours();
-  const body = document.body;
-  if (hora < 6 || hora >= 18) {
-    body.classList.add('tema-escuro');
-  } else {
-    body.classList.remove('tema-escuro');
-  }
-}
-
-// Busca próximo feriado com base na localização
-async function getNextHoliday(lat, lon) {
-  try {
-    const res = await fetch(`/.netlify/functions/getHoliday?lat=${lat}&lon=${lon}`);
-    if (!res.ok) throw new Error();
-    const data = await res.json();
-    return data.message || '🗓 Feriado indisponível.';
-  } catch {
-    return '🗓 Feriado indisponível.';
-  }
-}
-
-// Formata número com dois dígitos
-const formatTwoDigits = value => parseInt(value).toString().padStart(2, '0');
-
-// Busca dados climáticos e econômicos e atualiza o DOM
+// Função principal que busca e exibe dados climáticos, econômicos e de feriados
 async function getWeather(latitude, longitude) {
   try {
-    aplicarTemaAutomatico();
+    aplicarTemaAutomatico(); // Aplica tema escuro se for noite
 
-    const weatherRes = await fetch(`/.netlify/functions/getWeather?lat=${latitude}&lon=${longitude}`);
+    // Força atualização dos dados ignorando cache
+    const timestamp = Date.now();
+    const weatherRes = await fetch(`/.netlify/functions/getWeather?lat=${latitude}&lon=${longitude}&force=true&t=${timestamp}`);
     if (!weatherRes.ok) throw new Error(await weatherRes.text());
     const weatherData = await weatherRes.json();
 
+    // Extrai dados principais da resposta
     const current = weatherData;
     const forecast = weatherData.forecast;
     const extras = weatherData.extras || { uv: 'indisponível', aqi: 'indisponível' };
 
+    // Verifica se os dados essenciais estão presentes
     if (!current.main || !current.weather || !forecast?.list) throw new Error();
 
+    // Busca dados econômicos e feriado em paralelo
     const [selicRateRes, dollarRes, euroRes, holidayText] = await Promise.allSettled([
       fetch('/.netlify/functions/getSelicRate').then(res => res.json()),
       fetch('/.netlify/functions/getExchangeRate?currency=USD').then(res => res.json()),
@@ -60,19 +31,21 @@ async function getWeather(latitude, longitude) {
       getNextHoliday(latitude, longitude)
     ]);
 
+    // Dados atuais do clima
     const temperature = current.main.temp.toFixed(1);
     const description = current.weather[0].description;
     const icon = getWeatherIcon(description);
     const city = current.name;
 
+    // Data e hora local formatadas
     const now = new Date();
     const localTime = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
     const day = now.toLocaleDateString('pt-BR', { day: 'numeric' });
     const month = now.toLocaleDateString('pt-BR', { month: 'long' });
     const year = now.getFullYear();
-    const weekday = now.toLocaleDateString('pt-BR', { weekday: 'long' });
     const formattedDate = `${day} de ${month} de ${year}.`;
 
+    // Previsão por hora (próximas 5 horas)
     const hourlyForecast = forecast.list
       .filter(item => new Date(item.dt_txt) > now)
       .slice(0, 5)
@@ -81,28 +54,33 @@ async function getWeather(latitude, longitude) {
         const hour = date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
         const temp = item.main.temp.toFixed(1);
         const desc = item.weather[0].description;
-        return `🕒 ${hour}: ${temp} °C ${getWeatherIcon(desc)} ${desc}`;
+        return `🕒${hour}: ${getTemperatureFeelingIcon(temp)}${temp} °C ${getWeatherIcon(desc)}${desc}`;
+
       }).join('<br>');
 
+    // Agrupa previsão por dia (data local)
     const forecastByDay = {};
     forecast.list.forEach(item => {
-      const date = new Date(item.dt_txt).toISOString().split('T')[0];
-      if (!forecastByDay[date]) forecastByDay[date] = { temps: [], descriptions: [] };
-      forecastByDay[date].temps.push(item.main.temp);
-      forecastByDay[date].descriptions.push(item.weather[0].description);
+      const date = new Date(item.dt_txt);
+      const key = date.toLocaleDateString('pt-BR'); // Ex: "08/07/2025"
+      if (!forecastByDay[key]) forecastByDay[key] = { temps: [], descriptions: [] };
+      forecastByDay[key].temps.push(item.main.temp);
+      forecastByDay[key].descriptions.push(item.weather[0].description);
     });
 
+    // Monta HTML da previsão dos próximos dias (ex: "8 de julho")
     const forecastHtml = Object.entries(forecastByDay)
-      .slice(0, 6)
+      .slice(0, 10)
       .map(([dateStr, data]) => {
-        const date = new Date(dateStr);
-        const dayOfWeek = date.toLocaleDateString('pt-BR', { weekday: 'long' });
+        const date = new Date(dateStr.split('/').reverse().join('-')); // Converte para Date
+        const formatted = date.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
         const min = Math.min(...data.temps).toFixed(1);
         const max = Math.max(...data.temps).toFixed(1);
         const icon = getWeatherIcon(data.descriptions[0]);
-        return `🗓 ${dayOfWeek}: (${formatTwoDigits(min)} / ${formatTwoDigits(max)}) °C ${icon}`;
+        return `🗓 ${formatted}: (${formatTwoDigits(min)} / ${formatTwoDigits(max)}) °C ${icon}`;
       }).join('<br>');
 
+    // Dados econômicos formatados
     const selic = selicRateRes.status === 'fulfilled' && typeof selicRateRes.value?.selic === 'number'
       ? `${selicRateRes.value.selic.toFixed(2)}% ao ano` : 'indisponível';
 
@@ -114,14 +92,16 @@ async function getWeather(latitude, longitude) {
 
     const feriado = holidayText.status === 'fulfilled' ? holidayText.value : '🗓 Feriado indisponível.';
 
+    // Atualiza o conteúdo da página com todos os dados
     document.getElementById('weather').innerHTML = `
       ${city}, ${formattedDate}<br><br>
       ${feriado}<br><br>
       Previsão para hoje:<br>
-      🕒 ${localTime}: ${temperature} °C ${icon} ${description}<br>
+      🕒${localTime}: ${getTemperatureFeelingIcon(temperature)}${temperature} °C ${icon}${description}<br>
+
+      ${hourlyForecast}<br>
       💡 Índice UV: ${extras.uv}<br>
-      🌫️ Qualidade do ar: ${extras.aqi}<br><br>
-      ${hourlyForecast}<br><br>
+      🌫️ Qualidade do ar: ${extras.aqi}<br>
       💰 Taxa SELIC: ${selic}<br>
       💵 Dólar: ${dollar}<br>
       💶 Euro: ${euro}<br><br>
@@ -134,7 +114,7 @@ async function getWeather(latitude, longitude) {
   }
 }
 
-// Obtém localização ao carregar a página
+// Ao carregar a página, obtém a localização do usuário e inicia a busca
 window.addEventListener('DOMContentLoaded', () => {
   if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(

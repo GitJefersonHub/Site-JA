@@ -5,8 +5,6 @@
 		justify-content: center;
 		align-items: center;
 		margin: 0;
-		padding: 0;
-		width: 100%;
 	}
 
 	/* Estilo do Cabeçalho */
@@ -25,7 +23,7 @@
 
 	nav .logo a {
 		font-family: 'Georgia', 'Times New Roman', Times, serif;
-		font-size: 200%;
+		font-size: 10.1vw;
 		text-decoration: none;
 		margin: 0 1%;
 	}
@@ -48,7 +46,7 @@
 
 	nav ul li a {
 		text-decoration: none;
-		font-size: clamp(12px, 4vw, 40px);
+		font-size: 4.1vw;
 		/* Ajuste dinâmico da fonte */
 	}
 
@@ -62,7 +60,7 @@
 	h3,
 	h4,
 	h5 {
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 5.1vw;
 		/* Ajuste dinâmico da fonte */
 		text-align: center;
 		margin: 0.5em 0;
@@ -80,7 +78,7 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.8vw;
 	}
 
 	.p4,
@@ -91,7 +89,7 @@
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.8vw;
 		/* Ajuste dinâmico da fonte */
 	}
 
@@ -99,7 +97,7 @@
 	.btn-tecnologia,
 	.btn-serigrafia {
 		width: 42%;
-		font-size: clamp(12px, 3vw, 16px);
+		font-size: 4.1vw;
 		border: none;
 		padding: 10px 20px;
 		text-align: center;
@@ -126,7 +124,7 @@
 		padding: 1% 10%;
 		text-align: center;
 		text-decoration: none;
-		
+
 		cursor: pointer;
 		border-radius: 10px;
 		margin-left: 5%;
@@ -171,34 +169,42 @@
 
 	/* Estilo da Imagem */
 	img {
-    width: 30%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-	margin-top: 1%;
-}
+		width: 35%;
+		height: auto;
+		display: block;
+		margin: 0 auto;
+		margin-top: 1%;
+	}
 
-.weather-info {
-    hyphens: auto;
-    text-align: justify;
-    width: 90%;
-    margin: 1% auto;
-    padding: 0.5rem;
-    border-radius: 10px;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    font-size: 5.1vw;
-    background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
-    background-size: 300% 300%;
-    animation: skyPulse 12s ease infinite;
-}
+	.weather-info {
+		hyphens: auto;
+		text-align: justify;
+		width: 92%;
+		margin: 1% auto;
+		padding: 0.5rem;
+		border-radius: 10px;
+		color: white;
+		display: flex;
+		flex-direction: column;
+		font-size: 4.8vw;
+		background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
+		background-size: 300% 300%;
+		animation: skyPulse 12s ease infinite;
+	}
 
-@keyframes skyPulse {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+	@keyframes skyPulse {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
 
 	/* Estilo das colunas */
 	.row {
@@ -212,7 +218,7 @@
 	.column {
 		hyphens: auto;
 		width: 50%;
-		font-size: clamp(12px, 2vw, 40px);
+		font-size: 3.6vw;
 		text-align: left;
 		padding: 0px;
 		box-sizing: border-box;
@@ -226,7 +232,6 @@
 
 	li {
 		margin-bottom: 0px;
-		font-size: clamp(0.8em, 2vw, 1em);
 	}
 
 	/* Estilos para Containers */
@@ -238,7 +243,6 @@
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
-		font-size: clamp(12px, 4vw, 40px);
 	}
 
 	.container1 {
@@ -247,16 +251,15 @@
 		margin: 10px auto;
 		padding: 14px;
 		overflow-x: auto;
-		font-size: clamp(12px, 2vw, 40px);
 	}
 
 	.container2 {
 		border-radius: 10px;
 		width: 96%;
 		margin: 10px auto;
-		padding-left: 4%;
+		padding-left: 2%;
 		overflow-x: auto;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.6vw;
 	}
 
 	.container3 {
@@ -266,16 +269,16 @@
 		padding: 3%;
 		padding-left: 8%;
 		overflow-x: auto;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.6vw;
 	}
 
 	.container4 {
 		border-radius: 10px;
-		width: 90%;
+		width: 94%;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
-		font-size: clamp(12px, 4vw, 40px);
+		font-size: 4.6vw;
 	}
 
 
@@ -312,19 +315,17 @@
 		border-radius: 4px;
 		width: 90%;
 		margin: 20px auto;
-		font-size: 80%;
+		font-size: 4.1vw;
 	}
 }
-
 
 /* Celular grande*/
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-		body {
+	/* Estilos Gerais */
+	body {
 		justify-content: center;
 		align-items: center;
 		margin: 0;
-		padding: 0;
-		width: 100%;
 	}
 
 	/* Estilo do Cabeçalho */
@@ -343,7 +344,7 @@
 
 	nav .logo a {
 		font-family: 'Georgia', 'Times New Roman', Times, serif;
-		font-size: 200%;
+		font-size: 10.1vw;
 		text-decoration: none;
 		margin: 0 1%;
 	}
@@ -366,7 +367,7 @@
 
 	nav ul li a {
 		text-decoration: none;
-		font-size: clamp(12px, 4vw, 40px);
+		font-size: 4.1vw;
 		/* Ajuste dinâmico da fonte */
 	}
 
@@ -380,7 +381,7 @@
 	h3,
 	h4,
 	h5 {
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 5.1vw;
 		/* Ajuste dinâmico da fonte */
 		text-align: center;
 		margin: 0.5em 0;
@@ -398,7 +399,7 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.8vw;
 	}
 
 	.p4,
@@ -409,7 +410,7 @@
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.8vw;
 		/* Ajuste dinâmico da fonte */
 	}
 
@@ -417,7 +418,7 @@
 	.btn-tecnologia,
 	.btn-serigrafia {
 		width: 42%;
-		font-size: clamp(12px, 3vw, 16px);
+		font-size: 4.1vw;
 		border: none;
 		padding: 10px 20px;
 		text-align: center;
@@ -444,7 +445,7 @@
 		padding: 1% 10%;
 		text-align: center;
 		text-decoration: none;
-		
+
 		cursor: pointer;
 		border-radius: 10px;
 		margin-left: 5%;
@@ -489,34 +490,42 @@
 
 	/* Estilo da Imagem */
 	img {
-    width: 30%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-	margin-top: 1%;
-}
+		width: 35%;
+		height: auto;
+		display: block;
+		margin: 0 auto;
+		margin-top: 1%;
+	}
 
-.weather-info {
-    hyphens: auto;
-    text-align: justify;
-    width: 90%;
-    margin: 1% auto;
-    padding: 0.5rem;
-    border-radius: 10px;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    font-size: 5.1vw;
-    background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
-    background-size: 300% 300%;
-    animation: skyPulse 12s ease infinite;
-}
+	.weather-info {
+		hyphens: auto;
+		text-align: justify;
+		width: 92%;
+		margin: 1% auto;
+		padding: 0.5rem;
+		border-radius: 10px;
+		color: white;
+		display: flex;
+		flex-direction: column;
+		font-size: 4.8vw;
+		background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
+		background-size: 300% 300%;
+		animation: skyPulse 12s ease infinite;
+	}
 
-@keyframes skyPulse {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+	@keyframes skyPulse {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
 
 	/* Estilo das colunas */
 	.row {
@@ -530,7 +539,7 @@
 	.column {
 		hyphens: auto;
 		width: 50%;
-		font-size: clamp(12px, 2vw, 40px);
+		font-size: 3.6vw;
 		text-align: left;
 		padding: 0px;
 		box-sizing: border-box;
@@ -544,7 +553,6 @@
 
 	li {
 		margin-bottom: 0px;
-		font-size: clamp(0.8em, 2vw, 1em);
 	}
 
 	/* Estilos para Containers */
@@ -556,7 +564,6 @@
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
-		font-size: clamp(12px, 4vw, 40px);
 	}
 
 	.container1 {
@@ -565,16 +572,15 @@
 		margin: 10px auto;
 		padding: 14px;
 		overflow-x: auto;
-		font-size: clamp(12px, 2vw, 40px);
 	}
 
 	.container2 {
 		border-radius: 10px;
 		width: 96%;
 		margin: 10px auto;
-		padding-left: 4%;
+		padding-left: 2%;
 		overflow-x: auto;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.6vw;
 	}
 
 	.container3 {
@@ -584,16 +590,16 @@
 		padding: 3%;
 		padding-left: 8%;
 		overflow-x: auto;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.6vw;
 	}
 
 	.container4 {
 		border-radius: 10px;
-		width: 90%;
+		width: 94%;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
-		font-size: clamp(12px, 4vw, 40px);
+		font-size: 4.6vw;
 	}
 
 
@@ -630,20 +636,17 @@
 		border-radius: 4px;
 		width: 90%;
 		margin: 20px auto;
-		font-size: 80%;
+		font-size: 4.1vw;
 	}
 }
 
-
-
-	/* Tablet */
-	@media only screen and (min-width: 769px) and (max-width: 1024px) {
-			body {
+/* Tablet */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+	/* Estilos Gerais */
+	body {
 		justify-content: center;
 		align-items: center;
 		margin: 0;
-		padding: 0;
-		width: 100%;
 	}
 
 	/* Estilo do Cabeçalho */
@@ -662,7 +665,7 @@
 
 	nav .logo a {
 		font-family: 'Georgia', 'Times New Roman', Times, serif;
-		font-size: 200%;
+		font-size: 10.1vw;
 		text-decoration: none;
 		margin: 0 1%;
 	}
@@ -685,7 +688,7 @@
 
 	nav ul li a {
 		text-decoration: none;
-		font-size: clamp(12px, 4vw, 40px);
+		font-size: 4.1vw;
 		/* Ajuste dinâmico da fonte */
 	}
 
@@ -699,7 +702,7 @@
 	h3,
 	h4,
 	h5 {
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 5.1vw;
 		/* Ajuste dinâmico da fonte */
 		text-align: center;
 		margin: 0.5em 0;
@@ -717,7 +720,7 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.8vw;
 	}
 
 	.p4,
@@ -728,7 +731,7 @@
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.8vw;
 		/* Ajuste dinâmico da fonte */
 	}
 
@@ -736,7 +739,7 @@
 	.btn-tecnologia,
 	.btn-serigrafia {
 		width: 42%;
-		font-size: clamp(12px, 3vw, 16px);
+		font-size: 4.1vw;
 		border: none;
 		padding: 10px 20px;
 		text-align: center;
@@ -763,7 +766,7 @@
 		padding: 1% 10%;
 		text-align: center;
 		text-decoration: none;
-		
+
 		cursor: pointer;
 		border-radius: 10px;
 		margin-left: 5%;
@@ -808,34 +811,42 @@
 
 	/* Estilo da Imagem */
 	img {
-    width: 30%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-	margin-top: 1%;
-}
+		width: 35%;
+		height: auto;
+		display: block;
+		margin: 0 auto;
+		margin-top: 1%;
+	}
 
-.weather-info {
-    hyphens: auto;
-    text-align: justify;
-    width: 90%;
-    margin: 1% auto;
-    padding: 0.5rem;
-    border-radius: 10px;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    font-size: 5.1vw;
-    background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
-    background-size: 300% 300%;
-    animation: skyPulse 12s ease infinite;
-}
+	.weather-info {
+		hyphens: auto;
+		text-align: justify;
+		width: 92%;
+		margin: 1% auto;
+		padding: 0.5rem;
+		border-radius: 10px;
+		color: white;
+		display: flex;
+		flex-direction: column;
+		font-size: 4.8vw;
+		background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
+		background-size: 300% 300%;
+		animation: skyPulse 12s ease infinite;
+	}
 
-@keyframes skyPulse {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+	@keyframes skyPulse {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
 
 	/* Estilo das colunas */
 	.row {
@@ -849,7 +860,7 @@
 	.column {
 		hyphens: auto;
 		width: 50%;
-		font-size: clamp(12px, 2vw, 40px);
+		font-size: 3.6vw;
 		text-align: left;
 		padding: 0px;
 		box-sizing: border-box;
@@ -863,7 +874,6 @@
 
 	li {
 		margin-bottom: 0px;
-		font-size: clamp(0.8em, 2vw, 1em);
 	}
 
 	/* Estilos para Containers */
@@ -875,7 +885,6 @@
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
-		font-size: clamp(12px, 4vw, 40px);
 	}
 
 	.container1 {
@@ -884,16 +893,15 @@
 		margin: 10px auto;
 		padding: 14px;
 		overflow-x: auto;
-		font-size: clamp(12px, 2vw, 40px);
 	}
 
 	.container2 {
 		border-radius: 10px;
 		width: 96%;
 		margin: 10px auto;
-		padding-left: 4%;
+		padding-left: 2%;
 		overflow-x: auto;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.6vw;
 	}
 
 	.container3 {
@@ -903,16 +911,16 @@
 		padding: 3%;
 		padding-left: 8%;
 		overflow-x: auto;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.6vw;
 	}
 
 	.container4 {
 		border-radius: 10px;
-		width: 90%;
+		width: 94%;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
-		font-size: clamp(12px, 4vw, 40px);
+		font-size: 4.6vw;
 	}
 
 
@@ -949,20 +957,17 @@
 		border-radius: 4px;
 		width: 90%;
 		margin: 20px auto;
-		font-size: 80%;
+		font-size: 4.1vw;
 	}
 }
 
-
-
-		/* Laptops */
-		@media only screen and (min-width: 1025px) and (max-width: 1200px) {
-				body {
+/* Laptops */
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+	/* Estilos Gerais */
+	body {
 		justify-content: center;
 		align-items: center;
 		margin: 0;
-		padding: 0;
-		width: 100%;
 	}
 
 	/* Estilo do Cabeçalho */
@@ -981,7 +986,7 @@
 
 	nav .logo a {
 		font-family: 'Georgia', 'Times New Roman', Times, serif;
-		font-size: 200%;
+		font-size: 10.1vw;
 		text-decoration: none;
 		margin: 0 1%;
 	}
@@ -1004,7 +1009,7 @@
 
 	nav ul li a {
 		text-decoration: none;
-		font-size: clamp(12px, 4vw, 40px);
+		font-size: 4.1vw;
 		/* Ajuste dinâmico da fonte */
 	}
 
@@ -1018,7 +1023,7 @@
 	h3,
 	h4,
 	h5 {
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 5.1vw;
 		/* Ajuste dinâmico da fonte */
 		text-align: center;
 		margin: 0.5em 0;
@@ -1036,7 +1041,7 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.8vw;
 	}
 
 	.p4,
@@ -1047,7 +1052,7 @@
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.8vw;
 		/* Ajuste dinâmico da fonte */
 	}
 
@@ -1055,7 +1060,7 @@
 	.btn-tecnologia,
 	.btn-serigrafia {
 		width: 42%;
-		font-size: clamp(12px, 3vw, 16px);
+		font-size: 4.1vw;
 		border: none;
 		padding: 10px 20px;
 		text-align: center;
@@ -1082,7 +1087,7 @@
 		padding: 1% 10%;
 		text-align: center;
 		text-decoration: none;
-		
+
 		cursor: pointer;
 		border-radius: 10px;
 		margin-left: 5%;
@@ -1127,34 +1132,42 @@
 
 	/* Estilo da Imagem */
 	img {
-    width: 30%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-	margin-top: 1%;
-}
+		width: 35%;
+		height: auto;
+		display: block;
+		margin: 0 auto;
+		margin-top: 1%;
+	}
 
-.weather-info {
-    hyphens: auto;
-    text-align: justify;
-    width: 90%;
-    margin: 1% auto;
-    padding: 0.5rem;
-    border-radius: 10px;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    font-size: 5.1vw;
-    background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
-    background-size: 300% 300%;
-    animation: skyPulse 12s ease infinite;
-}
+	.weather-info {
+		hyphens: auto;
+		text-align: justify;
+		width: 92%;
+		margin: 1% auto;
+		padding: 0.5rem;
+		border-radius: 10px;
+		color: white;
+		display: flex;
+		flex-direction: column;
+		font-size: 4.8vw;
+		background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
+		background-size: 300% 300%;
+		animation: skyPulse 12s ease infinite;
+	}
 
-@keyframes skyPulse {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+	@keyframes skyPulse {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
 
 	/* Estilo das colunas */
 	.row {
@@ -1168,7 +1181,7 @@
 	.column {
 		hyphens: auto;
 		width: 50%;
-		font-size: clamp(12px, 2vw, 40px);
+		font-size: 3.6vw;
 		text-align: left;
 		padding: 0px;
 		box-sizing: border-box;
@@ -1182,7 +1195,6 @@
 
 	li {
 		margin-bottom: 0px;
-		font-size: clamp(0.8em, 2vw, 1em);
 	}
 
 	/* Estilos para Containers */
@@ -1194,7 +1206,6 @@
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
-		font-size: clamp(12px, 4vw, 40px);
 	}
 
 	.container1 {
@@ -1203,16 +1214,15 @@
 		margin: 10px auto;
 		padding: 14px;
 		overflow-x: auto;
-		font-size: clamp(12px, 2vw, 40px);
 	}
 
 	.container2 {
 		border-radius: 10px;
 		width: 96%;
 		margin: 10px auto;
-		padding-left: 4%;
+		padding-left: 2%;
 		overflow-x: auto;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.6vw;
 	}
 
 	.container3 {
@@ -1222,16 +1232,16 @@
 		padding: 3%;
 		padding-left: 8%;
 		overflow-x: auto;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.6vw;
 	}
 
 	.container4 {
 		border-radius: 10px;
-		width: 90%;
+		width: 94%;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
-		font-size: clamp(12px, 4vw, 40px);
+		font-size: 4.6vw;
 	}
 
 
@@ -1268,20 +1278,17 @@
 		border-radius: 4px;
 		width: 90%;
 		margin: 20px auto;
-		font-size: 80%;
+		font-size: 4.1vw;
 	}
 }
-	
 
-
-			/* Desktops TVS*/
-			@media only screen and (min-width: 1201px) {
-					body {
+/* Desktops TVS*/
+@media only screen and (min-width: 1201px) {
+	/* Estilos Gerais */
+	body {
 		justify-content: center;
 		align-items: center;
 		margin: 0;
-		padding: 0;
-		width: 100%;
 	}
 
 	/* Estilo do Cabeçalho */
@@ -1300,7 +1307,7 @@
 
 	nav .logo a {
 		font-family: 'Georgia', 'Times New Roman', Times, serif;
-		font-size: 200%;
+		font-size: 10.1vw;
 		text-decoration: none;
 		margin: 0 1%;
 	}
@@ -1323,7 +1330,7 @@
 
 	nav ul li a {
 		text-decoration: none;
-		font-size: clamp(12px, 4vw, 40px);
+		font-size: 4.1vw;
 		/* Ajuste dinâmico da fonte */
 	}
 
@@ -1337,7 +1344,7 @@
 	h3,
 	h4,
 	h5 {
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 5.1vw;
 		/* Ajuste dinâmico da fonte */
 		text-align: center;
 		margin: 0.5em 0;
@@ -1355,7 +1362,7 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.8vw;
 	}
 
 	.p4,
@@ -1366,7 +1373,7 @@
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.8vw;
 		/* Ajuste dinâmico da fonte */
 	}
 
@@ -1374,7 +1381,7 @@
 	.btn-tecnologia,
 	.btn-serigrafia {
 		width: 42%;
-		font-size: clamp(12px, 3vw, 16px);
+		font-size: 4.1vw;
 		border: none;
 		padding: 10px 20px;
 		text-align: center;
@@ -1401,7 +1408,7 @@
 		padding: 1% 10%;
 		text-align: center;
 		text-decoration: none;
-		
+
 		cursor: pointer;
 		border-radius: 10px;
 		margin-left: 5%;
@@ -1446,34 +1453,42 @@
 
 	/* Estilo da Imagem */
 	img {
-    width: 30%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-	margin-top: 1%;
-}
+		width: 35%;
+		height: auto;
+		display: block;
+		margin: 0 auto;
+		margin-top: 1%;
+	}
 
-.weather-info {
-    hyphens: auto;
-    text-align: justify;
-    width: 90%;
-    margin: 1% auto;
-    padding: 0.5rem;
-    border-radius: 10px;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    font-size: 5.1vw;
-    background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
-    background-size: 300% 300%;
-    animation: skyPulse 12s ease infinite;
-}
+	.weather-info {
+		hyphens: auto;
+		text-align: justify;
+		width: 92%;
+		margin: 1% auto;
+		padding: 0.5rem;
+		border-radius: 10px;
+		color: white;
+		display: flex;
+		flex-direction: column;
+		font-size: 4.8vw;
+		background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
+		background-size: 300% 300%;
+		animation: skyPulse 12s ease infinite;
+	}
 
-@keyframes skyPulse {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+	@keyframes skyPulse {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
 
 	/* Estilo das colunas */
 	.row {
@@ -1487,7 +1502,7 @@
 	.column {
 		hyphens: auto;
 		width: 50%;
-		font-size: clamp(12px, 2vw, 40px);
+		font-size: 3.6vw;
 		text-align: left;
 		padding: 0px;
 		box-sizing: border-box;
@@ -1501,7 +1516,6 @@
 
 	li {
 		margin-bottom: 0px;
-		font-size: clamp(0.8em, 2vw, 1em);
 	}
 
 	/* Estilos para Containers */
@@ -1513,7 +1527,6 @@
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
-		font-size: clamp(12px, 4vw, 40px);
 	}
 
 	.container1 {
@@ -1522,16 +1535,15 @@
 		margin: 10px auto;
 		padding: 14px;
 		overflow-x: auto;
-		font-size: clamp(12px, 2vw, 40px);
 	}
 
 	.container2 {
 		border-radius: 10px;
 		width: 96%;
 		margin: 10px auto;
-		padding-left: 4%;
+		padding-left: 2%;
 		overflow-x: auto;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.6vw;
 	}
 
 	.container3 {
@@ -1541,16 +1553,16 @@
 		padding: 3%;
 		padding-left: 8%;
 		overflow-x: auto;
-		font-size: clamp(12px, 5vw, 40px);
+		font-size: 4.6vw;
 	}
 
 	.container4 {
 		border-radius: 10px;
-		width: 90%;
+		width: 94%;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
-		font-size: clamp(12px, 4vw, 40px);
+		font-size: 4.6vw;
 	}
 
 
@@ -1587,6 +1599,6 @@
 		border-radius: 4px;
 		width: 90%;
 		margin: 20px auto;
-		font-size: 80%;
+		font-size: 4.1vw;
 	}
 }
