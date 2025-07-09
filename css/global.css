@@ -1,31 +1,27 @@
 /* Celular peq*/
 @media (max-width: 480px) {
+
 	/* Estilos Gerais */
 	body {
 		justify-content: center;
 		align-items: center;
-		margin: 0;
+
 	}
 
 	/* Estilo do Cabeçalho */
 	nav {
-		padding: 1% 0;
 		text-align: center;
-		margin: 0 1%;
 	}
 
 	nav .logo {
-		margin-right: auto;
 		border-radius: 10px;
 		padding: 1%;
-		margin: 0 1%;
 	}
 
 	nav .logo a {
 		font-family: 'Georgia', 'Times New Roman', Times, serif;
-		font-size: 10.1vw;
+		font-size: 9.1vw;
 		text-decoration: none;
-		margin: 0 1%;
 	}
 
 	nav ul {
@@ -34,24 +30,22 @@
 		justify-content: center;
 		border-radius: 10px;
 		padding: 10px;
-		margin: 0 1%;
 	}
 
 	nav ul li {
-		width: 40%;
+		width: 40.0vw;
 		margin: 0 20px;
 		border-radius: 10px;
-		padding: 1%;
 	}
 
 	nav ul li a {
 		text-decoration: none;
-		font-size: 4.1vw;
-		/* Ajuste dinâmico da fonte */
+		font-size: 3.1vw;
 	}
 
 	nav ul li a.disabled {
 		pointer-events: none;
+
 	}
 
 	/* Estilos para Títulos */
@@ -96,25 +90,13 @@
 	/* Estilos para os Botões do cabeçalho */
 	.btn-tecnologia,
 	.btn-serigrafia {
-		width: 42%;
-		font-size: 4.1vw;
-		border: none;
-		padding: 10px 20px;
-		text-align: center;
-		text-decoration: none;
+		width: 20.0vw;
+		font-size: 4.4vw;
+		padding: 4%;
+		margin: 4%;
 		display: inline-block;
-		margin: 5px;
 		cursor: pointer;
 		border-radius: 8px;
-		transition: transform 0.3s, background-color 0.3s;
-		background-color: #4caf50;
-		color: white;
-	}
-
-	.btn-tecnologia:hover,
-	.btn-serigrafia:hover {
-		transform: scale(1.05);
-		background-color: #45a049;
 	}
 
 	.btn1,
@@ -124,12 +106,11 @@
 		padding: 1% 10%;
 		text-align: center;
 		text-decoration: none;
-
 		cursor: pointer;
 		border-radius: 10px;
 		margin-left: 5%;
 		margin-right: 5%;
-		font-size: clamp(12px, 7vw, 40px);
+		font-size: 5.0vw;
 	}
 
 	.btn1:hover,
@@ -143,7 +124,7 @@
 		text-align: center;
 		text-decoration: none;
 		display: inline-block;
-		font-size: 1.6rem;
+		font-size: 5.0vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 4%;
@@ -154,17 +135,14 @@
 	}
 
 	.btn-enviar {
-		border: none;
-		padding: 1% 8%;
+		padding: 1%;
+		margin: 1%;
 		text-align: center;
-		text-decoration: none;
 		display: flex;
-		font-size: 100%;
+		font-size: 5.0vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 10px;
-		justify-content: center;
-		align-items: center;
 	}
 
 	/* Estilo da Imagem */
@@ -179,7 +157,6 @@
 	.weather-info {
 		hyphens: auto;
 		text-align: justify;
-		width: 92%;
 		margin: 1% auto;
 		padding: 0.5rem;
 		border-radius: 10px;
@@ -210,7 +187,6 @@
 	.row {
 		display: flex;
 		justify-content: space-between;
-		width: 100%;
 		margin: 0 auto;
 		flex-wrap: wrap;
 	}
@@ -218,7 +194,7 @@
 	.column {
 		hyphens: auto;
 		width: 50%;
-		font-size: 3.6vw;
+		font-size: 3.0vw;
 		text-align: left;
 		padding: 0px;
 		box-sizing: border-box;
@@ -226,12 +202,12 @@
 
 	ul {
 		list-style-type: disc;
-		padding-left: 20px;
-		margin: 0px 0;
+		padding-left: 2%;
+		margin-left: 2%;
 	}
 
 	li {
-		margin-bottom: 0px;
+		margin-bottom: 0%;
 	}
 
 	/* Estilos para Containers */
@@ -239,7 +215,6 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 10px;
-		width: 94%;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
@@ -247,7 +222,6 @@
 
 	.container1 {
 		border-radius: 10px;
-		width: 90%;
 		margin: 10px auto;
 		padding: 14px;
 		overflow-x: auto;
@@ -255,21 +229,18 @@
 
 	.container2 {
 		border-radius: 10px;
-		width: 96%;
-		margin: 10px auto;
-		padding-left: 2%;
+		padding: 0%;
 		overflow-x: auto;
-		font-size: 4.6vw;
+		font-size: 4.0vw;
 	}
 
 	.container3 {
 		border-radius: 10px;
-		width: 88%;
 		margin: 10px auto;
-		padding: 3%;
+		padding: 0%;
 		padding-left: 8%;
 		overflow-x: auto;
-		font-size: 4.6vw;
+		font-size: 4.0vw;
 	}
 
 	.container4 {
@@ -310,43 +281,37 @@
 	/* Estilo do Rodapé */
 	footer {
 		text-align: center;
-		margin-top: 20px;
-		padding: 10px;
+		margin: 1%;
+		padding: 1%;
 		border-radius: 4px;
-		width: 90%;
-		margin: 20px auto;
 		font-size: 4.1vw;
 	}
 }
 
 /* Celular grande*/
 @media only screen and (min-width: 481px) and (max-width: 768px) {
+
 	/* Estilos Gerais */
 	body {
 		justify-content: center;
 		align-items: center;
-		margin: 0;
+
 	}
 
 	/* Estilo do Cabeçalho */
 	nav {
-		padding: 1% 0;
 		text-align: center;
-		margin: 0 1%;
 	}
 
 	nav .logo {
-		margin-right: auto;
 		border-radius: 10px;
 		padding: 1%;
-		margin: 0 1%;
 	}
 
 	nav .logo a {
 		font-family: 'Georgia', 'Times New Roman', Times, serif;
-		font-size: 10.1vw;
+		font-size: 9.1vw;
 		text-decoration: none;
-		margin: 0 1%;
 	}
 
 	nav ul {
@@ -355,24 +320,22 @@
 		justify-content: center;
 		border-radius: 10px;
 		padding: 10px;
-		margin: 0 1%;
 	}
 
 	nav ul li {
-		width: 40%;
+		width: 40.0vw;
 		margin: 0 20px;
 		border-radius: 10px;
-		padding: 1%;
 	}
 
 	nav ul li a {
 		text-decoration: none;
-		font-size: 4.1vw;
-		/* Ajuste dinâmico da fonte */
+		font-size: 3.1vw;
 	}
 
 	nav ul li a.disabled {
 		pointer-events: none;
+
 	}
 
 	/* Estilos para Títulos */
@@ -417,25 +380,13 @@
 	/* Estilos para os Botões do cabeçalho */
 	.btn-tecnologia,
 	.btn-serigrafia {
-		width: 42%;
-		font-size: 4.1vw;
-		border: none;
-		padding: 10px 20px;
-		text-align: center;
-		text-decoration: none;
+		width: 20.0vw;
+		font-size: 4.4vw;
+		padding: 4%;
+		margin: 4%;
 		display: inline-block;
-		margin: 5px;
 		cursor: pointer;
 		border-radius: 8px;
-		transition: transform 0.3s, background-color 0.3s;
-		background-color: #4caf50;
-		color: white;
-	}
-
-	.btn-tecnologia:hover,
-	.btn-serigrafia:hover {
-		transform: scale(1.05);
-		background-color: #45a049;
 	}
 
 	.btn1,
@@ -445,12 +396,11 @@
 		padding: 1% 10%;
 		text-align: center;
 		text-decoration: none;
-
 		cursor: pointer;
 		border-radius: 10px;
 		margin-left: 5%;
 		margin-right: 5%;
-		font-size: clamp(12px, 7vw, 40px);
+		font-size: 5.0vw;
 	}
 
 	.btn1:hover,
@@ -464,7 +414,7 @@
 		text-align: center;
 		text-decoration: none;
 		display: inline-block;
-		font-size: 1.6rem;
+		font-size: 5.0vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 4%;
@@ -475,17 +425,14 @@
 	}
 
 	.btn-enviar {
-		border: none;
-		padding: 1% 8%;
+		padding: 1%;
+		margin: 1%;
 		text-align: center;
-		text-decoration: none;
 		display: flex;
-		font-size: 100%;
+		font-size: 5.0vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 10px;
-		justify-content: center;
-		align-items: center;
 	}
 
 	/* Estilo da Imagem */
@@ -500,7 +447,6 @@
 	.weather-info {
 		hyphens: auto;
 		text-align: justify;
-		width: 92%;
 		margin: 1% auto;
 		padding: 0.5rem;
 		border-radius: 10px;
@@ -531,7 +477,6 @@
 	.row {
 		display: flex;
 		justify-content: space-between;
-		width: 100%;
 		margin: 0 auto;
 		flex-wrap: wrap;
 	}
@@ -539,7 +484,7 @@
 	.column {
 		hyphens: auto;
 		width: 50%;
-		font-size: 3.6vw;
+		font-size: 3.0vw;
 		text-align: left;
 		padding: 0px;
 		box-sizing: border-box;
@@ -547,12 +492,12 @@
 
 	ul {
 		list-style-type: disc;
-		padding-left: 20px;
-		margin: 0px 0;
+		padding-left: 2%;
+		margin-left: 2%;
 	}
 
 	li {
-		margin-bottom: 0px;
+		margin-bottom: 0%;
 	}
 
 	/* Estilos para Containers */
@@ -560,7 +505,6 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 10px;
-		width: 94%;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
@@ -568,7 +512,6 @@
 
 	.container1 {
 		border-radius: 10px;
-		width: 90%;
 		margin: 10px auto;
 		padding: 14px;
 		overflow-x: auto;
@@ -576,21 +519,18 @@
 
 	.container2 {
 		border-radius: 10px;
-		width: 96%;
-		margin: 10px auto;
-		padding-left: 2%;
+		padding: 0%;
 		overflow-x: auto;
-		font-size: 4.6vw;
+		font-size: 4.0vw;
 	}
 
 	.container3 {
 		border-radius: 10px;
-		width: 88%;
 		margin: 10px auto;
-		padding: 3%;
+		padding: 0%;
 		padding-left: 8%;
 		overflow-x: auto;
-		font-size: 4.6vw;
+		font-size: 4.0vw;
 	}
 
 	.container4 {
@@ -631,43 +571,37 @@
 	/* Estilo do Rodapé */
 	footer {
 		text-align: center;
-		margin-top: 20px;
-		padding: 10px;
+		margin: 1%;
+		padding: 1%;
 		border-radius: 4px;
-		width: 90%;
-		margin: 20px auto;
 		font-size: 4.1vw;
 	}
 }
 
 /* Tablet */
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
+
 	/* Estilos Gerais */
 	body {
 		justify-content: center;
 		align-items: center;
-		margin: 0;
+
 	}
 
 	/* Estilo do Cabeçalho */
 	nav {
-		padding: 1% 0;
 		text-align: center;
-		margin: 0 1%;
 	}
 
 	nav .logo {
-		margin-right: auto;
 		border-radius: 10px;
 		padding: 1%;
-		margin: 0 1%;
 	}
 
 	nav .logo a {
 		font-family: 'Georgia', 'Times New Roman', Times, serif;
-		font-size: 10.1vw;
+		font-size: 9.1vw;
 		text-decoration: none;
-		margin: 0 1%;
 	}
 
 	nav ul {
@@ -676,24 +610,22 @@
 		justify-content: center;
 		border-radius: 10px;
 		padding: 10px;
-		margin: 0 1%;
 	}
 
 	nav ul li {
-		width: 40%;
+		width: 40.0vw;
 		margin: 0 20px;
 		border-radius: 10px;
-		padding: 1%;
 	}
 
 	nav ul li a {
 		text-decoration: none;
-		font-size: 4.1vw;
-		/* Ajuste dinâmico da fonte */
+		font-size: 3.1vw;
 	}
 
 	nav ul li a.disabled {
 		pointer-events: none;
+
 	}
 
 	/* Estilos para Títulos */
@@ -738,25 +670,13 @@
 	/* Estilos para os Botões do cabeçalho */
 	.btn-tecnologia,
 	.btn-serigrafia {
-		width: 42%;
-		font-size: 4.1vw;
-		border: none;
-		padding: 10px 20px;
-		text-align: center;
-		text-decoration: none;
+		width: 20.0vw;
+		font-size: 4.4vw;
+		padding: 4%;
+		margin: 4%;
 		display: inline-block;
-		margin: 5px;
 		cursor: pointer;
 		border-radius: 8px;
-		transition: transform 0.3s, background-color 0.3s;
-		background-color: #4caf50;
-		color: white;
-	}
-
-	.btn-tecnologia:hover,
-	.btn-serigrafia:hover {
-		transform: scale(1.05);
-		background-color: #45a049;
 	}
 
 	.btn1,
@@ -766,12 +686,11 @@
 		padding: 1% 10%;
 		text-align: center;
 		text-decoration: none;
-
 		cursor: pointer;
 		border-radius: 10px;
 		margin-left: 5%;
 		margin-right: 5%;
-		font-size: clamp(12px, 7vw, 40px);
+		font-size: 5.0vw;
 	}
 
 	.btn1:hover,
@@ -785,7 +704,7 @@
 		text-align: center;
 		text-decoration: none;
 		display: inline-block;
-		font-size: 1.6rem;
+		font-size: 5.0vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 4%;
@@ -796,17 +715,14 @@
 	}
 
 	.btn-enviar {
-		border: none;
-		padding: 1% 8%;
+		padding: 1%;
+		margin: 1%;
 		text-align: center;
-		text-decoration: none;
 		display: flex;
-		font-size: 100%;
+		font-size: 5.0vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 10px;
-		justify-content: center;
-		align-items: center;
 	}
 
 	/* Estilo da Imagem */
@@ -821,7 +737,6 @@
 	.weather-info {
 		hyphens: auto;
 		text-align: justify;
-		width: 92%;
 		margin: 1% auto;
 		padding: 0.5rem;
 		border-radius: 10px;
@@ -852,7 +767,6 @@
 	.row {
 		display: flex;
 		justify-content: space-between;
-		width: 100%;
 		margin: 0 auto;
 		flex-wrap: wrap;
 	}
@@ -860,7 +774,7 @@
 	.column {
 		hyphens: auto;
 		width: 50%;
-		font-size: 3.6vw;
+		font-size: 3.0vw;
 		text-align: left;
 		padding: 0px;
 		box-sizing: border-box;
@@ -868,12 +782,12 @@
 
 	ul {
 		list-style-type: disc;
-		padding-left: 20px;
-		margin: 0px 0;
+		padding-left: 2%;
+		margin-left: 2%;
 	}
 
 	li {
-		margin-bottom: 0px;
+		margin-bottom: 0%;
 	}
 
 	/* Estilos para Containers */
@@ -881,7 +795,6 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 10px;
-		width: 94%;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
@@ -889,7 +802,6 @@
 
 	.container1 {
 		border-radius: 10px;
-		width: 90%;
 		margin: 10px auto;
 		padding: 14px;
 		overflow-x: auto;
@@ -897,21 +809,18 @@
 
 	.container2 {
 		border-radius: 10px;
-		width: 96%;
-		margin: 10px auto;
-		padding-left: 2%;
+		padding: 0%;
 		overflow-x: auto;
-		font-size: 4.6vw;
+		font-size: 4.0vw;
 	}
 
 	.container3 {
 		border-radius: 10px;
-		width: 88%;
 		margin: 10px auto;
-		padding: 3%;
+		padding: 0%;
 		padding-left: 8%;
 		overflow-x: auto;
-		font-size: 4.6vw;
+		font-size: 4.0vw;
 	}
 
 	.container4 {
@@ -952,43 +861,37 @@
 	/* Estilo do Rodapé */
 	footer {
 		text-align: center;
-		margin-top: 20px;
-		padding: 10px;
+		margin: 1%;
+		padding: 1%;
 		border-radius: 4px;
-		width: 90%;
-		margin: 20px auto;
 		font-size: 4.1vw;
 	}
 }
 
 /* Laptops */
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
+
 	/* Estilos Gerais */
 	body {
 		justify-content: center;
 		align-items: center;
-		margin: 0;
+
 	}
 
 	/* Estilo do Cabeçalho */
 	nav {
-		padding: 1% 0;
 		text-align: center;
-		margin: 0 1%;
 	}
 
 	nav .logo {
-		margin-right: auto;
 		border-radius: 10px;
 		padding: 1%;
-		margin: 0 1%;
 	}
 
 	nav .logo a {
 		font-family: 'Georgia', 'Times New Roman', Times, serif;
-		font-size: 10.1vw;
+		font-size: 9.1vw;
 		text-decoration: none;
-		margin: 0 1%;
 	}
 
 	nav ul {
@@ -997,24 +900,22 @@
 		justify-content: center;
 		border-radius: 10px;
 		padding: 10px;
-		margin: 0 1%;
 	}
 
 	nav ul li {
-		width: 40%;
+		width: 40.0vw;
 		margin: 0 20px;
 		border-radius: 10px;
-		padding: 1%;
 	}
 
 	nav ul li a {
 		text-decoration: none;
-		font-size: 4.1vw;
-		/* Ajuste dinâmico da fonte */
+		font-size: 3.1vw;
 	}
 
 	nav ul li a.disabled {
 		pointer-events: none;
+
 	}
 
 	/* Estilos para Títulos */
@@ -1059,25 +960,13 @@
 	/* Estilos para os Botões do cabeçalho */
 	.btn-tecnologia,
 	.btn-serigrafia {
-		width: 42%;
-		font-size: 4.1vw;
-		border: none;
-		padding: 10px 20px;
-		text-align: center;
-		text-decoration: none;
+		width: 20.0vw;
+		font-size: 4.4vw;
+		padding: 4%;
+		margin: 4%;
 		display: inline-block;
-		margin: 5px;
 		cursor: pointer;
 		border-radius: 8px;
-		transition: transform 0.3s, background-color 0.3s;
-		background-color: #4caf50;
-		color: white;
-	}
-
-	.btn-tecnologia:hover,
-	.btn-serigrafia:hover {
-		transform: scale(1.05);
-		background-color: #45a049;
 	}
 
 	.btn1,
@@ -1087,12 +976,11 @@
 		padding: 1% 10%;
 		text-align: center;
 		text-decoration: none;
-
 		cursor: pointer;
 		border-radius: 10px;
 		margin-left: 5%;
 		margin-right: 5%;
-		font-size: clamp(12px, 7vw, 40px);
+		font-size: 5.0vw;
 	}
 
 	.btn1:hover,
@@ -1106,7 +994,7 @@
 		text-align: center;
 		text-decoration: none;
 		display: inline-block;
-		font-size: 1.6rem;
+		font-size: 5.0vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 4%;
@@ -1117,17 +1005,14 @@
 	}
 
 	.btn-enviar {
-		border: none;
-		padding: 1% 8%;
+		padding: 1%;
+		margin: 1%;
 		text-align: center;
-		text-decoration: none;
 		display: flex;
-		font-size: 100%;
+		font-size: 5.0vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 10px;
-		justify-content: center;
-		align-items: center;
 	}
 
 	/* Estilo da Imagem */
@@ -1142,7 +1027,6 @@
 	.weather-info {
 		hyphens: auto;
 		text-align: justify;
-		width: 92%;
 		margin: 1% auto;
 		padding: 0.5rem;
 		border-radius: 10px;
@@ -1173,7 +1057,6 @@
 	.row {
 		display: flex;
 		justify-content: space-between;
-		width: 100%;
 		margin: 0 auto;
 		flex-wrap: wrap;
 	}
@@ -1181,7 +1064,7 @@
 	.column {
 		hyphens: auto;
 		width: 50%;
-		font-size: 3.6vw;
+		font-size: 3.0vw;
 		text-align: left;
 		padding: 0px;
 		box-sizing: border-box;
@@ -1189,12 +1072,12 @@
 
 	ul {
 		list-style-type: disc;
-		padding-left: 20px;
-		margin: 0px 0;
+		padding-left: 2%;
+		margin-left: 2%;
 	}
 
 	li {
-		margin-bottom: 0px;
+		margin-bottom: 0%;
 	}
 
 	/* Estilos para Containers */
@@ -1202,7 +1085,6 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 10px;
-		width: 94%;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
@@ -1210,7 +1092,6 @@
 
 	.container1 {
 		border-radius: 10px;
-		width: 90%;
 		margin: 10px auto;
 		padding: 14px;
 		overflow-x: auto;
@@ -1218,21 +1099,18 @@
 
 	.container2 {
 		border-radius: 10px;
-		width: 96%;
-		margin: 10px auto;
-		padding-left: 2%;
+		padding: 0%;
 		overflow-x: auto;
-		font-size: 4.6vw;
+		font-size: 4.0vw;
 	}
 
 	.container3 {
 		border-radius: 10px;
-		width: 88%;
 		margin: 10px auto;
-		padding: 3%;
+		padding: 0%;
 		padding-left: 8%;
 		overflow-x: auto;
-		font-size: 4.6vw;
+		font-size: 4.0vw;
 	}
 
 	.container4 {
@@ -1273,43 +1151,37 @@
 	/* Estilo do Rodapé */
 	footer {
 		text-align: center;
-		margin-top: 20px;
-		padding: 10px;
+		margin: 1%;
+		padding: 1%;
 		border-radius: 4px;
-		width: 90%;
-		margin: 20px auto;
 		font-size: 4.1vw;
 	}
 }
 
 /* Desktops TVS*/
 @media only screen and (min-width: 1201px) {
+
 	/* Estilos Gerais */
 	body {
 		justify-content: center;
 		align-items: center;
-		margin: 0;
+
 	}
 
 	/* Estilo do Cabeçalho */
 	nav {
-		padding: 1% 0;
 		text-align: center;
-		margin: 0 1%;
 	}
 
 	nav .logo {
-		margin-right: auto;
 		border-radius: 10px;
 		padding: 1%;
-		margin: 0 1%;
 	}
 
 	nav .logo a {
 		font-family: 'Georgia', 'Times New Roman', Times, serif;
-		font-size: 10.1vw;
+		font-size: 9.1vw;
 		text-decoration: none;
-		margin: 0 1%;
 	}
 
 	nav ul {
@@ -1318,24 +1190,22 @@
 		justify-content: center;
 		border-radius: 10px;
 		padding: 10px;
-		margin: 0 1%;
 	}
 
 	nav ul li {
-		width: 40%;
+		width: 40.0vw;
 		margin: 0 20px;
 		border-radius: 10px;
-		padding: 1%;
 	}
 
 	nav ul li a {
 		text-decoration: none;
-		font-size: 4.1vw;
-		/* Ajuste dinâmico da fonte */
+		font-size: 3.1vw;
 	}
 
 	nav ul li a.disabled {
 		pointer-events: none;
+
 	}
 
 	/* Estilos para Títulos */
@@ -1380,25 +1250,13 @@
 	/* Estilos para os Botões do cabeçalho */
 	.btn-tecnologia,
 	.btn-serigrafia {
-		width: 42%;
-		font-size: 4.1vw;
-		border: none;
-		padding: 10px 20px;
-		text-align: center;
-		text-decoration: none;
+		width: 20.0vw;
+		font-size: 4.4vw;
+		padding: 4%;
+		margin: 4%;
 		display: inline-block;
-		margin: 5px;
 		cursor: pointer;
 		border-radius: 8px;
-		transition: transform 0.3s, background-color 0.3s;
-		background-color: #4caf50;
-		color: white;
-	}
-
-	.btn-tecnologia:hover,
-	.btn-serigrafia:hover {
-		transform: scale(1.05);
-		background-color: #45a049;
 	}
 
 	.btn1,
@@ -1408,12 +1266,11 @@
 		padding: 1% 10%;
 		text-align: center;
 		text-decoration: none;
-
 		cursor: pointer;
 		border-radius: 10px;
 		margin-left: 5%;
 		margin-right: 5%;
-		font-size: clamp(12px, 7vw, 40px);
+		font-size: 5.0vw;
 	}
 
 	.btn1:hover,
@@ -1427,7 +1284,7 @@
 		text-align: center;
 		text-decoration: none;
 		display: inline-block;
-		font-size: 1.6rem;
+		font-size: 5.0vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 4%;
@@ -1438,17 +1295,14 @@
 	}
 
 	.btn-enviar {
-		border: none;
-		padding: 1% 8%;
+		padding: 1%;
+		margin: 1%;
 		text-align: center;
-		text-decoration: none;
 		display: flex;
-		font-size: 100%;
+		font-size: 5.0vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 10px;
-		justify-content: center;
-		align-items: center;
 	}
 
 	/* Estilo da Imagem */
@@ -1463,7 +1317,6 @@
 	.weather-info {
 		hyphens: auto;
 		text-align: justify;
-		width: 92%;
 		margin: 1% auto;
 		padding: 0.5rem;
 		border-radius: 10px;
@@ -1494,7 +1347,6 @@
 	.row {
 		display: flex;
 		justify-content: space-between;
-		width: 100%;
 		margin: 0 auto;
 		flex-wrap: wrap;
 	}
@@ -1502,7 +1354,7 @@
 	.column {
 		hyphens: auto;
 		width: 50%;
-		font-size: 3.6vw;
+		font-size: 3.0vw;
 		text-align: left;
 		padding: 0px;
 		box-sizing: border-box;
@@ -1510,12 +1362,12 @@
 
 	ul {
 		list-style-type: disc;
-		padding-left: 20px;
-		margin: 0px 0;
+		padding-left: 2%;
+		margin-left: 2%;
 	}
 
 	li {
-		margin-bottom: 0px;
+		margin-bottom: 0%;
 	}
 
 	/* Estilos para Containers */
@@ -1523,7 +1375,6 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 10px;
-		width: 94%;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
@@ -1531,7 +1382,6 @@
 
 	.container1 {
 		border-radius: 10px;
-		width: 90%;
 		margin: 10px auto;
 		padding: 14px;
 		overflow-x: auto;
@@ -1539,21 +1389,18 @@
 
 	.container2 {
 		border-radius: 10px;
-		width: 96%;
-		margin: 10px auto;
-		padding-left: 2%;
+		padding: 0%;
 		overflow-x: auto;
-		font-size: 4.6vw;
+		font-size: 4.0vw;
 	}
 
 	.container3 {
 		border-radius: 10px;
-		width: 88%;
 		margin: 10px auto;
-		padding: 3%;
+		padding: 0%;
 		padding-left: 8%;
 		overflow-x: auto;
-		font-size: 4.6vw;
+		font-size: 4.0vw;
 	}
 
 	.container4 {
@@ -1594,11 +1441,9 @@
 	/* Estilo do Rodapé */
 	footer {
 		text-align: center;
-		margin-top: 20px;
-		padding: 10px;
+		margin: 1%;
+		padding: 1%;
 		border-radius: 4px;
-		width: 90%;
-		margin: 20px auto;
 		font-size: 4.1vw;
 	}
 }
