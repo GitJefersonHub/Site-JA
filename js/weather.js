@@ -70,7 +70,7 @@ async function getWeather(latitude, longitude) {
 
     // Monta HTML da previsão dos próximos dias (ex: "8 de julho")
     const forecastHtml = Object.entries(forecastByDay)
-      .slice(0, 10)
+      .slice(0, 6)
       .map(([dateStr, data]) => {
         const date = new Date(dateStr.split('/').reverse().join('-')); // Converte para Date
         const formatted = date.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });

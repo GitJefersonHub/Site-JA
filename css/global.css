@@ -29,18 +29,18 @@
 		display: flex;
 		justify-content: center;
 		border-radius: 10px;
-		padding: 10px;
+		padding: 14px;
 	}
 
 	nav ul li {
-		width: 40.0vw;
-		margin: 0 20px;
+		width: 60%;
 		border-radius: 10px;
+		margin: 1%;
+		padding: 1%;
 	}
 
 	nav ul li a {
 		text-decoration: none;
-		font-size: 3.1vw;
 	}
 
 	nav ul li a.disabled {
@@ -65,9 +65,6 @@
 	.p1,
 	.p2,
 	.p3 {
-		-webkit-hyphens: auto;
-		-moz-hyphens: auto;
-		-ms-hyphens: auto;
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
@@ -77,9 +74,6 @@
 
 	.p4,
 	.p5 {
-		-webkit-hyphens: auto;
-		-moz-hyphens: auto;
-		-ms-hyphens: auto;
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
@@ -90,10 +84,10 @@
 	/* Estilos para os Botões do cabeçalho */
 	.btn-tecnologia,
 	.btn-serigrafia {
-		width: 20.0vw;
-		font-size: 4.4vw;
-		padding: 4%;
-		margin: 4%;
+		width: 80%;
+		font-size: 4.0vw;
+		padding: 5%;
+		margin: 5%;
 		display: inline-block;
 		cursor: pointer;
 		border-radius: 8px;
@@ -148,10 +142,8 @@
 	/* Estilo da Imagem */
 	img {
 		width: 35%;
-		height: auto;
 		display: block;
 		margin: 0 auto;
-		margin-top: 1%;
 	}
 
 	.weather-info {
@@ -196,7 +188,7 @@
 		width: 50%;
 		font-size: 3.0vw;
 		text-align: left;
-		padding: 0px;
+		padding: 2px;
 		box-sizing: border-box;
 	}
 
@@ -245,11 +237,9 @@
 
 	.container4 {
 		border-radius: 10px;
-		width: 94%;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
-		font-size: 4.6vw;
 	}
 
 
@@ -319,18 +309,18 @@
 		display: flex;
 		justify-content: center;
 		border-radius: 10px;
-		padding: 10px;
+		padding: 14px;
 	}
 
 	nav ul li {
-		width: 40.0vw;
-		margin: 0 20px;
+		width: 60%;
 		border-radius: 10px;
+		margin: 1%;
+		padding: 1%;
 	}
 
 	nav ul li a {
 		text-decoration: none;
-		font-size: 3.1vw;
 	}
 
 	nav ul li a.disabled {
@@ -355,9 +345,6 @@
 	.p1,
 	.p2,
 	.p3 {
-		-webkit-hyphens: auto;
-		-moz-hyphens: auto;
-		-ms-hyphens: auto;
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
@@ -367,9 +354,6 @@
 
 	.p4,
 	.p5 {
-		-webkit-hyphens: auto;
-		-moz-hyphens: auto;
-		-ms-hyphens: auto;
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
@@ -380,10 +364,10 @@
 	/* Estilos para os Botões do cabeçalho */
 	.btn-tecnologia,
 	.btn-serigrafia {
-		width: 20.0vw;
-		font-size: 4.4vw;
-		padding: 4%;
-		margin: 4%;
+		width: 80%;
+		font-size: 4.0vw;
+		padding: 5%;
+		margin: 5%;
 		display: inline-block;
 		cursor: pointer;
 		border-radius: 8px;
@@ -438,10 +422,8 @@
 	/* Estilo da Imagem */
 	img {
 		width: 35%;
-		height: auto;
 		display: block;
 		margin: 0 auto;
-		margin-top: 1%;
 	}
 
 	.weather-info {
@@ -486,7 +468,7 @@
 		width: 50%;
 		font-size: 3.0vw;
 		text-align: left;
-		padding: 0px;
+		padding: 2px;
 		box-sizing: border-box;
 	}
 
@@ -535,11 +517,9 @@
 
 	.container4 {
 		border-radius: 10px;
-		width: 94%;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
-		font-size: 4.6vw;
 	}
 
 
@@ -609,18 +589,18 @@
 		display: flex;
 		justify-content: center;
 		border-radius: 10px;
-		padding: 10px;
+		padding: 14px;
 	}
 
 	nav ul li {
-		width: 40.0vw;
-		margin: 0 20px;
+		width: 60%;
 		border-radius: 10px;
+		margin: 1%;
+		padding: 1%;
 	}
 
 	nav ul li a {
 		text-decoration: none;
-		font-size: 3.1vw;
 	}
 
 	nav ul li a.disabled {
@@ -645,9 +625,6 @@
 	.p1,
 	.p2,
 	.p3 {
-		-webkit-hyphens: auto;
-		-moz-hyphens: auto;
-		-ms-hyphens: auto;
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
@@ -657,9 +634,6 @@
 
 	.p4,
 	.p5 {
-		-webkit-hyphens: auto;
-		-moz-hyphens: auto;
-		-ms-hyphens: auto;
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
@@ -670,10 +644,10 @@
 	/* Estilos para os Botões do cabeçalho */
 	.btn-tecnologia,
 	.btn-serigrafia {
-		width: 20.0vw;
-		font-size: 4.4vw;
-		padding: 4%;
-		margin: 4%;
+		width: 80%;
+		font-size: 4.0vw;
+		padding: 5%;
+		margin: 5%;
 		display: inline-block;
 		cursor: pointer;
 		border-radius: 8px;
@@ -728,10 +702,8 @@
 	/* Estilo da Imagem */
 	img {
 		width: 35%;
-		height: auto;
 		display: block;
 		margin: 0 auto;
-		margin-top: 1%;
 	}
 
 	.weather-info {
@@ -776,7 +748,7 @@
 		width: 50%;
 		font-size: 3.0vw;
 		text-align: left;
-		padding: 0px;
+		padding: 2px;
 		box-sizing: border-box;
 	}
 
@@ -825,11 +797,9 @@
 
 	.container4 {
 		border-radius: 10px;
-		width: 94%;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
-		font-size: 4.6vw;
 	}
 
 
@@ -899,18 +869,18 @@
 		display: flex;
 		justify-content: center;
 		border-radius: 10px;
-		padding: 10px;
+		padding: 14px;
 	}
 
 	nav ul li {
-		width: 40.0vw;
-		margin: 0 20px;
+		width: 60%;
 		border-radius: 10px;
+		margin: 1%;
+		padding: 1%;
 	}
 
 	nav ul li a {
 		text-decoration: none;
-		font-size: 3.1vw;
 	}
 
 	nav ul li a.disabled {
@@ -935,9 +905,6 @@
 	.p1,
 	.p2,
 	.p3 {
-		-webkit-hyphens: auto;
-		-moz-hyphens: auto;
-		-ms-hyphens: auto;
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
@@ -947,9 +914,6 @@
 
 	.p4,
 	.p5 {
-		-webkit-hyphens: auto;
-		-moz-hyphens: auto;
-		-ms-hyphens: auto;
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
@@ -960,10 +924,10 @@
 	/* Estilos para os Botões do cabeçalho */
 	.btn-tecnologia,
 	.btn-serigrafia {
-		width: 20.0vw;
-		font-size: 4.4vw;
-		padding: 4%;
-		margin: 4%;
+		width: 80%;
+		font-size: 4.0vw;
+		padding: 5%;
+		margin: 5%;
 		display: inline-block;
 		cursor: pointer;
 		border-radius: 8px;
@@ -1018,10 +982,8 @@
 	/* Estilo da Imagem */
 	img {
 		width: 35%;
-		height: auto;
 		display: block;
 		margin: 0 auto;
-		margin-top: 1%;
 	}
 
 	.weather-info {
@@ -1066,7 +1028,7 @@
 		width: 50%;
 		font-size: 3.0vw;
 		text-align: left;
-		padding: 0px;
+		padding: 2px;
 		box-sizing: border-box;
 	}
 
@@ -1115,11 +1077,9 @@
 
 	.container4 {
 		border-radius: 10px;
-		width: 94%;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
-		font-size: 4.6vw;
 	}
 
 
@@ -1189,18 +1149,18 @@
 		display: flex;
 		justify-content: center;
 		border-radius: 10px;
-		padding: 10px;
+		padding: 14px;
 	}
 
 	nav ul li {
-		width: 40.0vw;
-		margin: 0 20px;
+		width: 60%;
 		border-radius: 10px;
+		margin: 1%;
+		padding: 1%;
 	}
 
 	nav ul li a {
 		text-decoration: none;
-		font-size: 3.1vw;
 	}
 
 	nav ul li a.disabled {
@@ -1225,9 +1185,6 @@
 	.p1,
 	.p2,
 	.p3 {
-		-webkit-hyphens: auto;
-		-moz-hyphens: auto;
-		-ms-hyphens: auto;
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
@@ -1237,9 +1194,6 @@
 
 	.p4,
 	.p5 {
-		-webkit-hyphens: auto;
-		-moz-hyphens: auto;
-		-ms-hyphens: auto;
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
@@ -1250,10 +1204,10 @@
 	/* Estilos para os Botões do cabeçalho */
 	.btn-tecnologia,
 	.btn-serigrafia {
-		width: 20.0vw;
-		font-size: 4.4vw;
-		padding: 4%;
-		margin: 4%;
+		width: 80%;
+		font-size: 4.0vw;
+		padding: 5%;
+		margin: 5%;
 		display: inline-block;
 		cursor: pointer;
 		border-radius: 8px;
@@ -1308,10 +1262,8 @@
 	/* Estilo da Imagem */
 	img {
 		width: 35%;
-		height: auto;
 		display: block;
 		margin: 0 auto;
-		margin-top: 1%;
 	}
 
 	.weather-info {
@@ -1356,7 +1308,7 @@
 		width: 50%;
 		font-size: 3.0vw;
 		text-align: left;
-		padding: 0px;
+		padding: 2px;
 		box-sizing: border-box;
 	}
 
@@ -1405,11 +1357,9 @@
 
 	.container4 {
 		border-radius: 10px;
-		width: 94%;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
-		font-size: 4.6vw;
 	}
 
 
