@@ -75,18 +75,18 @@ exports.handler = async (event) => {
     const uv = typeof uvData.value === 'number' ? uvData.value.toFixed(1) : 'indisponível';
     const aqi = airData.list?.[0]?.main?.aqi;
     const qualidadeAr = {
-      1: 'Boa 😃',
-      2: 'Razoável 🙂',
-      3: 'Moderada 😌',
-      4: 'Ruim 😟',
-      5: 'Muito ruim 😡'
+      1: '😃Boa',
+      2: '🙂Razoável',
+      3: '😌Moderada',
+      4: '😟Ruim',
+      5: '😡Muito ruim '
     }[aqi] || 'Desconhecida';
 
     const combinedData = {
       ...currentData,
       forecast: forecastData,
-      extras: {
-        uv,
+      extras:  {
+        uv, 
         aqi: qualidadeAr
       }
     };
