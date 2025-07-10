@@ -1,4 +1,5 @@
 // Importa funções auxiliares
+import { getUvIndexDescription } from './utils.js';
 import { getTemperatureFeelingIcon } from './utils.js';
 import { aplicarTemaAutomatico } from './tema.js'; // Aplica tema escuro com base no horário
 import { getNextHoliday } from './feriados.js';    // Busca o próximo feriado via API
@@ -45,10 +46,10 @@ async function getWeather(latitude, longitude) {
     const year = now.getFullYear();
     const formattedDate = `${day} de ${month} de ${year}.`;
 
-    // Previsão por hora (próximas 5 horas)
+    // Previsão por hora (próximas 7 horas)
     const hourlyForecast = forecast.list
       .filter(item => new Date(item.dt_txt) > now)
-      .slice(0, 5)
+      .slice(0, 6)
       .map(item => {
         const date = new Date(item.dt_txt);
         const hour = date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
@@ -100,7 +101,7 @@ async function getWeather(latitude, longitude) {
       🕒${localTime}: ${getTemperatureFeelingIcon(temperature)}${temperature} °C ${icon}${description}<br>
 
       ${hourlyForecast}<br>
-      💡 Índice UV: ${extras.uv}<br>
+      💡 Índice UV: ${extras.uv} ${getUvIndexDescription(extras.uv)}<br>
       🌫️ Qualidade do ar: ${extras.aqi}<br>
       💰 Taxa SELIC: ${selic}<br>
       💵 Dólar: ${dollar}<br>
