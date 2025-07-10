@@ -8,6 +8,17 @@ export function getTemperatureFeelingIcon(temp) {
   return '🔥';                      // Muito quente
 }
 
+export function getUvIndexDescription(uv) {
+  const uvValue = parseFloat(uv);
+  if (isNaN(uvValue)) return '🔍 Índice UV indisponível';
+
+  if (uvValue < 3) return '🟢 Baixo';
+  if (uvValue < 6) return '🟡 Moderado';
+  if (uvValue < 8) return '🟠 Alto';
+  if (uvValue < 11) return '🔴 Muito alto';
+  return '🟣 Extremo';
+}
+
 export function getWeatherIcon(description) {
   const desc = description.toLowerCase(); // Converte para minúsculas para facilitar a comparação
 
