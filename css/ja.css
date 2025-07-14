@@ -4,8 +4,12 @@ body {
 }
 
 /* Estilo do Cabeçalho */
-nav {
+.container-nav {
     background-color: black;
+
+}
+
+nav {
     color: white;
 }
 
@@ -32,7 +36,6 @@ nav ul li a.disabled {
 /* Estilos para Títulos */
 h1 {
     color: white;
-    font-size: 170%;
 }
 
 h2 {
@@ -48,7 +51,7 @@ h4 {
 }
 
 h5 {
-    color: pink;
+    color: green;
 }
 
 /* Estilos para Parágrafos */
@@ -91,6 +94,7 @@ h5 {
     0% {
         background-color: green;
     }
+
     100% {
         background-color: white;
         color: blue;
@@ -126,36 +130,45 @@ h5 {
 }
 
 /* Estilos para Containers */
-	.container0 {
-		background-color: green;
-		color: blue;
-	}
+.container-trabalhando {
+    background-color: green;
+}
 
-	.container1 {
-		background-color: white;
-		color: green;
-	}
+.container-tecnologia {
+    background-color: green;
+}
 
-	.container2 {
-		background-color: white;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-	}
-
-	.container3 {
-		background-color: white;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-	}
-
-.container4 {
-    border-radius: 10px;
+.container-tecnologias-exploradas {
     background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container-atualizando {
+    background-color: green;
+}
+
+.container-serigrafia {
+    background-color: transparent;
+}
+
+.container-habilidades {
+    background-color: green;
+}
+
+.container-reservado {
+    background-color: transparent;
+}
+
+.container-serigrafia {
+    background-color: transparent;
+}
+
+.container-formulario {
+    background-color: white;
 }
 
 /* Estilo do Formulário */
-.form-container4 {
+.form-container-formulario {
     background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .form-field input,
@@ -169,4 +182,3 @@ footer {
     background-color: blue;
     color: white;
 }
-
