@@ -95,8 +95,8 @@ async function getWeather(latitude, longitude) {
 
     // Atualiza o conteúdo da página com todos os dados
     document.getElementById('weather').innerHTML = `
-      ${city}, ${formattedDate}<br><br>
-      ${feriado}<br><br>
+      ${city}, ${formattedDate}<br>
+      ${feriado}<br>
       Previsão para hoje:<br>
       🕒${localTime}: ${getTemperatureFeelingIcon(temperature)}${temperature} °C ${icon}${description}<br>
 
@@ -105,7 +105,7 @@ async function getWeather(latitude, longitude) {
       🌫️ Qualidade do ar: ${extras.aqi}<br>
       💰 Taxa SELIC: ${selic}<br>
       💵 Dólar: ${dollar}<br>
-      💶 Euro: ${euro}<br><br>
+      💶 Euro: ${euro}<br>
       Próximos dias (Min / Max):<br>
       ${forecastHtml}<br>
     `;
