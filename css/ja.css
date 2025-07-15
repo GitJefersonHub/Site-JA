@@ -135,7 +135,7 @@ h5 {
 }
 
 .container-tecnologia {
-    background-color: green;
+    background-color: transparent;
 }
 
 .container-tecnologias-exploradas {
@@ -144,6 +144,7 @@ h5 {
 
 .container-atualizando {
     background-color: green;
+    color: yellow;
 }
 
 .container-serigrafia {
@@ -152,6 +153,7 @@ h5 {
 
 .container-habilidades {
     background-color: green;
+    color: yellow;
 }
 
 .container-reservado {
