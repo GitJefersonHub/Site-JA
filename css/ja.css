@@ -131,10 +131,12 @@ h5 {
 
 /* Estilos para Containers */
 .container-trabalhando {
+   
     background-color: green;
 }
 
 .container-tecnologia {
+    
     background-color: transparent;
 }
 
