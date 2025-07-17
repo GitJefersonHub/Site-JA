@@ -5,7 +5,6 @@
 	body {
 		justify-content: center;
 		align-items: center;
-
 	}
 
 	/* Container do cabeçalho */
@@ -65,6 +64,28 @@
 		pointer-events: none;
 	}
 
+	.container-esquerdo {
+		display: flex;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		width: 100%;
+		border-radius: 10px;
+		box-sizing: border-box;
+	}
+
+	/* Estilos para os Botões do cabeçalho nav*/
+	.btn-tecnologia,
+	.btn-serigrafia {
+		width: 80%;
+		font-size: 4.0vw;
+		padding: 5%;
+		margin: 5%;
+		display: inline-block;
+		cursor: pointer;
+		border-radius: 8px;
+		text-align: center;
+	}
+
 	/* Estilo da Imagem Jeferson Alves */
 	.containerimgJA {
 		align-items: flex-start;
@@ -76,7 +97,146 @@
 		width: 35%;
 		display: block;
 		margin: 0 auto;
-		padding: 1%;
+		padding: 1px;
+	}
+
+	/* 🌤️ Tema Claro (padrão) */
+	.weather-info {
+		hyphens: auto;
+		text-align: justify;
+		margin: 1px auto;
+		padding: 0.5rem;
+		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+		font-size: 4.8vw;
+		animation: skyPulse 12s ease infinite;
+	}
+
+	/* Animação compartilhada */
+	@keyframes skyPulse {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	/* Estilos para Containers */
+	.container-trabalhando {
+		hyphens: auto;
+		text-align: justify;
+		border-radius: 10px;
+		margin: 1px auto;
+		overflow-x: auto;
+	}
+
+	.container-tecnologia {
+		border-radius: 10px;
+		padding: 1px;
+		overflow-x: auto;
+		font-size: 4.0vw;
+	}
+
+	.container-tecnologias-exploradas {
+		border-radius: 10px;
+		margin: 1px auto;
+		overflow-x: auto;
+		text-align: justify;
+
+	}
+
+	/* Estilo das colunas */
+	.row {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	.column {
+		hyphens: auto;
+		width: 50%;
+		font-size: 3.0vw;
+		text-align: left;
+		padding: 2px;
+		box-sizing: border-box;
+	}
+
+	ul {
+		list-style-type: disc;
+		text-align: left;
+	}
+
+	li {
+		margin-bottom: 0%;
+	}
+
+	.container-atualizando {
+		width: 100%;
+		border-radius: 10px;
+		overflow-x: auto;
+		font-size: 4.4vw;
+		margin: 1px;
+	}
+
+	.container-serigrafia {
+		border-radius: 10px;
+		margin: 1px;
+		overflow-x: auto;
+		font-size: 4.0vw;
+	}
+
+	.container-habilidades {
+		width: 100%;
+		border-radius: 10px;
+		padding-left: 8%;
+		overflow-x: auto;
+		font-size: 4.6vw;
+	}
+
+	.container-reservado {
+		border-radius: 10px;
+		margin: 10px auto;
+		overflow-x: auto;
+		font-size: 4.0vw;
+	}
+
+	.container-formulario {
+		border-radius: 10px;
+		margin: 10px auto;
+		padding: 5px;
+		overflow-x: auto;
+	}
+
+	/* Estilo do Formulário */
+	.form-container {
+		padding: 20px;
+		border-radius: 8px;
+	}
+
+	.form-field {
+		margin-bottom: 20px;
+	}
+
+	.form-field label {
+		display: block;
+		margin-bottom: 5px;
+		font-weight: bold;
+	}
+
+	.form-field input,
+	.form-field textarea {
+		font-family: 'Arial', sans-serif;
+		width: 100%;
+		padding: 6px;
+		border-radius: 5px;
+		font-size: 110%;
 	}
 
 	/* Estilos para Títulos */
@@ -86,7 +246,6 @@
 	h4,
 	h5 {
 		font-size: 5.1vw;
-		/* Ajuste dinâmico da fonte */
 		text-align: center;
 		margin: 0.5em 0;
 	}
@@ -112,18 +271,7 @@
 		/* Ajuste dinâmico da fonte */
 	}
 
-	/* Estilos para os Botões do cabeçalho */
-	.btn-tecnologia,
-	.btn-serigrafia {
-		width: 80%;
-		font-size: 4.0vw;
-		padding: 5%;
-		margin: 5%;
-		display: inline-block;
-		cursor: pointer;
-		border-radius: 8px;
-	}
-
+	/*Estilos para botões*/
 	.btn1,
 	.btn2 {
 		width: 90%;
@@ -160,175 +308,12 @@
 	}
 
 	.btn-enviar {
-		padding: 1%;
-		margin: 1%;
 		text-align: center;
 		display: flex;
 		font-size: 5.0vw;
 		margin: 2%;
 		cursor: pointer;
-		border-radius: 10px;
-	}
-
-
-
-	/* 🌤️ Tema Claro (padrão) */
-	.weather-info {
-		hyphens: auto;
-		text-align: justify;
-		margin: 1% auto;
-		padding: 0.5rem;
-		border-radius: 10px;
-		color: white;
-		display: flex;
-		flex-direction: column;
-		font-size: 4.8vw;
-		background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
-		background-size: 300% 300%;
-		animation: skyPulse 12s ease infinite;
-	}
-
-	/* 🌙 Tema Escuro */
-	body.tema-escuro .weather-info {
-		background: radial-gradient(circle at bottom right, #000000, #1a1a2e, #16213e, #0f3460, #53354a);
-		color: #e0e0e0;
-	}
-
-	/* Animação compartilhada */
-	@keyframes skyPulse {
-		0% {
-			background-position: 0% 50%;
-		}
-
-		50% {
-			background-position: 100% 50%;
-		}
-
-		100% {
-			background-position: 0% 50%;
-		}
-	}
-
-	/* Estilo das colunas */
-	.row {
-		display: flex;
-		justify-content: space-between;
-		margin: 0 auto;
-		flex-wrap: wrap;
-	}
-
-	.column {
-		hyphens: auto;
-		width: 50%;
-		font-size: 3.0vw;
-		text-align: left;
-		padding: 2px;
-		box-sizing: border-box;
-	}
-
-	ul {
-		list-style-type: disc;
-		padding-left: 1px;
-		margin-left: 1%;
-	}
-
-	li {
-		margin-bottom: 0%;
-	}
-
-	/* Estilos para Containers */
-	.container-trabalhando {
-		hyphens: auto;
-		text-align: justify;
-		border-radius: 10px;
-		margin: 10px auto;
-		padding: 5px;
-		overflow-x: auto;
-	}
-
-	.container-tecnologia {
-		hyphens: auto;
-		text-align: justify;
-		border-radius: 10px;
-		margin: 10px auto;
-		padding: 5px;
-		overflow-x: auto;
-	}
-
-	.container-tecnologias-exploradas {
-		border-radius: 10px;
-		margin: 10px auto;
-		padding: 14px;
-		overflow-x: auto;
-		text-align: justify;
-
-	}
-
-	.container-atualizando {
-		border-radius: 10px;
-		margin: 1%;
-		padding: 1%;
-		overflow-x: auto;
-		font-size: 4.0vw;
-	}
-
-	.container-serigrafia {
-		border-radius: 10px;
-		padding: 0%;
-		overflow-x: auto;
-		font-size: 4.0vw;
-	}
-
-	.container-habilidades {
-		border-radius: 10px;
-		text-indent: 2%;
-		margin-left: 2%;
-		padding: 0%;
-		padding-left: 8%;
-		overflow-x: auto;
-		font-size: 4.0vw;
-	}
-
-	.container-reservado {
-		border-radius: 10px;
-		margin: 10px auto;
-		padding: 0%;
-		padding-left: 8%;
-		overflow-x: auto;
-		font-size: 4.0vw;
-	}
-
-	.container-formulario {
-		border-radius: 10px;
-		margin: 10px auto;
-		padding: 5px;
-		overflow-x: auto;
-	}
-
-
-	/* Estilo do Formulário */
-	.form-container {
-		padding: 20px;
-		border-radius: 8px;
-	}
-
-	.form-field {
-		margin-bottom: 20px;
-	}
-
-	.form-field label {
-		display: block;
-		margin-bottom: 5px;
-		font-weight: bold;
-	}
-
-	.form-field input,
-	.form-field textarea {
-		font-family: 'Arial', sans-serif;
-		width: 100%;
-		padding: 6px;
-		border-radius: 5px;
-		font-size: 110%;
+		border-radius: 6px;
 	}
 
 	/* Estilo do Rodapé */
@@ -363,7 +348,7 @@
 
 	/* Estilo do Cabeçalho */
 	nav {
-		width: 100%;
+		width: 98%;
 		text-align: center;
 		padding: 1%;
 	}
@@ -372,13 +357,6 @@
 		margin-right: auto;
 		border-radius: 10px;
 		padding: 1%;
-		margin: 0 1%;
-	}
-
-	nav .logo a {
-		font-family: 'Georgia', 'Times New Roman', Times, serif;
-		font-size: 200%;
-		text-decoration: none;
 		margin: 0 1%;
 	}
 
@@ -400,26 +378,150 @@
 
 	nav ul li a {
 		text-decoration: none;
-		font-size: clamp(12px, 4vw, 40px);
-		/* Ajuste dinâmico da fonte */
 	}
 
 	nav ul li a.disabled {
 		pointer-events: none;
 	}
 
+	/* Estilos para os Botões do cabeçalho nav */
+	.btn-tecnologia,
+	.btn-serigrafia {
+		width: 80%;
+		font-size: 2.8vw;
+		padding: 4%;
+		margin: 0%;
+		display: inline-block;
+		cursor: pointer;
+		border-radius: 8px;
+	}
+
+	.container-esquerdo {
+		display: flex;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		width: 100%;
+		border-radius: 10px;
+		box-sizing: border-box;
+	}
+
 	/* Estilo da Imagem Jeferson Alves */
 	.containerimgJA {
-		align-items: flex-start;
-		/* Espaço de 1% acima do container principal */
+		width: 48%;
+		padding: 1px;
 	}
 
 	/* Estilo da Imagem */
 	img {
-		width: 35%;
-		display: block;
+		width: 100%;
+		align-items: flex-start;
+		border-radius: 8px;
+	}
+
+	/* 🌤️ Tema Claro (padrão) */
+	.container-weather {
+		width: 50%;
+		padding: 1px;
+	}
+
+	.weather-info {
+		width: 100%;
+		hyphens: auto;
+		text-align: justify;
+		margin: 1px;
+		padding: 1px;
+		border-radius: 10px;
+		font-size: 2.0vw;
+		animation: skyPulse 12s ease infinite;
+	}
+
+	/* 🌙 Tema Escuro */
+	body.tema-escuro .weather-info {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+
+	/* Animação compartilhada */
+	@keyframes skyPulse {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	.container-trabalhando {
+		width: 39%;
+		border-radius: 8px;
+		margin: 1px;
+	}
+
+	.container-tecnologia {
+		width: 59%;
+		margin: 1px;
+	}
+
+	.container-tecnologias-exploradas {
+		border-radius: 10px;
+		width: 80%;
+		margin: 1px auto;
+	}
+
+	/* Estilo das colunas */
+	.row {
+		display: flex;
+		justify-content: space-between;
 		margin: 0 auto;
-		padding: 1%;
+		flex-wrap: wrap;
+	}
+
+	.column {
+		hyphens: auto;
+		width: 50%;
+		font-size: 2.6vw;
+		text-align: left;
+		box-sizing: border-box;
+	}
+
+	ul {
+		list-style-type: disc;
+	}
+
+	li {
+		margin-bottom: 0%;
+	}
+
+	.container-atualizando {
+		width: 80%;
+		border-radius: 10px;
+		margin: 1px auto;
+		font-size: 3.0vw;
+	}
+
+	.container-serigrafia {
+		width: 49%;
+		margin: 1px;
+
+	}
+
+	.container-habilidades {
+		width: 49%;
+		border-radius: 10px;
+		margin: 1px auto;
+		font-size: 2.8vw;
+	}
+
+	.container-reservado {
+		width: 80%;
+		margin: 10% auto;
+		border-radius: 10px;
 	}
 
 	/* Estilos para Títulos */
@@ -428,12 +530,10 @@
 	h3,
 	h4,
 	h5 {
-		font-size: 5.1vw;
-		/* Ajuste dinâmico da fonte */
+		font-size: 2.4vw;
 		text-align: center;
 		margin: 0.5em 0;
 	}
-
 
 	/* Estilos para Parágrafos */
 	.p1,
@@ -443,7 +543,7 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 4.8vw;
+		font-size: 2.4vw;
 	}
 
 	.p4,
@@ -453,18 +553,6 @@
 		margin: 0 1%;
 		font-size: 4.8vw;
 		/* Ajuste dinâmico da fonte */
-	}
-
-	/* Estilos para os Botões do cabeçalho */
-	.btn-tecnologia,
-	.btn-serigrafia {
-		width: 80%;
-		font-size: 4.0vw;
-		padding: 5%;
-		margin: 5%;
-		display: inline-block;
-		cursor: pointer;
-		border-radius: 8px;
 	}
 
 	.btn1,
@@ -478,7 +566,7 @@
 		border-radius: 10px;
 		margin-left: 5%;
 		margin-right: 5%;
-		font-size: 5.0vw;
+		font-size: 3.0vw;
 	}
 
 	.btn1:hover,
@@ -503,151 +591,21 @@
 	}
 
 	.btn-enviar {
-		padding: 1%;
-		margin: 1%;
 		text-align: center;
 		display: flex;
-		font-size: 5.0vw;
+		font-size: 2.5vw;
 		margin: 2%;
 		cursor: pointer;
-		border-radius: 10px;
-	}
-
-
-
-	/* 🌤️ Tema Claro (padrão) */
-	.weather-info {
-		hyphens: auto;
-		text-align: justify;
-		margin: 1% auto;
-		padding: 0.5rem;
-		border-radius: 10px;
-		color: white;
-		display: flex;
-		flex-direction: column;
-		font-size: 4.8vw;
-		background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
-		background-size: 300% 300%;
-		animation: skyPulse 12s ease infinite;
-	}
-
-	/* 🌙 Tema Escuro */
-	body.tema-escuro .weather-info {
-		background: radial-gradient(circle at bottom right, #000000, #1a1a2e, #16213e, #0f3460, #53354a);
-		color: #e0e0e0;
-	}
-
-	/* Animação compartilhada */
-	@keyframes skyPulse {
-		0% {
-			background-position: 0% 50%;
-		}
-
-		50% {
-			background-position: 100% 50%;
-		}
-
-		100% {
-			background-position: 0% 50%;
-		}
-	}
-
-	/* Estilo das colunas */
-	.row {
-		display: flex;
-		justify-content: space-between;
-		margin: 0 auto;
-		flex-wrap: wrap;
-	}
-
-	.column {
-		hyphens: auto;
-		width: 50%;
-		font-size: 3.0vw;
-		text-align: left;
-		padding: 2px;
-		box-sizing: border-box;
-	}
-
-	ul {
-		list-style-type: disc;
-		padding-left: 1px;
-		margin-left: 1%;
-	}
-
-	li {
-		margin-bottom: 0%;
-	}
-
-	/* Estilos para Containers */
-	.container-trabalhando {
-		hyphens: auto;
-		text-align: justify;
-		border-radius: 10px;
-		margin: 10px auto;
-		padding: 5px;
-		overflow-x: auto;
-	}
-
-	.container-tecnologia {
-		hyphens: auto;
-		text-align: justify;
-		border-radius: 10px;
-		margin: 10px auto;
-		padding: 5px;
-		overflow-x: auto;
-	}
-
-	.container-tecnologias-exploradas {
-		border-radius: 10px;
-		margin: 10px auto;
-		padding: 14px;
-		overflow-x: auto;
-		text-align: justify;
-
-	}
-
-	.container-atualizando {
-		border-radius: 10px;
-		margin: 1%;
-		padding: 1%;
-		overflow-x: auto;
-		font-size: 4.0vw;
-	}
-
-	.container-serigrafia {
-		border-radius: 10px;
-		padding: 0%;
-		overflow-x: auto;
-		font-size: 4.0vw;
-	}
-
-	.container-habilidades {
-		border-radius: 10px;
-		text-indent: 2%;
-		margin-left: 2%;
-		padding: 0%;
-		padding-left: 8%;
-		overflow-x: auto;
-		font-size: 4.0vw;
-	}
-
-	.container-reservado {
-		border-radius: 10px;
-		margin: 10px auto;
-		padding: 0%;
-		padding-left: 8%;
-		overflow-x: auto;
-		font-size: 4.0vw;
+		border-radius: 6px;
 	}
 
 	.container-formulario {
+		width: 60%;
 		border-radius: 10px;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
 	}
-
 
 	/* Estilo do Formulário */
 	.form-container {
@@ -683,14 +641,6 @@
 		font-size: 4.1vw;
 	}
 }
-
-
-
-
-
-
-
-
 
 /* Tablet */
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
@@ -750,10 +700,31 @@
 		pointer-events: none;
 	}
 
+	/* Estilos para os Botões do cabeçalho nav */
+	.btn-tecnologia,
+	.btn-serigrafia {
+		width: 80%;
+		font-size: 2.8vw;
+		padding: 4%;
+		margin: 0%;
+		display: inline-block;
+		cursor: pointer;
+		border-radius: 8px;
+	}
+
+	.container-esquerdo {
+		display: flex;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		width: 100%;
+		border-radius: 10px;
+		box-sizing: border-box;
+	}
+
 	/* Estilo da Imagem Jeferson Alves */
 	.containerimgJA {
-		width: 50%;
-
+		width: 48%;
+		padding: 1px;
 	}
 
 	/* Estilo da Imagem */
@@ -766,6 +737,7 @@
 	/* 🌤️ Tema Claro (padrão) */
 	.container-weather {
 		width: 50%;
+		padding: 1px;
 	}
 
 	.weather-info {
@@ -775,19 +747,13 @@
 		margin: 1px;
 		padding: 1px;
 		border-radius: 10px;
-		color: white;
 		font-size: 2.0vw;
-		background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
-		background-size: 300% 300%;
 		animation: skyPulse 12s ease infinite;
 	}
 
 	/* 🌙 Tema Escuro */
 	body.tema-escuro .weather-info {
-		background: radial-gradient(circle at bottom right, #000000, #1a1a2e, #16213e, #0f3460, #53354a);
-		color: #e0e0e0;
 		display: flex;
-		/* Habilita ajuste baseado em imagem */
 		flex-direction: column;
 		justify-content: flex-start;
 	}
@@ -807,6 +773,73 @@
 		}
 	}
 
+	.container-trabalhando {
+		width: 39%;
+		border-radius: 8px;
+		margin: 1px;
+	}
+
+	.container-tecnologia {
+		width: 59%;
+		margin: 1px;
+	}
+
+	.container-tecnologias-exploradas {
+		border-radius: 10px;
+		width: 80%;
+		margin: 1px auto;
+	}
+
+	/* Estilo das colunas */
+	.row {
+		display: flex;
+		justify-content: space-between;
+		margin: 0 auto;
+		flex-wrap: wrap;
+	}
+
+	.column {
+		hyphens: auto;
+		width: 50%;
+		font-size: 2.6vw;
+		text-align: left;
+		box-sizing: border-box;
+	}
+
+	ul {
+		list-style-type: disc;
+	}
+
+	li {
+		margin-bottom: 0%;
+	}
+
+	.container-atualizando {
+		width: 80%;
+		border-radius: 10px;
+		margin: 1px auto;
+		font-size: 3.0vw;
+	}
+
+	.container-serigrafia {
+		width: 49%;
+		margin: 1px;
+
+	}
+
+	.container-habilidades {
+		width: 49%;
+		border-radius: 10px;
+		margin: 1px auto;
+		font-size: 2.8vw;
+	}
+
+	.container-reservado {
+		width: 80%;
+		margin: 10% auto;
+		border-radius: 10px;
+	}
+
 	/* Estilos para Títulos */
 	h1,
 	h2,
@@ -814,7 +847,6 @@
 	h4,
 	h5 {
 		font-size: 2.4vw;
-		/* Ajuste dinâmico da fonte */
 		text-align: center;
 		margin: 0.5em 0;
 	}
@@ -837,18 +869,6 @@
 		margin: 0 1%;
 		font-size: 4.8vw;
 		/* Ajuste dinâmico da fonte */
-	}
-
-	/* Estilos para os Botões do cabeçalho */
-	.btn-tecnologia,
-	.btn-serigrafia {
-		width: 80%;
-		font-size: 2.8vw;
-		padding: 4%;
-		margin: 0%;
-		display: inline-block;
-		cursor: pointer;
-		border-radius: 8px;
 	}
 
 	.btn1,
@@ -887,88 +907,15 @@
 	}
 
 	.btn-enviar {
-		padding: 1%;
-		margin: 1%;
 		text-align: center;
 		display: flex;
-		font-size: 5.0vw;
+		font-size: 2.5vw;
 		margin: 2%;
 		cursor: pointer;
-		border-radius: 10px;
+		border-radius: 6px;
 	}
 
-	/* Estilo das colunas */
-	.row {
-		display: flex;
-		justify-content: space-between;
-		margin: 0 auto;
-		flex-wrap: wrap;
-	}
 
-	.column {
-		hyphens: auto;
-		width: 50%;
-		font-size: 2.2vw;
-		text-align: left;
-		box-sizing: border-box;
-	}
-
-	ul {
-		list-style-type: disc;
-	}
-
-	li {
-		margin-bottom: 0%;
-	}
-
-	.container-esquerdo {
-		display: flex;
-		justify-content: flex-start;
-		flex-wrap: wrap;
-		width: 100%;
-		border-radius: 10px;
-		text-align: justify;
-		box-sizing: border-box;
-	}
-
-	/* Espaçamento personalizado entre os containers */
-	.container-trabalhando {
-		width: 40%;
-		border-radius: 10px;
-	}
-
-	.container-tecnologia {
-		width: 60%;
-	}
-
-	.container-tecnologias-exploradas {
-		border-radius: 10px;
-		width: 80%;
-		margin-left: 10%;
-		margin-right: 10%;
-	}
-
-	.container-atualizando {
-		width: 40%;
-		border-radius: 10px;
-		margin-left: 30%;
-		margin-right: 30%;
-	}
-
-	.container-serigrafia {
-		width: 50%;
-
-	}
-
-	.container-habilidades {
-		width: 25%;
-		border-radius: 10px;
-	}
-
-	.container-reservado {
-		width: 25%;
-		border-radius: 10px;
-	}
 
 	.container-formulario {
 		width: 60%;
@@ -1013,24 +960,323 @@
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Laptops */
-@media only screen and (min-width: 1025px) and (max-width: 1200px) {}
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+
+	/* Estilos Gerais */
+	body {
+		justify-content: center;
+		align-items: center;
+
+	}
+
+	/* Container do cabeçalho */
+	.container-nav {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		border-radius: 10px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
+
+	/* Estilo do Cabeçalho */
+	nav {
+		width: 98%;
+		text-align: center;
+		padding: 1%;
+	}
+
+	nav .logo {
+		margin-right: auto;
+		border-radius: 10px;
+		padding: 1%;
+		margin: 0 1%;
+	}
+
+	nav ul {
+		list-style: none;
+		display: flex;
+		justify-content: center;
+		border-radius: 10px;
+		padding: 10px;
+		margin: 0 1%;
+	}
+
+	nav ul li {
+		width: 40%;
+		margin: 0 20px;
+		border-radius: 10px;
+		padding: 1%;
+	}
+
+	nav ul li a {
+		text-decoration: none;
+	}
+
+	nav ul li a.disabled {
+		pointer-events: none;
+	}
+
+	/* Estilos para os Botões do cabeçalho nav */
+	.btn-tecnologia,
+	.btn-serigrafia {
+		width: 80%;
+		font-size: 2.8vw;
+		padding: 4%;
+		margin: 0%;
+		display: inline-block;
+		cursor: pointer;
+		border-radius: 8px;
+	}
+
+	.container-esquerdo {
+		display: flex;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		width: 100%;
+		border-radius: 10px;
+		box-sizing: border-box;
+	}
+
+	/* Estilo da Imagem Jeferson Alves */
+	.containerimgJA {
+		width: 48%;
+		padding: 1px;
+	}
+
+	/* Estilo da Imagem */
+	img {
+		width: 100%;
+		align-items: flex-start;
+		border-radius: 8px;
+	}
+
+	/* 🌤️ Tema Claro (padrão) */
+	.container-weather {
+		width: 50%;
+		padding: 1px;
+	}
+
+	.weather-info {
+		width: 100%;
+		hyphens: auto;
+		text-align: justify;
+		margin: 1px;
+		padding: 1px;
+		border-radius: 10px;
+		font-size: 2.0vw;
+		animation: skyPulse 12s ease infinite;
+	}
+
+	/* 🌙 Tema Escuro */
+	body.tema-escuro .weather-info {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+
+	/* Animação compartilhada */
+	@keyframes skyPulse {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	.container-trabalhando {
+		width: 39%;
+		border-radius: 8px;
+		margin: 1px;
+	}
+
+	.container-tecnologia {
+		width: 59%;
+		margin: 1px;
+	}
+
+	.container-tecnologias-exploradas {
+		border-radius: 10px;
+		width: 80%;
+		margin: 1px auto;
+	}
+
+	/* Estilo das colunas */
+	.row {
+		display: flex;
+		justify-content: space-between;
+		margin: 0 auto;
+		flex-wrap: wrap;
+	}
+
+	.column {
+		hyphens: auto;
+		width: 50%;
+		font-size: 2.6vw;
+		text-align: left;
+		box-sizing: border-box;
+	}
+
+	ul {
+		list-style-type: disc;
+	}
+
+	li {
+		margin-bottom: 0%;
+	}
+
+	.container-atualizando {
+		width: 80%;
+		border-radius: 10px;
+		margin: 1px auto;
+		font-size: 3.0vw;
+	}
+
+	.container-serigrafia {
+		width: 49%;
+		margin: 1px;
+
+	}
+
+	.container-habilidades {
+		width: 49%;
+		border-radius: 10px;
+		margin: 1px auto;
+		font-size: 2.8vw;
+	}
+
+	.container-reservado {
+		width: 80%;
+		margin: 10% auto;
+		border-radius: 10px;
+	}
+
+	/* Estilos para Títulos */
+	h1,
+	h2,
+	h3,
+	h4,
+	h5 {
+		font-size: 2.4vw;
+		text-align: center;
+		margin: 0.5em 0;
+	}
+
+	/* Estilos para Parágrafos */
+	.p1,
+	.p2,
+	.p3 {
+		hyphens: auto;
+		text-align: justify;
+		margin: 0 1%;
+		text-indent: 10%;
+		font-size: 2.4vw;
+	}
+
+	.p4,
+	.p5 {
+		hyphens: auto;
+		text-align: justify;
+		margin: 0 1%;
+		font-size: 4.8vw;
+		/* Ajuste dinâmico da fonte */
+	}
+
+	.btn1,
+	.btn2 {
+		width: 90%;
+		border: none;
+		padding: 1% 10%;
+		text-align: center;
+		text-decoration: none;
+		cursor: pointer;
+		border-radius: 10px;
+		margin-left: 5%;
+		margin-right: 5%;
+		font-size: 3.0vw;
+	}
+
+	.btn1:hover,
+	.btn2:hover {
+		transform: scale(1.1);
+	}
+
+	.btn3 {
+		border: none;
+		padding: 5% 10%;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 5.0vw;
+		margin: 2%;
+		cursor: pointer;
+		border-radius: 4%;
+	}
+
+	.btn3:hover {
+		transform: scale(1.1);
+	}
+
+	.btn-enviar {
+		text-align: center;
+		display: flex;
+		font-size: 2.5vw;
+		margin: 2%;
+		cursor: pointer;
+		border-radius: 6px;
+	}
+
+
+
+	.container-formulario {
+		width: 60%;
+		border-radius: 10px;
+		margin: 10px auto;
+		padding: 5px;
+		overflow-x: auto;
+	}
+
+	/* Estilo do Formulário */
+	.form-container {
+		padding: 20px;
+		border-radius: 8px;
+	}
+
+	.form-field {
+		margin-bottom: 20px;
+	}
+
+	.form-field label {
+		display: block;
+		margin-bottom: 5px;
+		font-weight: bold;
+	}
+
+	.form-field input,
+	.form-field textarea {
+		font-family: 'Arial', sans-serif;
+		width: 100%;
+		padding: 6px;
+		border-radius: 5px;
+		font-size: 110%;
+	}
+
+	/* Estilo do Rodapé */
+	footer {
+		text-align: center;
+		margin: 1%;
+		padding: 1%;
+		border-radius: 4px;
+		font-size: 4.1vw;
+	}
+}
 
 /* Desktops TVS*/
 @media only screen and (min-width: 1201px) {
@@ -1107,10 +1353,7 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 10px;
-		color: white;
 		font-size: 1.2vw;
-		background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
-		background-size: 300% 300%;
 		animation: skyPulse 12s ease infinite;
 	}
 
@@ -1260,7 +1503,6 @@
 		justify-content: flex-start;
 		flex-wrap: wrap;
 		border-radius: 10px;
-		text-align: justify;
 		box-sizing: border-box;
 	}
 
@@ -1342,7 +1584,7 @@
 		padding: 6px;
 		border-radius: 5px;
 		font-size: 1.8vw;
-		
+
 	}
 
 	/* Estilo do Rodapé */
