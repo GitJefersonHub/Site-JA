@@ -1,4 +1,4 @@
-/* Estilos Gerais */
+/* Cores JA */
 body {
     background: linear-gradient(135deg, #0b0336, #2a5298);
 }
@@ -31,6 +31,29 @@ nav ul li a {
 
 nav ul li a.disabled {
     color: grey;
+}
+
+/* Estilo da Imagem Jeferson Alves */
+.containerimgJA {
+    padding: 0px;
+}
+
+/* Estilo da Imagem */
+img {
+    padding: 0px;
+}
+
+/* 🌤️ Tema Claro (padrão) */
+.weather-info {
+    color: white;
+    background: radial-gradient(circle at top left, #070320, #192f6b, #0e42b3, #f5d76e, #a0a0a0);
+    background-size: 300% 300%;
+}
+
+/* 🌙 Tema Escuro */
+body.tema-escuro .weather-info {
+    background: radial-gradient(circle at bottom right, #000000, #1a1a2e, #16213e, #0f3460, #53354a);
+    color: #e0e0e0;
 }
 
 /* Estilos para Títulos */
@@ -131,12 +154,12 @@ h5 {
 
 /* Estilos para Containers */
 .container-trabalhando {
-   
+
     background-color: green;
 }
 
 .container-tecnologia {
-    
+
     background-color: transparent;
 }
 
@@ -159,10 +182,6 @@ h5 {
 }
 
 .container-reservado {
-    background-color: transparent;
-}
-
-.container-serigrafia {
     background-color: transparent;
 }
 
