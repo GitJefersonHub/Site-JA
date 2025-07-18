@@ -21,29 +21,13 @@
 	nav {
 		width: 100%;
 		text-align: center;
-		padding: 1%;
-	}
-
-	nav .logo {
-		margin-right: auto;
-		border-radius: 10px;
-		padding: 1%;
-		margin: 0 1%;
-	}
-
-	nav .logo a {
-		font-family: 'Georgia', 'Times New Roman', Times, serif;
-		font-size: 200%;
-		text-decoration: none;
-		margin: 0 1%;
 	}
 
 	nav ul {
 		list-style: none;
 		display: flex;
 		justify-content: center;
-		border-radius: 10px;
-		padding: 10px;
+		padding: 4px;
 		margin: 0 1%;
 	}
 
@@ -51,13 +35,10 @@
 		width: 40%;
 		margin: 0 20px;
 		border-radius: 10px;
-		padding: 1%;
 	}
 
 	nav ul li a {
 		text-decoration: none;
-		font-size: clamp(12px, 4vw, 40px);
-		/* Ajuste dinâmico da fonte */
 	}
 
 	nav ul li a.disabled {
@@ -69,27 +50,26 @@
 		justify-content: flex-start;
 		flex-wrap: wrap;
 		width: 100%;
-		border-radius: 10px;
 		box-sizing: border-box;
 	}
 
 	/* Estilos para os Botões do cabeçalho nav*/
 	.btn-tecnologia,
 	.btn-serigrafia {
-		width: 80%;
+		width: 92%;
 		font-size: 4.0vw;
-		padding: 5%;
-		margin: 5%;
+		padding: 2%;
+		margin: 2%;
 		display: inline-block;
 		cursor: pointer;
-		border-radius: 8px;
+		border-radius: 10px;
 		text-align: center;
 	}
 
 	/* Estilo da Imagem Jeferson Alves */
 	.containerimgJA {
 		align-items: flex-start;
-		/* Espaço de 1% acima do container principal */
+		margin: 1%;
 	}
 
 	/* Estilo da Imagem */
@@ -97,15 +77,14 @@
 		width: 35%;
 		display: block;
 		margin: 0 auto;
-		padding: 1px;
+		border-radius: 10px;
 	}
 
 	/* 🌤️ Tema Claro (padrão) */
 	.weather-info {
 		hyphens: auto;
-		text-align: justify;
-		margin: 1px auto;
-		padding: 0.5rem;
+		margin: 1% auto;
+		padding: 4px;
 		border-radius: 10px;
 		display: flex;
 		flex-direction: column;
@@ -133,23 +112,21 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 10px;
-		margin: 1px auto;
+		margin: 1% auto;
+		padding: 4px;
 		overflow-x: auto;
 	}
 
 	.container-tecnologia {
 		border-radius: 10px;
-		padding: 1px;
+		margin: 1%; auto;
 		overflow-x: auto;
-		font-size: 4.0vw;
 	}
 
 	.container-tecnologias-exploradas {
 		border-radius: 10px;
-		margin: 1px auto;
+		margin: 1% auto;
 		overflow-x: auto;
-		text-align: justify;
-
 	}
 
 	/* Estilo das colunas */
@@ -163,14 +140,11 @@
 		hyphens: auto;
 		width: 50%;
 		font-size: 3.0vw;
-		text-align: left;
-		padding: 2px;
 		box-sizing: border-box;
 	}
 
 	ul {
 		list-style-type: disc;
-		text-align: left;
 	}
 
 	li {
@@ -182,27 +156,26 @@
 		border-radius: 10px;
 		overflow-x: auto;
 		font-size: 4.4vw;
-		margin: 1px;
+		margin: 1%;
+		padding-left: 2%;
 	}
 
 	.container-serigrafia {
-		border-radius: 10px;
-		margin: 1px;
+		margin: 1%;
+		padding: 4px;
 		overflow-x: auto;
-		font-size: 4.0vw;
 	}
 
 	.container-habilidades {
 		width: 100%;
 		border-radius: 10px;
-		padding-left: 8%;
+		padding-left: 4%;
 		overflow-x: auto;
 		font-size: 4.6vw;
 	}
 
 	.container-reservado {
-		border-radius: 10px;
-		margin: 10px auto;
+		margin: 1% auto;
 		overflow-x: auto;
 		font-size: 4.0vw;
 	}
@@ -228,6 +201,7 @@
 		display: block;
 		margin-bottom: 5px;
 		font-weight: bold;
+		font-size: 4.8vw;
 	}
 
 	.form-field input,
@@ -236,7 +210,7 @@
 		width: 100%;
 		padding: 6px;
 		border-radius: 5px;
-		font-size: 110%;
+		font-size: 4.8vw;
 	}
 
 	/* Estilos para Títulos */
@@ -262,13 +236,10 @@
 		font-size: 4.8vw;
 	}
 
-	.p4,
-	.p5 {
+	.p4 {
 		hyphens: auto;
 		text-align: justify;
-		margin: 0 1%;
 		font-size: 4.8vw;
-		/* Ajuste dinâmico da fonte */
 	}
 
 	/*Estilos para botões*/
@@ -310,7 +281,7 @@
 	.btn-enviar {
 		text-align: center;
 		display: flex;
-		font-size: 5.0vw;
+		font-size: 4.0vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 6px;
@@ -321,7 +292,7 @@
 		text-align: center;
 		margin: 1%;
 		padding: 1%;
-		border-radius: 4px;
+		border-radius: 8px;
 		font-size: 4.1vw;
 	}
 }
@@ -350,14 +321,7 @@
 	nav {
 		width: 98%;
 		text-align: center;
-		padding: 1%;
-	}
-
-	nav .logo {
-		margin-right: auto;
-		border-radius: 10px;
-		padding: 1%;
-		margin: 0 1%;
+		
 	}
 
 	nav ul {
@@ -365,7 +329,7 @@
 		display: flex;
 		justify-content: center;
 		border-radius: 10px;
-		padding: 10px;
+		padding: 4px;
 		margin: 0 1%;
 	}
 
@@ -373,7 +337,6 @@
 		width: 40%;
 		margin: 0 20px;
 		border-radius: 10px;
-		padding: 1%;
 	}
 
 	nav ul li a {
@@ -384,16 +347,17 @@
 		pointer-events: none;
 	}
 
-	/* Estilos para os Botões do cabeçalho nav */
+	/* Estilos para os Botões do cabeçalho nav*/
 	.btn-tecnologia,
 	.btn-serigrafia {
-		width: 80%;
-		font-size: 2.8vw;
-		padding: 4%;
-		margin: 0%;
+		width: 90%;
+		font-size: 3.0vw;
+		padding: 2%;
+		margin: 2%;
 		display: inline-block;
 		cursor: pointer;
-		border-radius: 8px;
+		border-radius: 10px;
+		text-align: center;
 	}
 
 	.container-esquerdo {
@@ -401,37 +365,34 @@
 		justify-content: flex-start;
 		flex-wrap: wrap;
 		width: 100%;
-		border-radius: 10px;
 		box-sizing: border-box;
 	}
 
 	/* Estilo da Imagem Jeferson Alves */
 	.containerimgJA {
 		width: 48%;
-		padding: 1px;
+		margin: 1%;
 	}
 
 	/* Estilo da Imagem */
 	img {
 		width: 100%;
 		align-items: flex-start;
-		border-radius: 8px;
+		border-radius: 10px;
 	}
 
 	/* 🌤️ Tema Claro (padrão) */
 	.container-weather {
-		width: 50%;
-		padding: 1px;
+		width: 48%;
+		margin: 1%;
 	}
 
 	.weather-info {
 		width: 100%;
 		hyphens: auto;
 		text-align: justify;
-		margin: 1px;
-		padding: 1px;
 		border-radius: 10px;
-		font-size: 2.0vw;
+		font-size: 3.0vw;
 		animation: skyPulse 12s ease infinite;
 	}
 
@@ -458,27 +419,27 @@
 	}
 
 	.container-trabalhando {
-		width: 39%;
-		border-radius: 8px;
-		margin: 1px;
+		width: 38%;
+		border-radius: 10px;
+		margin: 1%;
+		padding: 4px;
 	}
 
 	.container-tecnologia {
-		width: 59%;
-		margin: 1px;
+		width: 56%;
+		margin: 1%;
 	}
 
 	.container-tecnologias-exploradas {
 		border-radius: 10px;
 		width: 80%;
-		margin: 1px auto;
+		margin: 1% auto;
 	}
 
 	/* Estilo das colunas */
 	.row {
 		display: flex;
 		justify-content: space-between;
-		margin: 0 auto;
 		flex-wrap: wrap;
 	}
 
@@ -486,7 +447,6 @@
 		hyphens: auto;
 		width: 50%;
 		font-size: 2.6vw;
-		text-align: left;
 		box-sizing: border-box;
 	}
 
@@ -501,26 +461,27 @@
 	.container-atualizando {
 		width: 80%;
 		border-radius: 10px;
-		margin: 1px auto;
+		margin: 1% auto;
+		padding-left: 3%;
 		font-size: 3.0vw;
 	}
 
 	.container-serigrafia {
-		width: 49%;
-		margin: 1px;
+		width: 48%;
+		margin: 1%;
 
 	}
 
 	.container-habilidades {
-		width: 49%;
+		width: 48%;
 		border-radius: 10px;
-		margin: 1px auto;
+		margin: 1% auto;
 		font-size: 2.8vw;
 	}
 
 	.container-reservado {
 		width: 80%;
-		margin: 10% auto;
+		margin: 1% auto;
 		border-radius: 10px;
 	}
 
@@ -530,7 +491,7 @@
 	h3,
 	h4,
 	h5 {
-		font-size: 2.4vw;
+		font-size: 3.4vw;
 		text-align: center;
 		margin: 0.5em 0;
 	}
@@ -543,16 +504,16 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 2.4vw;
+		font-size: 3.0vw;
 	}
 
-	.p4,
-	.p5 {
-		hyphens: auto;
-		text-align: justify;
-		margin: 0 1%;
-		font-size: 4.8vw;
-		/* Ajuste dinâmico da fonte */
+	.p4 {
+		.p4 {
+        hyphens: auto;
+        text-align: justify;
+        font-size: 2.4vw;
+    }
+
 	}
 
 	.btn1,
@@ -666,14 +627,6 @@
 	nav {
 		width: 98%;
 		text-align: center;
-		padding: 1%;
-	}
-
-	nav .logo {
-		margin-right: auto;
-		border-radius: 10px;
-		padding: 1%;
-		margin: 0 1%;
 	}
 
 	nav ul {
@@ -681,7 +634,7 @@
 		display: flex;
 		justify-content: center;
 		border-radius: 10px;
-		padding: 10px;
+		padding: 4px;
 		margin: 0 1%;
 	}
 
@@ -703,13 +656,13 @@
 	/* Estilos para os Botões do cabeçalho nav */
 	.btn-tecnologia,
 	.btn-serigrafia {
-		width: 80%;
+		width: 92%;
 		font-size: 2.8vw;
-		padding: 4%;
+		padding: 2%;
 		margin: 0%;
 		display: inline-block;
 		cursor: pointer;
-		border-radius: 8px;
+		border-radius: 10px;
 	}
 
 	.container-esquerdo {
@@ -723,31 +676,30 @@
 
 	/* Estilo da Imagem Jeferson Alves */
 	.containerimgJA {
-		width: 48%;
-		padding: 1px;
+		width: 46%;
+		margin: 1%;
 	}
 
 	/* Estilo da Imagem */
 	img {
 		width: 100%;
 		align-items: flex-start;
-		border-radius: 8px;
+		border-radius: 20px;
 	}
 
 	/* 🌤️ Tema Claro (padrão) */
 	.container-weather {
 		width: 50%;
-		padding: 1px;
+		margin: 1%;
 	}
 
 	.weather-info {
 		width: 100%;
 		hyphens: auto;
 		text-align: justify;
-		margin: 1px;
-		padding: 1px;
-		border-radius: 10px;
-		font-size: 2.0vw;
+		padding: 4px;
+		border-radius: 20px;
+		font-size: 2.4vw;
 		animation: skyPulse 12s ease infinite;
 	}
 
@@ -775,19 +727,21 @@
 
 	.container-trabalhando {
 		width: 39%;
-		border-radius: 8px;
-		margin: 1px;
+		border-radius: 20px;
+		margin: 1%;
+		padding: 4px;
 	}
 
 	.container-tecnologia {
-		width: 59%;
-		margin: 1px;
+		width: 55%;
+		margin: 1%;
+
 	}
 
 	.container-tecnologias-exploradas {
-		border-radius: 10px;
+		border-radius: 20px;
 		width: 80%;
-		margin: 1px auto;
+		margin: 1% auto;
 	}
 
 	/* Estilo das colunas */
@@ -801,8 +755,7 @@
 	.column {
 		hyphens: auto;
 		width: 50%;
-		font-size: 2.6vw;
-		text-align: left;
+		font-size: 2.0vw;
 		box-sizing: border-box;
 	}
 
@@ -816,28 +769,29 @@
 
 	.container-atualizando {
 		width: 80%;
-		border-radius: 10px;
-		margin: 1px auto;
-		font-size: 3.0vw;
+		border-radius: 20px;
+		margin: 1% auto;
+		font-size: 2.8vw;
+		padding-left: 10px;
 	}
 
 	.container-serigrafia {
 		width: 49%;
-		margin: 1px;
+		margin: 1%;
 
 	}
 
 	.container-habilidades {
 		width: 49%;
-		border-radius: 10px;
-		margin: 1px auto;
+		border-radius: 20px;
+		margin: 1% auto;
 		font-size: 2.8vw;
 	}
 
 	.container-reservado {
 		width: 80%;
-		margin: 10% auto;
-		border-radius: 10px;
+		margin: 1% auto;
+		border-radius: 20px;
 	}
 
 	/* Estilos para Títulos */
@@ -846,7 +800,7 @@
 	h3,
 	h4,
 	h5 {
-		font-size: 2.4vw;
+		font-size: 2.8vw;
 		text-align: center;
 		margin: 0.5em 0;
 	}
@@ -862,14 +816,12 @@
 		font-size: 2.4vw;
 	}
 
-	.p4,
-	.p5 {
-		hyphens: auto;
-		text-align: justify;
-		margin: 0 1%;
-		font-size: 4.8vw;
-		/* Ajuste dinâmico da fonte */
-	}
+	.p4 {
+        hyphens: auto;
+        text-align: justify;
+        font-size: 2.4vw;
+    }
+
 
 	.btn1,
 	.btn2 {
@@ -909,7 +861,7 @@
 	.btn-enviar {
 		text-align: center;
 		display: flex;
-		font-size: 2.5vw;
+		font-size: 2.0vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 6px;
@@ -919,7 +871,7 @@
 
 	.container-formulario {
 		width: 60%;
-		border-radius: 10px;
+		border-radius: 20px;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
@@ -939,6 +891,7 @@
 		display: block;
 		margin-bottom: 5px;
 		font-weight: bold;
+		font-size: 2.4vw;
 	}
 
 	.form-field input,
@@ -947,7 +900,7 @@
 		width: 100%;
 		padding: 6px;
 		border-radius: 5px;
-		font-size: 110%;
+		font-size: 2.8vw;
 	}
 
 	/* Estilo do Rodapé */
@@ -976,7 +929,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		border-radius: 10px;
+		border-radius: 20px;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	}
 
@@ -984,29 +937,21 @@
 	nav {
 		width: 98%;
 		text-align: center;
-		padding: 1%;
-	}
-
-	nav .logo {
-		margin-right: auto;
-		border-radius: 10px;
-		padding: 1%;
-		margin: 0 1%;
 	}
 
 	nav ul {
 		list-style: none;
 		display: flex;
 		justify-content: center;
-		border-radius: 10px;
-		padding: 10px;
+		border-radius: 20px;
+		padding: 6px;
 		margin: 0 1%;
 	}
 
 	nav ul li {
 		width: 40%;
 		margin: 0 20px;
-		border-radius: 10px;
+		border-radius: 20px;
 		padding: 1%;
 	}
 
@@ -1021,13 +966,13 @@
 	/* Estilos para os Botões do cabeçalho nav */
 	.btn-tecnologia,
 	.btn-serigrafia {
-		width: 80%;
+		width: 92%;
 		font-size: 2.8vw;
-		padding: 4%;
+		padding: 2%;
 		margin: 0%;
 		display: inline-block;
 		cursor: pointer;
-		border-radius: 8px;
+		border-radius: 20px;
 	}
 
 	.container-esquerdo {
@@ -1035,37 +980,35 @@
 		justify-content: flex-start;
 		flex-wrap: wrap;
 		width: 100%;
-		border-radius: 10px;
 		box-sizing: border-box;
 	}
 
 	/* Estilo da Imagem Jeferson Alves */
 	.containerimgJA {
 		width: 48%;
-		padding: 1px;
+		margin: 1%;
 	}
 
 	/* Estilo da Imagem */
 	img {
 		width: 100%;
 		align-items: flex-start;
-		border-radius: 8px;
+		border-radius: 20px;
 	}
 
 	/* 🌤️ Tema Claro (padrão) */
 	.container-weather {
-		width: 50%;
-		padding: 1px;
+		width: 48%;
+		padding: 1%;
 	}
 
 	.weather-info {
 		width: 100%;
 		hyphens: auto;
 		text-align: justify;
-		margin: 1px;
-		padding: 1px;
-		border-radius: 10px;
-		font-size: 2.0vw;
+		padding: 6px;
+		border-radius: 20px;
+		font-size: 3.0vw;
 		animation: skyPulse 12s ease infinite;
 	}
 
@@ -1092,35 +1035,35 @@
 	}
 
 	.container-trabalhando {
-		width: 39%;
-		border-radius: 8px;
-		margin: 1px;
+		width: 38%;
+		border-radius: 20px;
+		margin: 1%;
+		padding: 6px;
 	}
 
 	.container-tecnologia {
-		width: 59%;
-		margin: 1px;
+		width: 56%;
+		margin: 1%;
 	}
 
 	.container-tecnologias-exploradas {
-		border-radius: 10px;
+		border-radius: 20px;
 		width: 80%;
-		margin: 1px auto;
+		margin: 1% auto;
 	}
 
 	/* Estilo das colunas */
 	.row {
 		display: flex;
 		justify-content: space-between;
-		margin: 0 auto;
 		flex-wrap: wrap;
+		
 	}
 
 	.column {
 		hyphens: auto;
 		width: 50%;
-		font-size: 2.6vw;
-		text-align: left;
+		font-size: 2.4vw;
 		box-sizing: border-box;
 	}
 
@@ -1134,28 +1077,29 @@
 
 	.container-atualizando {
 		width: 80%;
-		border-radius: 10px;
-		margin: 1px auto;
-		font-size: 3.0vw;
+		border-radius: 20px;
+		margin: 1% auto;
+		padding-left: 8px;
+		font-size: 3.2vw;
 	}
 
 	.container-serigrafia {
 		width: 49%;
-		margin: 1px;
+		margin: 1%;
 
 	}
 
 	.container-habilidades {
 		width: 49%;
-		border-radius: 10px;
-		margin: 1px auto;
-		font-size: 2.8vw;
+		border-radius: 20px;
+		margin: 1% auto;
+		font-size: 3.0vw;
 	}
 
 	.container-reservado {
 		width: 80%;
-		margin: 10% auto;
-		border-radius: 10px;
+		margin: 1% auto;
+		border-radius: 20px;
 	}
 
 	/* Estilos para Títulos */
@@ -1164,7 +1108,7 @@
 	h3,
 	h4,
 	h5 {
-		font-size: 2.4vw;
+		font-size: 3.4vw;
 		text-align: center;
 		margin: 0.5em 0;
 	}
@@ -1177,16 +1121,14 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 2.4vw;
+		font-size: 3.0vw;
 	}
 
-	.p4,
-	.p5 {
+	.p4 {
 		hyphens: auto;
-		text-align: justify;
-		margin: 0 1%;
-		font-size: 4.8vw;
-		/* Ajuste dinâmico da fonte */
+        text-align: justify;
+        font-size: 3.0vw;
+
 	}
 
 	.btn1,
@@ -1227,7 +1169,7 @@
 	.btn-enviar {
 		text-align: center;
 		display: flex;
-		font-size: 2.5vw;
+		font-size: 2.0vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 6px;
@@ -1237,7 +1179,7 @@
 
 	.container-formulario {
 		width: 60%;
-		border-radius: 10px;
+		border-radius: 20px;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
@@ -1257,6 +1199,7 @@
 		display: block;
 		margin-bottom: 5px;
 		font-weight: bold;
+		font-size: 3.0vw;
 	}
 
 	.form-field input,
@@ -1265,7 +1208,7 @@
 		width: 100%;
 		padding: 6px;
 		border-radius: 5px;
-		font-size: 110%;
+		font-size: 3.0vw;
 	}
 
 	/* Estilo do Rodapé */
@@ -1294,7 +1237,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		border-radius: 10px;
+		border-radius: 20px;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	}
 
@@ -1302,7 +1245,7 @@
 	nav {
 		width: 98%;
 		text-align: center;
-		padding: 1px;
+		padding: 2px;
 	}
 
 	nav ul {
@@ -1310,15 +1253,15 @@
 		display: flex;
 		justify-content: center;
 		border-radius: 10px;
-		padding: 6px;
+		padding: 4px;
 		margin: 0 1%;
 	}
 
 	nav ul li {
 		width: 40%;
-		margin: 0 20px;
+		margin: 0 10px;
 		border-radius: 10px;
-		padding: 6px;
+		padding: 4px;
 	}
 
 	nav ul li a {
@@ -1329,40 +1272,57 @@
 		pointer-events: none;
 	}
 
+	/* Estilos para os Botões do cabeçalho nav */
+	.btn-tecnologia,
+	.btn-serigrafia {
+		width: 92%;
+		font-size: 3.0vw;
+		padding: 2px;
+		margin: 2px;
+		display: inline-block;
+		cursor: pointer;
+		border-radius: 8px;
+	}
+
+	.container-esquerdo {
+		width: 100%;
+		display: flex;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		box-sizing: border-box;
+	}
+
 	/* Estilo da Imagem Jeferson Alves */
 	.containerimgJA {
-		width: 32%;
-		margin: 2px;
+		width: 29%;
+		margin: 1%;
 	}
 
 	/* Estilo da Imagem */
 	img {
 		width: 100%;
 		align-items: flex-start;
-		border-radius: 8px;
+		border-radius: 20px;
 	}
 
 	/* 🌤️ Tema Claro (padrão) */
 	.container-weather {
-		width: 30%;
-		margin: 2px;
+		width: 29%;
+		margin: 1%;
 	}
 
 	.weather-info {
 		width: 100%;
 		hyphens: auto;
 		text-align: justify;
-		border-radius: 10px;
-		font-size: 1.2vw;
+		border-radius: 20px;
+		font-size: 2.4vw;
 		animation: skyPulse 12s ease infinite;
 	}
 
 	/* 🌙 Tema Escuro */
 	body.tema-escuro .weather-info {
-		background: radial-gradient(circle at bottom right, #000000, #1a1a2e, #16213e, #0f3460, #53354a);
-		color: #e0e0e0;
 		display: flex;
-		/* Habilita ajuste baseado em imagem */
 		flex-direction: column;
 		justify-content: flex-start;
 	}
@@ -1382,14 +1342,81 @@
 		}
 	}
 
+	/* Espaçamento personalizado entre os containers */
+	.container-trabalhando {
+		width: 35%;
+		border-radius: 20px;
+		padding: 4px;
+		margin: 1%;
+	}
+
+	.container-tecnologia {
+		width: 80%;
+		margin: 1% auto;
+	}
+
+	.container-tecnologias-exploradas {
+		border-radius: 20px;
+		width: 80%;
+		margin: 1% auto;
+	}
+
+	/* Estilo das colunas */
+	.row {
+		display: flex;
+		justify-content: space-between;
+		margin: 0 auto;
+		flex-wrap: wrap;
+	}
+
+	.column {
+		hyphens: auto;
+		width: 50%;
+		font-size: 2.0vw;
+		box-sizing: border-box;
+	}
+
+	ul {
+		list-style-type: disc;
+	}
+
+	li {
+		margin-bottom: 0%;
+	}
+
+	.container-atualizando {
+		width: 60%;
+		border-radius: 10px;
+		margin: 1% auto;
+		padding-left: 6%;
+		font-size: 2.6vw;
+	}
+
+	.container-serigrafia {
+		width: 66%;
+	}
+
+	.container-habilidades {
+		width: 30%;
+		border-radius: 20px;
+		font-size: 2.0vw;
+		margin: 1%;
+		padding: 4px;
+	}
+
+	.container-reservado {
+		width: 80%;
+		border-radius: 20px;
+		margin: 1% auto;
+	}
+
 	/* Estilos para Títulos */
 	h1,
 	h2,
 	h3,
 	h4,
 	h5 {
-		font-size: 1.6vw;
-		/* Ajuste dinâmico da fonte */
+		font-size: 2.8vw;
 		text-align: center;
 		margin: 0.5em 0;
 	}
@@ -1402,28 +1429,13 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 1.6vw;
+		font-size: 2.4vw;
 	}
 
-	.p4,
-	.p5 {
+	.p4 {
 		hyphens: auto;
-		text-align: justify;
-		margin: 0 1%;
-		font-size: 4.8vw;
-		/* Ajuste dinâmico da fonte */
-	}
-
-	/* Estilos para os Botões do cabeçalho */
-	.btn-tecnologia,
-	.btn-serigrafia {
-		width: 80%;
-		font-size: 2.0vw;
-		padding: 1px;
-		margin: 0%;
-		display: inline-block;
-		cursor: pointer;
-		border-radius: 8px;
+        text-align: justify;
+        font-size: 2.4vw;
 	}
 
 	.btn1,
@@ -1472,89 +1484,9 @@
 		border-radius: 10px;
 	}
 
-
-	/* Estilo das colunas */
-	.row {
-		display: flex;
-		justify-content: space-between;
-		margin: 0 auto;
-		flex-wrap: wrap;
-	}
-
-	.column {
-		hyphens: auto;
-		width: 50%;
-		font-size: 1.6vw;
-		text-align: left;
-		box-sizing: border-box;
-	}
-
-	ul {
-		list-style-type: disc;
-	}
-
-	li {
-		margin-bottom: 0%;
-	}
-
-	.container-esquerdo {
-		width: 100%;
-		display: flex;
-		justify-content: flex-start;
-		flex-wrap: wrap;
-		border-radius: 10px;
-		box-sizing: border-box;
-	}
-
-	/* Espaçamento personalizado entre os containers */
-	.container-trabalhando {
-		width: 37%;
-		border-radius: 10px;
-		margin: 2px;
-	}
-
-	.container-tecnologia {
-		width: 60%;
-		margin: 2%;
-		margin-left: 18%;
-		margin-right: 18%;
-	}
-
-	.container-tecnologias-exploradas {
-		border-radius: 10px;
-		width: 80%;
-		margin-left: 10%;
-		margin-right: 10%;
-	}
-
-	.container-atualizando {
-		width: 40%;
-		border-radius: 10px;
-		margin: 1%;
-		margin-left: 30%;
-		margin-right: 30%;
-		font-size: 1.6vw;
-	}
-
-	.container-serigrafia {
-		width: 50%;
-
-	}
-
-	.container-habilidades {
-		width: 25%;
-		border-radius: 10px;
-		font-size: 1.4vw;
-	}
-
-	.container-reservado {
-		width: 25%;
-		border-radius: 10px;
-	}
-
 	.container-formulario {
-		width: 40%;
-		border-radius: 10px;
+		width: 60%;
+		border-radius: 20px;
 		margin: 10px auto;
 		padding: 5px;
 		overflow-x: auto;
@@ -1575,6 +1507,7 @@
 		display: block;
 		margin-bottom: 5px;
 		font-weight: bold;
+		font-size: 2.4vw;
 	}
 
 	.form-field input,
@@ -1583,7 +1516,7 @@
 		width: 100%;
 		padding: 6px;
 		border-radius: 5px;
-		font-size: 1.8vw;
+		font-size: 2.8vw;
 
 	}
 

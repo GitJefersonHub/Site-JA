@@ -41,7 +41,7 @@ async function getWeather(latitude, longitude) {
 
     const hourlyForecast = forecast.list
       .filter(item => new Date(item.dt_txt) > now)
-      .slice(0, 6)
+      .slice(0, 4) /*próximas horas*/
       .map(item => {
         const date = new Date(item.dt_txt);
         const hour = date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
@@ -60,7 +60,7 @@ async function getWeather(latitude, longitude) {
     });
 
     const forecastHtml = Object.entries(forecastByDay)
-      .slice(0, 6)
+      .slice(0, 4) /*próximos dias*/
       .map(([dateStr, data]) => {
         const date = new Date(dateStr.split('/').reverse().join('-'));
         const formatted = date.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });

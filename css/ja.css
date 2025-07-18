@@ -5,7 +5,7 @@ body {
 
 /* Estilo do Cabeçalho */
 .container-nav {
-    background-color: black;
+    background-color: red;
 
 }
 
@@ -88,6 +88,10 @@ h5 {
 
 .p3 {
     color: blue;
+}
+
+.p4 {
+    color: white;
 }
 
 /* Estilos para os Botões */
