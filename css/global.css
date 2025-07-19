@@ -34,7 +34,7 @@
 	nav ul li {
 		width: 40%;
 		margin: 0 20px;
-		border-radius: 10px;
+		border-radius: 4px;
 	}
 
 	nav ul li a {
@@ -56,13 +56,13 @@
 	/* Estilos para os Botões do cabeçalho nav*/
 	.btn-tecnologia,
 	.btn-serigrafia {
-		width: 92%;
+		width: 90%;
 		font-size: 4.0vw;
 		padding: 2%;
 		margin: 2%;
 		display: inline-block;
 		cursor: pointer;
-		border-radius: 10px;
+		border-radius: 4px;
 		text-align: center;
 	}
 
@@ -281,7 +281,7 @@
 	.btn-enviar {
 		text-align: center;
 		display: flex;
-		font-size: 4.0vw;
+		font-size: 4.4vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 6px;
@@ -336,7 +336,7 @@
 	nav ul li {
 		width: 40%;
 		margin: 0 20px;
-		border-radius: 10px;
+		border-radius: 4px;
 	}
 
 	nav ul li a {
@@ -356,7 +356,7 @@
 		margin: 2%;
 		display: inline-block;
 		cursor: pointer;
-		border-radius: 10px;
+		border-radius: 4px;
 		text-align: center;
 	}
 
@@ -392,8 +392,9 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 10px;
-		font-size: 3.0vw;
+		font-size: 2.5vw;
 		animation: skyPulse 12s ease infinite;
+		padding: 4px;
 	}
 
 	/* 🌙 Tema Escuro */
@@ -554,7 +555,7 @@
 	.btn-enviar {
 		text-align: center;
 		display: flex;
-		font-size: 2.5vw;
+		font-size: 2.6vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 6px;
@@ -633,7 +634,6 @@
 		list-style: none;
 		display: flex;
 		justify-content: center;
-		border-radius: 10px;
 		padding: 4px;
 		margin: 0 1%;
 	}
@@ -641,7 +641,7 @@
 	nav ul li {
 		width: 40%;
 		margin: 0 20px;
-		border-radius: 10px;
+		border-radius: 6px;
 		padding: 1%;
 	}
 
@@ -656,13 +656,13 @@
 	/* Estilos para os Botões do cabeçalho nav */
 	.btn-tecnologia,
 	.btn-serigrafia {
-		width: 92%;
+		width: 96%;
 		font-size: 2.8vw;
 		padding: 2%;
 		margin: 0%;
 		display: inline-block;
 		cursor: pointer;
-		border-radius: 10px;
+		border-radius: 6px;
 	}
 
 	.container-esquerdo {
@@ -699,7 +699,7 @@
 		text-align: justify;
 		padding: 4px;
 		border-radius: 20px;
-		font-size: 2.4vw;
+		font-size: 2.5vw;
 		animation: skyPulse 12s ease infinite;
 	}
 
@@ -861,7 +861,7 @@
 	.btn-enviar {
 		text-align: center;
 		display: flex;
-		font-size: 2.0vw;
+		font-size: 2.6vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 6px;
@@ -943,7 +943,6 @@
 		list-style: none;
 		display: flex;
 		justify-content: center;
-		border-radius: 20px;
 		padding: 6px;
 		margin: 0 1%;
 	}
@@ -951,7 +950,7 @@
 	nav ul li {
 		width: 40%;
 		margin: 0 20px;
-		border-radius: 20px;
+		border-radius: 10px;
 		padding: 1%;
 	}
 
@@ -967,12 +966,12 @@
 	.btn-tecnologia,
 	.btn-serigrafia {
 		width: 92%;
-		font-size: 2.8vw;
+		font-size: 3.0vw;
 		padding: 2%;
 		margin: 0%;
 		display: inline-block;
 		cursor: pointer;
-		border-radius: 20px;
+		border-radius: 10px;
 	}
 
 	.container-esquerdo {
@@ -985,7 +984,7 @@
 
 	/* Estilo da Imagem Jeferson Alves */
 	.containerimgJA {
-		width: 48%;
+		width: 47%;
 		margin: 1%;
 	}
 
@@ -1008,7 +1007,7 @@
 		text-align: justify;
 		padding: 6px;
 		border-radius: 20px;
-		font-size: 3.0vw;
+		font-size: 2.5vw;
 		animation: skyPulse 12s ease infinite;
 	}
 
@@ -1169,7 +1168,7 @@
 	.btn-enviar {
 		text-align: center;
 		display: flex;
-		font-size: 2.0vw;
+		font-size: 3.4vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 6px;
@@ -1294,8 +1293,8 @@
 
 	/* Estilo da Imagem Jeferson Alves */
 	.containerimgJA {
-		width: 29%;
-		margin: 1%;
+		width: 28%;
+		margin: 8px;
 	}
 
 	/* Estilo da Imagem */
@@ -1307,8 +1306,8 @@
 
 	/* 🌤️ Tema Claro (padrão) */
 	.container-weather {
-		width: 29%;
-		margin: 1%;
+		width: 33%;
+		margin: 8px;
 	}
 
 	.weather-info {
@@ -1316,8 +1315,9 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 20px;
-		font-size: 2.4vw;
+		font-size: 1.5vw;
 		animation: skyPulse 12s ease infinite;
+		padding: 4px;
 	}
 
 	/* 🌙 Tema Escuro */
@@ -1344,10 +1344,10 @@
 
 	/* Espaçamento personalizado entre os containers */
 	.container-trabalhando {
-		width: 35%;
+		width: 34%;
 		border-radius: 20px;
 		padding: 4px;
-		margin: 1%;
+		margin: 8px;
 	}
 
 	.container-tecnologia {
@@ -1478,7 +1478,7 @@
 		margin: 1%;
 		text-align: center;
 		display: flex;
-		font-size: 2.0vw;
+		font-size: 2.8vw;
 		margin: 2%;
 		cursor: pointer;
 		border-radius: 10px;
