@@ -119,7 +119,8 @@
 
 	.container-tecnologia {
 		border-radius: 10px;
-		margin: 1%; auto;
+		margin: 1%;
+		auto;
 		overflow-x: auto;
 	}
 
@@ -155,9 +156,9 @@
 		width: 100%;
 		border-radius: 10px;
 		overflow-x: auto;
-		font-size: 4.4vw;
+		font-size: 4.1vw;
 		margin: 1%;
-		padding-left: 2%;
+		padding-left: 1%;
 	}
 
 	.container-serigrafia {
@@ -172,6 +173,20 @@
 		padding-left: 4%;
 		overflow-x: auto;
 		font-size: 4.6vw;
+	}
+
+	.container-doações {
+		border-radius: 10px;
+		padding: 1%;
+		overflow-x: auto;
+		font-size: 4.6vw;
+		margin: 1%;
+	}
+
+	/* Estilo da Imagem do qrcodecx*/
+	.container-qrcodecx {
+		width: 100%;
+		margin: 1% auto;
 	}
 
 	.container-reservado {
@@ -321,7 +336,7 @@
 	nav {
 		width: 98%;
 		text-align: center;
-		
+
 	}
 
 	nav ul {
@@ -370,7 +385,7 @@
 
 	/* Estilo da Imagem Jeferson Alves */
 	.containerimgJA {
-		width: 48%;
+		width: 46%;
 		margin: 1%;
 	}
 
@@ -383,7 +398,7 @@
 
 	/* 🌤️ Tema Claro (padrão) */
 	.container-weather {
-		width: 48%;
+		width: 49%;
 		margin: 1%;
 	}
 
@@ -392,7 +407,7 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 10px;
-		font-size: 2.5vw;
+		font-size: 2.4vw;
 		animation: skyPulse 12s ease infinite;
 		padding: 4px;
 	}
@@ -480,6 +495,21 @@
 		font-size: 2.8vw;
 	}
 
+	.container-doações {
+		width: 80%;
+		border-radius: 10px;
+		padding: 4px;
+		overflow-x: auto;
+		font-size: 2.8vw;
+		margin: 1% auto;
+	}
+
+	/* Estilo da Imagem do qrcodecx*/
+	.container-qrcodecx {
+		width: 50%;
+		margin: 1% auto;
+	}
+
 	.container-reservado {
 		width: 80%;
 		margin: 1% auto;
@@ -509,12 +539,9 @@
 	}
 
 	.p4 {
-		.p4 {
-        hyphens: auto;
-        text-align: justify;
-        font-size: 2.4vw;
-    }
-
+		hyphens: auto;
+		text-align: justify;
+		font-size: 3.0vw;
 	}
 
 	.btn1,
@@ -788,6 +815,21 @@
 		font-size: 2.8vw;
 	}
 
+	.container-doações {
+		width: 80%;
+		border-radius: 10px;
+		padding: 4px;
+		overflow-x: auto;
+		font-size: 2.8vw;
+		margin: 1% auto;
+	}
+
+	/* Estilo da Imagem do qrcodecx*/
+	.container-qrcodecx {
+		width: 32%;
+		margin: 1% auto;
+	}
+
 	.container-reservado {
 		width: 80%;
 		margin: 1% auto;
@@ -817,10 +859,10 @@
 	}
 
 	.p4 {
-        hyphens: auto;
-        text-align: justify;
-        font-size: 2.4vw;
-    }
+		hyphens: auto;
+		text-align: justify;
+		font-size: 2.4vw;
+	}
 
 
 	.btn1,
@@ -1056,7 +1098,7 @@
 		display: flex;
 		justify-content: space-between;
 		flex-wrap: wrap;
-		
+
 	}
 
 	.column {
@@ -1095,6 +1137,21 @@
 		font-size: 3.0vw;
 	}
 
+	.container-doações {
+		width: 80%;
+		border-radius: 10px;
+		padding: 1%;
+		overflow-x: auto;
+		font-size: 2.8vw;
+		margin: 1% auto;
+	}
+
+	/* Estilo da Imagem do qrcodecx*/
+	.container-qrcodecx {
+		width: 40%;
+		margin: 1% auto;
+	}
+
 	.container-reservado {
 		width: 80%;
 		margin: 1% auto;
@@ -1125,8 +1182,8 @@
 
 	.p4 {
 		hyphens: auto;
-        text-align: justify;
-        font-size: 3.0vw;
+		text-align: justify;
+		font-size: 3.0vw;
 
 	}
 
@@ -1392,6 +1449,21 @@
 		font-size: 2.6vw;
 	}
 
+	.container-doações {
+		width: 80%;
+		border-radius: 10px;
+		padding: 1%;
+		overflow-x: auto;
+		font-size: 2.8vw;
+		margin: 1% auto;
+	}
+
+	/* Estilo da Imagem do qrcodecx*/
+	.container-qrcodecx {
+		width: 40%;
+		margin: 1% auto;
+	}
+
 	.container-serigrafia {
 		width: 66%;
 	}
@@ -1434,8 +1506,8 @@
 
 	.p4 {
 		hyphens: auto;
-        text-align: justify;
-        font-size: 2.4vw;
+		text-align: justify;
+		font-size: 2.4vw;
 	}
 
 	.btn1,

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeferson Alves!</title>
+    <link rel="stylesheet" href="css/doações.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+
+</head>
+<br>
+
+<div class="container-qrcodecx">
+    <img src="img/qrcode cx.png" alt="J1">
+    <br>    
+</div>
+<h2>49.412.326/0001-15</h2>
+<br>
+<!-- Botão Copia e Cola PIX -->
+<button class="btn1" onclick="copiarPix()">Copiar chave PIX</button>
+
+<!-- Script para copiar -->
+<script>
+    function copiarPix() {
+        const chavePix = "chave pix aqui"; // Substitua pela sua chave PIX
+        navigator.clipboard.writeText(chavePix)
+            .then(() => alert("Chave PIX copiada com sucesso!"))
+            .catch(err => alert("Ops! Não foi possível copiar a chave."));
+    }
+</script>
+<br><br>
+<p class="p1">Após copiar a chave pix, cole a no app do seu banco e faça a sua doação, agradecemos por qualquer valor
+    beneficente.</p>
+<p class="p1">Grato!</p>
+
+<br>
+<button class="btn1" onclick="window.location.href='index.html'">Voltar!</button>
+
+</body>
+
+</html>
