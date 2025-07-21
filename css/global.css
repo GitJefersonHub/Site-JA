@@ -119,8 +119,7 @@
 
 	.container-tecnologia {
 		border-radius: 10px;
-		margin: 1%;
-		auto;
+		margin: 1% auto;
 		overflow-x: auto;
 	}
 
@@ -385,7 +384,7 @@
 
 	/* Estilo da Imagem Jeferson Alves */
 	.containerimgJA {
-		width: 46%;
+		width: 45%;
 		margin: 1%;
 	}
 
@@ -398,7 +397,7 @@
 
 	/* 🌤️ Tema Claro (padrão) */
 	.container-weather {
-		width: 49%;
+		width: 50%;
 		margin: 1%;
 	}
 
@@ -407,7 +406,7 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 10px;
-		font-size: 2.4vw;
+		font-size: 2.1vw;
 		animation: skyPulse 12s ease infinite;
 		padding: 4px;
 	}
@@ -703,7 +702,7 @@
 
 	/* Estilo da Imagem Jeferson Alves */
 	.containerimgJA {
-		width: 46%;
+		width: 45%;
 		margin: 1%;
 	}
 
@@ -726,7 +725,7 @@
 		text-align: justify;
 		padding: 4px;
 		border-radius: 20px;
-		font-size: 2.5vw;
+		font-size: 2.2vw;
 		animation: skyPulse 12s ease infinite;
 	}
 
@@ -817,11 +816,11 @@
 
 	.container-doações {
 		width: 80%;
-		border-radius: 10px;
 		padding: 4px;
 		overflow-x: auto;
 		font-size: 2.8vw;
 		margin: 1% auto;
+		border-radius: 20px;
 	}
 
 	/* Estilo da Imagem do qrcodecx*/
@@ -1026,7 +1025,7 @@
 
 	/* Estilo da Imagem Jeferson Alves */
 	.containerimgJA {
-		width: 47%;
+		width: 45%;
 		margin: 1%;
 	}
 
@@ -1039,7 +1038,7 @@
 
 	/* 🌤️ Tema Claro (padrão) */
 	.container-weather {
-		width: 48%;
+		width: 50%;
 		padding: 1%;
 	}
 
@@ -1049,7 +1048,7 @@
 		text-align: justify;
 		padding: 6px;
 		border-radius: 20px;
-		font-size: 2.5vw;
+		font-size: 2.1vw;
 		animation: skyPulse 12s ease infinite;
 	}
 
@@ -1139,11 +1138,11 @@
 
 	.container-doações {
 		width: 80%;
-		border-radius: 10px;
 		padding: 1%;
 		overflow-x: auto;
 		font-size: 2.8vw;
 		margin: 1% auto;
+		border-radius: 20px;
 	}
 
 	/* Estilo da Imagem do qrcodecx*/
@@ -1363,7 +1362,7 @@
 
 	/* 🌤️ Tema Claro (padrão) */
 	.container-weather {
-		width: 33%;
+		width: 31%;
 		margin: 8px;
 	}
 
@@ -1372,7 +1371,7 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 20px;
-		font-size: 1.5vw;
+		font-size: 1.3vw;
 		animation: skyPulse 12s ease infinite;
 		padding: 4px;
 	}
@@ -1401,7 +1400,7 @@
 
 	/* Espaçamento personalizado entre os containers */
 	.container-trabalhando {
-		width: 34%;
+		width: 36%;
 		border-radius: 20px;
 		padding: 4px;
 		margin: 8px;
@@ -1443,19 +1442,19 @@
 
 	.container-atualizando {
 		width: 60%;
-		border-radius: 10px;
 		margin: 1% auto;
 		padding-left: 6%;
 		font-size: 2.6vw;
+		border-radius: 20px;
 	}
 
 	.container-doações {
 		width: 80%;
-		border-radius: 10px;
 		padding: 1%;
 		overflow-x: auto;
 		font-size: 2.8vw;
 		margin: 1% auto;
+		border-radius: 20px;
 	}
 
 	/* Estilo da Imagem do qrcodecx*/
