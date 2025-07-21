@@ -3,7 +3,7 @@ body {
 }
 
 .container-doações {
-    background-color: green;
+    background-color: #228B22;
 }
 
 /* Estilo da Imagem Jeferson Alves */
@@ -14,44 +14,6 @@ body {
 /* Estilo da Imagem */
 img {
     padding: 0px;
-}
-
-/* Estilos para Títulos */
-h1 {
-    color: white;
-}
-
-h2 {
-    color: yellow;
-}
-
-h3 {
-    color: brown;
-}
-
-h4 {
-    color: white;
-}
-
-h5 {
-    color: green;
-}
-
-/* Estilos para Parágrafos */
-.p1 {
-    color: yellow;
-}
-
-.p2 {
-    color: red;
-}
-
-.p3 {
-    color: blue;
-}
-
-.p4 {
-    color: white;
 }
 
 .btn1,
