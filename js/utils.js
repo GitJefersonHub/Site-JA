@@ -1,12 +1,14 @@
+// 🍃 Ícone térmico baseado na temperatura
 export function getTemperatureFeelingIcon(temp) {
   const t = parseFloat(temp);
-  if (t <= 10) return '🥶';
-  if (t <= 18) return '🧥';
-  if (t <= 27) return '🙂';
-  if (t <= 33) return '🥵';
-  return '🔥';
+  if (t <= 10) return '🥶';       // Muito frio
+  if (t <= 18) return '🧥';       // Frio
+  if (t <= 27) return '🙂';       // Agradável
+  if (t <= 33) return '🥵';       // Calor
+  return '🔥';                    // Muito quente
 }
 
+// 🌞 Descrição do índice UV
 export function getUvIndexDescription(uv) {
   const uvValue = parseFloat(uv);
   if (isNaN(uvValue)) return '🔍 Índice UV indisponível';
@@ -18,23 +20,70 @@ export function getUvIndexDescription(uv) {
   return '🟣 Extremo';
 }
 
-export function getWeatherCodeIcon(code) {
-  const icons = {
-    0: '☀️ Céu limpo',
-    1: '⛅ Parcialmente nublado',
-    2: '☁️ Nublado',
-    3: '🌫️ Névoa',
-    45: '🌫️ Névoa com bancos densos',
-    48: '🌫️ Névoa depositada (como neblina congelada)',
-    51: '🌦️ Chuvisco leve',
-    61: '🌧️ Chuva fraca',
-    63: '🌧️ Chuva moderada',
-    65: '🌧️ Chuva intensa',
-    80: '⛈️ Pancadas de chuva',
-    95: '🌩️ Tempestade'
-  };
-  return icons[code] || '🌡️ Condição indefinida';
+// 🌍 Descrições multilíngue por categoria
+const i18nLabels = {
+  pt: {
+    clear: 'Céu limpo',
+    partlyCloudy: 'Parcialmente nublado',
+    cloudy: 'Nublado',
+    foggy: 'Névoa',
+    drizzle: 'Chuvisco leve',
+    rain: 'Chuva',
+    storm: 'Tempestade',
+    unknown: 'Condição indefinida'
+  },
+  en: {
+    clear: 'Clear sky',
+    partlyCloudy: 'Partly cloudy',
+    cloudy: 'Cloudy',
+    foggy: 'Fog',
+    drizzle: 'Light drizzle',
+    rain: 'Rain',
+    storm: 'Storm',
+    unknown: 'Unknown condition'
+  }
+};
+
+// 🌤️ Categorias e ícones climáticos
+const weatherCategories = {
+  clear: { codes: [0], day: '☀️', night: '🌙' },
+  partlyCloudy: { codes: [1], day: '⛅', night: '🌤️' },
+  cloudy: { codes: [2], day: '☁️', night: '☁️' },
+  foggy: { codes: [3, 45, 48], day: '🌫️', night: '🌫️' },
+  drizzle: { codes: [51], day: '🌦️', night: '🌧️' },
+  rain: { codes: [61, 63, 65], day: '🌧️', night: '🌧️' },
+  storm: { codes: [80, 95], day: '⛈️', night: '🌩️' }
+};
+
+// 🧠 Função principal com contexto e idioma
+export function getWeatherCodeIcon(code, options = {}) {
+  const { temperatura, uv, lang = 'pt' } = options;
+  const hour = new Date().getHours();
+  const isNight = hour < 6 || hour > 18;
+
+  for (const categoria in weatherCategories) {
+    const { codes, day, night } = weatherCategories[categoria];
+    if (codes.includes(code)) {
+      const label = i18nLabels[lang]?.[categoria] || categoria;
+
+      // Correção visual para código parcialmente nublado
+      if (
+        categoria === 'partlyCloudy' &&
+        temperatura > 23 &&
+        uv < 4 &&
+        !isNight
+      ) {
+        return `${weatherCategories.clear.day} ${i18nLabels[lang].clear} com poucas nuvens`;
+      }
+
+      const icon = isNight ? night : day;
+      return `${icon} ${label}`;
+    }
+  }
+
+  return `🌡️ ${i18nLabels[lang]?.unknown || 'Condição indefinida'}`;
 }
 
+// 🧮 Função para garantir dois dígitos
 export const formatTwoDigits = value =>
   parseInt(value).toString().padStart(2, '0');
