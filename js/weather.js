@@ -47,19 +47,20 @@ async function getWeather(latitude, longitude) {
     let html = `${formattedDate}<br>`;
 
     if (feriado) {
-      html += `${feriado}<br>`;
+      html += `${feriado}<br><br>`;
     }
 
     if (temperatura && weatherCode !== undefined) {
-      html += `<strong>🕒 Próximas horas:</strong><br>`;
-      html += `🕒${localTime}: ${getTemperatureFeelingIcon(temperatura)}${temperatura.toFixed(1)} °C ${getWeatherCodeIcon(weatherCode)}<br>`;
+      html += `<strong>🗓 Média das próximas horas:</strong><br>`;
+      html += `🕒${localTime}: ${getTemperatureFeelingIcon(temperatura)}${temperatura.toFixed(1)} °C ${getWeatherCodeIcon(weatherCode, { temperatura, uv })}<br>`;
     }
 
     if (previsoes?.length === 4) {
       previsoes.forEach((p, i) => {
+        
         const futureHour = (localHour + (i + 1) * 4) % 24;
         const formattedHour = formatTwoDigits(futureHour);
-        html += `⏩ ${formattedHour}h: ${getTemperatureFeelingIcon(p.temperatura)}${p.temperatura.toFixed(1)} °C ${getWeatherCodeIcon(p.weatherCode)}<br>`;
+        html += `⏩ ${formattedHour}h: ${getTemperatureFeelingIcon(p.temperatura)}${p.temperatura.toFixed(1)} °C ${getWeatherCodeIcon(p.weatherCode, { temperatura: p.temperatura, uv })}<br>`;
       });
     }
 
@@ -80,14 +81,14 @@ async function getWeather(latitude, longitude) {
     }
 
     if (euro) {
-      html += `💶 Euro: ${euro}<br>`;
+      html += `💶 Euro: ${euro}<br><br>`;
     }
 
     // 🌤️ Previsão dos próximos 4 dias
     if (proximosDias?.length === 4) {
-      html += `<strong>📆 Média dos próximos dias:</strong><br>`;
+      html += `<strong>🗓 Média dos próximos dias:</strong><br>`;
       proximosDias.forEach(dia => {
-        html += `📅 ${dia.data}: ${getTemperatureFeelingIcon(dia.temperatura)}${dia.temperatura.toFixed(1)} °C ${getWeatherCodeIcon(dia.weatherCode)}<br>`;
+        html += `🗓 ${dia.data}: ${getTemperatureFeelingIcon(dia.temperatura)}${dia.temperatura.toFixed(1)} °C ${getWeatherCodeIcon(dia.weatherCode, { temperatura: dia.temperatura, uv })}<br>`;
       });
     }
 

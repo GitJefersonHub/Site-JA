@@ -14,13 +14,15 @@ exports.handler = async (event) => {
     };
   }
 
-  const now = Date.now();
+  const now = new Date();
+  const currentIsoHour = now.toISOString().slice(0, 13); // Ex: '2025-07-22T15'
+  const timestamp = now.getTime();
 
   if (
     !force &&
     cachedWeather &&
     cacheTimestamp &&
-    now - cacheTimestamp < CACHE_DURATION_MS &&
+    timestamp - cacheTimestamp < CACHE_DURATION_MS &&
     cachedWeather.lat === lat &&
     cachedWeather.lon === lon
   ) {
@@ -30,6 +32,7 @@ exports.handler = async (event) => {
     };
   }
 
+  // ✅ URLs corrigidas (removido parâmetro 'time')
   const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,uv_index,weather_code&hourly=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code&forecast_days=5&timezone=auto`;
   const airUrl = `https://api.waqi.info/feed/geo:${lat};${lon}/?token=${process.env.WAQI_TOKEN}`;
 
@@ -45,6 +48,8 @@ exports.handler = async (event) => {
     const current = weatherData?.current;
     const hourlyTemps = weatherData?.hourly?.temperature_2m || [];
     const hourlyCodes = weatherData?.hourly?.weather_code || [];
+    const hourlyTimes = weatherData?.hourly?.time || [];
+
     const dailyTempsMax = weatherData?.daily?.temperature_2m_max || [];
     const dailyTempsMin = weatherData?.daily?.temperature_2m_min || [];
     const dailyCodes = weatherData?.daily?.weather_code || [];
@@ -52,27 +57,41 @@ exports.handler = async (event) => {
 
     if (!current) throw new Error('Dados climáticos indisponíveis.');
 
+    // 🌞 Índice UV tratado
     const uv = Number.isFinite(current.uv_index)
       ? current.uv_index.toFixed(1)
       : 'indisponível';
 
+    // 🌫️ Qualidade do ar
     const aqiRaw = airData?.data?.aqi;
     const aqiEmoji = Number.isFinite(aqiRaw)
       ? interpretAqi(aqiRaw)
       : '❓ Desconhecida';
 
-    const forecast = [4, 8, 12, 16].map(i => ({
-      temperatura: hourlyTemps[i],
-      weatherCode: hourlyCodes[i]
-    }));
+    // ⏩ Previsão horária baseada no horário atual
+    const currentIndex = hourlyTimes.findIndex(t => t.startsWith(currentIsoHour));
+    const forecast = [];
 
+    for (let i = 1; i <= 4; i++) {
+      const index = currentIndex + i * 4;
+      if (hourlyTemps[index] != null && hourlyCodes[index] != null) {
+        forecast.push({
+          temperatura: hourlyTemps[index],
+          weatherCode: hourlyCodes[index]
+        });
+      }
+    }
+
+    // 🗓️ Previsão dos próximos 4 dias
     const proximosDias = [];
     for (let i = 1; i <= 4; i++) {
-      proximosDias.push({
-        data: formatDate(dailyTimes[i]),
-        temperatura: (dailyTempsMax[i] + dailyTempsMin[i]) / 2,
-        weatherCode: dailyCodes[i]
-      });
+      if (dailyTimes[i] && dailyCodes[i] != null && dailyTempsMax[i] != null && dailyTempsMin[i] != null) {
+        proximosDias.push({
+          data: formatDate(dailyTimes[i]),
+          temperatura: (dailyTempsMax[i] + dailyTempsMin[i]) / 2,
+          weatherCode: dailyCodes[i]
+        });
+      }
     }
 
     const combinedData = {
@@ -85,7 +104,7 @@ exports.handler = async (event) => {
     };
 
     cachedWeather = { lat, lon, data: combinedData };
-    cacheTimestamp = now;
+    cacheTimestamp = timestamp;
 
     return {
       statusCode: 200,
