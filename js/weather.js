@@ -1,9 +1,11 @@
-// Importa funções auxiliares
-import { getUvIndexDescription } from './utils.js';
-import { getTemperatureFeelingIcon } from './utils.js';
+import {
+  getUvIndexDescription,
+  getTemperatureFeelingIcon,
+  getWeatherCodeIcon,
+  formatTwoDigits
+} from './utils.js';
 import { aplicarTemaAutomatico } from './tema.js';
 import { getNextHoliday } from './feriados.js';
-import { getWeatherIcon, formatTwoDigits } from './utils.js';
 
 async function getWeather(latitude, longitude) {
   try {
@@ -14,11 +16,15 @@ async function getWeather(latitude, longitude) {
     if (!weatherRes.ok) throw new Error(await weatherRes.text());
     const weatherData = await weatherRes.json();
 
-    const current = weatherData;
-    const forecast = weatherData.forecast;
-    const extras = weatherData.extras || { uv: 'indisponível', aqi: 'indisponível' };
+    const { temperatura, uv, weatherCode, aqi, previsoes, proximosDias } = weatherData;
 
-    if (!current.main || !current.weather || !forecast?.list) throw new Error();
+    const now = new Date();
+    const localHour = now.getHours();
+    const localTime = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+    const day = now.toLocaleDateString('pt-BR', { day: 'numeric' });
+    const month = now.toLocaleDateString('pt-BR', { month: 'long' });
+    const year = now.getFullYear();
+    const formattedDate = `${day} de ${month} de ${year}.`;
 
     const [selicRateRes, dollarRes, euroRes, holidayText] = await Promise.allSettled([
       fetch('/.netlify/functions/getSelicRate').then(res => res.json()),
@@ -26,49 +32,6 @@ async function getWeather(latitude, longitude) {
       fetch('/.netlify/functions/getExchangeRate?currency=EUR').then(res => res.json()),
       getNextHoliday(latitude, longitude)
     ]);
-
-    const temperature = current.main.temp.toFixed(1);
-    const description = current.weather[0].description;
-    const icon = getWeatherIcon(description);
-    const city = current.name;
-
-    const now = new Date();
-    const localTime = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-    const day = now.toLocaleDateString('pt-BR', { day: 'numeric' });
-    const month = now.toLocaleDateString('pt-BR', { month: 'long' });
-    const year = now.getFullYear();
-    const formattedDate = `${day} de ${month} de ${year}.`;
-
-    const hourlyForecast = forecast.list
-      .filter(item => new Date(item.dt_txt) > now)
-      .slice(0, 4) /*próximas horas*/
-      .map(item => {
-        const date = new Date(item.dt_txt);
-        const hour = date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-        const temp = item.main.temp.toFixed(1);
-        const desc = item.weather[0].description;
-        return `🕒${hour}: ${getTemperatureFeelingIcon(temp)}${temp} °C ${getWeatherIcon(desc)}${desc}`;
-      }).join('<br>');
-
-    const forecastByDay = {};
-    forecast.list.forEach(item => {
-      const date = new Date(item.dt_txt);
-      const key = date.toLocaleDateString('pt-BR');
-      if (!forecastByDay[key]) forecastByDay[key] = { temps: [], descriptions: [] };
-      forecastByDay[key].temps.push(item.main.temp);
-      forecastByDay[key].descriptions.push(item.weather[0].description);
-    });
-
-    const forecastHtml = Object.entries(forecastByDay)
-      .slice(0, 4) /*próximos dias*/
-      .map(([dateStr, data]) => {
-        const date = new Date(dateStr.split('/').reverse().join('-'));
-        const formatted = date.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
-        const min = Math.min(...data.temps).toFixed(1);
-        const max = Math.max(...data.temps).toFixed(1);
-        const icon = getWeatherIcon(data.descriptions[0]);
-        return `🗓 ${formatted}: (${formatTwoDigits(min)} / ${formatTwoDigits(max)}) °C ${icon}`;
-      }).join('<br>');
 
     const selic = selicRateRes.status === 'fulfilled' && typeof selicRateRes.value?.selic === 'number'
       ? `${selicRateRes.value.selic.toFixed(2)}% ao ano` : null;
@@ -81,31 +44,31 @@ async function getWeather(latitude, longitude) {
 
     const feriado = holidayText.status === 'fulfilled' ? holidayText.value : null;
 
-    // 🔧 Novo renderizador com verificação
-    let html = '';
-
-    if (city && formattedDate) {
-      html += `${city}, ${formattedDate}<br>`;
-    }
+    let html = `${formattedDate}<br>`;
 
     if (feriado) {
       html += `${feriado}<br>`;
     }
 
-    if (temperature && description && icon) {
-      html += `Previsão para hoje:<br>🕒${localTime}: ${getTemperatureFeelingIcon(temperature)}${temperature} °C ${icon}${description}<br>`;
+    if (temperatura && weatherCode !== undefined) {
+      html += `<strong>🕒 Próximas horas:</strong><br>`;
+      html += `🕒${localTime}: ${getTemperatureFeelingIcon(temperatura)}${temperatura.toFixed(1)} °C ${getWeatherCodeIcon(weatherCode)}<br>`;
     }
 
-    if (hourlyForecast) {
-      html += `${hourlyForecast}<br>`;
+    if (previsoes?.length === 4) {
+      previsoes.forEach((p, i) => {
+        const futureHour = (localHour + (i + 1) * 4) % 24;
+        const formattedHour = formatTwoDigits(futureHour);
+        html += `⏩ ${formattedHour}h: ${getTemperatureFeelingIcon(p.temperatura)}${p.temperatura.toFixed(1)} °C ${getWeatherCodeIcon(p.weatherCode)}<br>`;
+      });
     }
 
-    if (extras.uv && extras.uv !== 'indisponível') {
-      html += `💡 Índice UV: ${extras.uv} ${getUvIndexDescription(extras.uv)}<br>`;
+    if (uv && uv !== 'indisponível') {
+      html += `💡 Índice UV: ${uv} ${getUvIndexDescription(uv)}<br>`;
     }
 
-    if (extras.aqi && extras.aqi !== 'indisponível') {
-      html += `🌫️ Qualidade do ar: ${extras.aqi}<br>`;
+    if (aqi) {
+      html += `🌫️ Qualidade do ar: ${aqi}<br>`;
     }
 
     if (selic) {
@@ -120,8 +83,12 @@ async function getWeather(latitude, longitude) {
       html += `💶 Euro: ${euro}<br>`;
     }
 
-    if (forecastHtml) {
-      html += `Próximos dias (Min / Max):<br>${forecastHtml}<br>`;
+    // 🌤️ Previsão dos próximos 4 dias
+    if (proximosDias?.length === 4) {
+      html += `<strong>📆 Média dos próximos dias:</strong><br>`;
+      proximosDias.forEach(dia => {
+        html += `📅 ${dia.data}: ${getTemperatureFeelingIcon(dia.temperatura)}${dia.temperatura.toFixed(1)} °C ${getWeatherCodeIcon(dia.weatherCode)}<br>`;
+      });
     }
 
     document.getElementById('weather').innerHTML = html || 'Dados não disponíveis no momento.';
