@@ -3,7 +3,7 @@ export function getTemperatureFeelingIcon(temp) {
   const t = parseFloat(temp);
   if (t <= 10) return '🥶';       // Muito frio
   if (t <= 18) return '🧥';       // Frio
-  if (t <= 27) return '🙂';       // Agradável
+  if (t <= 29) return '🙂';       // Agradável
   if (t <= 33) return '🥵';       // Calor
   return '🔥';                    // Muito quente
 }
