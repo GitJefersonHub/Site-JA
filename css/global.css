@@ -88,7 +88,7 @@
 		border-radius: 10px;
 		display: flex;
 		flex-direction: column;
-		font-size: 4.8vw;
+		font-size: 4.4vw;
 		animation: skyPulse 12s ease infinite;
 	}
 
@@ -505,7 +505,7 @@
 
 	/* Estilo da Imagem do qrcodecx*/
 	.container-qrcodecx {
-		width: 50%;
+		width: 40%;
 		margin: 1% auto;
 	}
 
@@ -1147,7 +1147,7 @@
 
 	/* Estilo da Imagem do qrcodecx*/
 	.container-qrcodecx {
-		width: 40%;
+		width: 30%;
 		margin: 1% auto;
 	}
 
@@ -1459,7 +1459,7 @@
 
 	/* Estilo da Imagem do qrcodecx*/
 	.container-qrcodecx {
-		width: 40%;
+		width: 30%;
 		margin: 1% auto;
 	}
 
