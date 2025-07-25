@@ -82,6 +82,7 @@
 
 	/* 🌤️ Tema Claro (padrão) */
 	.weather-info {
+		width: 97%;
 		hyphens: auto;
 		margin: 1% auto;
 		padding: 4px;
