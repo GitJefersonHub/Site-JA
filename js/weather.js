@@ -26,7 +26,7 @@ async function getWeather(latitude, longitude) {
     const year = now.getFullYear();
     const formattedDate = `${day} de ${month} de ${year}.`;
 
-    const [selicRateRes, dollarRes, euroRes, holidayText] = await Promise.allSettled([
+    const [selicRateRes, dollarRes, euroRes, holidayRes] = await Promise.allSettled([
       fetch('/.netlify/functions/getSelicRate').then(res => res.json()),
       fetch('/.netlify/functions/getExchangeRate?currency=USD').then(res => res.json()),
       fetch('/.netlify/functions/getExchangeRate?currency=EUR').then(res => res.json()),
@@ -42,12 +42,37 @@ async function getWeather(latitude, longitude) {
     const euro = euroRes.status === 'fulfilled' && typeof euroRes.value?.brl === 'number'
       ? `R$ ${euroRes.value.brl.toFixed(2)}` : null;
 
-    const feriado = holidayText.status === 'fulfilled' ? holidayText.value : null;
+    // 🎯 Feriados com tipo (level)
+    const tipoFeriado = {
+      nacional: '🇧🇷 Nacional',
+      estadual: '🏙️ Estadual',
+      municipal: '🏘️ Municipal',
+      facultativo: '⚠️ Facultativo'
+    };
+
+    const feriados = holidayRes.status === 'fulfilled' && Array.isArray(holidayRes.value)
+      ? holidayRes.value
+      : [];
+
+    const mesAtual = now.getMonth(); // 0–11
+    const feriadosDoMes = feriados.filter(f => {
+      const dataFeriado = new Date(f.date);
+      return dataFeriado.getMonth() === mesAtual;
+    });
 
     let html = `${formattedDate}<br>`;
 
-    if (feriado) {
-      html += `${feriado}<br><br>`;
+    if (feriadosDoMes.length > 0) {
+      html += `<strong>🗓 Feriados deste mês:</strong><br>`;
+      feriadosDoMes.forEach(f => {
+        const dataFormatada = new Date(f.date).toLocaleDateString('pt-BR', {
+          weekday: 'long', day: '2-digit', month: 'long'
+        });
+
+        const tipo = tipoFeriado[f.level] || '🎉 Outro';
+        html += `<p><strong>${tipo}</strong>: ${dataFormatada} - ${f.name}</p>`;
+      });
+      html += `<br>`;
     }
 
     if (temperatura && weatherCode !== undefined) {
@@ -57,7 +82,6 @@ async function getWeather(latitude, longitude) {
 
     if (previsoes?.length === 4) {
       previsoes.forEach((p, i) => {
-        
         const futureHour = (localHour + (i + 1) * 4) % 24;
         const formattedHour = formatTwoDigits(futureHour);
         html += `⏩ ${formattedHour}h: ${getTemperatureFeelingIcon(p.temperatura)}${p.temperatura.toFixed(1)} °C ${getWeatherCodeIcon(p.weatherCode, { temperatura: p.temperatura, uv })}<br>`;
@@ -83,7 +107,7 @@ async function getWeather(latitude, longitude) {
     if (euro) {
       html += `💶 Euro: ${euro}<br><br>`;
     }
-    // 🌤️ Previsão dos próximos 4 dias
+
     if (proximosDias?.length === 4) {
       html += `<strong>🗓 Média dos próximos dias:</strong><br>`;
       proximosDias.forEach(dia => {

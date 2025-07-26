@@ -20,7 +20,7 @@ exports.handler = async (event) => {
   }
 
   try {
-    // 🌍 Busca cidade e estado via OpenStreetMap
+    // 📍 Busca cidade e estado com base na geolocalização
     const geoRes = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&accept-language=pt`);
     const geoData = await geoRes.json();
     const city = geoData.address.city || geoData.address.town || geoData.address.village;
@@ -28,7 +28,7 @@ exports.handler = async (event) => {
 
     if (!city || !state) throw new Error('Cidade ou estado não encontrados.');
 
-    // 📅 Busca feriados da cidade
+    // 🗓️ Busca os feriados via Invertexto
     const holidayUrl = `https://api.invertexto.com/v1/holidays/${year}?token=${token}&state=${state}&city=${city}`;
     const holidayRes = await fetch(holidayUrl);
     if (!holidayRes.ok) throw new Error(`Erro HTTP: ${holidayRes.status} - ${await holidayRes.text()}`);
@@ -36,17 +36,18 @@ exports.handler = async (event) => {
     const holidays = await holidayRes.json();
     const today = new Date();
 
+    // 📆 Converte string para Date
     const parseDate = (str) => {
       const [y, m, d] = str.split('-').map(Number);
       return new Date(y, m - 1, d);
     };
 
-    // 🔮 Filtra feriados futuros e ignora comemorativos
+    // 🔍 Filtra feriados futuros que não são comemorativos
     const futureHolidays = holidays
       .map(h => ({ ...h, dateObj: parseDate(h.date) }))
       .filter(h => h.dateObj >= today && h.level !== 'comemorativo');
 
-    // 🔁 Busca o próximo mês com feriados válidos
+    // 🔁 Encontra feriados do mês atual (ou próximo disponível)
     let month = today.getMonth();
     let selected = [];
     while (month < 12) {
@@ -58,28 +59,20 @@ exports.handler = async (event) => {
     if (!selected.length) {
       return {
         statusCode: 200,
-        body: JSON.stringify({ message: '🗓 Nenhum feriado futuro encontrado até o final do ano.' })
+        body: JSON.stringify({ holidays: [] })
       };
     }
 
-    // 🏷️ Formata feriados encontrados
-    const formatHoliday = (h) => {
-      const dateStr = h.dateObj.toLocaleDateString('pt-BR');
-      const weekday = h.dateObj.toLocaleDateString('pt-BR', { weekday: 'long' });
-      const tipo = {
-        facultativo: 'Ponto facultativo:',
-        municipal: 'Feriado municipal:',
-        estadual: 'Feriado estadual:',
-        nacional: 'Feriado nacional:'
-      }[h.level] || 'Feriado:';
-      return `🗓${tipo} ${dateStr} (${weekday}) ${h.name}`;
-    };
-
-    const message = selected.map(formatHoliday).join('\n');
+    // ✅ Retorna nome, data e nível (tipo) do feriado
+    const holidaysFormatted = selected.map(h => ({
+      name: h.name,
+      date: h.date,
+      level: h.level
+    }));
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message })
+      body: JSON.stringify({ holidays: holidaysFormatted })
     };
 
   } catch (err) {
