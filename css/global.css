@@ -82,13 +82,14 @@
 
 	/* 🌤️ Tema Claro (padrão) */
 	.weather-info {
+		width: 100%;
 		hyphens: auto;
 		margin: 1% auto;
 		padding: 4px;
 		border-radius: 10px;
 		display: flex;
 		flex-direction: column;
-		font-size: 5.0vw;
+		font-size: 4.7vw;
 		animation: skyPulse 12s ease infinite;
 	}
 
