@@ -76,7 +76,7 @@ async function getWeather(latitude, longitude) {
     }
 
     if (temperatura && weatherCode !== undefined) {
-      html += `<strong>🗓 Média das próximas horas:</strong><br>`;
+      html += `<br><strong>🗓 Média das próximas horas:</strong><br>`;
       html += `🕒${localTime}: ${getTemperatureFeelingIcon(temperatura)}${temperatura.toFixed(1)} °C ${getWeatherCodeIcon(weatherCode, { temperatura, uv })}<br>`;
     }
 
