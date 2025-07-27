@@ -81,16 +81,18 @@
 	}
 
 	/* 🌤️ Tema Claro (padrão) */
-	.weather-info {
+	.container-weather {
 		width: 99%;
-		hyphens: auto;
 		margin: 1% auto;
-		padding: 4px;
+	}
+
+	.weather-info {
+		hyphens: auto;
+		text-align: justify;
 		border-radius: 10px;
-		display: flex;
-		flex-direction: column;
 		font-size: 4.4vw;
 		animation: skyPulse 12s ease infinite;
+		padding: 4px;
 	}
 
 	/* Animação compartilhada */
