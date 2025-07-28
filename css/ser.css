@@ -195,44 +195,10 @@ h5 {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.btn-enviar {
-    background-color: #45a049;
-    color: white;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.btn-enviar:hover {
-    background-color: #007BFF;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.btn:active {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 /* Estilos para Containers */
-.container2 {
+.container-requisitos {
+  background-color: green;
     color: pink;
-}
-
-.container3 {
-    color: white; 
-}
-
-.container4 {
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
-}
-
-/* Estilo do Formulário */
-.form-container4 {
-    background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.form-field input, .form-field textarea {
-    border: 1px solid #ccc;
 }
 
 /* Estilo do Rodapé */

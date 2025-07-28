@@ -76,8 +76,8 @@ async function getWeather(latitude, longitude) {
     }
 
     if (temperatura && weatherCode !== undefined) {
-      html += `<br><strong>🗓 Média das próximas horas:</strong><br>`;
-      html += `🕒${localTime}: ${getTemperatureFeelingIcon(temperatura)}${temperatura.toFixed(1)} °C ${getWeatherCodeIcon(weatherCode, { temperatura, uv })}<br>`;
+      html += `<br><strong>Média das próximas horas:</strong><br>`;
+      html += `${localTime} h: ${getTemperatureFeelingIcon(temperatura)}${temperatura.toFixed(1)} °C ${getWeatherCodeIcon(weatherCode, { temperatura, uv })}<br>`;
     }
 
     if (previsoes?.length === 4) {
@@ -109,7 +109,7 @@ async function getWeather(latitude, longitude) {
     }
 
     if (proximosDias?.length === 4) {
-      html += `<strong>🗓 Média dos próximos dias:</strong><br>`;
+      html += `<strong>Média dos próximos dias:</strong><br>`;
       proximosDias.forEach(dia => {
         html += `🗓 ${dia.data}: ${getTemperatureFeelingIcon(dia.temperatura)}${dia.temperatura.toFixed(1)} °C ${getWeatherCodeIcon(dia.weatherCode, { temperatura: dia.temperatura, uv })}<br>`;
       });

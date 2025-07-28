@@ -84,11 +84,13 @@ h5 {
     0% {
         background-color: green;
     }
+
     100% {
         background-color: white;
         color: blue;
     }
 }
+
 .btn1:hover,
 .btn2:hover {
     background-color: #45a049;
@@ -97,7 +99,6 @@ h5 {
 
 .btn3 {
     background-color: #28A745;
-
     color: white;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -108,48 +109,12 @@ h5 {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.btn-enviar {
-    background-color: #45a049;
-    color: white;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.btn-enviar:hover {
-    background-color: #007BFF;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.btn:active {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 /* Estilos para Containers */
-	.container0 {
-        color: white;
-		background-color: green;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-	}
-
-	.container1 {
-		background-color: white;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-	}
-
-	.container2 {
-		background-color: white;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-	}
-
-	.container3 {
-		background-color: white;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-	}
-
-	.container4 {
-		border-radius: 10px;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-	}
+.container-descriçãorifa {
+    color: white;
+    background-color: green;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
 
 /* Estilo do Rodapé */
 footer {
