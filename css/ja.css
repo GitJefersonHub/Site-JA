@@ -83,11 +83,11 @@ h5 {
 }
 
 .p2 {
-    color: red;
+    color: blueviolet;
 }
 
 .p3 {
-    color: blue;
+    color: pink;
 }
 
 .p4 {
@@ -158,12 +158,10 @@ h5 {
 
 /* Estilos para Containers */
 .container-trabalhando {
-
     background-color: green;
 }
 
 .container-tecnologia {
-
     background-color: transparent;
 }
 
@@ -183,6 +181,13 @@ h5 {
 .container-habilidades {
     background-color: green;
     color: yellow;
+}
+.container-casoseja {
+    background-color: transparent;
+}
+
+.container-doações {
+    background-color: green;
 }
 
 .container-reservado {

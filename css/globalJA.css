@@ -177,6 +177,15 @@
 		font-size: 4.6vw;
 	}
 
+	.container-casoseja {
+		hyphens: auto;
+		text-align: justify;
+		border-radius: 10px;
+		margin: 1% auto;
+		padding: 4px;
+		overflow-x: auto;
+	}
+
 	.container-doações {
 		border-radius: 10px;
 		padding: 1%;
@@ -236,27 +245,40 @@
 	h3,
 	h4,
 	h5 {
-		font-size: 5.1vw;
+		font-size: 5.2vw;
 		text-align: center;
 		margin: 0.5em 0;
 	}
 
-
 	/* Estilos para Parágrafos */
-	.p1,
-	.p2,
-	.p3 {
+	.p1 {
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 4.8vw;
+		font-size: 4.2vw;
+	}
+
+	.p2 {
+		hyphens: auto;
+		text-align: justify;
+		margin: 0 1%;
+		text-indent: 10%;
+		font-size: 4.2vw;
+	}
+
+	.p3 {
+		hyphens: auto;
+		text-align: left;
+		margin: 0 1%;
+		text-indent: 10%;
+		font-size: 4.2vw;
 	}
 
 	.p4 {
 		hyphens: auto;
 		text-align: justify;
-		font-size: 4.8vw;
+		font-size: 4.2vw;
 	}
 
 	/*Estilos para botões*/
@@ -387,7 +409,7 @@
 
 	/* Estilo da Imagem Jeferson Alves */
 	.containerimgJA {
-		width: 44%;
+		width: 46%;
 		margin: 1%;
 	}
 
@@ -400,7 +422,7 @@
 
 	/* 🌤️ Tema Claro (padrão) */
 	.container-weather {
-		width: 51%;
+		width: 49%;
 		margin: 1%;
 	}
 
@@ -409,7 +431,7 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 10px;
-		font-size: 2.0vw;
+		font-size: 2.1vw;
 		animation: skyPulse 12s ease infinite;
 		padding: 4px;
 	}
@@ -437,15 +459,14 @@
 	}
 
 	.container-trabalhando {
-		width: 38%;
+		width: 36%;
 		border-radius: 10px;
 		margin: 1%;
 		padding: 4px;
 	}
 
 	.container-tecnologia {
-		width: 56%;
-		margin: 1%;
+		width: 60%;
 	}
 
 	.container-tecnologias-exploradas {
@@ -497,6 +518,15 @@
 		font-size: 2.8vw;
 	}
 
+	.container-casoseja {
+		hyphens: auto;
+		width: 80%;
+		text-align: justify;
+		margin: 1% auto;
+		padding: 4px;
+		overflow-x: auto;
+	}
+
 	.container-doações {
 		width: 80%;
 		border-radius: 10px;
@@ -524,26 +554,40 @@
 	h3,
 	h4,
 	h5 {
-		font-size: 3.4vw;
+		font-size: 3.8vw;
 		text-align: center;
 		margin: 0.5em 0;
 	}
 
 	/* Estilos para Parágrafos */
-	.p1,
-	.p2,
-	.p3 {
+	.p1 {
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 3.0vw;
+		font-size: 2.8vw;
+	}
+
+	.p2 {
+		hyphens: auto;
+		text-align: justify;
+		margin: 0 1%;
+		text-indent: 10%;
+		font-size: 2.8vw;
+	}
+
+	.p3 {
+		hyphens: auto;
+		text-align: left;
+		margin: 0 1%;
+		text-indent: 10%;
+		font-size: 2.8vw;
 	}
 
 	.p4 {
 		hyphens: auto;
 		text-align: justify;
-		font-size: 3.0vw;
+		font-size: 2.8vw;
 	}
 
 	.btn1,
@@ -591,7 +635,7 @@
 	}
 
 	.container-formulario {
-		width: 60%;
+		width: 80%;
 		border-radius: 10px;
 		margin: 10px auto;
 		padding: 5px;
@@ -728,7 +772,7 @@
 		text-align: justify;
 		padding: 4px;
 		border-radius: 20px;
-		font-size: 1.9vw;
+		font-size: 2.2vw;
 		animation: skyPulse 12s ease infinite;
 	}
 
@@ -755,15 +799,15 @@
 	}
 
 	.container-trabalhando {
-		width: 39%;
+		width: 34%;
 		border-radius: 20px;
 		margin: 1%;
 		padding: 4px;
 	}
 
 	.container-tecnologia {
-		width: 55%;
-		margin: 1%;
+		width: 62%;
+		padding: 2px;
 
 	}
 
@@ -805,16 +849,25 @@
 	}
 
 	.container-serigrafia {
-		width: 49%;
+		width: 60%;
 		margin: 1%;
 
 	}
 
 	.container-habilidades {
-		width: 49%;
+		width: 38%;
 		border-radius: 20px;
 		margin: 1% auto;
 		font-size: 2.8vw;
+	}
+
+	.container-casoseja {
+		hyphens: auto;
+		width: 80%;
+		text-align: justify;
+		margin: 1% auto;
+		padding: 4px;
+		overflow-x: auto;
 	}
 
 	.container-doações {
@@ -844,28 +897,41 @@
 	h3,
 	h4,
 	h5 {
-		font-size: 2.8vw;
+		font-size: 4.2vw;
 		text-align: center;
 		margin: 0.5em 0;
 	}
 
 	/* Estilos para Parágrafos */
-	.p1,
-	.p2,
-	.p3 {
+	.p1 {
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 2.4vw;
+		font-size: 3.2vw;
+	}
+
+	.p2 {
+		hyphens: auto;
+		text-align: justify;
+		margin: 0 1%;
+		text-indent: 10%;
+		font-size: 3.2vw;
+	}
+
+	.p3 {
+		hyphens: auto;
+		text-align: left;
+		margin: 0 1%;
+		text-indent: 10%;
+		font-size: 3.2vw;
 	}
 
 	.p4 {
 		hyphens: auto;
 		text-align: justify;
-		font-size: 2.4vw;
+		font-size: 3.2vw;
 	}
-
 
 	.btn1,
 	.btn2 {
@@ -914,7 +980,7 @@
 
 
 	.container-formulario {
-		width: 60%;
+		width: 80%;
 		border-radius: 20px;
 		margin: 10px auto;
 		padding: 5px;
@@ -1051,7 +1117,7 @@
 		text-align: justify;
 		padding: 6px;
 		border-radius: 20px;
-		font-size: 1.9vw;
+		font-size: 2.2vw;
 		animation: skyPulse 12s ease infinite;
 	}
 
@@ -1078,15 +1144,15 @@
 	}
 
 	.container-trabalhando {
-		width: 38%;
+		width: 33%;
 		border-radius: 20px;
 		margin: 1%;
 		padding: 6px;
 	}
 
 	.container-tecnologia {
-		width: 56%;
-		margin: 1%;
+		width: 62%;
+		padding: 2px;
 	}
 
 	.container-tecnologias-exploradas {
@@ -1139,6 +1205,15 @@
 		font-size: 3.0vw;
 	}
 
+	.container-casoseja {
+		hyphens: auto;
+		width: 80%;
+		text-align: justify;
+		margin: 1% auto;
+		padding: 4px;
+		overflow-x: auto;
+	}
+
 	.container-doações {
 		width: 80%;
 		padding: 1%;
@@ -1166,27 +1241,40 @@
 	h3,
 	h4,
 	h5 {
-		font-size: 3.4vw;
+		font-size: 3.8vw;
 		text-align: center;
 		margin: 0.5em 0;
 	}
 
 	/* Estilos para Parágrafos */
-	.p1,
-	.p2,
-	.p3 {
+	.p1 {
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 3.0vw;
+		font-size: 2.8vw;
+	}
+
+	.p2 {
+		hyphens: auto;
+		text-align: justify;
+		margin: 0 1%;
+		text-indent: 10%;
+		font-size: 2.8vw;
+	}
+
+	.p3 {
+		hyphens: auto;
+		text-align: left;
+		margin: 0 1%;
+		text-indent: 10%;
+		font-size: 2.7vw;
 	}
 
 	.p4 {
 		hyphens: auto;
 		text-align: justify;
-		font-size: 3.0vw;
-
+		font-size: 2.4vw;
 	}
 
 	.btn1,
@@ -1236,7 +1324,7 @@
 
 
 	.container-formulario {
-		width: 60%;
+		width: 80%;
 		border-radius: 20px;
 		margin: 10px auto;
 		padding: 5px;
@@ -1334,7 +1422,7 @@
 	.btn-tecnologia,
 	.btn-serigrafia {
 		width: 94%;
-		font-size: 2.6vw;
+		font-size: 2.0vw;
 		padding: 1%;
 		margin: 0%;
 		display: inline-block;
@@ -1365,7 +1453,7 @@
 
 	/* 🌤️ Tema Claro (padrão) */
 	.container-weather {
-		width: 30%;
+		width: 33%;
 		margin: 8px;
 	}
 
@@ -1374,7 +1462,7 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 20px;
-		font-size: 1.3vw;
+		font-size: 1.5vw;
 		animation: skyPulse 12s ease infinite;
 		padding: 4px;
 	}
@@ -1403,7 +1491,7 @@
 
 	/* Espaçamento personalizado entre os containers */
 	.container-trabalhando {
-		width: 34%;
+		width: 31%;
 		border-radius: 20px;
 		padding: 4px;
 		margin: 8px;
@@ -1451,6 +1539,30 @@
 		border-radius: 20px;
 	}
 
+	.container-casoseja {
+		hyphens: auto;
+		width: 80%;
+		text-align: justify;
+		margin: 1% auto;
+		padding: 4px;
+		overflow-x: auto;
+	}
+
+	.container-doações {
+		width: 80%;
+		padding: 4px;
+		overflow-x: auto;
+		font-size: 2.8vw;
+		margin: 1% auto;
+		border-radius: 20px;
+	}
+
+	/* Estilo da Imagem do qrcodecx*/
+	.container-qrcodecx {
+		width: 32%;
+		margin: 1% auto;
+	}
+
 	.container-doações {
 		width: 80%;
 		padding: 1%;
@@ -1490,20 +1602,34 @@
 	h3,
 	h4,
 	h5 {
-		font-size: 2.8vw;
+		font-size: 3.8vw;
 		text-align: center;
 		margin: 0.5em 0;
 	}
 
 	/* Estilos para Parágrafos */
-	.p1,
-	.p2,
-	.p3 {
+	.p1 {
 		hyphens: auto;
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 2.4vw;
+		font-size: 2.8vw;
+	}
+
+	.p2 {
+		hyphens: auto;
+		text-align: justify;
+		margin: 0 1%;
+		text-indent: 10%;
+		font-size: 2.8vw;
+	}
+
+	.p3 {
+		hyphens: auto;
+		text-align: left;
+		margin: 0 1%;
+		text-indent: 10%;
+		font-size: 2.7vw;
 	}
 
 	.p4 {
@@ -1559,7 +1685,7 @@
 	}
 
 	.container-formulario {
-		width: 60%;
+		width: 80%;
 		border-radius: 20px;
 		margin: 10px auto;
 		padding: 5px;
