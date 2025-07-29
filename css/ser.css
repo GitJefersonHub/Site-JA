@@ -1,66 +1,66 @@
 /* Estilos Gerais */
-body { 
-    background-color: silver;
+body {
+  background-color: silver;
 }
 
 /* Estilo do Cabeçalho */
 nav {
-    color: white;
+  color: white;
 }
 
 nav .logo {
-    background-color: blue;   
+  background-color: blue;
 }
 
 nav .logo a {
-    color: white;
+  color: white;
 }
 
 nav ul li {
-    background-color: pink;
+  background-color: pink;
 }
 
 nav ul li a {
-    color: white;
+  color: white;
 }
 
 nav ul li a.disabled {
-    color: grey;
+  color: grey;
 }
 
 /* Estilos para Títulos */
 h1 {
-    color: white;
-    font-size: 170%;
+  color: white;
+  font-size: 170%;
 }
 
 h2 {
-    color: yellow;
+  color: yellow;
 }
 
 h3 {
-    color: brown;
+  color: brown;
 }
 
 h4 {
-    color: white; 
+  color: white;
 }
 
 h5 {
-    color: #007BFF;
+  color: #007BFF;
 }
 
 /* Estilos para Parágrafos */
 .p1 {
-    color: yellow; 
+  color: #007BFF;
 }
 
 .p2 {
-    color: red;
+  color: red;
 }
 
 .p3 {
-    color: blue;
+  color: blue;
 }
 
 /*Estilo para as imagens ser*/
@@ -69,140 +69,195 @@ h5 {
   width: 100%;
   overflow: auto
 }
+
 .colunaimgser {
   display: flex;
   flex-direction: row;
 }
+
 .colunaimgser img {
-  margin-right: 5px; /* Ajuste o espaçamento entre as imagens conforme necessário */
+  margin-right: 5px;
+  /* Ajuste o espaçamento entre as imagens conforme necessário */
 }
+
 .logoSFV {
   margin-left: 5px;
-  width: 51%;  /* Defina a largura desejada para esta imagem */
-  height: 30%; /* Defina a altura desejada para esta imagem */
+  width: 51%;
+  /* Defina a largura desejada para esta imagem */
+  height: 30%;
+  /* Defina a altura desejada para esta imagem */
 }
+
 .logodivulg {
-  width: 30%;  /* Defina a largura desejada para esta imagem */
-  height: 30%; /* Defina a altura desejada para esta imagem */
+  width: 30%;
+  /* Defina a largura desejada para esta imagem */
+  height: 30%;
+  /* Defina a altura desejada para esta imagem */
 }
+
 .logopagamentos {
-  width: 30%;  /* Defina a largura desejada para esta imagem */
-  height: 30%; /* Defina a altura desejada para esta imagem */
+  width: 30%;
+  /* Defina a largura desejada para esta imagem */
+  height: 30%;
+  /* Defina a altura desejada para esta imagem */
 }
+
 .logoaçai {
-  width: 30%;  /* Defina a largura desejada para esta imagem */
-  height: 30%; /* Defina a altura desejada para esta imagem */
+  width: 30%;
+  /* Defina a largura desejada para esta imagem */
+  height: 30%;
+  /* Defina a altura desejada para esta imagem */
 }
+
 .logoescolatec {
-  width: 30%;  /* Defina a largura desejada para esta imagem */
-  height: 30%; /* Defina a altura desejada para esta imagem */
+  width: 30%;
+  /* Defina a largura desejada para esta imagem */
+  height: 30%;
+  /* Defina a altura desejada para esta imagem */
 }
+
 .logobarbearia {
-  width: 30%;  /* Defina a largura desejada para esta imagem */
-  height: 30%; /* Defina a altura desejada para esta imagem */
+  width: 30%;
+  /* Defina a largura desejada para esta imagem */
+  height: 30%;
+  /* Defina a altura desejada para esta imagem */
 }
+
 .logocaveira {
-  width: 30%;  /* Defina a largura desejada para esta imagem */
-  height: 30%; /* Defina a altura desejada para esta imagem */
+  width: 30%;
+  /* Defina a largura desejada para esta imagem */
+  height: 30%;
+  /* Defina a altura desejada para esta imagem */
 }
 
 .kit-aux-banheiroporta {
   margin-left: 5px;
-  width: 50%;  /* Defina a largura desejada para esta imagem */
-  height: 50%; /* Defina a altura desejada para esta imagem */
+  width: 50%;
+  /* Defina a largura desejada para esta imagem */
+  height: 50%;
+  /* Defina a altura desejada para esta imagem */
 }
+
 .kit-aux-banheirosanitario {
-  width: 50%;  /* Defina a largura desejada para esta imagem */
-  height: 50%; /* Defina a altura desejada para esta imagem */
+  width: 50%;
+  /* Defina a largura desejada para esta imagem */
+  height: 50%;
+  /* Defina a altura desejada para esta imagem */
 }
+
 .kit-aux-silencio {
-  width: 50%;  /* Defina a largura desejada para esta imagem */
-  height: 50%; /* Defina a altura desejada para esta imagem */
+  width: 50%;
+  /* Defina a largura desejada para esta imagem */
+  height: 50%;
+  /* Defina a altura desejada para esta imagem */
 }
+
 .kit-adv-Cond {
   margin-left: 5px;
-  width: 50%;  /* Defina a largura desejada para esta imagem */
-  height: 50%; /* Defina a altura desejada para esta imagem */
+  width: 50%;
+  /* Defina a largura desejada para esta imagem */
+  height: 50%;
+  /* Defina a altura desejada para esta imagem */
 }
+
 .kit-adv-NF {
-  width: 50%;  /* Defina a largura desejada para esta imagem */
-  height: 50%; /* Defina a altura desejada para esta imagem */
+  width: 50%;
+  /* Defina a largura desejada para esta imagem */
+  height: 50%;
+  /* Defina a altura desejada para esta imagem */
 }
+
 .kit-adv-piso {
-  width: 50%;  /* Defina a largura desejada para esta imagem */
-  height: 50%; /* Defina a altura desejada para esta imagem */
+  width: 50%;
+  /* Defina a largura desejada para esta imagem */
+  height: 50%;
+  /* Defina a altura desejada para esta imagem */
 }
 
 .kit-reg-estacionar {
   margin-left: 5px;
-  width: 50%;  /* Defina a largura desejada para esta imagem */
-  height: 50%; /* Defina a altura desejada para esta imagem */
+  width: 50%;
+  /* Defina a largura desejada para esta imagem */
+  height: 50%;
+  /* Defina a altura desejada para esta imagem */
 }
+
 .kit-reg-NF {
-  width: 50%;  /* Defina a largura desejada para esta imagem */
-  height: 50%; /* Defina a altura desejada para esta imagem */
+  width: 50%;
+  /* Defina a largura desejada para esta imagem */
+  height: 50%;
+  /* Defina a altura desejada para esta imagem */
 }
+
 .kit-reg-perturbação {
-  width: 50%;  /* Defina a largura desejada para esta imagem */
-  height: 50%; /* Defina a altura desejada para esta imagem */
+  width: 50%;
+  /* Defina a largura desejada para esta imagem */
+  height: 50%;
+  /* Defina a altura desejada para esta imagem */
 }
+
 .kit-reg-cãobravo {
-  width: 50%;  /* Defina a largura desejada para esta imagem */
-  height: 50%; /* Defina a altura desejada para esta imagem */
+  width: 50%;
+  /* Defina a largura desejada para esta imagem */
+  height: 50%;
+  /* Defina a altura desejada para esta imagem */
 }
 
 /* Estilos para os Botões */
-.btn-tecnologia:hover, .btn-serigrafia:hover {
-    background-color: green;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.btn-tecnologia:hover,
+.btn-serigrafia:hover {
+  background-color: green;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .btn1,
 .btn2,
 .btn-tecnologia,
 .btn-serigrafia {
-    animation: blinkAlert 1s infinite alternate;
-    color: white;
-    transition: transform 0.3s ease;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  animation: blinkAlert 1s infinite alternate;
+  color: white;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes blinkAlert {
-    0% {
-        background-color: green;
-    }
-    100% {
-        background-color: white;
-        color: blue;
-    }
+  0% {
+    background-color: green;
+  }
+
+  100% {
+    background-color: white;
+    color: blue;
+  }
 }
 
-.btn1:hover, .btn2:hover {
-    background-color: #45a049;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.btn1:hover,
+.btn2:hover {
+  background-color: #45a049;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .btn3 {
-    background-color: #28A745;
-  
-    color: white;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #28A745;
+
+  color: white;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn3:hover {
-    background-color: #218838;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: #218838;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilos para Containers */
 .container-requisitos {
   background-color: green;
-    color: pink;
+  color: yellow;
 }
 
 /* Estilo do Rodapé */
 footer {
-    background-color: blue;
-    color: white;
+  background-color: blue;
+  color: white;
 }
