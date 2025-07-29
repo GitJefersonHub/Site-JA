@@ -245,7 +245,7 @@
 	h3,
 	h4,
 	h5 {
-		font-size: 5.2vw;
+		font-size: 5.0vw;
 		text-align: center;
 		margin: 0.5em 0;
 	}
@@ -256,7 +256,7 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 4.2vw;
+		font-size: 4.6vw;
 	}
 
 	.p2 {
@@ -264,7 +264,7 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 4.2vw;
+		font-size: 4.6vw;
 	}
 
 	.p3 {
@@ -272,13 +272,13 @@
 		text-align: left;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 4.2vw;
+		font-size: 4.6vw;
 	}
 
 	.p4 {
 		hyphens: auto;
 		text-align: justify;
-		font-size: 4.2vw;
+		font-size: 4.6vw;
 	}
 
 	/*Estilos para botões*/
@@ -554,7 +554,7 @@
 	h3,
 	h4,
 	h5 {
-		font-size: 3.8vw;
+		font-size: 3.4vw;
 		text-align: center;
 		margin: 0.5em 0;
 	}
@@ -565,7 +565,7 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 2.8vw;
+		font-size: 3.0vw;
 	}
 
 	.p2 {
@@ -573,7 +573,7 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 2.8vw;
+		font-size: 3.0vw;
 	}
 
 	.p3 {
@@ -581,13 +581,13 @@
 		text-align: left;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 2.8vw;
+		font-size: 3.0vw;
 	}
 
 	.p4 {
 		hyphens: auto;
 		text-align: justify;
-		font-size: 2.8vw;
+		font-size: 3.0vw;
 	}
 
 	.btn1,
@@ -897,7 +897,7 @@
 	h3,
 	h4,
 	h5 {
-		font-size: 4.2vw;
+		font-size: 3.8vw;
 		text-align: center;
 		margin: 0.5em 0;
 	}
@@ -1252,7 +1252,7 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 2.8vw;
+		font-size: 3.2vw;
 	}
 
 	.p2 {
@@ -1260,7 +1260,7 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 2.8vw;
+		font-size: 3.2vw;
 	}
 
 	.p3 {
@@ -1268,13 +1268,13 @@
 		text-align: left;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 2.7vw;
+		font-size: 3.2vw;
 	}
 
 	.p4 {
 		hyphens: auto;
 		text-align: justify;
-		font-size: 2.4vw;
+		font-size: 3.2vw;
 	}
 
 	.btn1,
@@ -1602,7 +1602,7 @@
 	h3,
 	h4,
 	h5 {
-		font-size: 3.8vw;
+		font-size: 3.6vw;
 		text-align: center;
 		margin: 0.5em 0;
 	}
@@ -1613,7 +1613,7 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 2.8vw;
+		font-size: 3.2vw;
 	}
 
 	.p2 {
@@ -1621,7 +1621,7 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 2.8vw;
+		font-size: 3.2vw;
 	}
 
 	.p3 {
@@ -1629,13 +1629,13 @@
 		text-align: left;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 2.7vw;
+		font-size: 2.8vw;
 	}
 
 	.p4 {
 		hyphens: auto;
 		text-align: justify;
-		font-size: 2.4vw;
+		font-size: 3.2vw;
 	}
 
 	.btn1,
