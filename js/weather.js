@@ -77,7 +77,7 @@ async function getWeather(latitude, longitude) {
 
     if (temperatura && weatherCode !== undefined) {
       html += `<br><strong>Média das próximas horas:</strong><br>`;
-      html += `${localTime} h: ${getTemperatureFeelingIcon(temperatura)}${temperatura.toFixed(1)} °C ${getWeatherCodeIcon(weatherCode, { temperatura, uv })}<br>`;
+      html += `⏩${localTime} h: ${getTemperatureFeelingIcon(temperatura)}${temperatura.toFixed(1)} °C ${getWeatherCodeIcon(weatherCode, { temperatura, uv })}<br>`;
     }
 
     if (previsoes?.length === 4) {
@@ -89,7 +89,7 @@ async function getWeather(latitude, longitude) {
     }
 
     if (uv && uv !== 'indisponível') {
-      html += `💡 Índice UV: ${uv} ${getUvIndexDescription(uv)}<br>`;
+      html += `<br>💡 Índice UV: ${uv} ${getUvIndexDescription(uv)}<br>`;
     }
 
     if (aqi) {
