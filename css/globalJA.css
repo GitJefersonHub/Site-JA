@@ -82,7 +82,7 @@
 
 	/* 🌤️ Tema Claro (padrão) */
 	.container-weather {
-		width: 99%;
+		width: 100%;
 		margin: 1% auto;
 	}
 
@@ -90,7 +90,7 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 10px;
-		font-size: 4.2vw;
+		font-size: 4.1vw;
 		animation: skyPulse 12s ease infinite;
 		padding: 4px;
 	}
@@ -431,7 +431,7 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 10px;
-		font-size: 2.1vw;
+		font-size: 2.0vw;
 		animation: skyPulse 12s ease infinite;
 		padding: 4px;
 	}
@@ -772,7 +772,7 @@
 		text-align: justify;
 		padding: 4px;
 		border-radius: 20px;
-		font-size: 2.2vw;
+		font-size: 2.0vw;
 		animation: skyPulse 12s ease infinite;
 	}
 
@@ -1117,7 +1117,7 @@
 		text-align: justify;
 		padding: 6px;
 		border-radius: 20px;
-		font-size: 2.2vw;
+		font-size: 2.0vw;
 		animation: skyPulse 12s ease infinite;
 	}
 
@@ -1462,7 +1462,7 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 20px;
-		font-size: 1.5vw;
+		font-size: 1.4vw;
 		animation: skyPulse 12s ease infinite;
 		padding: 4px;
 	}
