@@ -772,7 +772,7 @@
 		text-align: justify;
 		padding: 4px;
 		border-radius: 20px;
-		font-size: 2.2vw;
+		font-size: 2.0vw;
 		animation: skyPulse 12s ease infinite;
 	}
 
@@ -1117,7 +1117,7 @@
 		text-align: justify;
 		padding: 6px;
 		border-radius: 20px;
-		font-size: 2.2vw;
+		font-size: 2.0vw;
 		animation: skyPulse 12s ease infinite;
 	}
 
@@ -1462,7 +1462,7 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 20px;
-		font-size: 1.5vw;
+		font-size: 1.4vw;
 		animation: skyPulse 12s ease infinite;
 		padding: 4px;
 	}
