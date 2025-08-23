@@ -16,11 +16,10 @@ async function getWeather(latitude, longitude) {
     if (!weatherRes.ok) throw new Error(await weatherRes.text());
     const weatherData = await weatherRes.json();
 
-    const { temperatura, uv, weatherCode, aqi, previsoes, proximosDias } = weatherData;
+    const { temperatura, uv, weatherCode, aqi, umidade, previsoes, proximosDias } = weatherData;
 
     const now = new Date();
     const localHour = now.getHours();
-    const localTime = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
     const day = now.toLocaleDateString('pt-BR', { day: 'numeric' });
     const month = now.toLocaleDateString('pt-BR', { month: 'long' });
     const year = now.getFullYear();
@@ -42,7 +41,6 @@ async function getWeather(latitude, longitude) {
     const euro = euroRes.status === 'fulfilled' && typeof euroRes.value?.brl === 'number'
       ? `R$ ${euroRes.value.brl.toFixed(2)}` : null;
 
-    // 🎯 Feriados com tipo (level)
     const tipoFeriado = {
       nacional: '🇧🇷 Nacional',
       estadual: '🏙️ Estadual',
@@ -54,7 +52,7 @@ async function getWeather(latitude, longitude) {
       ? holidayRes.value
       : [];
 
-    const mesAtual = now.getMonth(); // 0–11
+    const mesAtual = now.getMonth();
     const feriadosDoMes = feriados.filter(f => {
       const dataFeriado = new Date(f.date);
       return dataFeriado.getMonth() === mesAtual;
@@ -76,15 +74,17 @@ async function getWeather(latitude, longitude) {
     }
 
     if (temperatura && weatherCode !== undefined) {
+      const horaAtual = now.getHours().toString().padStart(2, '0'); // Garante dois dígitos
       html += `<br><strong>Média das próximas horas:</strong><br>`;
-      html += `⏩${localTime} h: ${getTemperatureFeelingIcon(temperatura)}${temperatura.toFixed(1)} °C ${getWeatherCodeIcon(weatherCode, { temperatura, uv })}<br>`;
+      html += `⏩ ${horaAtual}h: ${getTemperatureFeelingIcon(temperatura)}${temperatura.toFixed(1)} °C💧Umid ${umidade}% ${getWeatherCodeIcon(weatherCode, { temperatura, uv })}<br>`;
     }
+
 
     if (previsoes?.length === 4) {
       previsoes.forEach((p, i) => {
         const futureHour = (localHour + (i + 1) * 4) % 24;
         const formattedHour = formatTwoDigits(futureHour);
-        html += `⏩ ${formattedHour}h: ${getTemperatureFeelingIcon(p.temperatura)}${p.temperatura.toFixed(1)} °C ${getWeatherCodeIcon(p.weatherCode, { temperatura: p.temperatura, uv })}<br>`;
+        html += `⏩ ${formattedHour}h: ${getTemperatureFeelingIcon(p.temperatura)}${p.temperatura.toFixed(1)} °C💧Umid ${p.umidade}% ${getWeatherCodeIcon(p.weatherCode, { temperatura: p.temperatura, uv })}<br>`;
       });
     }
 

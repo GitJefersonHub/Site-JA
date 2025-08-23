@@ -32,8 +32,8 @@ exports.handler = async (event) => {
     };
   }
 
-  // ✅ URLs corrigidas (removido parâmetro 'time')
-  const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,uv_index,weather_code&hourly=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code&forecast_days=5&timezone=auto`;
+  // ✅ Adicionamos umidade atual e horária
+  const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,uv_index,weather_code,relative_humidity_2m&hourly=temperature_2m,weather_code,relative_humidity_2m&daily=temperature_2m_max,temperature_2m_min,weather_code&forecast_days=5&timezone=auto`;
   const airUrl = `https://api.waqi.info/feed/geo:${lat};${lon}/?token=${process.env.WAQI_TOKEN}`;
 
   try {
@@ -48,6 +48,7 @@ exports.handler = async (event) => {
     const current = weatherData?.current;
     const hourlyTemps = weatherData?.hourly?.temperature_2m || [];
     const hourlyCodes = weatherData?.hourly?.weather_code || [];
+    const hourlyHumidity = weatherData?.hourly?.relative_humidity_2m || [];
     const hourlyTimes = weatherData?.hourly?.time || [];
 
     const dailyTempsMax = weatherData?.daily?.temperature_2m_max || [];
@@ -74,10 +75,15 @@ exports.handler = async (event) => {
 
     for (let i = 1; i <= 4; i++) {
       const index = currentIndex + i * 4;
-      if (hourlyTemps[index] != null && hourlyCodes[index] != null) {
+      if (
+        hourlyTemps[index] != null &&
+        hourlyCodes[index] != null &&
+        hourlyHumidity[index] != null
+      ) {
         forecast.push({
           temperatura: hourlyTemps[index],
-          weatherCode: hourlyCodes[index]
+          weatherCode: hourlyCodes[index],
+          umidade: hourlyHumidity[index]
         });
       }
     }
@@ -96,6 +102,7 @@ exports.handler = async (event) => {
 
     const combinedData = {
       temperatura: current.temperature_2m,
+      umidade: current.relative_humidity_2m,
       uv,
       weatherCode: current.weather_code,
       aqi: aqiEmoji,
