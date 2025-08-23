@@ -24,10 +24,10 @@ export function getUvIndexDescription(uv) {
 const i18nLabels = {
   pt: {
     clear: 'Céu limpo',
-    partlyCloudy: 'Parcialmente nublado',
+    partlyCloudy: 'Parc nublado',
     cloudy: 'Nublado',
     foggy: 'Névoa',
-    drizzle: 'Chuvisco leve',
+    drizzle: 'Chuvisco',
     rain: 'Chuva',
     storm: 'Tempestade',
     unknown: 'Condição indefinida'
