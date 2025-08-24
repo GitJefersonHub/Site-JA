@@ -32,7 +32,6 @@ exports.handler = async (event) => {
     };
   }
 
-  // ✅ Adicionamos umidade atual e horária
   const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,uv_index,weather_code,relative_humidity_2m&hourly=temperature_2m,weather_code,relative_humidity_2m&daily=temperature_2m_max,temperature_2m_min,weather_code&forecast_days=5&timezone=auto`;
   const airUrl = `https://api.waqi.info/feed/geo:${lat};${lon}/?token=${process.env.WAQI_TOKEN}`;
 
@@ -58,18 +57,15 @@ exports.handler = async (event) => {
 
     if (!current) throw new Error('Dados climáticos indisponíveis.');
 
-    // 🌞 Índice UV tratado
     const uv = Number.isFinite(current.uv_index)
       ? current.uv_index.toFixed(1)
       : 'indisponível';
 
-    // 🌫️ Qualidade do ar
     const aqiRaw = airData?.data?.aqi;
     const aqiEmoji = Number.isFinite(aqiRaw)
       ? interpretAqi(aqiRaw)
       : '❓ Desconhecida';
 
-    // ⏩ Previsão horária baseada no horário atual
     const currentIndex = hourlyTimes.findIndex(t => t.startsWith(currentIsoHour));
     const forecast = [];
 
@@ -83,12 +79,12 @@ exports.handler = async (event) => {
         forecast.push({
           temperatura: hourlyTemps[index],
           weatherCode: hourlyCodes[index],
-          umidade: hourlyHumidity[index]
+          umidade: hourlyHumidity[index],
+          umidadeNivel: classificarUmidade(hourlyHumidity[index])
         });
       }
     }
 
-    // 🗓️ Previsão dos próximos 4 dias
     const proximosDias = [];
     for (let i = 1; i <= 4; i++) {
       if (dailyTimes[i] && dailyCodes[i] != null && dailyTempsMax[i] != null && dailyTempsMin[i] != null) {
@@ -103,6 +99,7 @@ exports.handler = async (event) => {
     const combinedData = {
       temperatura: current.temperature_2m,
       umidade: current.relative_humidity_2m,
+      umidadeNivel: classificarUmidade(current.relative_humidity_2m),
       uv,
       weatherCode: current.weather_code,
       aqi: aqiEmoji,
@@ -149,4 +146,11 @@ function formatDate(iso) {
   ];
   const nomeMes = meses[parseInt(mes, 10) - 1];
   return `${dia} de ${nomeMes}`;
+}
+
+// 💧 Classifica a umidade em baixa, média ou alta
+function classificarUmidade(valor) {
+  if (valor <= 39) return 'baixa';
+  if (valor <= 60) return 'boa';
+  return 'alta';
 }
