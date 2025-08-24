@@ -7,6 +7,15 @@ import {
 import { aplicarTemaAutomatico } from './tema.js';
 import { getNextHoliday } from './feriados.js';
 
+function getUmidadeIcon(nivel) {
+  return {
+    baixa: '🔥',
+    média: '💧',
+    alta: '🌊'
+  }[nivel] || '💧';
+}
+
+
 async function getWeather(latitude, longitude) {
   try {
     aplicarTemaAutomatico();
@@ -16,7 +25,7 @@ async function getWeather(latitude, longitude) {
     if (!weatherRes.ok) throw new Error(await weatherRes.text());
     const weatherData = await weatherRes.json();
 
-    const { temperatura, uv, weatherCode, aqi, umidade, previsoes, proximosDias } = weatherData;
+    const { temperatura, uv, weatherCode, aqi, umidade, umidadeNivel, previsoes, proximosDias } = weatherData;
 
     const now = new Date();
     const localHour = now.getHours();
@@ -74,9 +83,10 @@ async function getWeather(latitude, longitude) {
     }
 
     if (temperatura && weatherCode !== undefined) {
-      const horaAtual = now.getHours().toString().padStart(2, '0'); // Garante dois dígitos
+      const horaAtual = now.getHours().toString().padStart(2, '0');
+      const umidadeIcone = getUmidadeIcon(umidadeNivel);
       html += `<br><strong>Média das próximas horas:</strong><br>`;
-      html += `⏩ ${horaAtual}h: ${getTemperatureFeelingIcon(temperatura)}${temperatura.toFixed(1)} °C💧Umid ${umidade}% ${getWeatherCodeIcon(weatherCode, { temperatura, uv })}<br>`;
+      html += `⏩ ${horaAtual}h: ${getTemperatureFeelingIcon(temperatura)}${temperatura.toFixed(1)} °C ${umidadeIcone} ${umidadeNivel} ${umidade}% ${getWeatherCodeIcon(weatherCode, { temperatura, uv })}<br>`;
     }
 
 
@@ -84,9 +94,11 @@ async function getWeather(latitude, longitude) {
       previsoes.forEach((p, i) => {
         const futureHour = (localHour + (i + 1) * 4) % 24;
         const formattedHour = formatTwoDigits(futureHour);
-        html += `⏩ ${formattedHour}h: ${getTemperatureFeelingIcon(p.temperatura)}${p.temperatura.toFixed(1)} °C💧Umid ${p.umidade}% ${getWeatherCodeIcon(p.weatherCode, { temperatura: p.temperatura, uv })}<br>`;
+        const umidadeIcone = getUmidadeIcon(p.umidadeNivel);
+        html += `⏩ ${formattedHour}h: ${getTemperatureFeelingIcon(p.temperatura)}${p.temperatura.toFixed(1)} °C ${umidadeIcone} ${p.umidadeNivel} ${p.umidade}% ${getWeatherCodeIcon(p.weatherCode, { temperatura: p.temperatura, uv })}<br>`;
       });
     }
+
 
     if (uv && uv !== 'indisponível') {
       html += `<br>💡 Índice UV: ${uv} ${getUvIndexDescription(uv)}<br>`;
