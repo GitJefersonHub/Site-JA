@@ -47,16 +47,6 @@ exports.handler = async (event) => {
     const airData = await airRes.json();
 
     const current = weatherData?.current;
-    const hourlyTemps = weatherData?.hourly?.temperature_2m || [];
-    const hourlyCodes = weatherData?.hourly?.weather_code || [];
-    const hourlyHumidity = weatherData?.hourly?.relative_humidity_2m || [];
-    const hourlyTimes = weatherData?.hourly?.time || [];
-
-    const dailyTempsMax = weatherData?.daily?.temperature_2m_max || [];
-    const dailyTempsMin = weatherData?.daily?.temperature_2m_min || [];
-    const dailyCodes = weatherData?.daily?.weather_code || [];
-    const dailyTimes = weatherData?.daily?.time || [];
-
     if (!current) throw new Error('Dados climáticos indisponíveis.');
 
     const uv = Number.isFinite(current.uv_index)
@@ -70,6 +60,11 @@ exports.handler = async (event) => {
     const aqiEmoji = aqiRaw != null
       ? interpretAqi(aqiRaw)
       : '❓ Desconhecida';
+
+    const hourlyTemps = weatherData?.hourly?.temperature_2m || [];
+    const hourlyCodes = weatherData?.hourly?.weather_code || [];
+    const hourlyHumidity = weatherData?.hourly?.relative_humidity_2m || [];
+    const hourlyTimes = weatherData?.hourly?.time || [];
 
     const currentIndex = hourlyTimes.findIndex(t => t.startsWith(currentIsoHour));
     const forecast = [];
@@ -89,6 +84,11 @@ exports.handler = async (event) => {
         });
       }
     }
+
+    const dailyTempsMax = weatherData?.daily?.temperature_2m_max || [];
+    const dailyTempsMin = weatherData?.daily?.temperature_2m_min || [];
+    const dailyCodes = weatherData?.daily?.weather_code || [];
+    const dailyTimes = weatherData?.daily?.time || [];
 
     const proximosDias = [];
     for (let i = 1; i <= 4; i++) {

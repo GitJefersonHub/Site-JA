@@ -27,8 +27,6 @@ async function getEnderecoCompleto(latitude, longitude) {
   return endereco || 'Endereço não disponível';
 }
 
-
-
 async function getWeather(latitude, longitude) {
   try {
     aplicarTemaAutomatico();
@@ -46,6 +44,9 @@ async function getWeather(latitude, longitude) {
     const month = now.toLocaleDateString('pt-BR', { month: 'long' });
     const year = now.getFullYear();
     const formattedDate = `${day} de ${month} de ${year}.`;
+
+    const enderecoCompleto = await getEnderecoCompleto(latitude, longitude);
+    let html = `${formattedDate}<br><strong>📍 Localização:</strong> ${enderecoCompleto}<br><br>`;
 
     const [selicRateRes, dollarRes, euroRes, holidayRes] = await Promise.allSettled([
       fetch('/.netlify/functions/getSelicRate').then(res => res.json()),
@@ -80,8 +81,6 @@ async function getWeather(latitude, longitude) {
       return dataFeriado.getMonth() === mesAtual;
     });
 
-    let html = `${formattedDate}<br>`;
-
     if (feriadosDoMes.length > 0) {
       html += `<strong>🗓 Feriados deste mês:</strong><br>`;
       feriadosDoMes.forEach(f => {
@@ -102,7 +101,6 @@ async function getWeather(latitude, longitude) {
       html += `⏩ ${horaAtual}h: ${getTemperatureFeelingIcon(temperatura)}${temperatura.toFixed(1)} °C ${umidadeIcone} ${umidadeNivel} ${umidade}% ${getWeatherCodeIcon(weatherCode, { temperatura, uv })}<br>`;
     }
 
-
     if (previsoes?.length === 4) {
       previsoes.forEach((p, i) => {
         const futureHour = (localHour + (i + 1) * 4) % 24;
@@ -111,7 +109,6 @@ async function getWeather(latitude, longitude) {
         html += `⏩ ${formattedHour}h: ${getTemperatureFeelingIcon(p.temperatura)}${p.temperatura.toFixed(1)} °C ${umidadeIcone} ${p.umidadeNivel} ${p.umidade}% ${getWeatherCodeIcon(p.weatherCode, { temperatura: p.temperatura, uv })}<br>`;
       });
     }
-
 
     if (uv && uv !== 'indisponível') {
       html += `<br>💡 Índice UV: ${uv} ${getUvIndexDescription(uv)}<br>`;
