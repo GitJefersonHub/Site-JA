@@ -18,14 +18,16 @@ exports.handler = async (event) => {
   const currentIsoHour = now.toISOString().slice(0, 13); // Ex: '2025-07-22T15'
   const timestamp = now.getTime();
 
-  if (
+  const isCacheValid = (
     !force &&
     cachedWeather &&
     cacheTimestamp &&
     timestamp - cacheTimestamp < CACHE_DURATION_MS &&
     cachedWeather.lat === lat &&
     cachedWeather.lon === lon
-  ) {
+  );
+
+  if (isCacheValid) {
     return {
       statusCode: 200,
       body: JSON.stringify(cachedWeather.data)
@@ -61,8 +63,11 @@ exports.handler = async (event) => {
       ? current.uv_index.toFixed(1)
       : 'indisponível';
 
-    const aqiRaw = airData?.data?.aqi;
-    const aqiEmoji = Number.isFinite(aqiRaw)
+    const aqiRaw = airData?.status === 'ok' && Number.isFinite(airData?.data?.aqi)
+      ? airData.data.aqi
+      : null;
+
+    const aqiEmoji = aqiRaw != null
       ? interpretAqi(aqiRaw)
       : '❓ Desconhecida';
 
@@ -118,7 +123,11 @@ exports.handler = async (event) => {
     console.error('Erro ao buscar dados climáticos:', error.message);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: true, message: error.message })
+      body: JSON.stringify({
+        error: true,
+        message: error.message,
+        timestamp: new Date().toISOString()
+      })
     };
   }
 };
@@ -150,7 +159,7 @@ function formatDate(iso) {
 
 // 💧 Classifica a umidade em baixa, média ou alta
 function classificarUmidade(valor) {
-  if (valor <= 39) return 'baixa';
-  if (valor <= 60) return 'boa';
-  return 'alta';
+  if (valor <= 39) return 'Baixa';
+  if (valor <= 60) return 'Média';
+  return 'Alta';
 }
