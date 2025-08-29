@@ -9,11 +9,24 @@ import { getNextHoliday } from './feriados.js';
 
 function getUmidadeIcon(nivel) {
   return {
-    baixa: '🔥',
-    média: '💧',
-    alta: '🌊'
+    Baixa: '🔥',
+    Média: '💧',
+    Alta: '🌊'
   }[nivel] || '💧';
 }
+
+async function getEnderecoCompleto(latitude, longitude) {
+  const apiKey = 'QBrfgY3EsYz1XbTEv3QEONVkE1niTOHluM5sQhZirt60f26dcuhG4YmrrI9DIpc3'; // Substitua pela sua chave
+  const url = `https://api.distancematrix.ai/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}&language=pt-BR`;
+
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Erro ao buscar endereço');
+  const data = await res.json();
+
+  const endereco = data.results?.[0]?.formatted_address;
+  return endereco || 'Endereço não disponível';
+}
+
 
 
 async function getWeather(latitude, longitude) {
