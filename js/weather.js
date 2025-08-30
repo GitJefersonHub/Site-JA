@@ -16,40 +16,16 @@ function getUmidadeIcon(nivel) {
 }
 
 async function getEnderecoCompleto(latitude, longitude) {
-  const apiKey = 'QBrfgY3EsYz1XbTEv3QEONVkE1niTOHluM5sQhZirt60f26dcuhG4YmrrI9DIpc3';
-  const url = `https://api.distancematrix.ai/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}&language=pt-BR`;
-
   try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`Erro HTTP: ${res.status}`);
+    const res = await fetch(`/.netlify/functions/getAddress?lat=${latitude}&lon=${longitude}`);
+    if (!res.ok) throw new Error('Erro ao buscar endereço');
     const data = await res.json();
-
-    const resultado = data.result?.[0];
-    const componentes = resultado?.address_components || [];
-
-    const rua = componentes.find(c => c.types.includes('route'))?.long_name;
-    const numero = componentes.find(c => c.types.includes('street_number'))?.long_name;
-    const bairro = componentes.find(c => c.types.includes('sublocality') || c.types.includes('neighborhood'))?.long_name;
-    const cidade = componentes.find(c => c.types.includes('locality'))?.long_name;
-    const estado = componentes.find(c => c.types.includes('state'))?.short_name;
-    const pais = componentes.find(c => c.types.includes('country'))?.long_name;
-
-    // Monta o endereço completo
-    let endereco = '';
-    if (rua) endereco += rua;
-    if (numero) endereco += `, ${numero}`;
-    if (bairro) endereco += ` - ${bairro}`;
-    if (cidade || estado || pais) {
-      endereco += `, ${[cidade, estado, pais].filter(Boolean).join(', ')}`;
-    }
-
-    return endereco || resultado?.formatted_address || 'Endereço não disponível';
+    return data.endereco || 'Endereço não disponível';
   } catch (error) {
     console.error('Erro ao buscar endereço:', error);
     return 'Endereço não disponível';
   }
 }
-
 
 async function getWeather(latitude, longitude) {
   try {
