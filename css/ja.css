@@ -56,6 +56,12 @@ body.tema-escuro .weather-info {
     color: #e0e0e0;
 }
 
+.btn-local {
+		background-color: #0077cc;
+		color: white;
+	}
+
+
 /* Estilos para Títulos */
 h1 {
     color: white;

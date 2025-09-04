@@ -6,28 +6,10 @@ import {
 } from './utils.js';
 import { aplicarTemaAutomatico } from './tema.js';
 import { getNextHoliday } from './feriados.js';
+import { getEnderecoCompleto, getUmidadeIcon } from './helpers.js';
+import { DateTime } from "https://cdn.jsdelivr.net/npm/luxon@3.4.3/build/es6/luxon.min.js";
 
-function getUmidadeIcon(nivel) {
-  return {
-    Baixa: '🔥',
-    Média: '💧',
-    Alta: '🌊'
-  }[nivel] || '💧';
-}
-
-async function getEnderecoCompleto(latitude, longitude) {
-  try {
-    const res = await fetch(`/.netlify/functions/getAddress?lat=${latitude}&lon=${longitude}`);
-    if (!res.ok) throw new Error('Erro ao buscar endereço');
-    const data = await res.json();
-    return data.endereco || 'Endereço não disponível';
-  } catch (error) {
-    console.error('Erro ao buscar endereço:', error);
-    return 'Endereço não disponível';
-  }
-}
-
-async function getWeather(latitude, longitude) {
+export async function getWeather(latitude, longitude) {
   try {
     aplicarTemaAutomatico();
 
@@ -38,15 +20,12 @@ async function getWeather(latitude, longitude) {
 
     const { temperatura, uv, weatherCode, aqi, umidade, umidadeNivel, previsoes, proximosDias } = weatherData;
 
-    const now = new Date();
-    const localHour = now.getHours();
-    const day = now.toLocaleDateString('pt-BR', { day: 'numeric' });
-    const month = now.toLocaleDateString('pt-BR', { month: 'long' });
-    const year = now.getFullYear();
-    const formattedDate = `${day} de ${month} de ${year}.`;
+    const now = DateTime.now().setZone('America/Sao_Paulo');
+    const localHour = now.hour;
+    const formattedDate = now.setLocale('pt-BR').toFormat("dd 'de' LLLL 'de' yyyy");
 
     const enderecoCompleto = await getEnderecoCompleto(latitude, longitude);
-    let html = `${formattedDate}<br><strong></strong> ${enderecoCompleto}<br>`;
+    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
 
     const [selicRateRes, dollarRes, euroRes, holidayRes] = await Promise.allSettled([
       fetch('/.netlify/functions/getSelicRate').then(res => res.json()),
@@ -54,6 +33,40 @@ async function getWeather(latitude, longitude) {
       fetch('/.netlify/functions/getExchangeRate?currency=EUR').then(res => res.json()),
       getNextHoliday(latitude, longitude)
     ]);
+
+    const tipoFeriado = {
+      nacional: 'Feriado: 🇧🇷 Nacional',
+      estadual: 'Feriado: 🏙️ Estadual',
+      municipal: 'Feriado: 🏘️ Municipal',
+      facultativo: 'Feriado: ⚠️ Facultativo'
+    };
+
+    const feriados = holidayRes.status === 'fulfilled' && Array.isArray(holidayRes.value)
+      ? holidayRes.value
+      : [];
+
+    const mesAtual = now.month;
+
+    const feriadosDoMes = feriados.filter(f => {
+      const dataFeriado = DateTime.fromISO(f.date, { zone: 'America/Sao_Paulo' });
+      return dataFeriado.month === mesAtual;
+    });
+
+    let html = `${formattedDate}<br>`;
+
+    if (feriadosDoMes.length > 0) {
+      feriadosDoMes.forEach(f => {
+        const dataFeriado = DateTime.fromISO(f.date, { zone: 'America/Sao_Paulo' });
+        const dataFormatada = dataFeriado.setLocale('pt-BR').toFormat("cccc, dd 'de' LLLL");
+        const tipo = tipoFeriado[f.level] || '🎉 Outro';
+        html += `<p><strong>${tipo}</strong>: ${dataFormatada} - ${f.name}</p>`;
+      });
+    }
+
+    html += `
+<button class="btn-local" onclick="window.open('${mapsUrl}', '_blank')">
+📍 ${enderecoCompleto}
+</button>`;
 
     const selic = selicRateRes.status === 'fulfilled' && typeof selicRateRes.value?.selic === 'number'
       ? `${selicRateRes.value.selic.toFixed(2)}% ao ano` : null;
@@ -64,40 +77,10 @@ async function getWeather(latitude, longitude) {
     const euro = euroRes.status === 'fulfilled' && typeof euroRes.value?.brl === 'number'
       ? `R$ ${euroRes.value.brl.toFixed(2)}` : null;
 
-    const tipoFeriado = {
-      nacional: '🇧🇷 Nacional',
-      estadual: '🏙️ Estadual',
-      municipal: '🏘️ Municipal',
-      facultativo: '⚠️ Facultativo'
-    };
-
-    const feriados = holidayRes.status === 'fulfilled' && Array.isArray(holidayRes.value)
-      ? holidayRes.value
-      : [];
-
-    const mesAtual = now.getMonth();
-    const feriadosDoMes = feriados.filter(f => {
-      const dataFeriado = new Date(f.date);
-      return dataFeriado.getMonth() === mesAtual;
-    });
-
-    if (feriadosDoMes.length > 0) {
-      html += `<strong>🗓 Feriados deste mês:</strong><br>`;
-      feriadosDoMes.forEach(f => {
-        const dataFormatada = new Date(f.date).toLocaleDateString('pt-BR', {
-          weekday: 'long', day: '2-digit', month: 'long'
-        });
-
-        const tipo = tipoFeriado[f.level] || '🎉 Outro';
-        html += `<p><strong>${tipo}</strong>: ${dataFormatada} - ${f.name}</p>`;
-      });
-      html += `<br>`;
-    }
-
     if (temperatura && weatherCode !== undefined) {
-      const horaAtual = now.getHours().toString().padStart(2, '0');
+      const horaAtual = formatTwoDigits(localHour);
       const umidadeIcone = getUmidadeIcon(umidadeNivel);
-      html += `<br><strong>Média das próximas horas:</strong><br>`;
+      html += `<strong>Média das próximas horas:</strong><br>`;
       html += `⏩ ${horaAtual}h: ${getTemperatureFeelingIcon(temperatura)}${temperatura.toFixed(1)} °C ${umidadeIcone} ${umidadeNivel} ${umidade}% ${getWeatherCodeIcon(weatherCode, { temperatura, uv })}<br>`;
     }
 
@@ -143,14 +126,3 @@ async function getWeather(latitude, longitude) {
     document.getElementById('weather').innerHTML = 'Ambiente em manutenção.';
   }
 }
-
-window.addEventListener('DOMContentLoaded', () => {
-  if ('geolocation' in navigator) {
-    navigator.geolocation.getCurrentPosition(
-      pos => getWeather(pos.coords.latitude, pos.coords.longitude),
-      () => document.getElementById('weather').innerHTML = 'Localização não permitida.'
-    );
-  } else {
-    document.getElementById('weather').innerHTML = 'Geolocalização não suportada.';
-  }
-});

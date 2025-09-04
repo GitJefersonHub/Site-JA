@@ -1,21 +1,19 @@
 // Função que busca os próximos feriados com base na latitude e longitude
 export async function getNextHoliday(lat, lon) {
   try {
-    const res = await fetch(`/.netlify/functions/getHoliday?lat=${lat}&lon=${lon}`);
-    
-    if (!res.ok) throw new Error();
+    const url = `/.netlify/functions/getHoliday?lat=${lat}&lon=${lon}`;
+    const res = await fetch(url);
 
-    const data = await res.json();
-
-    // Verifica se data.holidays é um array válido
-    if (Array.isArray(data.holidays)) {
-      return data.holidays;
+    if (!res.ok) {
+      console.warn(`Erro ao buscar feriados: ${res.status}`);
+      return [];
     }
 
-    // Se não houver feriados válidos, retorna array vazio
-    return [];
-  } catch {
-    // Em caso de erro, retorna array vazio
+    const { holidays } = await res.json();
+
+    return Array.isArray(holidays) ? holidays : [];
+  } catch (err) {
+    console.error('Erro na função getNextHoliday:', err);
     return [];
   }
 }

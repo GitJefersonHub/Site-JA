@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const { DateTime } = require('luxon');
 
 let cachedWeather = null;
 let cacheTimestamp = null;
@@ -14,9 +15,9 @@ exports.handler = async (event) => {
     };
   }
 
-  const now = new Date();
-  const currentIsoHour = now.toISOString().slice(0, 13); // Ex: '2025-07-22T15'
-  const timestamp = now.getTime();
+  const now = DateTime.now().setZone('America/Sao_Paulo');
+  const currentHour = now.toFormat("yyyy-MM-dd'T'HH"); // Ex: '2025-07-22T15'
+  const timestamp = now.toMillis();
 
   const isCacheValid = (
     !force &&
@@ -66,7 +67,7 @@ exports.handler = async (event) => {
     const hourlyHumidity = weatherData?.hourly?.relative_humidity_2m || [];
     const hourlyTimes = weatherData?.hourly?.time || [];
 
-    const currentIndex = hourlyTimes.findIndex(t => t.startsWith(currentIsoHour));
+    const currentIndex = hourlyTimes.findIndex(t => t.startsWith(currentHour));
     const forecast = [];
 
     for (let i = 1; i <= 4; i++) {
@@ -126,7 +127,7 @@ exports.handler = async (event) => {
       body: JSON.stringify({
         error: true,
         message: error.message,
-        timestamp: new Date().toISOString()
+        timestamp: DateTime.now().setZone('America/Sao_Paulo').toISO()
       })
     };
   }
@@ -147,19 +148,18 @@ function interpretAqi(value) {
 
 // 📅 Formata data YYYY-MM-DD para "DD de [mês por extenso]"
 function formatDate(iso) {
-  const [ano, mes, dia] = iso.split('-');
+  const dt = DateTime.fromISO(iso, { zone: 'America/Sao_Paulo' });
   const meses = [
     'janeiro', 'fevereiro', 'março', 'abril',
     'maio', 'junho', 'julho', 'agosto',
     'setembro', 'outubro', 'novembro', 'dezembro'
   ];
-  const nomeMes = meses[parseInt(mes, 10) - 1];
-  return `${dia} de ${nomeMes}`;
+  return `${dt.day} de ${meses[dt.month - 1]}`;
 }
 
 // 💧 Classifica a umidade em baixa, média ou alta
 function classificarUmidade(valor) {
   if (valor <= 39) return 'Baixa';
-  if (valor <= 60) return 'Média';
+  if (valor <= 60) return 'Boa';
   return 'Alta';
 }
