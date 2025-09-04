@@ -29,6 +29,7 @@
   "type": "commonjs",
   "dependencies": {
     "ioredis": "^5.6.1",
+    "luxon": "^3.7.1",
     "node-fetch": "^2.7.0"
   },
   "devDependencies": {
