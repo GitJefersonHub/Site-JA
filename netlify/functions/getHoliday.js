@@ -34,24 +34,25 @@ exports.handler = async (event) => {
     if (!holidayRes.ok) throw new Error(`Erro HTTP: ${holidayRes.status} - ${await holidayRes.text()}`);
 
     const holidays = await holidayRes.json();
-    const today = new Date();
+    const todayStr = new Date().toISOString().split('T')[0]; // "YYYY-MM-DD"
+    const currentMonth = parseInt(todayStr.split('-')[1], 10) - 1;
 
-    // 📆 Converte string para Date
-    const parseDate = (str) => {
-      const [y, m, d] = str.split('-').map(Number);
-      return new Date(y, m - 1, d);
+    // 📆 Extrai mês da string "YYYY-MM-DD"
+    const getMonthFromDateString = (dateStr) => {
+      const [_, month] = dateStr.split('-');
+      return parseInt(month, 10) - 1;
     };
 
     // 🔍 Filtra feriados futuros que não são comemorativos
     const futureHolidays = holidays
-      .map(h => ({ ...h, dateObj: parseDate(h.date) }))
-      .filter(h => h.dateObj >= today && h.level !== 'comemorativo');
+      .filter(h => h.level !== 'comemorativo')
+      .filter(h => h.date >= todayStr); // compara como string
 
     // 🔁 Encontra feriados do mês atual (ou próximo disponível)
-    let month = today.getMonth();
+    let month = currentMonth;
     let selected = [];
     while (month < 12) {
-      selected = futureHolidays.filter(h => h.dateObj.getMonth() === month);
+      selected = futureHolidays.filter(h => getMonthFromDateString(h.date) === month);
       if (selected.length) break;
       month++;
     }
@@ -63,10 +64,10 @@ exports.handler = async (event) => {
       };
     }
 
-    // ✅ Retorna nome, data e nível (tipo) do feriado
+    // ✅ Retorna nome, data e nível (tipo) do feriado — sem conversão de data
     const holidaysFormatted = selected.map(h => ({
       name: h.name,
-      date: h.date,
+      date: h.date, // permanece como string "YYYY-MM-DD"
       level: h.level
     }));
 
