@@ -150,16 +150,16 @@ function interpretAqi(value) {
 function formatDate(iso) {
   const dt = DateTime.fromISO(iso, { zone: 'America/Sao_Paulo' });
   const meses = [
-    'janeiro', 'fevereiro', 'março', 'abril',
+    'jan', 'fev', 'març', 'abril',
     'maio', 'junho', 'julho', 'agosto',
-    'setembro', 'outubro', 'novembro', 'dezembro'
+    'set', 'out', 'nov', 'dez'
   ];
   return `${dt.day} de ${meses[dt.month - 1]}`;
 }
 
 // 💧 Classifica a umidade em baixa, média ou alta
 function classificarUmidade(valor) {
-  if (valor <= 39) return 'Baixa';
-  if (valor <= 60) return 'Boa';
-  return 'Alta';
+  if (valor <= 39) return ''; // valores correspondentes a baixa, média e alta
+  if (valor <= 60) return '';
+  return '';
 }

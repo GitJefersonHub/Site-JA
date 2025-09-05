@@ -21,17 +21,34 @@ exports.handler = async (event) => {
 
   try {
     // 📍 Busca cidade e estado com base na geolocalização
-    const geoRes = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&accept-language=pt`);
+    const geoRes = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&accept-language=pt`,
+      {
+        headers: {
+          'User-Agent': 'feriados-app-jeferson/1.0 (https://ja.tec.br)'
+        }
+      }
+    );
+
+    if (!geoRes.ok) {
+      throw new Error(`Erro ao buscar localização: ${geoRes.status} - ${await geoRes.text()}`);
+    }
+
     const geoData = await geoRes.json();
     const city = geoData.address.city || geoData.address.town || geoData.address.village;
     const state = geoData.address.state_code || geoData.address.state;
 
     if (!city || !state) throw new Error('Cidade ou estado não encontrados.');
 
+    console.log("Localização detectada:", { city, state });
+
     // 🗓️ Busca os feriados via Invertexto
     const holidayUrl = `https://api.invertexto.com/v1/holidays/${year}?token=${token}&state=${state}&city=${city}`;
     const holidayRes = await fetch(holidayUrl);
-    if (!holidayRes.ok) throw new Error(`Erro HTTP: ${holidayRes.status} - ${await holidayRes.text()}`);
+
+    if (!holidayRes.ok) {
+      throw new Error(`Erro HTTP ao buscar feriados: ${holidayRes.status} - ${await holidayRes.text()}`);
+    }
 
     const holidays = await holidayRes.json();
     const todayStr = new Date().toISOString().split('T')[0]; // "YYYY-MM-DD"
@@ -67,7 +84,7 @@ exports.handler = async (event) => {
     // ✅ Retorna nome, data e nível (tipo) do feriado — sem conversão de data
     const holidaysFormatted = selected.map(h => ({
       name: h.name,
-      date: h.date, // permanece como string "YYYY-MM-DD"
+      date: h.date,
       level: h.level
     }));
 
