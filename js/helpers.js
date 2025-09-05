@@ -1,10 +1,10 @@
 // funções auxiliares que não são genéricas o suficiente para utils.js
 export function getUmidadeIcon(nivel) {
   return {
-    Baixa: '🔥',
-    Boa: '💧',
-    Alta: '🌊'
-  }[nivel] || '💧';
+    Baixa: '🥵',// valores correspondentes a baixa, média e alta
+    Boa: '🙂',
+    Alta: '🥶'
+  }[nivel] || '💦';
 }
 
 export async function getEnderecoCompleto(latitude, longitude) {
