@@ -192,6 +192,10 @@ h5 {
     background-color: transparent;
 }
 
+.container-gestores {
+    background-color: #363636;
+}
+
 .container-doações {
     background-color: green;
 }

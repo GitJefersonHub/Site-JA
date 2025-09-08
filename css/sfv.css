@@ -1,0 +1,67 @@
+body {
+    background-color: skyblue;
+}
+
+/* Estilos para Títulos */
+h1 {
+    color: white;
+}
+
+h2 {
+    color: yellow;
+}
+
+h3 {
+    color: brown;
+}
+
+h4 {
+    color: white;
+}
+
+h5 {
+    color: green;
+}
+
+/* Estilos para Parágrafos */
+.p1 {
+    color: yellow;
+}
+
+.p2 {
+    color: red;
+}
+
+.p3 {
+    color: blue;
+}
+
+.p4 {
+    color: white;
+}
+
+.btn1,
+.btn2 {
+    animation: blinkAlert 1s infinite alternate;
+    color: white;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes blinkAlert {
+    0% {
+        background-color: green;
+    }
+
+    100% {
+        background-color: white;
+        color: blue;
+    }
+}
+
+
+.btn1:hover,
+.btn2:hover {
+    background-color: #45a049;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
