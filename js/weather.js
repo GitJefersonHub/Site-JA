@@ -80,8 +80,8 @@ export async function getWeather(latitude, longitude) {
     if (temperatura && weatherCode !== undefined) {
       const horaAtual = formatTwoDigits(localHour);
       const umidadeIcone = getUmidadeIcon(umidadeNivel);
-      html += `<strong>Média das próximas horas:</strong><br>`;
-      html += `⏩ ${horaAtual}h: ${getTemperatureFeelingIcon(temperatura)}${temperatura.toFixed(1)} °C ${umidadeIcone} ${umidadeNivel} ${umidade}% ${getWeatherCodeIcon(weatherCode, { temperatura, uv })}<br>`;
+      html += `<strong>Previsão para as próximas horas:</strong><br>`;
+      html += `⏩ ${horaAtual}h: ${getTemperatureFeelingIcon(temperatura)}${temperatura.toFixed(1)} °C  ${getWeatherCodeIcon(weatherCode, { temperatura, uv })}<br>`; // Trecho referente a umidade da hora atual ( ${umidadeIcone} ${umidadeNivel} ${umidade}% )
     }
 
     if (previsoes?.length === 4) {
@@ -89,7 +89,7 @@ export async function getWeather(latitude, longitude) {
         const futureHour = (localHour + (i + 1) * 4) % 24;
         const formattedHour = formatTwoDigits(futureHour);
         const umidadeIcone = getUmidadeIcon(p.umidadeNivel);
-        html += `⏩ ${formattedHour}h: ${getTemperatureFeelingIcon(p.temperatura)}${p.temperatura.toFixed(1)} °C ${umidadeIcone} ${p.umidadeNivel} ${p.umidade}% ${getWeatherCodeIcon(p.weatherCode, { temperatura: p.temperatura, uv })}<br>`;
+        html += `⏩ ${formattedHour}h: ${getTemperatureFeelingIcon(p.temperatura)}${p.temperatura.toFixed(1)} °C ${getWeatherCodeIcon(p.weatherCode, { temperatura: p.temperatura, uv })}<br>`; // Trecho referente a umidade das próximas horas ( ${umidadeIcone} ${p.umidadeNivel} ${p.umidade}% )
       });
     }
 
@@ -114,7 +114,7 @@ export async function getWeather(latitude, longitude) {
     }
 
     if (proximosDias?.length === 4) {
-      html += `<strong>Média dos próximos dias:</strong><br>`;
+      html += `<strong>Previsão para os próximos dias:</strong><br>`;
       proximosDias.forEach(dia => {
         html += `🗓 ${dia.data}: ${getTemperatureFeelingIcon(dia.temperatura)}${dia.temperatura.toFixed(1)} °C ${getWeatherCodeIcon(dia.weatherCode, { temperatura: dia.temperatura, uv })}<br>`;
       });
