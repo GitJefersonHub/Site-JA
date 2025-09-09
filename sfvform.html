@@ -1,14 +1,92 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Cadastro IRPJ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
 </head>
-
 <body>
-    <p class="p1">formulário</p>
-</body>
+  <form id="formCadastro">
+    <label for="periodo">Período</label>
+    <input type="text" id="periodo" name="periodo" required>
 
+    <label for="cnae">CNAE</label>
+    <input type="text" id="cnae" name="cnae" required>
+
+    <label for="entrada">Entrada</label>
+    <input type="text" id="entrada" name="entrada" required>
+
+    <label for="servicos">Serviços</label>
+    <input type="text" id="servicos" name="servicos" required>
+
+    <label for="itens">Itens</label>
+    <input type="text" id="itens" name="itens" required>
+
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <script>
+    document.getElementById("formCadastro").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const dados = {
+        periodo: document.getElementById("periodo").value,
+        cnae: document.getElementById("cnae").value,
+        entrada: document.getElementById("entrada").value,
+        servicos: document.getElementById("servicos").value,
+        itens: document.getElementById("itens").value
+      };
+
+      fetch("https://script.google.com/macros/s/AKfycbwQr6U_BnXzM92QrORQv6BMm3qE-yyc6MNj1_APmEgkjiYOtsHW2HKjCs-tMNiM-12W/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dados)
+      });
+
+      alert("Salvo com sucesso!");
+      document.getElementById("formCadastro").reset();
+    });
+  </script>
+</body>
 </html>
