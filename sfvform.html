@@ -2,90 +2,228 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Cadastro IRPJ</title>
+  <title>Relatório IRPJ</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      padding: 20px;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 40px;
     }
-    form {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
+
+    .container {
       max-width: 500px;
       margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 22px;
+    }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
     label {
-      display: block;
-      margin-top: 10px;
       font-weight: bold;
     }
+
     input[type="text"] {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
+      padding: 6px 10px;
       border: 1px solid #ccc;
       border-radius: 4px;
     }
-    button {
-      margin-top: 20px;
-      padding: 10px 15px;
-      background-color: #28a745;
-      color: white;
-      border: none;
+
+    input[type="date"] {
+      display: none;
+    }
+
+    .input-wrapper {
+      display: flex;
+      gap: 5px;
+    }
+
+    .input-wrapper input {
+      flex: 2;
+    }
+
+    .input-wrapper select {
+      flex: 1;
+      padding: 6px;
       border-radius: 4px;
+      border: 1px solid #ccc;
+      background-color: #fff;
       cursor: pointer;
     }
-    button:hover {
-      background-color: #218838;
+
+    .calendar-btn {
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #eee;
+      cursor: pointer;
+    }
+
+    button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .azul { background-color: #4da6ff; }
+    .roxo { background-color: #a64dff; }
+    .laranja { background-color: #ff944d; }
+    .laranja-claro { background-color: #ffcc99; color: black; }
+    .amarelo { background-color: #ffeb3b; color: black; }
+    .amarelo-claro { background-color: #fff176; color: black; }
+
+    .cadastrar {
+      margin-top: 30px;
+    }
+
+    .cadastrar button {
+      width: 100%;
+    }
+
+    #listaDados {
+      width: 100%;
+      padding: 6px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
     }
   </style>
 </head>
 <body>
-  <form id="formCadastro">
-    <label for="periodo">Período</label>
-    <input type="text" id="periodo" name="periodo" required>
+  <div class="container">
+    <h1>Relatório IRPJ</h1>
 
-    <label for="cnae">CNAE</label>
-    <input type="text" id="cnae" name="cnae" required>
+    <div class="campo">
+      <label for="busca">Busca</label>
+      <div class="input-wrapper">
+        <input type="text" id="busca" placeholder="Digite a busca">
+        <button class="azul">Buscar</button>
+      </div>
+    </div>
 
-    <label for="entrada">Entrada</label>
-    <input type="text" id="entrada" name="entrada" required>
+    <div class="campo">
+      <label for="periodo">Período</label>
+      <div class="input-wrapper">
+        <input type="text" id="periodo" placeholder="Escolha a data">
+        <button class="calendar-btn" onclick="document.getElementById('calendario').showPicker()">📅</button>
+        <input type="date" id="calendario" onchange="atualizarPeriodo(this.value)">
+      </div>
+      <button class="roxo">Editar</button>
+    </div>
 
-    <label for="servicos">Serviços</label>
-    <input type="text" id="servicos" name="servicos" required>
+    <div class="campo">
+      <label for="cnae">CNAE</label>
+      <div class="input-wrapper">
+        <input type="text" id="cnae" placeholder="Digite o código CNAE">
+        <select onchange="document.getElementById('cnae').value = this.value">
+          <option value="">▼</option>
+          <option value="Código 1">Código 1</option>
+          <option value="Código 2">Código 2</option>
+          <option value="Código 3">Código 3</option>
+        </select>
+      </div>
+      <button class="laranja">Alterar</button>
+    </div>
 
-    <label for="itens">Itens</label>
-    <input type="text" id="itens" name="itens" required>
+    <div class="campo">
+      <label for="entrada">Entrada</label>
+      <div class="input-wrapper">
+        <input type="text" id="entrada" placeholder="R$ 0,00">
+        <button class="laranja-claro">Fechar</button>
+      </div>
+    </div>
 
-    <button type="submit">Cadastrar</button>
-  </form>
+    <div class="campo">
+      <label for="servicos">Serviços</label>
+      <div class="input-wrapper">
+        <input type="text" id="servicos" placeholder="Escolha o serviço">
+        <select onchange="document.getElementById('servicos').value = this.value">
+          <option value="">▼</option>
+          <option value="Serviço A">Serviço A</option>
+          <option value="Serviço B">Serviço B</option>
+          <option value="Serviço C">Serviço C</option>
+        </select>
+      </div>
+      <button class="amarelo">Limpar</button>
+    </div>
+
+    <div class="campo">
+      <label for="itens">Itens</label>
+      <div class="input-wrapper">
+        <input type="text" id="itens" placeholder="Escolha um item">
+        <select onchange="document.getElementById('itens').value = this.value">
+          <option value="">▼</option>
+          <option value="Item 1">Item 1</option>
+          <option value="Item 2">Item 2</option>
+          <option value="Item 3">Item 3</option>
+        </select>
+      </div>
+      <button class="laranja">Excluir</button>
+    </div>
+
+    <div class="campo cadastrar">
+      <button class="amarelo-claro">Cadastrar</button>
+    </div>
+
+    <!-- ListBox para exibir os dados cadastrados -->
+    <div class="campo">
+      <label for="listaDados">Dados Cadastrados</label>
+      <select id="listaDados" multiple size="6"></select>
+    </div>
+  </div>
 
   <script>
-    document.getElementById("formCadastro").addEventListener("submit", function(e) {
-      e.preventDefault();
+    function atualizarPeriodo(valor) {
+      const [ano, mes, dia] = valor.split("-");
+      document.getElementById('periodo').value = `${dia}/${mes}/${ano.slice(-2)}`;
+    }
 
-      const dados = {
-        periodo: document.getElementById("periodo").value,
-        cnae: document.getElementById("cnae").value,
-        entrada: document.getElementById("entrada").value,
-        servicos: document.getElementById("servicos").value,
-        itens: document.getElementById("itens").value
-      };
+    document.getElementById('entrada').addEventListener('input', function () {
+      let valor = this.value.replace(/\D/g, '');
+      valor = (parseInt(valor, 10) / 100).toFixed(2);
+      this.value = 'R$ ' + valor.replace('.', ',');
+    });
 
-      fetch("https://script.google.com/macros/s/AKfycbwQr6U_BnXzM92QrORQv6BMm3qE-yyc6MNj1_APmEgkjiYOtsHW2HKjCs-tMNiM-12W/exec", {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(dados)
-      });
+    // Cadastrar dados na listBox
+    document.querySelector('.cadastrar button').addEventListener('click', function () {
+      const busca = document.getElementById('busca').value;
+      const periodo = document.getElementById('periodo').value;
+      const cnae = document.getElementById('cnae').value;
+      const entrada = document.getElementById('entrada').value;
+      const servicos = document.getElementById('servicos').value;
+      const itens = document.getElementById('itens').value;
 
-      alert("Salvo com sucesso!");
-      document.getElementById("formCadastro").reset();
+      const dados = `Busca: ${busca} | Período: ${periodo} | CNAE: ${cnae} | Entrada: ${entrada} | Serviço: ${servicos} | Item: ${itens}`;
+
+      const option = document.createElement('option');
+      option.textContent = dados;
+
+      document.getElementById('listaDados').appendChild(option);
+    });
+
+    // Alerta para os outros botões
+    document.querySelectorAll('button').forEach(btn => {
+      if (!btn.classList.contains('calendar-btn') && !btn.classList.contains('amarelo-claro')) {
+        btn.addEventListener('click', () => {
+          alert(`Você clicou em "${btn.textContent}"`);
+        });
+      }
     });
   </script>
 </body>
