@@ -1,118 +1,113 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/sfvform.css">
+  <title>Relatório IRPJ</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap"
     rel="stylesheet">
   <link rel="icon" href="data:,">
-  <title>Relatório IRPJ</title>
 </head>
-
 <body>
   <div class="container">
     <h1>Relatório IRPJ</h1>
 
-    <!-- Campos de entrada -->
-    <div class="campo">
-      <label for="busca">Busca</label>
-      <div class="input-wrapper">
-        <input type="text" id="busca" placeholder="Digite a busca">
+    <div class="flex-wrapper">
+      <div class="botao-container">
+        <button class="laranja-claro">🔒 Fechar</button>
+        <button class="azul">🔍 Buscar</button>
+        <button class="amarelo">🧹 Limpar</button>
+        <button class="roxo">✏️ Editar</button>
+        <button class="laranja">🔄 Alterar</button>
+        <button class="laranja">🗑️ Excluir</button>
+      </div>
 
+      <div class="input-container">
+        <div class="campo">
+          <div class="input-wrapper">
+            <input type="text" id="busca" placeholder="Buscar">
+          </div>
+        </div>
+        <br>
+
+        <div class="campo">
+          <div class="input-wrapper">
+            <input type="date" id="calendario">
+          </div>
+        </div>
+
+        <div class="campo">
+          <div class="input-wrapper">
+            <select id="cnae">
+              <option value="">CNAE</option>
+              <option value="motorista">motorista</option>
+              <option value="entregador">entregador</option>
+              <option value="Outros">Outros ()</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="campo">
+          <div class="input-wrapper">
+            <input type="text" id="entrada" placeholder="R$ 0,00">
+          </div>
+        </div>
+
+        <div class="campo">
+          <div class="input-wrapper">
+            <select id="servicos">
+              <option value="">Serviço</option>
+              <option value="Corridas">corridas</option>
+              <option value="PS">PS</option>
+              <option value="Vendas">vendas</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="campo">
+          <div class="input-wrapper">
+            <select id="itens">
+              <option value="">Itens</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+        </div>
       </div>
     </div>
-    <button class="azul">🔍 Buscar</button>
+
+    <div class="campo cadastrar">
+      <button class="amarelo-claro">✅ Cadastrar</button>
+    </div>
 
     <div class="campo">
-      <label for="calendario">Período</label>
-      <div class="input-wrapper">
-        <input type="date" id="calendario">
-      </div>
+      <label>Dados Cadastrados</label>
+      <table id="tabelaDados">
+        <thead>
+          <tr>
+            <th>Período</th>
+            <th>CNAE</th>
+            <th>Entrada</th>
+            <th>Serviços</th>
+            <th>Itens</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
-    <button class="roxo">✏️ Editar</button>
-
-    <div class="campo">
-      <label for="cnae">CNAE</label>
-      <div class="input-wrapper">
-        <select id="cnae">
-          <option value="">Escolha o código CNAE</option>
-          <option value="Código 1">Código 1</option>
-          <option value="Código 2">Código 2</option>
-          <option value="Código 3">Código 3</option>
-        </select>
-      </div>
-    </div>
-    <button class="laranja">🔄 Alterar</button>
-
-    <div class="campo">
-      <label for="entrada">Entrada</label>
-      <div class="input-wrapper">
-        <input type="text" id="entrada" placeholder="R$ 0,00">
-      </div>
-    </div>
-    <button class="laranja-claro">🔒 Fechar</button>
-
-    <div class="campo">
-      <label for="servicos">Serviços</label>
-      <div class="input-wrapper">
-        <select id="servicos">
-          <option value="">Escolha o serviço</option>
-          <option value="Serviço A">Serviço A</option>
-          <option value="Serviço B">Serviço B</option>
-          <option value="Serviço C">Serviço C</option>
-        </select>
-      </div>
-    </div>
-  </div>
-
-  <button class="amarelo">🧹 Limpar</button>
-
-  <div class="campo">
-    <label for="itens">Itens</label>
-    <div class="input-wrapper">
-      <select id="itens">
-        <option value="">Escolha um item</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
-    </div>
-  </div>
-
-  <button class="laranja">🗑️ Excluir</button>
-
-  <div class="campo cadastrar">
-    <button class="amarelo-claro">✅ Cadastrar</button>
-  </div>
-
-  <!-- Tabela de dados cadastrados -->
-  <div class="campo">
-    <label>Dados Cadastrados</label>
-    <table id="tabelaDados">
-      <thead>
-        <tr>
-          <th>Período</th>
-          <th>CNAE</th>
-          <th>Entrada</th>
-          <th>Serviços</th>
-          <th>Itens</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
   </div>
 
   <script>
+    const dadosCadastrados = [];
+
     document.getElementById('entrada').addEventListener('input', function () {
       let valor = this.value.replace(/\D/g, '');
       valor = (parseInt(valor, 10) / 100).toFixed(2);
       this.value = 'R$ ' + valor.replace('.', ',');
     });
-
 
     document.querySelector('.cadastrar button').addEventListener('click', function () {
       const calendario = document.getElementById('calendario').value;
@@ -121,38 +116,80 @@
       const servicos = document.getElementById('servicos').value.trim();
       const itens = document.getElementById('itens').value.trim();
 
-      // Verifica se todos os campos estão preenchidos
       if (!calendario || !cnae || !entrada || !servicos || !itens) {
         alert('Preencha todos os campos');
         return;
       }
 
-      // Converte data para formato brasileiro
-      const [ano, mes, dia] = calendario.split('-');
+      const dataObj = new Date(calendario);
+      const dia = String(dataObj.getDate()).padStart(2, '0');
+      const mes = String(dataObj.getMonth() + 1).padStart(2, '0');
+      const ano = String(dataObj.getFullYear()).slice(-2);
       const periodo = `${dia}/${mes}/${ano}`;
 
-      // Insere na tabela
+      dadosCadastrados.push({
+        periodo,
+        dataObj,
+        cnae,
+        entrada,
+        servicos,
+        itens
+      });
+
+      // Ordena os dados por data
+      dadosCadastrados.sort((a, b) => a.dataObj - b.dataObj);
+
       const tabela = document.getElementById('tabelaDados').querySelector('tbody');
-      const novaLinha = tabela.insertRow();
+      tabela.innerHTML = '';
 
-      novaLinha.insertCell().textContent = periodo;
-      novaLinha.insertCell().textContent = cnae;
-      novaLinha.insertCell().textContent = entrada;
-      novaLinha.insertCell().textContent = servicos;
-      novaLinha.insertCell().textContent = itens;
+      // Agrupa os dados por ano
+      const dadosPorAno = {};
+      dadosCadastrados.forEach(dado => {
+        const ano = dado.periodo.split('/')[2];
+        if (!dadosPorAno[ano]) {
+          dadosPorAno[ano] = [];
+        }
+        dadosPorAno[ano].push(dado);
+      });
 
-      // Limpa os campos após cadastro
+      // Ordena os anos em ordem crescente
+      const anosOrdenados = Object.keys(dadosPorAno).sort((a, b) => parseInt(a) - parseInt(b));
+
+      anosOrdenados.forEach(ano => {
+        let totalEntrada = 0;
+        let totalItens = 0;
+
+        dadosPorAno[ano].forEach(dado => {
+          const linha = tabela.insertRow();
+          linha.insertCell().textContent = dado.periodo;
+          linha.insertCell().textContent = dado.cnae;
+          linha.insertCell().textContent = dado.entrada;
+          linha.insertCell().textContent = dado.servicos;
+          linha.insertCell().textContent = dado.itens;
+
+          const valorEntrada = parseFloat(dado.entrada.replace('R$', '').replace(',', '.').trim()) || 0;
+          const valorItens = parseInt(dado.itens, 10) || 0;
+          totalEntrada += valorEntrada;
+          totalItens += valorItens;
+        });
+
+        const linhaTotal = tabela.insertRow();
+        linhaTotal.insertCell().textContent = `Total 20${ano}`;
+        linhaTotal.insertCell().textContent = '';
+        linhaTotal.insertCell().textContent = `R$ ${totalEntrada.toFixed(2).replace('.', ',')}`;
+        linhaTotal.insertCell().textContent = '';
+        linhaTotal.insertCell().textContent = totalItens;
+        linhaTotal.style.fontWeight = 'bold';
+        linhaTotal.style.backgroundColor = '#f0f0f0';
+      });
+
+      // Limpa os campos
       document.getElementById('calendario').value = '';
       document.getElementById('cnae').value = '';
       document.getElementById('entrada').value = '';
       document.getElementById('servicos').value = '';
       document.getElementById('itens').value = '';
     });
-
-
-
-
-
 
     document.querySelectorAll('button').forEach(btn => {
       if (!btn.classList.contains('amarelo-claro')) {
@@ -163,5 +200,4 @@
     });
   </script>
 </body>
-
 </html>
