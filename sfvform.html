@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/sfvform.css">
   <title>Relatório IRPJ</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap"
-    rel="stylesheet">
   <link rel="icon" href="data:,">
 </head>
+
 <body>
-  <div class="container">
+  <div class="container-principal">
     <h1>Relatório IRPJ</h1>
 
-    <div class="flex-wrapper">
-      <div class="botao-container">
+      <div class="container-botoes">
         <button class="laranja-claro">🔒 Fechar</button>
         <button class="azul">🔍 Buscar</button>
         <button class="amarelo">🧹 Limpar</button>
@@ -42,9 +40,10 @@
           <div class="input-wrapper">
             <select id="cnae">
               <option value="">CNAE</option>
-              <option value="motorista">motorista</option>
-              <option value="entregador">entregador</option>
-              <option value="Outros">Outros ()</option>
+              <option value="motorista">Motorista</option>
+              <option value="entregador">Entregador</option>
+              <option value="Outros">Serigrafia</option>
+              <option value="Outros">Outros</option>
             </select>
           </div>
         </div>
@@ -60,6 +59,7 @@
             <select id="servicos">
               <option value="">Serviço</option>
               <option value="Corridas">corridas</option>
+              <option value="PS">Impressão</option>
               <option value="PS">PS</option>
               <option value="Vendas">vendas</option>
             </select>
@@ -73,18 +73,19 @@
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
             </select>
           </div>
         </div>
       </div>
-    </div>
 
     <div class="campo cadastrar">
       <button class="amarelo-claro">✅ Cadastrar</button>
     </div>
 
     <div class="campo">
-      <label>Dados Cadastrados</label>
+      <label>Entradas</label>
       <table id="tabelaDados">
         <thead>
           <tr>
@@ -200,4 +201,5 @@
     });
   </script>
 </body>
+
 </html>
