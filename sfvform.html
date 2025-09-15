@@ -13,72 +13,72 @@
   <div class="container-principal">
     <h1>Relatório IRPJ</h1>
 
-      <div class="container-botoes">
-        <button class="laranja-claro">🔒 Fechar</button>
-        <button class="azul">🔍 Buscar</button>
-        <button class="amarelo">🧹 Limpar</button>
-        <button class="roxo">✏️ Editar</button>
-        <button class="laranja">🔄 Alterar</button>
-        <button class="laranja">🗑️ Excluir</button>
-      </div>
+    <div class="container-botoes">
+      <button class="laranja-claro">🔒 Fechar</button>
+      <button class="azul">🔍 Buscar</button>
+      <button class="amarelo">🧹 Limpar</button>
+      <button class="roxo">✏️ Editar</button>
+      <button class="laranja">🔄 Alterar</button>
+      <button class="laranja">🗑️ Excluir</button>
+    </div>
 
-      <div class="input-container">
-        <div class="campo">
-          <div class="input-wrapper">
-            <input type="text" id="busca" placeholder="Buscar">
-          </div>
-        </div>
-        <br>
-
-        <div class="campo">
-          <div class="input-wrapper">
-            <input type="date" id="calendario">
-          </div>
-        </div>
-
-        <div class="campo">
-          <div class="input-wrapper">
-            <select id="cnae">
-              <option value="">CNAE</option>
-              <option value="motorista">Motorista</option>
-              <option value="entregador">Entregador</option>
-              <option value="Outros">Serigrafia</option>
-              <option value="Outros">Outros</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="campo">
-          <div class="input-wrapper">
-            <input type="text" id="entrada" placeholder="R$ 0,00">
-          </div>
-        </div>
-
-        <div class="campo">
-          <div class="input-wrapper">
-            <select id="servicos">
-              <option value="">Serviço</option>
-              <option value="Corridas">corridas</option>
-              <option value="PS">Impressão</option>
-              <option value="PS">PS</option>
-              <option value="Vendas">vendas</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="campo">
-          <div class="input-wrapper">
-            <select id="itens">
-              <option value="">Itens</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
+    <div class="input-container">
+      <div class="campo">
+        <div class="input-wrapper">
+          <input type="text" id="busca" placeholder="Buscar">
         </div>
       </div>
+      <br>
+
+      <div class="campo">
+        <div class="input-wrapper">
+          <input type="date" id="calendario">
+        </div>
+      </div>
+
+      <div class="campo">
+        <div class="input-wrapper">
+          <select id="cnae">
+            <option value="">CNAE</option>
+            <option value="motorista">Motorista</option>
+            <option value="entregador">Entregador</option>
+            <option value="serigrafia">Serigrafia</option>
+            <option value="Outros">Outros</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="campo">
+        <div class="input-wrapper">
+          <select id="servicos">
+            <option value="">Serviço</option>
+            <option value="corridas">Corridas</option>
+            <option value="impressão">Impressão</option>
+            <option value="ps">PS</option>
+            <option value="vendas">Vendas</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="campo">
+        <div class="input-wrapper">
+          <select id="itens">
+            <option value="">Itens</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="campo">
+        <div class="input-wrapper">
+          <input type="text" id="entrada" placeholder="R$ 0,00">
+        </div>
+      </div>
+    </div>
 
     <div class="campo cadastrar">
       <button class="amarelo-claro">✅ Cadastrar</button>
@@ -91,115 +91,16 @@
           <tr>
             <th>Período</th>
             <th>CNAE</th>
-            <th>Entrada</th>
             <th>Serviços</th>
             <th>Itens</th>
+            <th>Entrada</th>
           </tr>
         </thead>
         <tbody></tbody>
       </table>
     </div>
   </div>
-
-  <script>
-    const dadosCadastrados = [];
-
-    document.getElementById('entrada').addEventListener('input', function () {
-      let valor = this.value.replace(/\D/g, '');
-      valor = (parseInt(valor, 10) / 100).toFixed(2);
-      this.value = 'R$ ' + valor.replace('.', ',');
-    });
-
-    document.querySelector('.cadastrar button').addEventListener('click', function () {
-      const calendario = document.getElementById('calendario').value;
-      const cnae = document.getElementById('cnae').value.trim();
-      const entrada = document.getElementById('entrada').value.trim();
-      const servicos = document.getElementById('servicos').value.trim();
-      const itens = document.getElementById('itens').value.trim();
-
-      if (!calendario || !cnae || !entrada || !servicos || !itens) {
-        alert('Preencha todos os campos');
-        return;
-      }
-
-      const dataObj = new Date(calendario);
-      const dia = String(dataObj.getDate()).padStart(2, '0');
-      const mes = String(dataObj.getMonth() + 1).padStart(2, '0');
-      const ano = String(dataObj.getFullYear()).slice(-2);
-      const periodo = `${dia}/${mes}/${ano}`;
-
-      dadosCadastrados.push({
-        periodo,
-        dataObj,
-        cnae,
-        entrada,
-        servicos,
-        itens
-      });
-
-      // Ordena os dados por data
-      dadosCadastrados.sort((a, b) => a.dataObj - b.dataObj);
-
-      const tabela = document.getElementById('tabelaDados').querySelector('tbody');
-      tabela.innerHTML = '';
-
-      // Agrupa os dados por ano
-      const dadosPorAno = {};
-      dadosCadastrados.forEach(dado => {
-        const ano = dado.periodo.split('/')[2];
-        if (!dadosPorAno[ano]) {
-          dadosPorAno[ano] = [];
-        }
-        dadosPorAno[ano].push(dado);
-      });
-
-      // Ordena os anos em ordem crescente
-      const anosOrdenados = Object.keys(dadosPorAno).sort((a, b) => parseInt(a) - parseInt(b));
-
-      anosOrdenados.forEach(ano => {
-        let totalEntrada = 0;
-        let totalItens = 0;
-
-        dadosPorAno[ano].forEach(dado => {
-          const linha = tabela.insertRow();
-          linha.insertCell().textContent = dado.periodo;
-          linha.insertCell().textContent = dado.cnae;
-          linha.insertCell().textContent = dado.entrada;
-          linha.insertCell().textContent = dado.servicos;
-          linha.insertCell().textContent = dado.itens;
-
-          const valorEntrada = parseFloat(dado.entrada.replace('R$', '').replace(',', '.').trim()) || 0;
-          const valorItens = parseInt(dado.itens, 10) || 0;
-          totalEntrada += valorEntrada;
-          totalItens += valorItens;
-        });
-
-        const linhaTotal = tabela.insertRow();
-        linhaTotal.insertCell().textContent = `Total 20${ano}`;
-        linhaTotal.insertCell().textContent = '';
-        linhaTotal.insertCell().textContent = `R$ ${totalEntrada.toFixed(2).replace('.', ',')}`;
-        linhaTotal.insertCell().textContent = '';
-        linhaTotal.insertCell().textContent = totalItens;
-        linhaTotal.style.fontWeight = 'bold';
-        linhaTotal.style.backgroundColor = '#f0f0f0';
-      });
-
-      // Limpa os campos
-      document.getElementById('calendario').value = '';
-      document.getElementById('cnae').value = '';
-      document.getElementById('entrada').value = '';
-      document.getElementById('servicos').value = '';
-      document.getElementById('itens').value = '';
-    });
-
-    document.querySelectorAll('button').forEach(btn => {
-      if (!btn.classList.contains('amarelo-claro')) {
-        btn.addEventListener('click', () => {
-          alert(`Você clicou em "${btn.textContent}"`);
-        });
-      }
-    });
-  </script>
+  <script src="js/sfvForm.js"></script>
 </body>
 
 </html>
