@@ -31,7 +31,6 @@ document.querySelector('.cadastrar button').addEventListener('click', function (
     periodo,
     dataObj,
     cnae,
-    
     servicos,
     itens,
     entrada
