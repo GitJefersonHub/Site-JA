@@ -87,7 +87,6 @@ document.querySelector('.cadastrar button').addEventListener('click', function (
   // Limpa os campos
   document.getElementById('calendario').value = '';
   document.getElementById('cnae').value = '';
- 
   document.getElementById('servicos').value = '';
   document.getElementById('itens').value = '';
   document.getElementById('entrada').value = '';
