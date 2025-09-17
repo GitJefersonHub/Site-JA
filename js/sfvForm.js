@@ -98,4 +98,33 @@ document.querySelectorAll('button').forEach(btn => {
       alert(`Você clicou em "${btn.textContent}"`);
     });
   }
+
+  document.getElementById("cnae").addEventListener("change", function () {
+  const servicos = document.getElementById("servicos");
+  const selectedCnae = this.value;
+
+  servicos.innerHTML = "";
+
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "";
+  defaultOption.textContent = "Serviço";
+  servicos.appendChild(defaultOption);
+
+  const optionsMap = {
+    "motorista App": ["corridas", "entregas"],
+    "serigrafia": ["impressão", "cópia"],
+    "vendas": ["alimentos", "produtos"],
+    "Outros": ["ps"]
+  };
+
+  if (optionsMap[selectedCnae]) {
+    optionsMap[selectedCnae].forEach(servico => {
+      const option = document.createElement("option");
+      option.value = servico;
+      option.textContent = servico.charAt(0).toUpperCase() + servico.slice(1);
+      servicos.appendChild(option);
+    });
+  }
+});
+
 });
