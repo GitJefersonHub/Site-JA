@@ -251,12 +251,6 @@
 		display: block;
 	}
 
-
-
-
-
-
-
 	/* Estilo da Imagem do qrcodecx*/
 	.container-qrcodecx {
 		width: 100%;
@@ -341,6 +335,11 @@
 	.p4 {
 		hyphens: auto;
 		text-align: justify;
+		font-size: 4.6vw;
+	}
+
+	.pass {
+		text-align: right;
 		font-size: 4.6vw;
 	}
 

@@ -73,7 +73,7 @@ export function getWeatherCodeIcon(code, options = {}) {
         uv < 4 &&
         !isNight
       ) {
-        return `${weatherCategories.clear.day} ${i18nLabels[lang].clear} / poucas nuvens`;
+        return `${weatherCategories.clear.day} ${i18nLabels[lang].clear}`; // poucas nuvens
       }
 
       const icon = isNight ? night : day;

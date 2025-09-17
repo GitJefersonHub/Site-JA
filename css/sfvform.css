@@ -44,16 +44,13 @@ h1 {
 .container-botoes {
     display: flex;
     justify-content: space-between;
-    /* ou 'center' se quiser alinhados no meio */
     flex-wrap: wrap;
-    /* permite quebra de linha em telas menores */
     gap: 2%;
     /* espaçamento entre os botões */
 }
 
 button {
     width: 30%;
-    /* dois botões cabem lado a lado com um pequeno espaço */
     margin: 2% auto;
     padding: 1.2%;
     font-size: 84%;
