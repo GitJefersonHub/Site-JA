@@ -47,13 +47,14 @@ const i18nLabels = {
 // 🌤️ Categorias e ícones climáticos
 const weatherCategories = {
   clear: { codes: [0], day: '☀️', night: '🌙' },
-  partlyCloudy: { codes: [1], day: '⛅', night: '🌤️' },
+  partlyCloudy: { codes: [1], day: '⛅', night: '🌙☁️' }, // Lua com nuvens
   cloudy: { codes: [2], day: '☁️', night: '☁️' },
   foggy: { codes: [3, 45, 48], day: '🌫️', night: '🌫️' },
-  drizzle: { codes: [51], day: '🌦️', night: '🌧️' },
+  drizzle: { codes: [51], day: '🌦️', night: '🌙🌧️' }, // Lua com chuva leve
   rain: { codes: [61, 63, 65], day: '🌧️', night: '🌧️' },
-  storm: { codes: [80, 95], day: '⛈️', night: '🌩️' }
+  storm: { codes: [80, 95], day: '⛈️', night: '🌙⛈️' } // Lua com tempestade
 };
+
 
 // 🧠 Função principal com contexto e idioma
 export function getWeatherCodeIcon(code, options = {}) {
