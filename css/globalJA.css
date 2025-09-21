@@ -78,8 +78,6 @@
 		}
 	}
 
-
-
 	/* 🌤️ Tema Claro (padrão) */
 	.container-weather {
 		width: 100%;
@@ -90,7 +88,7 @@
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 10px;
-		font-size: 3.8vw;
+		font-size: 4.8vw;
 		animation: skyPulse 12s ease infinite;
 		padding: 4px;
 	}
@@ -206,21 +204,16 @@
 		margin: 1%;
 	}
 
+
+
+
+
 	.container-gestores {
 		hyphens: auto;
 		text-align: justify;
 		border-radius: 10px;
-		margin: 1% auto;
-		padding: 4px;
-		overflow-x: auto;
-	}
-
-
-
-
-	/* Container principal */
-	.container-gestores {
 		padding: 2%;
+		overflow-x: auto;
 	}
 
 	/* Container que agrupa as imagens lado a lado */
@@ -230,9 +223,8 @@
 		justify-content: center;
 		align-items: flex-start;
 		gap: 2%;
-		/* espaço entre os containers */
 		flex-wrap: wrap;
-		/* permite quebra de linha em telas menores */
+		margin: 1% auto;
 	}
 
 	/* Containers individuais de imagem */
@@ -244,12 +236,25 @@
 		width: 48%;
 	}
 
-	/* Estilo da imagem */
+	.containerimgMetropoles {
+		width: 48%;
+	}
+
+	.containerimgsite {
+		width: 48%;
+	}
+
+	/* Estilo da imagem container gestores*/
 	img {
 		width: 100%;
 		border-radius: 10px;
 		display: block;
 	}
+
+
+
+
+
 
 	/* Estilo da Imagem do qrcodecx*/
 	.container-qrcodecx {
