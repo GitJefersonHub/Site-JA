@@ -1,16 +1,19 @@
 exports.handler = async (event) => {
-  const { senha } = JSON.parse(event.body || '{}');
-  const senhaCorreta = process.env.SFV_PASSWORD;
+  const { senha, tipo } = JSON.parse(event.body || '{}');
 
-  if (senha === senhaCorreta) {
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ autorizado: true })
-    };
+  const senhaSFV = process.env.SFV_PASSWORD;
+  const senhaSamurai = process.env.SAMURAI_PASSWORD;
+
+  let autorizado = false;
+
+  if (tipo === 'sfv' && senha === senhaSFV) {
+    autorizado = true;
+  } else if (tipo === 'samurai' && senha === senhaSamurai) {
+    autorizado = true;
   }
 
   return {
-    statusCode: 403,
-    body: JSON.stringify({ autorizado: false })
+    statusCode: autorizado ? 200 : 403,
+    body: JSON.stringify({ autorizado })
   };
 };
