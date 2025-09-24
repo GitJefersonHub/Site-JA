@@ -1,5 +1,5 @@
-/* Celular peq*/
-@media (max-width: 480px) {
+/* Telas peq*/
+@media (max-width: 768px) {
 
 	/* Estilos Gerais */
 	body {
@@ -70,8 +70,9 @@
 	.containerimgJA {
 		align-items: flex-start;
 		margin: 1%;
+
 		img {
-			width: 40%;
+			width: 35%;
 			display: block;
 			margin: 0 auto;
 			border-radius: 10px;
@@ -118,7 +119,6 @@
 		font-size: 4vw;
 		cursor: pointer;
 	}
-
 
 	/* Estilos para Containers */
 	.container-trabalhando {
@@ -168,9 +168,9 @@
 		width: 100%;
 		border-radius: 10px;
 		overflow-x: auto;
-		font-size: 4.1vw;
-		margin: 1%;
-		padding-left: 1%;
+		font-size: 4.5vw;
+		margin: 1% auto;
+		padding-left: 2%;
 	}
 
 	.container-serigrafia {
@@ -203,10 +203,6 @@
 		font-size: 4.6vw;
 		margin: 1%;
 	}
-
-
-
-
 
 	.container-gestores {
 		hyphens: auto;
@@ -250,11 +246,6 @@
 		border-radius: 10px;
 		display: block;
 	}
-
-
-
-
-
 
 	/* Estilo da Imagem do qrcodecx*/
 	.container-qrcodecx {
@@ -318,7 +309,7 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 4.6vw;
+		font-size: 4.8vw;
 	}
 
 	.p2 {
@@ -326,7 +317,7 @@
 		text-align: justify;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 4.6vw;
+		font-size: 4.8vw;
 	}
 
 	.p3 {
@@ -334,18 +325,18 @@
 		text-align: left;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 4.6vw;
+		font-size: 4.8vw;
 	}
 
 	.p4 {
 		hyphens: auto;
 		text-align: justify;
-		font-size: 4.6vw;
+		font-size: 4.8vw;
 	}
 
 	.pass {
 		text-align: right;
-		font-size: 4.6vw;
+		font-size: 4.8vw;
 	}
 
 	/*Estilos para botões*/
@@ -403,366 +394,13 @@
 	}
 }
 
-/* Celular grande*/
-@media only screen and (min-width: 481px) and (max-width: 768px) {
+/* Telas médias */
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
 
 	/* Estilos Gerais */
 	body {
 		justify-content: center;
 		align-items: center;
-
-	}
-
-	/* Container do cabeçalho */
-	.container-nav {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		border-radius: 10px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	}
-
-	/* Estilo do Cabeçalho */
-	nav {
-		width: 98%;
-		text-align: center;
-
-	}
-
-	nav ul {
-		list-style: none;
-		display: flex;
-		justify-content: center;
-		border-radius: 10px;
-		padding: 4px;
-		margin: 0 1%;
-	}
-
-	nav ul li {
-		width: 40%;
-		margin: 0 20px;
-		border-radius: 4px;
-	}
-
-	nav ul li a {
-		text-decoration: none;
-	}
-
-	nav ul li a.disabled {
-		pointer-events: none;
-	}
-
-	/* Estilos para os Botões do cabeçalho nav*/
-	.btn-tecnologia,
-	.btn-serigrafia {
-		width: 90%;
-		font-size: 2.6vw;
-		padding: 1%;
-		margin: 1%;
-		display: inline-block;
-		cursor: pointer;
-		border-radius: 4px;
-		text-align: center;
-	}
-
-	.container-esquerdo {
-		display: flex;
-		justify-content: flex-start;
-		flex-wrap: wrap;
-		width: 100%;
-		box-sizing: border-box;
-	}
-
-	/* Estilo da Imagem Jeferson Alves */
-	.containerimgJA {
-		width: 46%;
-		margin: 1%;
-	}
-
-	/* Estilo da Imagem */
-	img {
-		width: 100%;
-		align-items: flex-start;
-		border-radius: 10px;
-	}
-
-	/* 🌤️ Tema Claro (padrão) */
-	.container-weather {
-		width: 49%;
-		margin: 1%;
-	}
-
-	.weather-info {
-		width: 100%;
-		hyphens: auto;
-		text-align: justify;
-		border-radius: 10px;
-		font-size: 2.0vw;
-		animation: skyPulse 12s ease infinite;
-		padding: 4px;
-	}
-
-	/* 🌙 Tema Escuro */
-	body.tema-escuro .weather-info {
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-	}
-
-	/* Animação compartilhada */
-	@keyframes skyPulse {
-		0% {
-			background-position: 0% 50%;
-		}
-
-		50% {
-			background-position: 100% 50%;
-		}
-
-		100% {
-			background-position: 0% 50%;
-		}
-	}
-
-	.btn-local {
-		width: 90%;
-		display: block;
-		margin: 10px auto;
-		padding: 6px 10px;
-		border: none;
-		border-radius: 10px;
-		font-size: 2vw;
-		cursor: pointer;
-	}
-
-	.container-trabalhando {
-		width: 36%;
-		border-radius: 10px;
-		margin: 1%;
-		padding: 4px;
-	}
-
-	.container-tecnologia {
-		width: 60%;
-	}
-
-	.container-tecnologias-exploradas {
-		border-radius: 10px;
-		width: 80%;
-		margin: 1% auto;
-	}
-
-	/* Estilo das colunas */
-	.row {
-		display: flex;
-		justify-content: space-between;
-		flex-wrap: wrap;
-	}
-
-	.column {
-		hyphens: auto;
-		width: 50%;
-		font-size: 2.6vw;
-		box-sizing: border-box;
-	}
-
-	ul {
-		list-style-type: disc;
-	}
-
-	li {
-		margin-bottom: 0%;
-	}
-
-	.container-atualizando {
-		width: 80%;
-		border-radius: 10px;
-		margin: 1% auto;
-		padding-left: 3%;
-		font-size: 3.0vw;
-	}
-
-	.container-serigrafia {
-		width: 48%;
-		margin: 1%;
-
-	}
-
-	.container-habilidades {
-		width: 48%;
-		border-radius: 10px;
-		margin: 1% auto;
-		font-size: 2.8vw;
-	}
-
-	.container-casoseja {
-		hyphens: auto;
-		width: 80%;
-		text-align: justify;
-		margin: 1% auto;
-		padding: 4px;
-		overflow-x: auto;
-	}
-
-	.container-doações {
-		width: 80%;
-		border-radius: 10px;
-		padding: 4px;
-		overflow-x: auto;
-		font-size: 2.8vw;
-		margin: 1% auto;
-	}
-
-	/* Estilo da Imagem do qrcodecx*/
-	.container-qrcodecx {
-		width: 40%;
-		margin: 1% auto;
-	}
-
-	.container-reservado {
-		width: 80%;
-		margin: 1% auto;
-		border-radius: 10px;
-	}
-
-	/* Estilos para Títulos */
-	h1,
-	h2,
-	h3,
-	h4,
-	h5 {
-		font-size: 3.4vw;
-		text-align: center;
-		margin: 0.5em 0;
-	}
-
-	/* Estilos para Parágrafos */
-	.p1 {
-		hyphens: auto;
-		text-align: justify;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 3.0vw;
-	}
-
-	.p2 {
-		hyphens: auto;
-		text-align: justify;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 3.0vw;
-	}
-
-	.p3 {
-		hyphens: auto;
-		text-align: left;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 3.0vw;
-	}
-
-	.p4 {
-		hyphens: auto;
-		text-align: justify;
-		font-size: 3.0vw;
-	}
-
-	.btn1,
-	.btn2 {
-		width: 90%;
-		border: none;
-		padding: 1% 10%;
-		text-align: center;
-		text-decoration: none;
-		cursor: pointer;
-		border-radius: 10px;
-		margin-left: 5%;
-		margin-right: 5%;
-		font-size: 3.0vw;
-	}
-
-	.btn1:hover,
-	.btn2:hover {
-		transform: scale(1.1);
-	}
-
-	.btn3 {
-		border: none;
-		padding: 5% 10%;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 5.0vw;
-		margin: 2%;
-		cursor: pointer;
-		border-radius: 4%;
-	}
-
-	.btn3:hover {
-		transform: scale(1.1);
-	}
-
-	.btn-enviar {
-		text-align: center;
-		display: flex;
-		font-size: 2.6vw;
-		margin: 2%;
-		cursor: pointer;
-		border-radius: 6px;
-	}
-
-	.container-formulario {
-		width: 80%;
-		border-radius: 10px;
-		margin: 10px auto;
-		padding: 5px;
-		overflow-x: auto;
-	}
-
-	/* Estilo do Formulário */
-	.form-container {
-		padding: 20px;
-		border-radius: 8px;
-	}
-
-	.form-field {
-		margin-bottom: 20px;
-	}
-
-	.form-field label {
-		display: block;
-		margin-bottom: 5px;
-		font-weight: bold;
-	}
-
-	.form-field input,
-	.form-field textarea {
-		font-family: 'Arial', sans-serif;
-		width: 100%;
-		padding: 6px;
-		border-radius: 5px;
-		font-size: 110%;
-	}
-
-	/* Estilo do Rodapé */
-	footer {
-		text-align: center;
-		margin: 1%;
-		padding: 1%;
-		border-radius: 4px;
-		font-size: 4.1vw;
-	}
-}
-
-/* Tablet */
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
-
-	/* Estilos Gerais */
-	body {
-		justify-content: center;
-		align-items: center;
-
 	}
 
 	/* Container do cabeçalho */
@@ -897,7 +535,6 @@
 	.container-tecnologia {
 		width: 62%;
 		padding: 2px;
-
 	}
 
 	.container-tecnologias-exploradas {
@@ -930,17 +567,16 @@
 	}
 
 	.container-atualizando {
-		width: 80%;
-		border-radius: 20px;
+		width: 74%;
 		margin: 1% auto;
-		font-size: 2.8vw;
-		padding-left: 10px;
+		padding-left: 6%;
+		font-size: 3.6vw;
+		border-radius: 20px;
 	}
 
 	.container-serigrafia {
 		width: 60%;
 		margin: 1%;
-
 	}
 
 	.container-habilidades {
@@ -966,6 +602,51 @@
 		font-size: 2.8vw;
 		margin: 1% auto;
 		border-radius: 20px;
+	}
+
+	.container-gestores {
+		width: 78%;
+		hyphens: auto;
+		text-align: justify;
+		border-radius: 20px;
+		padding: 2%;
+		overflow-x: auto;
+		margin: 1% auto;
+	}
+
+	/* Container que agrupa as imagens lado a lado */
+	.container-gestores section {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: flex-start;
+		gap: 2%;
+		flex-wrap: wrap;
+		margin: 1% auto;
+	}
+
+	/* Containers individuais de imagem */
+	.containerimgSFV {
+		width: 48%;
+	}
+
+	.containerimgSamuray {
+		width: 48%;
+	}
+
+	.containerimgMetropoles {
+		width: 48%;
+	}
+
+	.containerimgsite {
+		width: 48%;
+	}
+
+	/* Estilo da imagem container gestores*/
+	img {
+		width: 100%;
+		border-radius: 20px;
+		display: block;
 	}
 
 	/* Estilo da Imagem do qrcodecx*/
@@ -1022,6 +703,11 @@
 		font-size: 3.2vw;
 	}
 
+	.pass {
+		text-align: right;
+		font-size: 3.2vw;
+	}
+
 	.btn1,
 	.btn2 {
 		width: 90%;
@@ -1066,8 +752,6 @@
 		border-radius: 6px;
 	}
 
-
-
 	.container-formulario {
 		width: 80%;
 		border-radius: 20px;
@@ -1112,362 +796,8 @@
 	}
 }
 
-/* Laptops */
-@media only screen and (min-width: 1025px) and (max-width: 1200px) {
 
-	/* Estilos Gerais */
-	body {
-		justify-content: center;
-		align-items: center;
-
-	}
-
-	/* Container do cabeçalho */
-	.container-nav {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		border-radius: 20px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	}
-
-	/* Estilo do Cabeçalho */
-	nav {
-		width: 98%;
-		text-align: center;
-	}
-
-	nav ul {
-		list-style: none;
-		display: flex;
-		justify-content: center;
-		padding: 6px;
-		margin: 0 1%;
-	}
-
-	nav ul li {
-		width: 40%;
-		margin: 0 20px;
-		border-radius: 10px;
-		padding: 1%;
-	}
-
-	nav ul li a {
-		text-decoration: none;
-	}
-
-	nav ul li a.disabled {
-		pointer-events: none;
-	}
-
-	/* Estilos para os Botões do cabeçalho nav */
-	.btn-tecnologia,
-	.btn-serigrafia {
-		width: 92%;
-		font-size: 2.8vw;
-		padding: 1%;
-		margin: 0%;
-		display: inline-block;
-		cursor: pointer;
-		border-radius: 10px;
-	}
-
-	.container-esquerdo {
-		display: flex;
-		justify-content: flex-start;
-		flex-wrap: wrap;
-		width: 100%;
-		box-sizing: border-box;
-	}
-
-	/* Estilo da Imagem Jeferson Alves */
-	.containerimgJA {
-		width: 45%;
-		margin: 1%;
-	}
-
-	/* Estilo da Imagem */
-	img {
-		width: 100%;
-		align-items: flex-start;
-		border-radius: 20px;
-	}
-
-	/* 🌤️ Tema Claro (padrão) */
-	.container-weather {
-		width: 50%;
-		padding: 1%;
-	}
-
-	.weather-info {
-		width: 100%;
-		hyphens: auto;
-		text-align: justify;
-		padding: 6px;
-		border-radius: 20px;
-		font-size: 2.0vw;
-		animation: skyPulse 12s ease infinite;
-	}
-
-	/* 🌙 Tema Escuro */
-	body.tema-escuro .weather-info {
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-	}
-
-	/* Animação compartilhada */
-	@keyframes skyPulse {
-		0% {
-			background-position: 0% 50%;
-		}
-
-		50% {
-			background-position: 100% 50%;
-		}
-
-		100% {
-			background-position: 0% 50%;
-		}
-	}
-
-	.btn-local {
-		width: 90%;
-		display: block;
-		margin: 10px auto;
-		padding: 6px 10px;
-		border: none;
-		border-radius: 10px;
-		font-size: 2vw;
-		cursor: pointer;
-	}
-
-	.container-trabalhando {
-		width: 33%;
-		border-radius: 20px;
-		margin: 1%;
-		padding: 6px;
-	}
-
-	.container-tecnologia {
-		width: 62%;
-		padding: 2px;
-	}
-
-	.container-tecnologias-exploradas {
-		border-radius: 20px;
-		width: 80%;
-		margin: 1% auto;
-	}
-
-	/* Estilo das colunas */
-	.row {
-		display: flex;
-		justify-content: space-between;
-		flex-wrap: wrap;
-
-	}
-
-	.column {
-		hyphens: auto;
-		width: 50%;
-		font-size: 2.4vw;
-		box-sizing: border-box;
-	}
-
-	ul {
-		list-style-type: disc;
-	}
-
-	li {
-		margin-bottom: 0%;
-	}
-
-	.container-atualizando {
-		width: 80%;
-		border-radius: 20px;
-		margin: 1% auto;
-		padding-left: 8px;
-		font-size: 3.2vw;
-	}
-
-	.container-serigrafia {
-		width: 49%;
-		margin: 1%;
-
-	}
-
-	.container-habilidades {
-		width: 49%;
-		border-radius: 20px;
-		margin: 1% auto;
-		font-size: 3.0vw;
-	}
-
-	.container-casoseja {
-		hyphens: auto;
-		width: 80%;
-		text-align: justify;
-		margin: 1% auto;
-		padding: 4px;
-		overflow-x: auto;
-	}
-
-	.container-doações {
-		width: 80%;
-		padding: 1%;
-		overflow-x: auto;
-		font-size: 2.8vw;
-		margin: 1% auto;
-		border-radius: 20px;
-	}
-
-	/* Estilo da Imagem do qrcodecx*/
-	.container-qrcodecx {
-		width: 30%;
-		margin: 1% auto;
-	}
-
-	.container-reservado {
-		width: 80%;
-		margin: 1% auto;
-		border-radius: 20px;
-	}
-
-	/* Estilos para Títulos */
-	h1,
-	h2,
-	h3,
-	h4,
-	h5 {
-		font-size: 3.8vw;
-		text-align: center;
-		margin: 0.5em 0;
-	}
-
-	/* Estilos para Parágrafos */
-	.p1 {
-		hyphens: auto;
-		text-align: justify;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 3.2vw;
-	}
-
-	.p2 {
-		hyphens: auto;
-		text-align: justify;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 3.2vw;
-	}
-
-	.p3 {
-		hyphens: auto;
-		text-align: left;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 3.2vw;
-	}
-
-	.p4 {
-		hyphens: auto;
-		text-align: justify;
-		font-size: 3.2vw;
-	}
-
-	.btn1,
-	.btn2 {
-		width: 90%;
-		border: none;
-		padding: 1% 10%;
-		text-align: center;
-		text-decoration: none;
-		cursor: pointer;
-		border-radius: 10px;
-		margin-left: 5%;
-		margin-right: 5%;
-		font-size: 3.0vw;
-	}
-
-	.btn1:hover,
-	.btn2:hover {
-		transform: scale(1.1);
-	}
-
-	.btn3 {
-		border: none;
-		padding: 5% 10%;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 5.0vw;
-		margin: 2%;
-		cursor: pointer;
-		border-radius: 4%;
-	}
-
-	.btn3:hover {
-		transform: scale(1.1);
-	}
-
-	.btn-enviar {
-		text-align: center;
-		display: flex;
-		font-size: 3.4vw;
-		margin: 2%;
-		cursor: pointer;
-		border-radius: 6px;
-	}
-
-
-
-	.container-formulario {
-		width: 80%;
-		border-radius: 20px;
-		margin: 10px auto;
-		padding: 5px;
-		overflow-x: auto;
-	}
-
-	/* Estilo do Formulário */
-	.form-container {
-		padding: 20px;
-		border-radius: 8px;
-	}
-
-	.form-field {
-		margin-bottom: 20px;
-	}
-
-	.form-field label {
-		display: block;
-		margin-bottom: 5px;
-		font-weight: bold;
-		font-size: 3.0vw;
-	}
-
-	.form-field input,
-	.form-field textarea {
-		font-family: 'Arial', sans-serif;
-		width: 100%;
-		padding: 6px;
-		border-radius: 5px;
-		font-size: 3.0vw;
-	}
-
-	/* Estilo do Rodapé */
-	footer {
-		text-align: center;
-		margin: 1%;
-		padding: 1%;
-		border-radius: 4px;
-		font-size: 4.1vw;
-	}
-}
-
-/* Desktops TVS*/
+/* Telas grandes*/
 @media only screen and (min-width: 1201px) {
 
 	/* Estilos Gerais */
@@ -1553,7 +883,7 @@
 
 	/* 🌤️ Tema Claro (padrão) */
 	.container-weather {
-		width: 33%;
+		width: 30%;
 		margin: 8px;
 	}
 
@@ -1602,7 +932,7 @@
 
 	/* Espaçamento personalizado entre os containers */
 	.container-trabalhando {
-		width: 31%;
+		width: 34%;
 		border-radius: 20px;
 		padding: 4px;
 		margin: 8px;
@@ -1659,15 +989,6 @@
 		overflow-x: auto;
 	}
 
-	.container-doações {
-		width: 80%;
-		padding: 4px;
-		overflow-x: auto;
-		font-size: 2.8vw;
-		margin: 1% auto;
-		border-radius: 20px;
-	}
-
 	/* Estilo da Imagem do qrcodecx*/
 	.container-qrcodecx {
 		width: 32%;
@@ -1682,6 +1003,52 @@
 		margin: 1% auto;
 		border-radius: 20px;
 	}
+
+	.container-gestores {
+		width: 78%;
+		hyphens: auto;
+		text-align: justify;
+		border-radius: 20px;
+		padding: 2%;
+		overflow-x: auto;
+		margin: 1% auto;
+	}
+
+	/* Container que agrupa as imagens lado a lado */
+	.container-gestores section {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: flex-start;
+		gap: 2%;
+		flex-wrap: wrap;
+		margin: 1% auto;
+	}
+
+	/* Containers individuais de imagem */
+	.containerimgSFV {
+		width: 48%;
+	}
+
+	.containerimgSamuray {
+		width: 48%;
+	}
+
+	.containerimgMetropoles {
+		width: 48%;
+	}
+
+	.containerimgsite {
+		width: 48%;
+	}
+
+	/* Estilo da imagem container gestores*/
+	img {
+		width: 100%;
+		border-radius: 10%;
+		display: block;
+	}
+
 
 	/* Estilo da Imagem do qrcodecx*/
 	.container-qrcodecx {
@@ -1740,13 +1107,18 @@
 		text-align: left;
 		margin: 0 1%;
 		text-indent: 10%;
-		font-size: 2.8vw;
+		font-size: 3.2vw;
 	}
 
 	.p4 {
 		hyphens: auto;
 		text-align: justify;
-		font-size: 2.6vw;
+		font-size: 3.2vw;
+	}
+
+	.pass {
+		text-align: right;
+		font-size: 3.2vw;
 	}
 
 	.btn1,
@@ -1757,10 +1129,10 @@
 		text-align: center;
 		text-decoration: none;
 		cursor: pointer;
-		border-radius: 10px;
+		border-radius: 20px;
 		margin-left: 5%;
 		margin-right: 5%;
-		font-size: 2.0vw;
+		font-size: 3.0vw;
 	}
 
 	.btn1:hover,

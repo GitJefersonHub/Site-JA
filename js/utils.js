@@ -30,7 +30,7 @@ const i18nLabels = {
     drizzle: 'Chuvisco',
     rain: 'Chuva',
     storm: 'Tempestade',
-    unknown: 'Condição indefinida'
+    unknown: 'Indefinido'
   },
   en: {
     clear: 'Clear sky',
@@ -40,7 +40,7 @@ const i18nLabels = {
     drizzle: 'Light drizzle',
     rain: 'Rain',
     storm: 'Storm',
-    unknown: 'Unknown condition'
+    unknown: 'Unknown'
   }
 };
 
