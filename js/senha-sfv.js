@@ -97,3 +97,54 @@ function verificarSenhaSamurai() {
       alert("Erro ao verificar senha.");
     });
 }
+
+
+// Função para site
+function verificarSenhasite() {
+  const maxTentativassite = 3;
+  const tempoBloqueioHorassite = 1;
+
+  const tentativas = parseInt(localStorage.getItem('tentativassite') || '0');
+  const bloqueadoAte = localStorage.getItem('bloqueadoAtesite');
+
+  if (bloqueadoAte && Date.now() < parseInt(bloqueadoAte)) {
+    const restante = Math.ceil((parseInt(bloqueadoAte) - Date.now()) / 60000);
+    alert(`Acesso ao site bloqueado. Tente novamente em ${restante} minutos.`);
+    return;
+  }
+
+  if (tentativas >= maxTentativassite) {
+    const horaFutura = Date.now() + tempoBloqueioHorasSFV * 60 * 60 * 1000;
+    localStorage.setItem('bloqueadoAtesite', horaFutura.toString());
+    localStorage.removeItem('tentativassite');
+    alert(`Você excedeu o número de tentativas para site. Bloqueado por ${tempoBloqueioHorassite} hora(s).`);
+    return;
+  }
+
+  const senha = prompt(`Digite a senha para acessar site (tentativas restantes: ${maxTentativassite - tentativas})`);
+  if (!senha) return;
+
+  fetch('/.netlify/functions/checkPassword', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ senha, tipo: 'site' })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.autorizado) {
+        localStorage.removeItem('tentativassite');
+        localStorage.removeItem('bloqueadoAteSFV');
+        window.location.href = '/site.html';
+      } else {
+        localStorage.setItem('tentativassite', tentativas + 1);
+        const restantes = maxTentativassite - (tentativas + 1);
+        alert(restantes > 0
+          ? `Senha incorreta para site. Você ainda tem ${restantes} tentativa(s).`
+          : `Senha incorreta. Você será bloqueado por ${tempoBloqueioHorasSFV} hora(s).`);
+      }
+    })
+    .catch(err => {
+      console.error("Erro ao verificar senha site:", err);
+      alert("Erro ao verificar senha.");
+    });
+}
