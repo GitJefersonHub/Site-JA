@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário Dinâmico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 5%;
+        }
+
+        .container {
+            max-width: 90%;
+            margin: auto;
+            background: white;
+            padding: 5%;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 5%;
+            font-weight: bold;
+        }
+
+        select,
+        input,
+        button {
+            width: 100%;
+            padding: 3%;
+            margin-top: 2%;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 3%;
+            margin-top: 5%;
+        }
+
+        .button-group button {
+            flex: 1;
+        }
+
+        .print {
+            margin-top: 5%;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #007bff;
+            text-align: center;
+        }
+
+        .resumo {
+            margin-top: 5%;
+            background-color: #e9f5ff;
+            padding: 4%;
+            border-radius: 6px;
+            border: 1px solid #b3d7ff;
+        }
+
+        .resumo p {
+            margin: 3% 0;
+        }
+
+        /* Responsivo para telas menores */
+        @media (max-width: 768px) {
+            body {
+                padding: 4%;
+            }
+
+            .container {
+                max-width: 95%;
+                padding: 4%;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .button-group button {
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Ponto Digital</h1>
+        <div id="formArea">
+            <label for="posto">Posto de serviço:</label>
+            <select id="posto" name="posto">
+                <option value="">Selecione</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+        const optionsMap = {
+            "posto de serviço": ["abc", "outros"],
+            "turno": ["diurno", "noturno"],
+            "ÁreaDiurna": ["1", "2", "3", "4"],
+            "ÁreaNoturna": ["a", "b", "c", "d"],
+            "Delta": ["1", "2", "3", "4"],
+        };
+
+        const nomesPorMatricula = {
+            diurno: {
+                "1": "José",
+                "2": "Ana",
+                "3": "Carlos",
+                "4": "Mariana",
+                "5": "Felipe"
+            },
+            noturno: {
+                "1": "Bruna",
+                "2": "Rafael",
+                "3": "Luana",
+                "4": "Tiago",
+                "5": "Camila"
+            }
+        };
+
+        function getDataHoraAtual() {
+            const agora = new Date();
+            const diasSemana = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+            const dia = agora.getDate();
+            const mes = agora.getMonth() + 1;
+            const diaSemana = diasSemana[agora.getDay()];
+            const horas = agora.getHours().toString().padStart(2, '0');
+            const minutos = agora.getMinutes().toString().padStart(2, '0');
+            const segundos = agora.getSeconds().toString().padStart(2, '0');
+
+            return {
+                dataFormatada: `${dia}/${mes} (${diaSemana})`,
+                horaFormatada: `${horas}:${minutos}:${segundos}`
+            };
+        }
+
+        window.onload = function () {
+            const formArea = document.getElementById("formArea");
+
+            function resetForm() {
+                formArea.innerHTML = `
+          <label for="posto">Selecione o Posto:</label>
+          <select id="posto" name="posto">
+            <option value="">Selecione</option>
+          </select>
+        `;
+                initPosto();
+            }
+
+            function initPosto() {
+                const postoSelect = document.getElementById("posto");
+                optionsMap["posto de serviço"].forEach((opt) => {
+                    const optionElement = document.createElement("option");
+                    optionElement.value = opt;
+                    optionElement.textContent = opt.charAt(0).toUpperCase() + opt.slice(1);
+                    postoSelect.appendChild(optionElement);
+                });
+
+                postoSelect.addEventListener("change", function () {
+                    const postoSelecionado = postoSelect.value;
+                    if (postoSelecionado === "abc") {
+                        formArea.innerHTML = "";
+
+                        const label = document.createElement("label");
+                        label.textContent = "Turno:";
+                        const turnoSelect = document.createElement("select");
+                        turnoSelect.id = "turno";
+                        turnoSelect.innerHTML = `<option value="">Selecione</option>`;
+                        optionsMap["turno"].forEach(opt => {
+                            turnoSelect.innerHTML += `<option value="${opt}">${opt.charAt(0).toUpperCase() + opt.slice(1)}</option>`;
+                        });
+
+                        formArea.appendChild(label);
+                        formArea.appendChild(turnoSelect);
+
+                        turnoSelect.addEventListener("change", function () {
+                            const turnoSelecionado = turnoSelect.value;
+                            formArea.innerHTML = "";
+
+                            const labelArea = document.createElement("label");
+                            labelArea.textContent = "Área:";
+                            const areaSelect = document.createElement("select");
+                            areaSelect.id = "area";
+                            areaSelect.innerHTML = `<option value="">Selecione</option>`;
+
+                            const areaOptions = turnoSelecionado === "diurno"
+                                ? optionsMap["ÁreaDiurna"]
+                                : optionsMap["ÁreaNoturna"];
+
+                            areaOptions.forEach(opt => {
+                                areaSelect.innerHTML += `<option value="${opt}">${opt}</option>`;
+                            });
+
+                            formArea.appendChild(labelArea);
+                            formArea.appendChild(areaSelect);
+
+                            areaSelect.addEventListener("change", function () {
+                                const areaSelecionada = areaSelect.value;
+
+                                const deveMostrarMatricula =
+                                    optionsMap["ÁreaDiurna"].includes(areaSelecionada) ||
+                                    optionsMap["ÁreaNoturna"].includes(areaSelecionada);
+
+                                if (deveMostrarMatricula) {
+                                    formArea.innerHTML = "";
+
+                                    const labelMatricula = document.createElement("label");
+                                    labelMatricula.textContent = "Matrícula:";
+                                    const inputMatricula = document.createElement("input");
+                                    inputMatricula.type = "text";
+                                    inputMatricula.placeholder = "Digite sua matrícula";
+
+                                    formArea.appendChild(labelMatricula);
+                                    formArea.appendChild(inputMatricula);
+
+                                    inputMatricula.addEventListener("input", function () {
+                                        const matricula = inputMatricula.value;
+                                        const nome = nomesPorMatricula[turnoSelecionado][matricula];
+
+                                        if (nome) {
+                                            const { dataFormatada, horaFormatada } = getDataHoraAtual();
+
+                                            formArea.innerHTML = `
+                        <div class="print">${nome}</div>
+                        <div class="print">Data: ${dataFormatada}</div>
+                        <div class="print">Hora: ${horaFormatada}</div>
+                        <div class="button-group">
+                          <button id="okBtn">OK</button>
+                          <button id="resetBtn">Reset</button>
+                        </div>
+                      `;
+
+                                            document.getElementById("okBtn").addEventListener("click", function () {
+                                                formArea.innerHTML = `
+                          <h2>Registrar?</h2>
+                          <div class="resumo">
+                            <p><strong>Posto de Serviço:</strong> ${postoSelecionado}</p>
+                            <p><strong>Turno:</strong> ${turnoSelecionado}</p>
+                            <p><strong>Área:</strong> ${areaSelecionada}</p>
+                            <p><strong>Matrícula:</strong> ${matricula}</p>
+                            <p><strong>Nome:</strong> ${nome}</p>
+                            <p><strong>Data:</strong> ${dataFormatada}</p>
+                            <p><strong>Hora:</strong> ${horaFormatada}</p>
+                          </div>
+                          <div class="button-group">
+                            <button id="resetFinal">Reiniciar</button>
+                          </div>
+                        `;
+
+                                                document.getElementById("resetFinal").addEventListener("click", function () {
+                                                    resetForm();
+                                                });
+                                            });
+
+                                            document.getElementById("resetBtn").addEventListener("click", function () {
+                                                resetForm();
+                                            });
+                                        }
+                                    });
+                                }
+                            });
+                        });
+                    }
+                });
+            }
+
+            initPosto();
+        };
+    </script>
+</body>
+
+</html>
