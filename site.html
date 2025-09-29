@@ -2,286 +2,396 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formulário Dinâmico</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 5%;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ponto Digital</title>
+  <style>
+    @media (max-width: 768px) {
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
 
-        .container {
-            max-width: 90%;
-            margin: auto;
-            background: white;
-            padding: 5%;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+      .container-form,
+      .container-folha {
+        width: 94%;
+        margin: 1% auto;
+        background-color: #fff;
+        padding: 1%;
+        box-shadow: 0 0 5% rgba(0, 0, 0, 0.1);
+        border-radius: 2%;
+      }
 
-        h1 {
-            text-align: center;
-            color: #333;
-        }
+      h1 {
+        text-align: center;
+        font-size: 200%;
+        margin-bottom: 5%;
+      }
 
-        label {
-            display: block;
-            margin-top: 5%;
-            font-weight: bold;
-        }
+      h2 {
+        text-align: center;
+        font-size: 100%;
+        margin-bottom: 5%;
+      }
 
-        select,
-        input,
-        button {
-            width: 100%;
-            padding: 3%;
-            margin-top: 2%;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
+      label {
+        display: block;
+        margin-bottom: 2%;
+        font-size: 100%;
+      }
 
-        .button-group {
-            display: flex;
-            justify-content: space-between;
-            gap: 3%;
-            margin-top: 5%;
-        }
+      select,
+      input[type="text"] {
+        width: 96%;
+        padding: 2%;
+        font-size: 100%;
+        border: 0.2% solid #ccc;
+        border-radius: 1%;
+        margin-bottom: 1%;
+      }
 
-        .button-group button {
-            flex: 1;
-        }
+      .button-group {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5%;
+      }
 
-        .print {
-            margin-top: 5%;
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #007bff;
-            text-align: center;
-        }
+      button {
+        padding: 2% 5%;
+        font-size: 100%;
+        border: none;
+        border-radius: 1%;
+        cursor: pointer;
+        width: 48%;
+      }
 
-        .resumo {
-            margin-top: 5%;
-            background-color: #e9f5ff;
-            padding: 4%;
-            border-radius: 6px;
-            border: 1px solid #b3d7ff;
-        }
+      button#okBtn {
+        background-color: #4CAF50;
+        color: white;
+      }
 
-        .resumo p {
-            margin: 3% 0;
-        }
+      button#resetBtn {
+        background-color: #f44336;
+        color: white;
+      }
 
-        /* Responsivo para telas menores */
-        @media (max-width: 768px) {
-            body {
-                padding: 4%;
-            }
+      #folhaTabela {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 2%;
+        font-size: 70%;
+      }
 
-            .container {
-                max-width: 95%;
-                padding: 4%;
-            }
+      #folhaTabela th {
+        background-color: #e0e0e0;
+        font-weight: bold;
+        text-align: center;
+        padding: 1.5%;
+        border: 0.1% solid #ccc;
+        font-size: 66%;
+        color: #333;
+      }
 
-            .button-group {
-                flex-direction: column;
-            }
+      #folhaTabela td {
+        text-align: center;
+        padding: 1.5%;
+        border: 0.1% solid #ddd;
+        font-size: 60%;
+        color: #555;
+        background-color: #fafafa;
+      }
 
-            .button-group button {
-                width: 100%;
-            }
-        }
-    </style>
+      #folhaTabela tr:nth-child(even) td {
+        background-color: #f0f0f0;
+      }
+
+      /* Estilos por tipo de registro */
+      .entrada-row td {
+        background-color: #e8f5e9;
+        /* verde claro */
+        color: #2e7d32;
+        font-weight: bold;
+      }
+
+      .saida-row td {
+        background-color: #ffebee;
+        /* vermelho claro */
+        color: #c62828;
+        font-weight: bold;
+      }
+
+      .extra-row td {
+        background-color: #e3f2fd;
+        /* azul claro */
+        color: #1565c0;
+        font-weight: bold;
+      }
+    }
+  </style>
 
 </head>
 
 <body>
-    <div class="container">
-        <h1>Ponto Digital</h1>
-        <div id="formArea">
-            <label for="posto">Posto de serviço:</label>
-            <select id="posto" name="posto">
-                <option value="">Selecione</option>
-            </select>
-        </div>
+  <div class="container-form">
+    <h1>Ponto Digital</h1>
+    <div id="formArea">
+      <label for="posto">Posto de serviço:</label>
+      <select id="posto" name="posto">
+        <option value="">Carregando localização...</option>
+      </select>
     </div>
+  </div>
+
+  <div class="container-folha">
+    <h2>Folha de ponto digital</h2>
+    <table id="folhaTabela" style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background-color: #eee;">
+          <th>Data</th>
+          <th>Local</th>
+          <th>Matrícula</th>
+          <th>Nome</th>
+          <th>Entrada</th>
+          <th>Saída</th>
+          <th>Extra</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Linhas serão adicionadas aqui -->
+      </tbody>
+    </table>
 
     <script>
-        const optionsMap = {
-            "posto de serviço": ["abc", "outros"],
-            "turno": ["diurno", "noturno"],
-            "ÁreaDiurna": ["1", "2", "3", "4"],
-            "ÁreaNoturna": ["a", "b", "c", "d"],
-            "Delta": ["1", "2", "3", "4"],
-        };
 
-        const nomesPorMatricula = {
-            diurno: {
-                "1": "José",
-                "2": "Ana",
-                "3": "Carlos",
-                "4": "Mariana",
-                "5": "Felipe"
-            },
-            noturno: {
-                "1": "Bruna",
-                "2": "Rafael",
-                "3": "Luana",
-                "4": "Tiago",
-                "5": "Camila"
-            }
-        };
+      const postoSelect = document.getElementById("posto");
+      const formArea = document.getElementById("formArea");
+      const localFixo = "Goiânia - GO";
+      let nomeSelecionado = "";
+      let localSelecionado = "";
+      let matriculaSelecionada = ""; // 👈 nova variável
 
-        function getDataHoraAtual() {
-            const agora = new Date();
-            const diasSemana = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
-            const dia = agora.getDate();
-            const mes = agora.getMonth() + 1;
-            const diaSemana = diasSemana[agora.getDay()];
-            const horas = agora.getHours().toString().padStart(2, '0');
-            const minutos = agora.getMinutes().toString().padStart(2, '0');
-            const segundos = agora.getSeconds().toString().padStart(2, '0');
+      function adicionarOpcao(texto, selectElement) {
+        const option = document.createElement("option");
+        option.value = texto;
+        option.textContent = texto;
+        selectElement.appendChild(option);
+      }
 
-            return {
-                dataFormatada: `${dia}/${mes} (${diaSemana})`,
-                horaFormatada: `${horas}:${minutos}:${segundos}`
-            };
+
+      async function carregarLocalizacaoAtualCom(selectElement) {
+        selectElement.innerHTML = "";
+        adicionarOpcao("Selecione", selectElement);
+
+        try {
+          const pos = await new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+          });
+
+          const { latitude, longitude } = pos.coords;
+          const res = await fetch(`/.netlify/functions/getAddress?lat=${latitude}&lon=${longitude}`);
+          const data = await res.json();
+
+          if (data.endereco) {
+            adicionarOpcao(data.endereco, selectElement);
+          } else {
+            adicionarOpcao("Localização atual não encontrada", selectElement);
+          }
+        } catch (error) {
+          console.error("Erro ao obter localização:", error);
+          adicionarOpcao("Localização atual não disponível", selectElement);
         }
 
-        window.onload = function () {
-            const formArea = document.getElementById("formArea");
+        adicionarOpcao(localFixo, selectElement);
+      }
 
-            function resetForm() {
-                formArea.innerHTML = `
-          <label for="posto">Selecione o Posto:</label>
-          <select id="posto" name="posto">
-            <option value="">Selecione</option>
-          </select>
-        `;
-                initPosto();
-            }
 
-            function initPosto() {
-                const postoSelect = document.getElementById("posto");
-                optionsMap["posto de serviço"].forEach((opt) => {
-                    const optionElement = document.createElement("option");
-                    optionElement.value = opt;
-                    optionElement.textContent = opt.charAt(0).toUpperCase() + opt.slice(1);
-                    postoSelect.appendChild(optionElement);
-                });
+      function mostrarCampoMatricula() {
+        localSelecionado = postoSelect.value;
 
-                postoSelect.addEventListener("change", function () {
-                    const postoSelecionado = postoSelect.value;
-                    if (postoSelecionado === "abc") {
-                        formArea.innerHTML = "";
+        formArea.innerHTML = `
+    <label for="matricula">Digite sua matrícula:</label>
+    <input type="text" id="matricula" name="matricula" placeholder="Matrícula" />
+  `;
 
-                        const label = document.createElement("label");
-                        label.textContent = "Turno:";
-                        const turnoSelect = document.createElement("select");
-                        turnoSelect.id = "turno";
-                        turnoSelect.innerHTML = `<option value="">Selecione</option>`;
-                        optionsMap["turno"].forEach(opt => {
-                            turnoSelect.innerHTML += `<option value="${opt}">${opt.charAt(0).toUpperCase() + opt.slice(1)}</option>`;
-                        });
+        const inputMatricula = document.getElementById("matricula");
 
-                        formArea.appendChild(label);
-                        formArea.appendChild(turnoSelect);
+        inputMatricula.addEventListener("input", function () {
+          const valor = inputMatricula.value.trim();
 
-                        turnoSelect.addEventListener("change", function () {
-                            const turnoSelecionado = turnoSelect.value;
-                            formArea.innerHTML = "";
+          if (valor === "1" || valor === "2") {
+            matriculaSelecionada = valor; // 👈 salva a matrícula
+            nomeSelecionado = valor === "1" ? "José" : "Maria";
+            mostrarTipoRegistro(); // Pula direto para a próxima etapa
+          }
 
-                            const labelArea = document.createElement("label");
-                            labelArea.textContent = "Área:";
-                            const areaSelect = document.createElement("select");
-                            areaSelect.id = "area";
-                            areaSelect.innerHTML = `<option value="">Selecione</option>`;
+        });
+      }
 
-                            const areaOptions = turnoSelecionado === "diurno"
-                                ? optionsMap["ÁreaDiurna"]
-                                : optionsMap["ÁreaNoturna"];
 
-                            areaOptions.forEach(opt => {
-                                areaSelect.innerHTML += `<option value="${opt}">${opt}</option>`;
-                            });
+      function mostrarTipoRegistro() {
+        formArea.innerHTML = `
+    <div><strong>${nomeSelecionado}</strong></div>
+    <label for="tipoRegistro">Entrada / Saída:</label>
+    <select id="tipoRegistro">
+      <option value="">Selecione</option>
+      <option value="Entrada">Entrada</option>
+      <option value="Saída">Saída</option>
+    </select>
+    <div id="botaoContainer" class="button-group" style="display: none;">
+      <button id="confirmarBtn">Confirmar</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+  `;
 
-                            formArea.appendChild(labelArea);
-                            formArea.appendChild(areaSelect);
+        const tipoRegistroSelect = document.getElementById("tipoRegistro");
+        const botaoContainer = document.getElementById("botaoContainer");
 
-                            areaSelect.addEventListener("change", function () {
-                                const areaSelecionada = areaSelect.value;
+        tipoRegistroSelect.addEventListener("change", () => {
+          if (tipoRegistroSelect.value !== "") {
+            botaoContainer.style.display = "flex";
+          } else {
+            botaoContainer.style.display = "none";
+          }
+        });
 
-                                const deveMostrarMatricula =
-                                    optionsMap["ÁreaDiurna"].includes(areaSelecionada) ||
-                                    optionsMap["ÁreaNoturna"].includes(areaSelecionada);
+        document.getElementById("resetBtn").addEventListener("click", () => {
+          resetFormulario();
+        });
 
-                                if (deveMostrarMatricula) {
-                                    formArea.innerHTML = "";
+        document.getElementById("confirmarBtn").addEventListener("click", () => {
+          const tipo = tipoRegistroSelect.value;
+          if (tipo !== "") {
+            mostrarResumo(tipo);
+          } else {
+            alert("Por favor, selecione Entrada ou Saída.");
+          }
+        });
+      }
 
-                                    const labelMatricula = document.createElement("label");
-                                    labelMatricula.textContent = "Matrícula:";
-                                    const inputMatricula = document.createElement("input");
-                                    inputMatricula.type = "text";
-                                    inputMatricula.placeholder = "Digite sua matrícula";
 
-                                    formArea.appendChild(labelMatricula);
-                                    formArea.appendChild(inputMatricula);
+      function mostrarResumo(tipoRegistro) {
+        const hoje = new Date();
 
-                                    inputMatricula.addEventListener("input", function () {
-                                        const matricula = inputMatricula.value;
-                                        const nome = nomesPorMatricula[turnoSelecionado][matricula];
+        const dia = hoje.getDate();
+        const mes = hoje.toLocaleString("pt-BR", { month: "short" });
+        const diaSemana = hoje.toLocaleString("pt-BR", { weekday: "short" });
 
-                                        if (nome) {
-                                            const { dataFormatada, horaFormatada } = getDataHoraAtual();
+        const mesFormatado = mes.replace(".", "").charAt(0).toUpperCase() + mes.slice(1).replace(".", "");
+        const diaSemanaFormatado = diaSemana.replace(".", "");
 
-                                            formArea.innerHTML = `
-                        <div class="print">${nome}</div>
-                        <div class="print">Data: ${dataFormatada}</div>
-                        <div class="print">Hora: ${horaFormatada}</div>
-                        <div class="button-group">
-                          <button id="okBtn">OK</button>
-                          <button id="resetBtn">Reset</button>
-                        </div>
-                      `;
+        const dataFormatada = `${dia}/${mesFormatado} - ${diaSemanaFormatado}`;
 
-                                            document.getElementById("okBtn").addEventListener("click", function () {
-                                                formArea.innerHTML = `
-                          <h2>Registrar?</h2>
-                          <div class="resumo">
-                            <p><strong>Posto de Serviço:</strong> ${postoSelecionado}</p>
-                            <p><strong>Turno:</strong> ${turnoSelecionado}</p>
-                            <p><strong>Área:</strong> ${areaSelecionada}</p>
-                            <p><strong>Matrícula:</strong> ${matricula}</p>
-                            <p><strong>Nome:</strong> ${nome}</p>
-                            <p><strong>Data:</strong> ${dataFormatada}</p>
-                            <p><strong>Hora:</strong> ${horaFormatada}</p>
-                          </div>
-                          <div class="button-group">
-                            <button id="resetFinal">Reiniciar</button>
-                          </div>
-                        `;
+        formArea.innerHTML = `
+        <h2>Resumo</h2>
+        <p><strong>Data:</strong> ${dataFormatada}</p>
+        <p><strong>Local:</strong> ${localSelecionado}</p>
+        <p><strong>Matrícula:</strong> ${matriculaSelecionada}</p>
+        <p><strong>Nome:</strong> ${nomeSelecionado}</p>
+        <p><strong>${tipoRegistro}:</strong> <span id="horaAtual"></span></p>
+        <div style="margin-top: 30px;">
+            <button id="baterPontoBtn" style="width: 100%; background-color: #2196F3; color: white; margin-bottom: 10px;">Bater o ponto</button>
+            <button id="resetResumoBtn" style="width: 100%; background-color: #ff9800; color: white;">Reset</button>
+        </div>
+    `;
 
-                                                document.getElementById("resetFinal").addEventListener("click", function () {
-                                                    resetForm();
-                                                });
-                                            });
+        // Atualiza o horário em tempo real
+        const horaSpan = document.getElementById("horaAtual");
 
-                                            document.getElementById("resetBtn").addEventListener("click", function () {
-                                                resetForm();
-                                            });
-                                        }
-                                    });
-                                }
-                            });
-                        });
-                    }
-                });
-            }
+        function atualizarHora() {
+          const agora = new Date();
+          const horaFormatada = agora.toLocaleTimeString("pt-BR", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+          });
+          horaSpan.textContent = horaFormatada;
+        }
 
-            initPosto();
-        };
+        atualizarHora();
+        setInterval(atualizarHora, 1000);
+
+        document.getElementById("baterPontoBtn").addEventListener("click", () => {
+          const horaAtual = new Date().toLocaleTimeString("pt-BR", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+          });
+
+          const tabela = document.getElementById("folhaTabela").querySelector("tbody");
+
+          // Verifica se já existe uma linha para essa data/matrícula/nome
+          const novaLinha = document.createElement("tr");
+          novaLinha.className = tipoRegistro === "Entrada"
+            ? "entrada-row"
+            : tipoRegistro === "Saída"
+              ? "saida-row"
+              : "extra-row";
+
+
+          novaLinha.innerHTML = `
+    <td>${dataFormatada}</td>
+    <td>${localSelecionado}</td>
+    <td>${matriculaSelecionada}</td>
+    <td>${nomeSelecionado}</td>
+    <td>${tipoRegistro === "Entrada" ? horaAtual : ""}</td>
+    <td>${tipoRegistro === "Saída" ? horaAtual : ""}</td>
+    <td></td>
+  `;
+
+          tabela.appendChild(novaLinha);
+
+          alert("Ponto registrado com sucesso!");
+        });
+
+
+        // Evento do botão "Reset"
+        document.getElementById("resetResumoBtn").addEventListener("click", () => {
+          resetFormulario();
+        });
+      }
+
+
+      function resetFormulario() {
+        // Limpa variáveis de memória
+        nomeSelecionado = "";
+        localSelecionado = "";
+
+        // Reconstrói o HTML inicial
+        formArea.innerHTML = `
+    <label for="posto">Posto de serviço:</label>
+    <select id="posto" name="posto">
+      <option value="">Carregando localização...</option>
+    </select>
+  `;
+
+        // Atualiza a referência do select
+        const novoSelect = document.getElementById("posto");
+
+        // Reatribui o listener ao novo select
+        novoSelect.addEventListener("change", () => {
+          if (novoSelect.value !== "") {
+            mostrarCampoMatricula();
+          }
+        });
+
+        // Chama a função de carregamento com o novo select
+        carregarLocalizacaoAtualCom(novoSelect);
+      }
+
+      postoSelect.addEventListener("change", () => {
+        if (postoSelect.value !== "") {
+          mostrarCampoMatricula();
+        }
+      });
+
+      window.onload = () => {
+        carregarLocalizacaoAtualCom(postoSelect);
+      };
+
     </script>
+
 </body>
 
 </html>

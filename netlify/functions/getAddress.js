@@ -18,7 +18,7 @@ exports.handler = async (event) => {
     if (!res.ok) throw new Error(`Erro HTTP: ${res.status}`);
     const data = await res.json();
 
-    const resultado = data.result?.[0];
+    const resultado = data.result?.[0]; // Corrigido: "result" sem "s"
     const componentes = resultado?.address_components || [];
 
     const rua = componentes.find(c => c.types.includes('route'))?.long_name;
@@ -38,7 +38,10 @@ exports.handler = async (event) => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ endereco: endereco || resultado?.formatted_address || 'Endereço não disponível' })
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      body: JSON.stringify({
+        endereco: endereco || resultado?.formatted_address || 'Endereço não disponível'
+      })
     };
   } catch (error) {
     console.error('Erro ao buscar endereço:', error);
