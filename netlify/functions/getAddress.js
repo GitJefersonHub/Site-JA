@@ -1,3 +1,4 @@
+// obter endereço
 const fetch = require('node-fetch');
 
 exports.handler = async (event) => {
@@ -40,9 +41,10 @@ exports.handler = async (event) => {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       body: JSON.stringify({
-        endereco: endereco || resultado?.formatted_address || 'Endereço não disponível'
+        endereco: endereco || resultado?.formatted_address || `${lat}, ${lon}`
       })
     };
+
   } catch (error) {
     console.error('Erro ao buscar endereço:', error);
     return {

@@ -1,8 +1,10 @@
+//verificar senha
 exports.handler = async (event) => {
   const { senha, tipo } = JSON.parse(event.body || '{}');
 
   const senhaSFV = process.env.SFV_PASSWORD;
   const senhaSamurai = process.env.SAMURAI_PASSWORD;
+  const senhaPontoDigital = process.env.PontoDigital_PASSWORD;
   const senhasite = process.env.SITE_PASSWORD;
 
   let autorizado = false;
@@ -10,6 +12,8 @@ exports.handler = async (event) => {
   if (tipo === 'sfv' && senha === senhaSFV) {
     autorizado = true;
   } else if (tipo === 'samurai' && senha === senhaSamurai) {
+    autorizado = true;
+  } else if (tipo === 'PontoDigital' && senha === senhaPontoDigital) {
     autorizado = true;
   } else if (tipo === 'site' && senha === senhasite) {
     autorizado = true;
