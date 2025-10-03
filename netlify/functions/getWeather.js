@@ -1,3 +1,4 @@
+// obter previsão do tempo
 const fetch = require('node-fetch');
 const { DateTime } = require('luxon');
 
