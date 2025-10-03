@@ -1,3 +1,4 @@
+// Obter taxa selic
 const fetch = require('node-fetch');
 
 // 🧠 Cache em memória
