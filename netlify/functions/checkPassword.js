@@ -4,7 +4,7 @@ exports.handler = async (event) => {
 
   const senhaSFV = process.env.SFV_PASSWORD;
   const senhaSamurai = process.env.SAMURAI_PASSWORD;
-  const senhaPontoDigital = process.env.PontoDigital_PASSWORD;
+  const senhaPontoDigital = process.env.PONTODIGITAL_PASSWORD;
   const senhasite = process.env.SITE_PASSWORD;
 
   let autorizado = false;

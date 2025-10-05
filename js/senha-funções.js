@@ -150,11 +150,11 @@ function verificarSenhaSFV() {
 
 // Função para Ponto Digital
 function verificarSenhaPontoDigital() {
-  const maxTentativasPontoDigital = 3;
-  const tempoBloqueioHorasPontoDigital = 1;
+  const maxTentativasPonto = 3;
+  const tempoBloqueioHorasPonto = 1;
 
-  const tentativas = parseInt(localStorage.getItem('tentativasPontoDigital') || '0');
-  const bloqueadoAte = localStorage.getItem('bloqueadoAtePontoDigital');
+  const tentativas = parseInt(localStorage.getItem('tentativasPonto') || '0');
+  const bloqueadoAte = localStorage.getItem('bloqueadoAtePonto');
 
   if (bloqueadoAte && Date.now() < parseInt(bloqueadoAte)) {
     const restante = Math.ceil((parseInt(bloqueadoAte) - Date.now()) / 60000);
@@ -162,15 +162,15 @@ function verificarSenhaPontoDigital() {
     return;
   }
 
-  if (tentativas >= maxTentativasPontoDigital) {
-    const horaFutura = Date.now() + tempoBloqueioHorasPontoDigital * 60 * 60 * 1000;
-    localStorage.setItem('bloqueadoAtePontoDigital', horaFutura.toString());
-    localStorage.removeItem('tentativasPontoDigital');
-    alert(`Você excedeu o número de tentativas para Ponto Digital. Bloqueado por ${tempoBloqueioHorasPontoDigital} hora(s).`);
+  if (tentativas >= maxTentativasPonto) {
+    const horaFutura = Date.now() + tempoBloqueioHorasPonto * 60 * 60 * 1000;
+    localStorage.setItem('bloqueadoAtePonto', horaFutura.toString());
+    localStorage.removeItem('tentativasPonto');
+    alert(`Você excedeu o número de tentativas para o Ponto Digital. Bloqueado por ${tempoBloqueioHorasPonto} hora(s).`);
     return;
   }
 
-  const senha = prompt(`Digite a senha para acessar Ponto Digital (tentativas restantes: ${maxTentativasPontoDigital - tentativas})`);
+  const senha = prompt(`Digite a senha para acessar o Ponto Digital (tentativas restantes: ${maxTentativasPonto - tentativas})`);
   if (!senha) return;
 
   fetch('/.netlify/functions/checkPassword', {
@@ -181,15 +181,15 @@ function verificarSenhaPontoDigital() {
     .then(res => res.json())
     .then(data => {
       if (data.autorizado) {
-        localStorage.removeItem('tentativasPontoDigital');
-        localStorage.removeItem('bloqueadoAtePontoDigital');
+        localStorage.removeItem('tentativasPonto');
+        localStorage.removeItem('bloqueadoAtePonto');
         window.location.href = '/PontoDigital.html';
       } else {
-        localStorage.setItem('tentativasPontoDigital', tentativas + 1);
-        const restantes = maxTentativasPontoDigital - (tentativas + 1);
+        localStorage.setItem('tentativasPonto', tentativas + 1);
+        const restantes = maxTentativasPonto - (tentativas + 1);
         alert(restantes > 0
           ? `Senha incorreta para Ponto Digital. Você ainda tem ${restantes} tentativa(s).`
-          : `Senha incorreta. Você será bloqueado por ${tempoBloqueioHorasPontoDigital} hora(s).`);
+          : `Senha incorreta. Você será bloqueado por ${tempoBloqueioHorasPonto} hora(s).`);
       }
     })
     .catch(err => {
@@ -197,10 +197,6 @@ function verificarSenhaPontoDigital() {
       alert("Erro ao verificar senha.");
     });
 }
-
-
-
-
 
 
 // Função para site
