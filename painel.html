@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>Painel do Usuário</title>
@@ -45,6 +46,12 @@
       margin-bottom: 4%;
     }
 
+    .lembrete {
+      font-size: 150%;
+      color: #888;
+      margin-bottom: 4%;
+    }
+
     .actions {
       display: flex;
       flex-direction: column;
@@ -65,6 +72,20 @@
 
     .actions button:hover {
       background-color: #0056b3;
+    }
+
+    #formEditar {
+      display: none;
+      flex-direction: column;
+      gap: 4%;
+      margin-top: 5%;
+    }
+
+    #formEditar input {
+      padding: 3%;
+      font-size: 150%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
 
     @media (max-width: 768px) {
@@ -93,34 +114,116 @@
     }
   </style>
 </head>
+
 <body>
   <div class="painel-container">
     <h2>Bem-vindo, Jeferson!</h2>
-    <div class="info">📌 Matrícula: 2815</div>
-    <div class="info">📞 Telefone: (62) 982502200</div>
-    <div class="info">📧 E-mail: jefersonalves.ti@gmail.com</div>
+    <div class="info" id="infoMatricula">📌 Matrícula: </div>
+    <div class="info" id="infoTelefone">📞 Telefone: </div>
+    <div class="info" id="infoEmail">📧 E-mail: </div>
+    <p class="lembrete">🔐 Lembre-se: seus dados de autenticação foram atualizados. Guarde-os com segurança.</p>
 
     <div class="actions">
       <button onclick="editarPerfil()">Editar Perfil</button>
+      <button onclick="mostrarDados()">Visualizar Dados</button>
+
+      <div id="formEditar">
+        <label>Matrícula:</label>
+        <input type="text" id="editMatricula">
+
+        <label>Telefone:</label>
+        <input type="tel" id="editTelefone" placeholder="(99) 99999-9999">
+
+        <label>E-mail:</label>
+        <input type="email" id="editEmail">
+
+        <label>Senha:</label>
+        <input type="password" id="editSenha" maxlength="6">
+
+        <button onclick="salvarPerfil()">Salvar Alterações</button>
+      </div>
+
       <button onclick="acessarRelatorios()">Relatórios</button>
       <button onclick="sair()">Sair</button>
     </div>
   </div>
 
   <script>
-    function editarPerfil() {
-      alert("Função de edição de perfil em desenvolvimento.");
+    // Verifica se o usuário está logado
+    if (localStorage.getItem('usuarioLogado') !== 'true') {
+      window.location.href = 'login.html';
     }
 
+    // Carrega dados salvos ou padrão
+    const dados = JSON.parse(localStorage.getItem('dadosUsuario')) || {
+      matricula: '2815',
+      telefone: '(62) 98250-2200',
+      email: 'jefersonalves.ti@gmail.com',
+      senha: '123456'
+    };
+
+    // Atualiza visual do painel
+    document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${dados.matricula}`;
+    document.getElementById('infoTelefone').textContent = `📞 Telefone: ${dados.telefone}`;
+    document.getElementById('infoEmail').textContent = `📧 E-mail: ${dados.email}`;
+
+    // Mostrar formulário de edição
+    function editarPerfil() {
+      document.getElementById('formEditar').style.display = 'flex';
+      document.getElementById('editMatricula').value = dados.matricula;
+      document.getElementById('editTelefone').value = dados.telefone;
+      document.getElementById('editEmail').value = dados.email;
+      document.getElementById('editSenha').value = dados.senha;
+    }
+
+    // Salvar alterações
+    function salvarPerfil() {
+      const novaMatricula = document.getElementById('editMatricula').value.trim();
+      const novoTelefone = document.getElementById('editTelefone').value.trim();
+      const novoEmail = document.getElementById('editEmail').value.trim();
+      const novaSenha = document.getElementById('editSenha').value.trim();
+
+      if (!novaMatricula || !novoTelefone || !novoEmail || !novaSenha) {
+        alert('Todos os campos devem ser preenchidos.');
+        return;
+      }
+
+      const novosDados = {
+        matricula: novaMatricula,
+        telefone: novoTelefone,
+        email: novoEmail,
+        senha: novaSenha
+      };
+
+      localStorage.setItem('dadosUsuario', JSON.stringify(novosDados));
+      alert('Perfil atualizado com sucesso!');
+
+      // Atualiza visual do painel
+      document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${novaMatricula}`;
+      document.getElementById('infoTelefone').textContent = `📞 Telefone: ${novoTelefone}`;
+      document.getElementById('infoEmail').textContent = `📧 E-mail: ${novoEmail}`;
+      document.getElementById('formEditar').style.display = 'none';
+    }
+
+    // Visualizar dados atuais
+    function mostrarDados() {
+      const dados = JSON.parse(localStorage.getItem('dadosUsuario'));
+      alert(`Seus dados atuais:\n\nMatrícula: ${dados.matricula}\nTelefone: ${dados.telefone}\nE-mail: ${dados.email}\nSenha: ${dados.senha}`);
+    }
+
+    // Relatórios
     function acessarRelatorios() {
       alert("Redirecionando para relatórios...");
-      // window.location.href = 'relatorios.html'; // se existir
+      // window.location.href = 'relatorios.html';
     }
 
+    // Logout
     function sair() {
+      localStorage.removeItem('usuarioLogado');
       alert("Saindo...");
       window.location.href = 'login.html';
     }
   </script>
 </body>
+
 </html>

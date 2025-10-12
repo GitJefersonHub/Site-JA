@@ -61,10 +61,10 @@ exports.handler = async (event) => {
       return parseInt(month, 10) - 1;
     };
 
-    // 🔍 Filtra feriados futuros que não são comemorativos
+    // 🔍 Filtra feriados futuros, ignorando apenas os comemorativos
     const futureHolidays = holidays
       .filter(h => h.level !== 'comemorativo')
-      .filter(h => h.date >= todayStr); // compara como string
+      .filter(h => h.date >= todayStr);
 
     // 🔁 Encontra feriados do mês atual (ou próximo disponível)
     let month = currentMonth;
@@ -73,13 +73,6 @@ exports.handler = async (event) => {
       selected = futureHolidays.filter(h => getMonthFromDateString(h.date) === month);
       if (selected.length) break;
       month++;
-    }
-
-    if (!selected.length) {
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ holidays: [] })
-      };
     }
 
     // ✅ Retorna nome, data e nível (tipo) do feriado — sem conversão de data
