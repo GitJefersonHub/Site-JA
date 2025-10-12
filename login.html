@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Login - Autenticação 3 Fatores</title>
+    <title>Login</title>
     <style>
         * {
             box-sizing: border-box;
@@ -55,6 +55,33 @@
             margin-bottom: 4%;
         }
 
+        .senha-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .senha-container input {
+            flex: 1;
+            padding-right: 50px;
+        }
+
+        .toggle-senha {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 150%;
+            cursor: pointer;
+            color: #007bff;
+            user-select: none;
+            transition: color 0.3s ease;
+        }
+
+        .toggle-senha:hover {
+            color: #0056b3;
+        }
+
         button {
             width: 100%;
             padding: 4%;
@@ -78,7 +105,6 @@
             color: red;
         }
 
-        /* Telas pequenas */
         @media (max-width: 768px) {
             body {
                 padding: 6%;
@@ -113,44 +139,115 @@
             #mensagem {
                 font-size: 4.5%;
             }
+
+            .toggle-senha {
+                font-size: 4%;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="login-container">
-        <h2>Login Seguro</h2>
+        <h2>Login</h2>
         <form id="loginForm">
-            <label for="matricula">Número de Matrícula:</label>
-            <input type="text" id="matricula" name="matricula" required>
+            <label for="matricula">Matrícula:</label>
+            <input type="text" id="matricula" name="matricula" required maxlength="6"
+                    placeholder="Digite sua matrícula">
 
             <label for="telefone">Telefone:</label>
-            <input type="tel" id="telefone" name="telefone" required placeholder="(99) 99999-9999">
+            <input type="tel" id="telefone" name="telefone" required placeholder="Digite o seu telefone">
 
             <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" required placeholder="Digite o seu Email">
+
+            <label for="senha">Senha:</label>
+            <div class="senha-container">
+                <input type="password" id="senha" name="senha" required maxlength="6"
+                    placeholder="Digite sua senha">
+                <span class="toggle-senha" id="toggleIcon" onclick="toggleSenha()">👁️</span>
+            </div>
 
             <button type="submit">Entrar</button>
         </form>
+<br>
+        <button type="button" onclick="enviarWhatsApp()">Enviar via WhatsApp</button>
         <p id="mensagem"></p>
     </div>
 
     <script>
+        // Máscara para telefone fixo e celular
+        document.getElementById('telefone').addEventListener('input', function (e) {
+            let input = e.target.value.replace(/\D/g, '');
+            if (input.length > 11) input = input.slice(0, 11);
+
+            let formatted = '';
+            if (input.length > 0) {
+                formatted += '(' + input.substring(0, 2);
+            }
+            if (input.length >= 3) {
+                formatted += ') ';
+                if (input.length >= 7) {
+                    if (input.length >= 11 || input[2] === '9') {
+                        formatted += input.substring(2, 7) + '-' + input.substring(7, 11);
+                    } else {
+                        formatted += input.substring(2, 6) + '-' + input.substring(6, 10);
+                    }
+                } else {
+                    formatted += input.substring(2);
+                }
+            }
+            e.target.value = formatted;
+        });
+
+        // Bloqueia letras no campo de senha
+        document.getElementById('senha').addEventListener('input', function (e) {
+            e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6);
+        });
+
+        // Mostrar/ocultar senha com ícone dinâmico
+        function toggleSenha() {
+            const senhaInput = document.getElementById('senha');
+            const toggleIcon = document.getElementById('toggleIcon');
+            if (senhaInput.type === 'password') {
+                senhaInput.type = 'text';
+                toggleIcon.textContent = '🙈';
+            } else {
+                senhaInput.type = 'password';
+                toggleIcon.textContent = '👁️';
+            }
+        }
+
+        // Validação do formulário
         document.getElementById('loginForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
             const matricula = document.getElementById('matricula').value.trim();
             const telefone = document.getElementById('telefone').value.trim();
             const email = document.getElementById('email').value.trim();
+            const senha = document.getElementById('senha').value.trim();
             const mensagem = document.getElementById('mensagem');
 
-            if (!matricula || !telefone || !email) {
+            if (!matricula || !telefone || !email || !senha) {
                 mensagem.textContent = 'Todos os campos são obrigatórios.';
                 mensagem.style.color = 'red';
                 return;
             }
 
-            if (matricula === '2815' && telefone === '(62) 982502200' && email === 'jefersonalves.ti@gmail.com') {
+            const dados = JSON.parse(localStorage.getItem('dadosUsuario')) || {
+                matricula: '2815',
+                telefone: '(62) 98250-2200',
+                email: 'jefersonalves.ti@gmail.com',
+                senha: '123456'
+            };
+
+            if (
+                matricula === dados.matricula &&
+                telefone === dados.telefone &&
+                email === dados.email &&
+                senha === dados.senha
+            ) {
+                localStorage.setItem('usuarioLogado', 'true');
                 mensagem.style.color = 'green';
                 mensagem.textContent = 'Login bem-sucedido!';
                 setTimeout(() => {
@@ -161,6 +258,22 @@
                 mensagem.textContent = 'Credenciais inválidas. Tente novamente.';
             }
         });
+
+        // Enviar mensagem via WhatsApp
+        function enviarWhatsApp() {
+            const dados = JSON.parse(localStorage.getItem('dadosUsuario'));
+            if (!dados || !dados.telefone) {
+                alert('Telefone não encontrado.');
+                return;
+            }
+
+            const numeroLimpo = dados.telefone.replace(/\D/g, '');
+            const mensagem = encodeURIComponent(
+                `Olá, Jeferson!\n\nSeus dados de autenticação são:\n📌 Matrícula: ${dados.matricula}\n📞 Telefone: ${dados.telefone}\n📧 E-mail: ${dados.email}\n🔐 Senha: ${dados.senha}`
+            );
+            const url = `https://wa.me/55${numeroLimpo}?text=${mensagem}`;
+            window.open(url, '_blank');
+        }
     </script>
 </body>
 
