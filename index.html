@@ -172,7 +172,19 @@
                         <img src="img/açaiSamurai.png" alt="samurai" onclick="verificarSenhaSamurai()"
                             style="cursor: pointer;">
                     </div>
+
                 </section>
+
+                <script>
+                    function acessarPainel() {
+                        if (localStorage.getItem('usuarioLogado') === 'true') {
+                            window.location.href = 'painel.html';
+                        } else {
+                            alert('Você precisa estar logado para acessar o painel.');
+                            window.location.href = 'login.html';
+                        }
+                    }
+                </script>
 
                 <section>
                     <div class="containerimgMetropoles">
