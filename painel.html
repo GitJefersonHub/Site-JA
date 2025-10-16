@@ -4,115 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Painel do Usuário</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      width: 100%;
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 5%;
-    }
-
-    .painel-container {
-      background-color: #fff;
-      width: 100%;
-      padding: 8%;
-      border-radius: 4%;
-      box-shadow: 0 0 5% rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      gap: 5%;
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 300%;
-      margin-bottom: 5%;
-      color: #333;
-    }
-
-    .info {
-      font-size: 200%;
-      color: #555;
-      margin-bottom: 4%;
-    }
-
-    .lembrete {
-      font-size: 150%;
-      color: #888;
-      margin-bottom: 4%;
-    }
-
-    .actions {
-      display: flex;
-      flex-direction: column;
-      gap: 4%;
-    }
-
-    .actions button {
-      padding: 4%;
-      font-size: 200%;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 2%;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin: 1%;
-    }
-
-    .actions button:hover {
-      background-color: #0056b3;
-    }
-
-    #formEditar {
-      display: none;
-      flex-direction: column;
-      gap: 4%;
-      margin-top: 5%;
-    }
-
-    #formEditar input {
-      padding: 3%;
-      font-size: 150%;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    @media (max-width: 768px) {
-      body {
-        padding: 6%;
-      }
-
-      .painel-container {
-        width: 100%;
-        padding: 10%;
-        border-radius: 3%;
-      }
-
-      h2 {
-        font-size: 300%;
-      }
-
-      .info {
-        font-size: 200%;
-      }
-
-      .actions button {
-        font-size: 200%;
-        padding: 5%;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/painel.css">
 </head>
 
 <body>
@@ -121,109 +13,49 @@
     <div class="info" id="infoMatricula">📌 Matrícula: </div>
     <div class="info" id="infoTelefone">📞 Telefone: </div>
     <div class="info" id="infoEmail">📧 E-mail: </div>
-    <p class="lembrete">🔐 Lembre-se: seus dados de autenticação foram atualizados. Guarde-os com segurança.</p>
+    <p class="lembrete">🔐 Lembre-se: Guarde suas informações de login.</p>
 
     <div class="actions">
+      <button onclick="acessarRelatorios()">Relatórios</button>
+      <button onclick="mostrarDados()">Visualizar Perfil</button>
       <button onclick="editarPerfil()">Editar Perfil</button>
-      <button onclick="mostrarDados()">Visualizar Dados</button>
 
       <div id="formEditar">
         <label>Matrícula:</label>
         <input type="text" id="editMatricula">
-
         <label>Telefone:</label>
         <input type="tel" id="editTelefone" placeholder="(99) 99999-9999">
-
         <label>E-mail:</label>
         <input type="email" id="editEmail">
-
         <label>Senha:</label>
-        <input type="password" id="editSenha" maxlength="6">
+        <div style="position: relative; display: flex; align-items: center;">
+          <input type="password" id="editSenha" maxlength="6" style="flex: 1; padding-right: 15%;">
+          <span id="toggleIcon" onclick="toggleSenha()" style="
+    position: absolute;
+    right: 4%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 500%;
+    cursor: pointer;
+    color: #007bff;
+    user-select: none;
+  ">👁️</span>
+        </div>
+
 
         <button onclick="salvarPerfil()">Salvar Alterações</button>
       </div>
 
-      <button onclick="acessarRelatorios()">Relatórios</button>
       <button onclick="sair()">Sair</button>
     </div>
   </div>
 
-  <script>
-    // Verifica se o usuário está logado
-    if (localStorage.getItem('usuarioLogado') !== 'true') {
-      window.location.href = 'login.html';
-    }
-
-    // Carrega dados salvos ou padrão
-    const dados = JSON.parse(localStorage.getItem('dadosUsuario')) || {
-      matricula: '2815',
-      telefone: '(62) 98250-2200',
-      email: 'jefersonalves.ti@gmail.com',
-      senha: '123456'
-    };
-
-    // Atualiza visual do painel
-    document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${dados.matricula}`;
-    document.getElementById('infoTelefone').textContent = `📞 Telefone: ${dados.telefone}`;
-    document.getElementById('infoEmail').textContent = `📧 E-mail: ${dados.email}`;
-
-    // Mostrar formulário de edição
-    function editarPerfil() {
-      document.getElementById('formEditar').style.display = 'flex';
-      document.getElementById('editMatricula').value = dados.matricula;
-      document.getElementById('editTelefone').value = dados.telefone;
-      document.getElementById('editEmail').value = dados.email;
-      document.getElementById('editSenha').value = dados.senha;
-    }
-
-    // Salvar alterações
-    function salvarPerfil() {
-      const novaMatricula = document.getElementById('editMatricula').value.trim();
-      const novoTelefone = document.getElementById('editTelefone').value.trim();
-      const novoEmail = document.getElementById('editEmail').value.trim();
-      const novaSenha = document.getElementById('editSenha').value.trim();
-
-      if (!novaMatricula || !novoTelefone || !novoEmail || !novaSenha) {
-        alert('Todos os campos devem ser preenchidos.');
-        return;
-      }
-
-      const novosDados = {
-        matricula: novaMatricula,
-        telefone: novoTelefone,
-        email: novoEmail,
-        senha: novaSenha
-      };
-
-      localStorage.setItem('dadosUsuario', JSON.stringify(novosDados));
-      alert('Perfil atualizado com sucesso!');
-
-      // Atualiza visual do painel
-      document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${novaMatricula}`;
-      document.getElementById('infoTelefone').textContent = `📞 Telefone: ${novoTelefone}`;
-      document.getElementById('infoEmail').textContent = `📧 E-mail: ${novoEmail}`;
-      document.getElementById('formEditar').style.display = 'none';
-    }
-
-    // Visualizar dados atuais
-    function mostrarDados() {
-      const dados = JSON.parse(localStorage.getItem('dadosUsuario'));
-      alert(`Seus dados atuais:\n\nMatrícula: ${dados.matricula}\nTelefone: ${dados.telefone}\nE-mail: ${dados.email}\nSenha: ${dados.senha}`);
-    }
-
-    // Relatórios
-    function acessarRelatorios() {
-      alert("Redirecionando para relatórios...");
-      // window.location.href = 'relatorios.html';
-    }
-
-    // Logout
-    function sair() {
-      localStorage.removeItem('usuarioLogado');
-      alert("Saindo...");
-      window.location.href = 'login.html';
-    }
-  </script>
+  <!-- Scripts -->
+  <script src="js/painel/dados.js"></script>
+  <script src="js/painel/editarPerfil.js"></script>
+  <script src="js/painel/visualizarPerfil.js"></script>
+  <script src="js/painel/relatorios.js"></script>
+  <script src="js/painel/sair.js"></script>
 </body>
 
 </html>

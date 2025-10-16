@@ -1,0 +1,117 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2%;
+}
+
+.painel-container {
+    background-color: #fff;
+    width: 100%;
+    padding: 2%;
+    border-radius: 4%;
+    box-shadow: 0 0 5% rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+
+h2 {
+    text-align: center;
+    font-size: 500%;
+    margin-bottom: 2%;
+    color: #333;
+}
+
+label {
+    font-size: 500%;
+    margin-bottom: 2%;
+    color: #555;
+}
+
+.info {
+    font-size: 260%;
+    color: #555;
+    margin-bottom: 2%;
+}
+
+.lembrete {
+    font-size: 240%;
+    color: #888;
+    margin-bottom: 2%;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 4%;
+}
+
+.actions button {
+    padding: 4%;
+    font-size: 400%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 2%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 1%;
+}
+
+.actions button:hover {
+    background-color: #0056b3;
+}
+
+#formEditar {
+    display: none;
+    flex-direction: column;
+    gap: 4%;
+    margin-top: 5%;
+}
+
+#formEditar input {
+    padding: 3%;
+    font-size: 360%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 6%;
+    }
+
+    .painel-container {
+        width: 100%;
+        padding: 10%;
+        border-radius: 3%;
+    }
+
+    h2 {
+        font-size: 300%;
+    }
+
+    label {
+        font-size: 400%;
+    }
+
+    .info {
+        font-size: 200%;
+    }
+
+    .actions button {
+        font-size: 200%;
+        padding: 5%;
+    }
+}
