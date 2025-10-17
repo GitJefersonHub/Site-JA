@@ -9,7 +9,8 @@
 
 <body>
   <div class="painel-container">
-    <h2>Bem-vindo, Jeferson!</h2>
+    <h2>Bem-vindo!</h2>
+    <div class="info" id="infoNome">📌 Nome: </div>
     <div class="info" id="infoMatricula">📌 Matrícula: </div>
     <div class="info" id="infoTelefone">📞 Telefone: </div>
     <div class="info" id="infoEmail">📧 E-mail: </div>
@@ -21,12 +22,18 @@
       <button onclick="editarPerfil()">Editar Perfil</button>
 
       <div id="formEditar">
+        <label>Nome:</label>
+        <input type="text" id="editNome">
+
         <label>Matrícula:</label>
         <input type="text" id="editMatricula">
+
         <label>Telefone:</label>
         <input type="tel" id="editTelefone" placeholder="(99) 99999-9999">
+
         <label>E-mail:</label>
         <input type="email" id="editEmail">
+
         <label>Senha:</label>
         <div style="position: relative; display: flex; align-items: center;">
           <input type="password" id="editSenha" maxlength="6" style="flex: 1; padding-right: 15%;">
@@ -35,7 +42,7 @@
     right: 4%;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 500%;
+    font-size: 400%;
     cursor: pointer;
     color: #007bff;
     user-select: none;
