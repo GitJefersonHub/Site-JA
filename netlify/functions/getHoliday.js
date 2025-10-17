@@ -21,7 +21,6 @@ exports.handler = async (event) => {
   }
 
   try {
-    // 📍 Busca cidade e estado com base na geolocalização
     const geoRes = await fetch(
       `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&accept-language=pt`,
       {
@@ -43,7 +42,6 @@ exports.handler = async (event) => {
 
     console.log("Localização detectada:", { city, state });
 
-    // 🗓️ Busca os feriados via Invertexto
     const holidayUrl = `https://api.invertexto.com/v1/holidays/${year}?token=${token}&state=${state}&city=${city}`;
     const holidayRes = await fetch(holidayUrl);
 
@@ -52,21 +50,17 @@ exports.handler = async (event) => {
     }
 
     const holidays = await holidayRes.json();
-    const todayStr = new Date().toISOString().split('T')[0]; // "YYYY-MM-DD"
+    const todayStr = new Date().toISOString().split('T')[0];
     const currentMonth = parseInt(todayStr.split('-')[1], 10) - 1;
 
-    // 📆 Extrai mês da string "YYYY-MM-DD"
     const getMonthFromDateString = (dateStr) => {
       const [_, month] = dateStr.split('-');
       return parseInt(month, 10) - 1;
     };
 
-    // 🔍 Filtra feriados futuros, ignorando apenas os comemorativos
-    const futureHolidays = holidays
-      .filter(h => h.level !== 'comemorativo')
-      .filter(h => h.date >= todayStr);
+    // 🔍 Inclui todos os feriados futuros, inclusive comemorativos
+    const futureHolidays = holidays.filter(h => h.date >= todayStr);
 
-    // 🔁 Encontra feriados do mês atual (ou próximo disponível)
     let month = currentMonth;
     let selected = [];
     while (month < 12) {
@@ -75,7 +69,6 @@ exports.handler = async (event) => {
       month++;
     }
 
-    // ✅ Retorna nome, data e nível (tipo) do feriado — sem conversão de data
     const holidaysFormatted = selected.map(h => ({
       name: h.name,
       date: h.date,

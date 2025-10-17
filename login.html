@@ -24,8 +24,8 @@
 
         .login-container {
             background-color: #fff;
-            width: 90%;
-            padding: 8%;
+            width: 98%;
+            padding: 2%;
             border-radius: 4%;
             box-shadow: 0 0 5% rgba(0, 0, 0, 0.1);
             display: flex;
@@ -35,13 +35,13 @@
 
         h2 {
             text-align: center;
-            font-size: 400%;
+            font-size: 500%;
             margin-bottom: 5%;
             color: #333;
         }
 
         label {
-            font-size: 300%;
+            font-size: 400%;
             margin-bottom: 2%;
             color: #555;
         }
@@ -49,10 +49,10 @@
         input {
             width: 100%;
             padding: 3%;
-            font-size: 200%;
+            font-size: 300%;
             border: 1px solid #ccc;
             border-radius: 2%;
-            margin-bottom: 4%;
+            margin-bottom: 2%;
         }
 
         .senha-container {
@@ -85,7 +85,7 @@
         button {
             width: 100%;
             padding: 4%;
-            font-size: 200%;
+            font-size: 340%;
             background-color: #007bff;
             color: white;
             border: none;
@@ -100,7 +100,7 @@
 
         #mensagem {
             text-align: center;
-            font-size: 200%;
+            font-size: 100%;
             margin-top: 4%;
             color: red;
         }
@@ -242,12 +242,60 @@
                 return;
             }
 
-            const dados = JSON.parse(localStorage.getItem('dadosUsuario')) || {
-                matricula: '2815',
-                telefone: '(62) 98250-2200',
-                email: 'jefersonalves.ti@gmail.com',
-                senha: '123456'
-            };
+            // Lista de usuários cadastrados
+            const usuariosCadastrados = [
+                {
+                    matricula: '2815',
+                    telefone: '(62) 98250-2200',
+                    email: 'jefersonalves.ti@gmail.com',
+                    senha: '123456'
+                },
+                {
+                    matricula: '1020',
+                    telefone: '(62) 98182-2794',
+                    email: 'gilmacytavares@gmail.com',
+                    senha: '654321'
+                }
+            ];
+
+            // Validação do formulário
+            document.getElementById('loginForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const matricula = document.getElementById('matricula').value.trim();
+                const telefone = document.getElementById('telefone').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const senha = document.getElementById('senha').value.trim();
+                const mensagem = document.getElementById('mensagem');
+
+                if (!matricula || !telefone || !email || !senha) {
+                    mensagem.textContent = 'Todos os campos são obrigatórios.';
+                    mensagem.style.color = 'red';
+                    return;
+                }
+
+                const usuarioValido = usuariosCadastrados.find(user =>
+                    user.matricula === matricula &&
+                    user.telefone === telefone &&
+                    user.email === email &&
+                    user.senha === senha
+                );
+
+                if (usuarioValido) {
+                    localStorage.setItem('usuarioLogado', 'true');
+                    localStorage.setItem('dadosUsuario', JSON.stringify(usuarioValido));
+                    mensagem.style.color = 'green';
+                    mensagem.textContent = 'Login bem-sucedido!';
+                    setTimeout(() => {
+                        window.location.href = 'painel.html';
+                    }, 1500);
+                } else {
+                    mensagem.style.color = 'red';
+                    mensagem.textContent = 'Credenciais inválidas. Tente novamente.';
+                }
+            }
+            );
+
 
             if (
                 matricula === dados.matricula &&
