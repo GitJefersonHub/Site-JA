@@ -100,7 +100,7 @@
 
         #mensagem {
             text-align: center;
-            font-size: 100%;
+            font-size: 400%;
             margin-top: 4%;
             color: red;
         }
@@ -151,6 +151,10 @@
     <div class="login-container">
         <h2>Login</h2>
         <form id="loginForm">
+
+            <label for="nome">Nome:</label>
+            <input type="nome" id="nome" name="nome" required placeholder="Digite o seu nome">
+
             <label for="matricula">Matrícula:</label>
             <input type="text" id="matricula" name="matricula" required maxlength="6"
                 placeholder="Digite sua matrícula">
@@ -169,7 +173,7 @@
     right: 2%;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 300%;
+    font-size: 400%;
     cursor: pointer;
     color: #007bff;
     user-select: none;
@@ -229,14 +233,14 @@
         // Validação do formulário
         document.getElementById('loginForm').addEventListener('submit', function (e) {
             e.preventDefault();
-
+            const nome = document.getElementById('nome').value.trim();
             const matricula = document.getElementById('matricula').value.trim();
             const telefone = document.getElementById('telefone').value.trim();
             const email = document.getElementById('email').value.trim();
             const senha = document.getElementById('senha').value.trim();
             const mensagem = document.getElementById('mensagem');
 
-            if (!matricula || !telefone || !email || !senha) {
+            if (!nome || !matricula || !telefone || !email || !senha) {
                 mensagem.textContent = 'Todos os campos são obrigatórios.';
                 mensagem.style.color = 'red';
                 return;
@@ -245,36 +249,39 @@
             // Lista de usuários cadastrados
             const usuariosCadastrados = [
                 {
+                    nome: 'Jeferson',
                     matricula: '2815',
                     telefone: '(62) 98250-2200',
                     email: 'jefersonalves.ti@gmail.com',
                     senha: '123456'
                 },
                 {
+                    nome: 'Gilmacy',
                     matricula: '1020',
                     telefone: '(62) 98182-2794',
                     email: 'gilmacytavares@gmail.com',
-                    senha: '654321'
+                    senha: '123456'
                 }
             ];
 
             // Validação do formulário
             document.getElementById('loginForm').addEventListener('submit', function (e) {
                 e.preventDefault();
-
+                const nome = document.getElementById('nome').value.trim();
                 const matricula = document.getElementById('matricula').value.trim();
                 const telefone = document.getElementById('telefone').value.trim();
                 const email = document.getElementById('email').value.trim();
                 const senha = document.getElementById('senha').value.trim();
                 const mensagem = document.getElementById('mensagem');
 
-                if (!matricula || !telefone || !email || !senha) {
+                if (!nome || !matricula || !telefone || !email || !senha) {
                     mensagem.textContent = 'Todos os campos são obrigatórios.';
                     mensagem.style.color = 'red';
                     return;
                 }
 
                 const usuarioValido = usuariosCadastrados.find(user =>
+                    user.nome === nome &&
                     user.matricula === matricula &&
                     user.telefone === telefone &&
                     user.email === email &&
@@ -296,8 +303,8 @@
             }
             );
 
-
             if (
+                nome === dados.nome &&
                 matricula === dados.matricula &&
                 telefone === dados.telefone &&
                 email === dados.email &&
@@ -325,7 +332,7 @@
 
             const numeroLimpo = dados.telefone.replace(/\D/g, '');
             const mensagem = encodeURIComponent(
-                `Olá, Jeferson!\n\nSeus dados de autenticação são:\n📌 Matrícula: ${dados.matricula}\n📞 Telefone: ${dados.telefone}\n📧 E-mail: ${dados.email}\n🔐 Senha: ${dados.senha}`
+                `Olá!\n\nSeus dados de autenticação são:\n🆔 Nome: ${dados.nome}\n📌 Matrícula: ${dados.matricula}\n📞 Telefone: ${dados.telefone}\n📧 E-mail: ${dados.email}\n🔐 Senha: ${dados.senha}`
             );
             const url = `https://wa.me/55${numeroLimpo}?text=${mensagem}`;
             window.open(url, '_blank');
