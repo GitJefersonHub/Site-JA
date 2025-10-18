@@ -8,8 +8,42 @@
 </head>
 
 <body>
+  <script>
+    // Proteção contra acesso direto sem login
+    if (localStorage.getItem('usuarioLogado') !== 'true') {
+      alert('Acesso não autorizado. Faça login para continuar.');
+      location.replace('login.html');
+    }
+
+    // Carrega dados do usuário logado
+    const dados = JSON.parse(localStorage.getItem('dadosUsuario'));
+
+    if (!dados || !dados.nome || !dados.matricula || !dados.telefone || !dados.email || !dados.senha) {
+      alert('Dados de usuário inválidos. Faça login novamente.');
+      localStorage.removeItem('usuarioLogado');
+      localStorage.removeItem('dadosUsuario');
+      location.replace('login.html');
+    }
+
+    // Saudação com base no horário
+    function gerarSaudacao(nome) {
+      const hora = new Date().getHours();
+      let saudacao = 'Olá';
+
+      if (hora >= 5 && hora < 12) {
+        saudacao = 'Bom dia';
+      } else if (hora >= 12 && hora < 18) {
+        saudacao = 'Boa tarde';
+      } else {
+        saudacao = 'Boa noite';
+      }
+
+      return `${saudacao}, ${nome}!`;
+    }
+  </script>
+
   <div class="painel-container">
-    <h2>Bem-vindo!</h2>
+    <h2 id="boasVindas"></h2>
     <div class="info" id="infoNome">📌 Nome: </div>
     <div class="info" id="infoMatricula">📌 Matrícula: </div>
     <div class="info" id="infoTelefone">📞 Telefone: </div>
@@ -38,18 +72,16 @@
         <div style="position: relative; display: flex; align-items: center;">
           <input type="password" id="editSenha" maxlength="6" style="flex: 1; padding-right: 15%;">
           <span id="toggleIcon" onclick="toggleSenha()" style="
-    position: absolute;
-    right: 4%;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 400%;
-    cursor: pointer;
-    color: #007bff;
-    user-select: none;
-  ">👁️</span>
+            position: absolute;
+            right: 4%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 400%;
+            cursor: pointer;
+            color: #007bff;
+            user-select: none;
+          ">👁️</span>
         </div>
-
-
         <button onclick="salvarPerfil()">Salvar Alterações</button>
       </div>
 
@@ -57,12 +89,82 @@
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="js/painel/dados.js"></script>
-  <script src="js/painel/editarPerfil.js"></script>
-  <script src="js/painel/visualizarPerfil.js"></script>
-  <script src="js/painel/relatorios.js"></script>
-  <script src="js/painel/sair.js"></script>
+  <script>
+    // Exibe saudação e dados
+    document.getElementById('boasVindas').textContent = gerarSaudacao(dados.nome);
+    document.getElementById('infoNome').textContent = `📌 Nome: ${dados.nome}`;
+    document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${dados.matricula}`;
+    document.getElementById('infoTelefone').textContent = `📞 Telefone: ${dados.telefone}`;
+    document.getElementById('infoEmail').textContent = `📧 E-mail: ${dados.email}`;
+
+    function editarPerfil() {
+      const form = document.getElementById('formEditar');
+      if (form.style.display === 'flex') {
+        form.style.display = 'none';
+      } else {
+        form.style.display = 'flex';
+        document.getElementById('editNome').value = dados.nome;
+        document.getElementById('editMatricula').value = dados.matricula;
+        document.getElementById('editTelefone').value = dados.telefone;
+        document.getElementById('editEmail').value = dados.email;
+        document.getElementById('editSenha').value = dados.senha;
+      }
+    }
+
+    function toggleSenha() {
+      const senhaInput = document.getElementById('editSenha');
+      const toggleIcon = document.getElementById('toggleIcon');
+      if (senhaInput.type === 'password') {
+        senhaInput.type = 'text';
+        toggleIcon.textContent = '🙈';
+      } else {
+        senhaInput.type = 'password';
+        toggleIcon.textContent = '👁️';
+      }
+    }
+
+    function salvarPerfil() {
+      const novoNome = document.getElementById('editNome').value.trim();
+      const novaMatricula = document.getElementById('editMatricula').value.trim();
+      const novoTelefone = document.getElementById('editTelefone').value.trim();
+      const novoEmail = document.getElementById('editEmail').value.trim();
+      const novaSenha = document.getElementById('editSenha').value.trim();
+
+      if (!novoNome || !novaMatricula || !novoTelefone || !novoEmail || !novaSenha) {
+        alert('Todos os campos devem ser preenchidos.');
+        return;
+      }
+
+      const novosDados = {
+        nome: novoNome,
+        matricula: novaMatricula,
+        telefone: novoTelefone,
+        email: novoEmail,
+        senha: novaSenha
+      };
+
+      localStorage.setItem('dadosUsuario', JSON.stringify(novosDados));
+      alert('Perfil atualizado com sucesso!\n\nVocê será desconectado para fazer login novamente com os novos dados.');
+      localStorage.removeItem('usuarioLogado');
+      location.replace('login.html');
+    }
+
+    function mostrarDados() {
+      alert(`Seus dados atuais:\n\n🆔 Nome: ${dados.nome}\n📌 Matrícula: ${dados.matricula}\n📞 Telefone: ${dados.telefone}\n📧 E-mail: ${dados.email}\n🔐 Senha: ${dados.senha}`);
+    }
+
+    function acessarRelatorios() {
+      alert("Redirecionando para relatórios...");
+      // window.location.href = 'relatorios.html';
+    }
+
+    function sair() {
+      localStorage.removeItem('usuarioLogado');
+      localStorage.removeItem('dadosUsuario');
+      alert("Sessão encerrada.");
+      location.replace('login.html');
+    }
+  </script>
 </body>
 
 </html>
