@@ -3,3 +3,4 @@ function sair() {
   alert("Saindo...");
   window.location.href = 'login.html';
 }
+
