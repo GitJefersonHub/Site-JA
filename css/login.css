@@ -15,6 +15,17 @@ body {
     padding: 5%;
 }
 
+/* Contêiner pai que envolve login e cadastro */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    /* espaçamento entre os blocos */
+    padding: 20px;
+}
+
+/* Estilo do login */
 .login-container {
     background-color: #fff;
     width: 98%;
@@ -25,6 +36,21 @@ body {
     flex-direction: column;
     gap: 5%;
 }
+
+/* Estilo do cadastro */
+.cadastrar-container {
+    background-color: #fff;
+    width: 98%;
+    padding: 2%;
+    border-radius: 4%;
+    box-shadow: 0 0 5% rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    margin-top: 20px;
+    /* espaçamento abaixo do login */
+}
+
 
 h2 {
     text-align: center;
@@ -75,11 +101,12 @@ input {
     color: #0056b3;
 }
 
-button {
+/* Botão Entrar */
+.btn-entrar {
     width: 100%;
     padding: 4%;
     font-size: 340%;
-    background-color: #007bff;
+    background-color: #28a745;
     color: white;
     border: none;
     border-radius: 2%;
@@ -87,8 +114,42 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #0056b3;
+.btn-entrar:hover {
+    background-color: #218838;
+}
+
+/* Botão Cadastrar */
+.btn-cadastrar {
+    width: 100%;
+    padding: 4%;
+    font-size: 340%;
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 2%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cadastrar:hover {
+    background-color: #117a8b;
+}
+
+/* Botão Enviar */
+.btn-enviar {
+    width: 100%;
+    padding: 4%;
+    font-size: 340%;
+    background-color: #ffc107;
+    color: black;
+    border: none;
+    border-radius: 2%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-enviar:hover {
+    background-color: #e0a800;
 }
 
 #mensagem {
