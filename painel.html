@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
   <script>
     // Proteção contra acesso direto sem login
     if (localStorage.getItem('usuarioLogado') !== 'true') {
@@ -51,9 +52,29 @@
     <p class="lembrete">🔐 Lembre-se: Guarde suas informações de login.</p>
 
     <div class="actions">
-      <button onclick="acessarRelatorios()">Relatórios</button>
-      <button onclick="mostrarDados()">Visualizar Perfil</button>
-      <button onclick="editarPerfil()">Editar Perfil</button>
+      <button class="btn-relatorios" onclick="acessarRelatorios()">Relatórios</button>
+      <button class="btn-visualizar" onclick="mostrarDados()">Visualizar Perfil</button>
+      <button class="btn-editar" onclick="editarPerfil()">Editar Perfil</button>
+
+
+      <div id="formCadastro" style="display: none; flex-direction: column; gap: 10px; margin-top: 20px;">
+        <label>Nome:</label>
+        <input type="text" id="cadNome">
+
+        <label>Matrícula:</label>
+        <input type="text" id="cadMatricula" maxlength="6">
+
+        <label>Telefone:</label>
+        <input type="tel" id="cadTelefone" placeholder="(99) 99999-9999">
+
+        <label>E-mail:</label>
+        <input type="email" id="cadEmail">
+
+        <label>Senha:</label>
+        <input type="password" id="cadSenha" maxlength="6">
+
+        <button onclick="salvarNovoUsuario()">Enviar</button>
+      </div>
 
       <div id="formEditar">
         <label>Nome:</label>
@@ -82,11 +103,12 @@
             user-select: none;
           ">👁️</span>
         </div>
-        <button onclick="salvarPerfil()">Salvar Alterações</button>
+        <button class="btn-salvar" onclick="salvarPerfil()">Salvar Alterações</button>
       </div>
-
-      <button onclick="sair()">Sair</button>
+      <button class="btn-sair" onclick="sair()">Sair</button>
     </div>
+    <button class="btn-lista" onclick="imprimirLista()">Lista</button>
+    <button class="btn-excluir" onclick="excluir()">Excluir Cadastro</button>
   </div>
 
   <script>
@@ -96,20 +118,6 @@
     document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${dados.matricula}`;
     document.getElementById('infoTelefone').textContent = `📞 Telefone: ${dados.telefone}`;
     document.getElementById('infoEmail').textContent = `📧 E-mail: ${dados.email}`;
-
-    function editarPerfil() {
-      const form = document.getElementById('formEditar');
-      if (form.style.display === 'flex') {
-        form.style.display = 'none';
-      } else {
-        form.style.display = 'flex';
-        document.getElementById('editNome').value = dados.nome;
-        document.getElementById('editMatricula').value = dados.matricula;
-        document.getElementById('editTelefone').value = dados.telefone;
-        document.getElementById('editEmail').value = dados.email;
-        document.getElementById('editSenha').value = dados.senha;
-      }
-    }
 
     function toggleSenha() {
       const senhaInput = document.getElementById('editSenha');
@@ -121,6 +129,45 @@
         senhaInput.type = 'password';
         toggleIcon.textContent = '👁️';
       }
+    }
+
+    function imprimirLista() {
+      const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+      if (usuarios.length === 0) {
+        alert('Nenhum usuário cadastrado para imprimir.');
+        return;
+      }
+
+      let printContent = '<h2>Lista de Usuários</h2><ul style="list-style:none;">';
+      usuarios.forEach((user, index) => {
+        printContent += `
+      <li style="margin-bottom: 15px;">
+        <strong>${index + 1}. ${user.nome}</strong><br>
+        Matrícula: ${user.matricula}<br>
+        Telefone: ${user.telefone}<br>
+        E-mail: ${user.email}
+      </li>
+    `;
+      });
+      printContent += '</ul>';
+
+      const printWindow = window.open('', '', 'width=800,height=600');
+      printWindow.document.write(`
+    <html>
+      <head>
+        <title>Impressão da Lista</title>
+        <style>
+          body { font-family: Arial, sans-serif; padding: 20px; }
+          h2 { text-align: center; }
+        </style>
+      </head>
+      <body>${printContent}</body>
+    </html>
+  `);
+      printWindow.document.close();
+      printWindow.focus();
+      printWindow.print();
     }
 
     function salvarPerfil() {
@@ -148,23 +195,12 @@
       localStorage.removeItem('usuarioLogado');
       location.replace('login.html');
     }
-
-    function mostrarDados() {
-      alert(`Seus dados atuais:\n\n🆔 Nome: ${dados.nome}\n📌 Matrícula: ${dados.matricula}\n📞 Telefone: ${dados.telefone}\n📧 E-mail: ${dados.email}\n🔐 Senha: ${dados.senha}`);
-    }
-
-    function acessarRelatorios() {
-      alert("Redirecionando para relatórios...");
-      // window.location.href = 'relatorios.html';
-    }
-
-    function sair() {
-      localStorage.removeItem('usuarioLogado');
-      localStorage.removeItem('dadosUsuario');
-      alert("Sessão encerrada.");
-      location.replace('login.html');
-    }
   </script>
+
+  <script src="js/painel/relatorios.js"></script>
+  <script src="js/painel/visualizarPerfil.js"></script>
+  <script src="js/painel/editarPerfil.js"></script>
+  <script src="js/painel/sair.js"></script>
 </body>
 
 </html>

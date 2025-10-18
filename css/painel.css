@@ -57,21 +57,134 @@ label {
     gap: 4%;
 }
 
-.actions button {
+.btn-relatorios {
     padding: 4%;
     font-size: 360%;
-    background-color: #007bff;
+    background-color: #28a745;
     color: white;
     border: none;
     border-radius: 2%;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     margin: 1%;
+    transition: background-color 0.3s ease;
 }
 
-.actions button:hover {
-    background-color: #0056b3;
+.btn-relatorios:hover {
+    background-color: #218838;
 }
+
+.btn-visualizar {
+    padding: 4%;
+    font-size: 360%;
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 2%;
+    cursor: pointer;
+    margin: 1%;
+    transition: background-color 0.3s ease;
+}
+
+.btn-visualizar:hover {
+    background-color: #117a8b;
+}
+
+.btn-editar {
+    padding: 4%;
+    font-size: 360%;
+    background-color: #ffc107;
+    color: black;
+    border: none;
+    border-radius: 2%;
+    cursor: pointer;
+    margin: 1%;
+    transition: background-color 0.3s ease;
+}
+
+.btn-editar:hover {
+    background-color: #e0a800;
+}
+
+.btn-lista {
+    padding: 4%;
+    font-size: 360%;
+    background-color: #6f42c1;
+    color: white;
+    border: none;
+    border-radius: 2%;
+    cursor: pointer;
+    margin: 1%;
+    transition: background-color 0.3s ease;
+}
+
+.btn-lista:hover {
+    background-color: #5936a2;
+}
+
+.btn-enviar {
+    padding: 4%;
+    font-size: 360%;
+    background-color: #20c997;
+    color: white;
+    border: none;
+    border-radius: 2%;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-enviar:hover {
+    background-color: #198754;
+}
+
+.btn-salvar {
+    padding: 4%;
+    font-size: 360%;
+    background-color: #fd7e14;
+    color: white;
+    border: none;
+    border-radius: 2%;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-salvar:hover {
+    background-color: #e8590c;
+}
+
+.btn-sair {
+    padding: 4%;
+    font-size: 360%;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 2%;
+    cursor: pointer;
+    margin: 1%;
+    transition: background-color 0.3s ease;
+}
+
+.btn-sair:hover {
+    background-color: #c82333;
+}
+
+.btn-excluir {
+    padding: 4%;
+    font-size: 360%;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 2%;
+    cursor: pointer;
+    margin: 1%;
+    transition: background-color 0.3s ease;
+}
+
+.btn-excluir:hover {
+    background-color: #c82333;
+}
+
 
 #formEditar {
     display: none;

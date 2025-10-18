@@ -1,6 +1,6 @@
 function sair() {
-  localStorage.removeItem('usuarioLogado');
-  alert("Saindo...");
-  window.location.href = 'login.html';
-}
-
+      localStorage.removeItem('usuarioLogado');
+      localStorage.removeItem('dadosUsuario');
+      alert("Sessão encerrada.");
+      location.replace('login.html');
+    }
