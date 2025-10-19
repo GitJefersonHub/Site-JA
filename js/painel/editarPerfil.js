@@ -1,10 +1,21 @@
 function editarPerfil() {
   const form = document.getElementById('formEditar');
+  const botaoESE = document.querySelector('.btn-ESE');
+  const botaoSair = document.querySelector('.btn-sair');
+  const botaoLista = document.querySelector('.btn-lista');
 
   if (form.style.display === 'flex') {
+    // Oculta formulário e restaura botões
     form.style.display = 'none';
+    botaoESE.textContent = 'Editar / Salvar / Excluir';
+    botaoSair.style.display = 'inline-block';
+    botaoLista.style.display = 'inline-block';
   } else {
+    // Exibe formulário e oculta botões
     form.style.display = 'flex';
+    botaoESE.textContent = 'Fechar';
+    botaoSair.style.display = 'none';
+    botaoLista.style.display = 'none';
 
     const dados = JSON.parse(localStorage.getItem('dadosUsuario'));
     if (!dados) {
@@ -18,8 +29,6 @@ function editarPerfil() {
     document.getElementById('editEmail').value = dados.email;
     document.getElementById('editSenha').value = dados.senha;
   }
-  aplicarMascaraTelefone('editTelefone');
-
 }
 
 function aplicarMascaraTelefone(idCampo) {

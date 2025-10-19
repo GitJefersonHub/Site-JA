@@ -52,10 +52,9 @@
     <p class="lembrete">🔐 Lembre-se: Guarde suas informações de login.</p>
 
     <div class="actions">
-      <button class="btn-relatorios" onclick="acessarRelatorios()">Relatórios</button>
-      <button class="btn-visualizar" onclick="mostrarDados()">Visualizar Perfil</button>
-      <button class="btn-editar" onclick="editarPerfil()">Editar Perfil</button>
-
+      <button class="btn-ponto" onclick="registrar()">Ponto</button>
+      <button class="btn-relatorios" onclick="window.location.href='relatorios.html'">Relatórios</button>
+      <button class="btn-ESE" onclick="editarPerfil()">Editar / Salvar / Excluir</button>
 
       <div id="formCadastro" style="display: none; flex-direction: column; gap: 10px; margin-top: 20px;">
         <label>Nome:</label>
@@ -104,103 +103,20 @@
           ">👁️</span>
         </div>
         <button class="btn-salvar" onclick="salvarPerfil()">Salvar Alterações</button>
+        <button class="btn-excluir" onclick="excluir()">Excluir Cadastro</button>
       </div>
       <button class="btn-sair" onclick="sair()">Sair</button>
+      <button class="btn-lista" onclick="imprimirLista()">Lista</button>
     </div>
-    <button class="btn-lista" onclick="imprimirLista()">Lista</button>
-    <button class="btn-excluir" onclick="excluir()">Excluir Cadastro</button>
+
   </div>
 
-  <script>
-    // Exibe saudação e dados
-    document.getElementById('boasVindas').textContent = gerarSaudacao(dados.nome);
-    document.getElementById('infoNome').textContent = `📌 Nome: ${dados.nome}`;
-    document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${dados.matricula}`;
-    document.getElementById('infoTelefone').textContent = `📞 Telefone: ${dados.telefone}`;
-    document.getElementById('infoEmail').textContent = `📧 E-mail: ${dados.email}`;
-
-    function toggleSenha() {
-      const senhaInput = document.getElementById('editSenha');
-      const toggleIcon = document.getElementById('toggleIcon');
-      if (senhaInput.type === 'password') {
-        senhaInput.type = 'text';
-        toggleIcon.textContent = '🙈';
-      } else {
-        senhaInput.type = 'password';
-        toggleIcon.textContent = '👁️';
-      }
-    }
-
-    function imprimirLista() {
-      const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-
-      if (usuarios.length === 0) {
-        alert('Nenhum usuário cadastrado para imprimir.');
-        return;
-      }
-
-      let printContent = '<h2>Lista de Usuários</h2><ul style="list-style:none;">';
-      usuarios.forEach((user, index) => {
-        printContent += `
-      <li style="margin-bottom: 15px;">
-        <strong>${index + 1}. ${user.nome}</strong><br>
-        Matrícula: ${user.matricula}<br>
-        Telefone: ${user.telefone}<br>
-        E-mail: ${user.email}
-      </li>
-    `;
-      });
-      printContent += '</ul>';
-
-      const printWindow = window.open('', '', 'width=800,height=600');
-      printWindow.document.write(`
-    <html>
-      <head>
-        <title>Impressão da Lista</title>
-        <style>
-          body { font-family: Arial, sans-serif; padding: 20px; }
-          h2 { text-align: center; }
-        </style>
-      </head>
-      <body>${printContent}</body>
-    </html>
-  `);
-      printWindow.document.close();
-      printWindow.focus();
-      printWindow.print();
-    }
-
-    function salvarPerfil() {
-      const novoNome = document.getElementById('editNome').value.trim();
-      const novaMatricula = document.getElementById('editMatricula').value.trim();
-      const novoTelefone = document.getElementById('editTelefone').value.trim();
-      const novoEmail = document.getElementById('editEmail').value.trim();
-      const novaSenha = document.getElementById('editSenha').value.trim();
-
-      if (!novoNome || !novaMatricula || !novoTelefone || !novoEmail || !novaSenha) {
-        alert('Todos os campos devem ser preenchidos.');
-        return;
-      }
-
-      const novosDados = {
-        nome: novoNome,
-        matricula: novaMatricula,
-        telefone: novoTelefone,
-        email: novoEmail,
-        senha: novaSenha
-      };
-
-      localStorage.setItem('dadosUsuario', JSON.stringify(novosDados));
-      alert('Perfil atualizado com sucesso!\n\nVocê será desconectado para fazer login novamente com os novos dados.');
-      localStorage.removeItem('usuarioLogado');
-      location.replace('login.html');
-    }
-  </script>
-
   <script src="js/painel/relatorios.js"></script>
-  <script src="js/painel/visualizarPerfil.js"></script>
   <script src="js/painel/editarPerfil.js"></script>
+  <script src="js/painel/lista.js"></script>
+  <script src="js/painel/excluir.js"></script>
   <script src="js/painel/sair.js"></script>
+
 </body>
 
 </html>
