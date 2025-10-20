@@ -9,46 +9,13 @@
 
 <body>
 
-  <script>
-    // Proteção contra acesso direto sem login
-    if (localStorage.getItem('usuarioLogado') !== 'true') {
-      alert('Acesso não autorizado. Faça login para continuar.');
-      location.replace('login.html');
-    }
-
-    // Carrega dados do usuário logado
-    const dados = JSON.parse(localStorage.getItem('dadosUsuario'));
-
-    if (!dados || !dados.nome || !dados.matricula || !dados.telefone || !dados.email || !dados.senha) {
-      alert('Dados de usuário inválidos. Faça login novamente.');
-      localStorage.removeItem('usuarioLogado');
-      localStorage.removeItem('dadosUsuario');
-      location.replace('login.html');
-    }
-
-    // Saudação com base no horário
-    function gerarSaudacao(nome) {
-      const hora = new Date().getHours();
-      let saudacao = 'Olá';
-
-      if (hora >= 5 && hora < 12) {
-        saudacao = 'Bom dia';
-      } else if (hora >= 12 && hora < 18) {
-        saudacao = 'Boa tarde';
-      } else {
-        saudacao = 'Boa noite';
-      }
-
-      return `${saudacao}, ${nome}!`;
-    }
-  </script>
-
   <div class="painel-container">
     <h2 id="boasVindas"></h2>
     <div class="info" id="infoNome">📌 Nome: </div>
     <div class="info" id="infoMatricula">📌 Matrícula: </div>
     <div class="info" id="infoTelefone">📞 Telefone: </div>
     <div class="info" id="infoEmail">📧 E-mail: </div>
+    <div class="info" id="infoDispositivo">💻 Dispositivo: </div>
     <p class="lembrete">🔐 Lembre-se: Guarde suas informações de login.</p>
 
     <div class="actions">
@@ -105,17 +72,18 @@
         <button class="btn-salvar" onclick="salvarPerfil()">Salvar Alterações</button>
         <button class="btn-excluir" onclick="excluir()">Excluir Cadastro</button>
       </div>
+
       <button class="btn-sair" onclick="sair()">Sair</button>
       <button class="btn-lista" onclick="imprimirLista()">Lista</button>
     </div>
-
   </div>
 
-  <script src="js/painel/relatorios.js"></script>
-  <script src="js/painel/editarPerfil.js"></script>
-  <script src="js/painel/lista.js"></script>
-  <script src="js/painel/excluir.js"></script>
-  <script src="js/painel/sair.js"></script>
+  <script src="js/rondas/painel.js"></script>
+  <script src="js/rondas/relatorios.js"></script>
+  <script src="js/rondas/editarPerfil.js"></script>
+  <script src="js/rondas/lista.js"></script>
+  <script src="js/rondas/excluir.js"></script>
+  <script src="js/rondas/sair.js"></script>
 
 </body>
 
