@@ -122,5 +122,5 @@ function salvarPerfil() {
 
   alert('Perfil atualizado com sucesso!\n\nPor segurança, você será desconectado e deverá fazer login novamente com os novos dados.');
   localStorage.removeItem('usuarioLogado');
-  window.location.href = 'login.html';
+  window.location.href = 'rondasLogin.html';
 }

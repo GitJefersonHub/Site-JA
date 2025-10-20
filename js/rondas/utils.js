@@ -50,34 +50,6 @@ function telefoneValido(telefone) {
     return regex.test(telefone);
 }
 
-// Retorna tipo de dispositivo e sistema operacional
-function identificarDispositivo(userAgent) {
-    let dispositivo = 'Desconhecido';
-    let sistema = 'Desconhecido';
-
-    if (/Mobi|Android/i.test(userAgent)) {
-        dispositivo = 'Mobile';
-    } else if (/Tablet|iPad/i.test(userAgent)) {
-        dispositivo = 'Tablet';
-    } else {
-        dispositivo = 'Desktop';
-    }
-
-    if (/Windows/i.test(userAgent)) {
-        sistema = 'Windows';
-    } else if (/Android/i.test(userAgent)) {
-        sistema = 'Android';
-    } else if (/iPhone|iPad|iOS/i.test(userAgent)) {
-        sistema = 'iOS';
-    } else if (/Mac/i.test(userAgent)) {
-        sistema = 'macOS';
-    } else if (/Linux/i.test(userAgent)) {
-        sistema = 'Linux';
-    }
-
-    return `${dispositivo} - ${sistema}`;
-}
-
 // Inicializa máscaras
 aplicarMascaraTelefone('telefone');
 aplicarMascaraTelefone('cadTelefone');

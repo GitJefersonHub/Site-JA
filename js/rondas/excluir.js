@@ -22,5 +22,5 @@ function excluir() {
   localStorage.removeItem('usuarioLogado');
 
   alert('Cadastro excluído com sucesso. Você será redirecionado para a tela de login.');
-  window.location.href = 'login.html';
+  window.location.href = 'rondasLogin.html';
 }

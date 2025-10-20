@@ -7,7 +7,6 @@ document.getElementById('formCadastro').addEventListener('submit', function (e) 
   const telefone = document.getElementById('cadTelefone').value.trim();
   const email = document.getElementById('cadEmail').value.trim();
   const senha = document.getElementById('cadSenha').value.trim();
-  const dispositivo = identificarDispositivo(navigator.userAgent);
   const mensagem = document.getElementById('mensagemCadastro');
 
   if (!nome || !matricula || !telefone || !email || !senha) {
@@ -31,7 +30,7 @@ document.getElementById('formCadastro').addEventListener('submit', function (e) 
     return;
   }
 
-  const novoUsuario = { nome, matricula, telefone, email, senha, dispositivo };
+  const novoUsuario = { nome, matricula, telefone, email, senha };
   usuarios.push(novoUsuario);
   localStorage.setItem('usuarios', JSON.stringify(usuarios));
 

@@ -7,7 +7,6 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
   const telefone = document.getElementById('telefone').value.trim();
   const email = document.getElementById('email').value.trim();
   const senha = document.getElementById('senha').value.trim();
-  const dispositivoAtual = identificarDispositivo(navigator.userAgent);
   const mensagem = document.getElementById('mensagem');
 
   if (!nome || !matricula || !telefone || !email || !senha) {
@@ -38,13 +37,6 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
   }
 
   const usuario = usuarios[index];
-
-  if (usuario.dispositivo && usuario.dispositivo !== dispositivoAtual) {
-    const confirmar = confirm('Este usuário está logado em outro dispositivo. Deseja deslogar o anterior e continuar?');
-    if (!confirmar) return;
-  }
-
-  usuario.dispositivo = dispositivoAtual;
   usuarios[index] = usuario;
   localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
@@ -54,6 +46,6 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
   mensagem.textContent = 'Login bem-sucedido!';
   mensagem.style.color = 'green';
   setTimeout(() => {
-    location.replace('painel.html');
+    location.replace('rondasPainel.html');
   }, 1500);
 });

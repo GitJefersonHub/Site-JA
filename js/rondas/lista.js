@@ -1,30 +1,3 @@
-// Função para identificar tipo de dispositivo e sistema operacional
-function identificarDispositivo(userAgent) {
-  let dispositivo = 'Desconhecido';
-  let sistema = 'Desconhecido';
-
-  if (/Mobi|Android/i.test(userAgent)) {
-    dispositivo = 'Mobile';
-  } else if (/Tablet|iPad/i.test(userAgent)) {
-    dispositivo = 'Tablet';
-  } else {
-    dispositivo = 'Desktop';
-  }
-
-  if (/Windows/i.test(userAgent)) {
-    sistema = 'Windows';
-  } else if (/Android/i.test(userAgent)) {
-    sistema = 'Android';
-  } else if (/iPhone|iPad|iOS/i.test(userAgent)) {
-    sistema = 'iOS';
-  } else if (/Mac/i.test(userAgent)) {
-    sistema = 'macOS';
-  } else if (/Linux/i.test(userAgent)) {
-    sistema = 'Linux';
-  }
-
-  return `${dispositivo} - ${sistema}`;
-}
 
 // Exibe saudação e dados
 document.getElementById('boasVindas').textContent = gerarSaudacao(dados.nome);
@@ -32,7 +5,6 @@ document.getElementById('infoNome').textContent = `📌 Nome: ${dados.nome}`;
 document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${dados.matricula}`;
 document.getElementById('infoTelefone').textContent = `📞 Telefone: ${dados.telefone}`;
 document.getElementById('infoEmail').textContent = `📧 E-mail: ${dados.email}`;
-document.getElementById('infoDispositivo').textContent = `💻 Dispositivo: ${dados.dispositivo || identificarDispositivo(navigator.userAgent)}`;
 
 // Função para imprimir lista de usuários
 function imprimirLista() {
@@ -59,7 +31,6 @@ function imprimirLista() {
         Matrícula: ${user.matricula}<br>
         Telefone: ${user.telefone}<br>
         E-mail: ${user.email}<br>
-        Dispositivo: ${dispositivoFormatado}
       </li>
     `;
   });
