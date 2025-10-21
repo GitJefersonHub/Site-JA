@@ -1,4 +1,3 @@
-// Lógica de cadastro de usuários
 document.getElementById('formCadastro').addEventListener('submit', function (e) {
   e.preventDefault();
 
@@ -22,10 +21,12 @@ document.getElementById('formCadastro').addEventListener('submit', function (e) 
   }
 
   const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-  const duplicado = usuarios.find(u => u.matricula === matricula || u.email === email);
+
+  // Verifica se já existe um usuário com o mesmo nome e matrícula
+  const duplicado = usuarios.find(u => u.nome === nome && u.matricula === matricula);
 
   if (duplicado) {
-    mensagem.textContent = 'Usuário já cadastrado.';
+    mensagem.textContent = 'Usuário já existe com esse nome e matrícula.';
     mensagem.style.color = 'red';
     return;
   }
@@ -36,6 +37,14 @@ document.getElementById('formCadastro').addEventListener('submit', function (e) 
 
   mensagem.textContent = 'Cadastro realizado com sucesso!';
   mensagem.style.color = 'green';
-  document.getElementById('formCadastro').reset();
-  mostrarFormularioCadastro();
+
+  // Aguarda 3 segundos antes de limpar e ocultar o formulário
+  setTimeout(() => {
+    document.getElementById('formCadastro').reset();
+    mensagem.textContent = '';
+
+    // Oculta botão e container de cadastro após o cadastro
+    document.getElementById('btnCadastrar').style.display = 'none';
+    document.querySelector('.cadastrar-container').style.display = 'none';
+  }, 3000);
 });

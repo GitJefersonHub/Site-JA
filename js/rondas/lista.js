@@ -1,10 +1,10 @@
-
-// Exibe saudação e dados
+// Exibe saudação e dados do usuário logado
 document.getElementById('boasVindas').textContent = gerarSaudacao(dados.nome);
 document.getElementById('infoNome').textContent = `📌 Nome: ${dados.nome}`;
 document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${dados.matricula}`;
 document.getElementById('infoTelefone').textContent = `📞 Telefone: ${dados.telefone}`;
 document.getElementById('infoEmail').textContent = `📧 E-mail: ${dados.email}`;
+document.getElementById('infoSenha').textContent = `🔒 Senha: ${dados.senha}`;
 
 // Função para imprimir lista de usuários
 function imprimirLista() {
@@ -18,7 +18,6 @@ function imprimirLista() {
 
   let printContent = '<h2>Lista de Usuários</h2><ul style="list-style:none;">';
   usuarios.forEach((user, index) => {
-    const dispositivoFormatado = user.dispositivo || 'Não informado';
     const estaLogado =
       usuarioLogado &&
       user.nome === usuarioLogado.nome &&
@@ -31,6 +30,7 @@ function imprimirLista() {
         Matrícula: ${user.matricula}<br>
         Telefone: ${user.telefone}<br>
         E-mail: ${user.email}<br>
+        Senha: ${user.senha}<br>
       </li>
     `;
   });
