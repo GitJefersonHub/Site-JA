@@ -33,3 +33,24 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('infoTelefone').textContent = `📞 Telefone: ${dados.telefone}`;
   document.getElementById('infoEmail').textContent = `📧 E-mail: ${dados.email}`;
 });
+
+
+
+// Botão Registrar o Ponto
+function registrar() {
+  document.getElementById('modalRegistro').style.display = 'flex';
+}
+
+function registrarPonto() {
+  alert('Ponto registrado com sucesso!');
+  fecharModal();
+}
+
+function registrarQRCode() {
+  alert('QR Code gerado!');
+  fecharModal();
+}
+
+function fecharModal() {
+  document.getElementById('modalRegistro').style.display = 'none';
+}

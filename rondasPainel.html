@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <title>Painel do Usuário</title>
   <link rel="stylesheet" href="css/painel.css">
 </head>
-
 <body>
-
   <div class="painel-container">
     <h2 id="boasVindas"></h2>
+
     <div class="info" id="infoNome">📌 Nome: </div>
     <div class="info" id="infoMatricula">📌 Matrícula: </div>
     <div class="info" id="infoTelefone">📞 Telefone: </div>
@@ -20,56 +18,48 @@
     <p class="lembrete">🔐 Lembre-se: Guarde suas informações de login.</p>
 
     <div class="actions">
-      <button class="btn-ponto" onclick="registrar()">Ponto</button>
+      <button class="btn-ponto" onclick="registrar()">Registrar o Ponto</button>
       <button class="btn-relatorios" onclick="window.location.href='relatorios.html'">Relatórios</button>
       <button class="btn-ESE" onclick="editarPerfil()">Editar / Salvar / Excluir</button>
 
-      <div id="formCadastro" style="display: none; flex-direction: column; gap: 10px; margin-top: 20px;">
-        <label>Nome:</label>
+      <div id="formCadastro" class="form-cadastro">
+        <label for="cadNome">Nome:</label>
         <input type="text" id="cadNome">
 
-        <label>Matrícula:</label>
+        <label for="cadMatricula">Matrícula:</label>
         <input type="text" id="cadMatricula" maxlength="6">
 
-        <label>Telefone:</label>
+        <label for="cadTelefone">Telefone:</label>
         <input type="tel" id="cadTelefone" placeholder="(99) 99999-9999">
 
-        <label>E-mail:</label>
+        <label for="cadEmail">E-mail:</label>
         <input type="email" id="cadEmail">
 
-        <label>Senha:</label>
+        <label for="cadSenha">Senha:</label>
         <input type="password" id="cadSenha" maxlength="6">
 
-        <button onclick="salvarNovoUsuario()">Enviar</button>
+        <button class="btn-enviar" onclick="salvarNovoUsuario()">Enviar</button>
       </div>
 
-      <div id="formEditar">
-        <label>Nome:</label>
+      <div id="formEditar" class="form-editar">
+        <label for="editNome">Nome:</label>
         <input type="text" id="editNome">
 
-        <label>Matrícula:</label>
+        <label for="editMatricula">Matrícula:</label>
         <input type="text" id="editMatricula">
 
-        <label>Telefone:</label>
+        <label for="editTelefone">Telefone:</label>
         <input type="tel" id="editTelefone" placeholder="(99) 99999-9999">
 
-        <label>E-mail:</label>
+        <label for="editEmail">E-mail:</label>
         <input type="email" id="editEmail">
 
-        <label>Senha:</label>
-        <div style="position: relative; display: flex; align-items: center;">
-          <input type="password" id="editSenha" maxlength="6" style="flex: 1; padding-right: 15%;">
-          <span id="toggleIcon" onclick="toggleSenha()" style="
-            position: absolute;
-            right: 4%;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 400%;
-            cursor: pointer;
-            color: #007bff;
-            user-select: none;
-          ">👁️</span>
+        <label for="editSenha">Senha:</label>
+        <div class="senha-container">
+          <input type="password" id="editSenha" maxlength="6">
+          <span id="toggleIcon" class="toggle-senha" onclick="toggleSenha()">👁️</span>
         </div>
+
         <button class="btn-salvar" onclick="salvarPerfil()">Salvar Alterações</button>
         <button class="btn-excluir" onclick="excluir()">Excluir Cadastro</button>
       </div>
@@ -79,13 +69,26 @@
     </div>
   </div>
 
+
+
+  <!-- Modal de opções de registro -->
+<div id="modalRegistro" class="modal-registro">
+  <div class="modal-conteudo">
+    <h3>Como deseja registrar o ponto?</h3>
+    <button onclick="registrarPonto()">Ponto</button>
+    <button onclick="registrarQRCode()">QR Code</button>
+    <button onclick="fecharModal()">Fechar</button>
+  </div>
+</div>
+
+
+
+
   <script src="js/rondas/painel.js"></script>
   <script src="js/rondas/relatorios.js"></script>
   <script src="js/rondas/editarPerfil.js"></script>
   <script src="js/rondas/lista.js"></script>
   <script src="js/rondas/excluir.js"></script>
   <script src="js/rondas/sair.js"></script>
-
 </body>
-
 </html>

@@ -3,6 +3,8 @@ function editarPerfil() {
   const botaoESE = document.querySelector('.btn-ESE');
   const botaoSair = document.querySelector('.btn-sair');
   const botaoLista = document.querySelector('.btn-lista');
+  const botaoPonto = document.querySelector('.btn-ponto');
+  const botaoRelatorios = document.querySelector('.btn-relatorios');
 
   if (form.style.display === 'flex') {
     // Oculta formulário e restaura botões
@@ -10,12 +12,16 @@ function editarPerfil() {
     botaoESE.textContent = 'Editar / Salvar / Excluir';
     botaoSair.style.display = 'inline-block';
     botaoLista.style.display = 'inline-block';
+    botaoPonto.style.display = 'inline-block';
+    botaoRelatorios.style.display = 'inline-block';
   } else {
     // Exibe formulário e oculta botões
     form.style.display = 'flex';
     botaoESE.textContent = 'Fechar';
     botaoSair.style.display = 'none';
     botaoLista.style.display = 'none';
+    botaoPonto.style.display = 'none';
+    botaoRelatorios.style.display = 'none';
 
     const dados = JSON.parse(localStorage.getItem('dadosUsuario'));
     if (!dados) {
@@ -28,29 +34,33 @@ function editarPerfil() {
     document.getElementById('editTelefone').value = dados.telefone;
     document.getElementById('editEmail').value = dados.email;
     document.getElementById('editSenha').value = dados.senha;
+
+    aplicarMascaraTelefone('editTelefone');
   }
 }
 
 function aplicarMascaraTelefone(idCampo) {
   const campo = document.getElementById(idCampo);
+
   campo.addEventListener('input', function (e) {
-    let input = e.target.value.replace(/\D/g, '').slice(0, 11); // remove tudo que não é número
+    let input = e.target.value.replace(/\D/g, '').slice(0, 11); // mantém apenas números
     let formatted = '';
 
     if (input.length > 0) {
       formatted += '(' + input.substring(0, 2);
     }
     if (input.length >= 3) {
-      formatted += ') ';
-      if (input.length >= 7) {
-        formatted += input.substring(2, 7) + '-' + input.substring(7, 11);
-      } else {
-        formatted += input.substring(2);
-      }
+      formatted += ') ' + input.substring(2, 7);
+    }
+    if (input.length >= 8) {
+      formatted += '-' + input.substring(7, 11);
     }
 
     e.target.value = formatted;
   });
+
+  // Garante que o campo já esteja formatado corretamente ao carregar
+  campo.dispatchEvent(new Event('input'));
 }
 
 function toggleSenha() {
@@ -97,6 +107,8 @@ function salvarPerfil() {
     senha: novaSenha
   };
 
+  const dados = JSON.parse(localStorage.getItem('dadosUsuario'));
+
   // Atualiza dados do usuário logado
   localStorage.setItem('dadosUsuario', JSON.stringify(novosDados));
 
@@ -118,9 +130,10 @@ function salvarPerfil() {
   document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${novaMatricula}`;
   document.getElementById('infoTelefone').textContent = `📞 Telefone: ${novoTelefone}`;
   document.getElementById('infoEmail').textContent = `📧 E-mail: ${novoEmail}`;
+  document.getElementById('infoSenha').textContent = `🔒 Senha: ${novaSenha}`;
   document.getElementById('formEditar').style.display = 'none';
 
   alert('Perfil atualizado com sucesso!\n\nPor segurança, você será desconectado e deverá fazer login novamente com os novos dados.');
   localStorage.removeItem('usuarioLogado');
-  window.location.href = 'rondasLogin.html';
+  window.location.replace('rondasLogin.html'); // evita voltar ao formulário
 }

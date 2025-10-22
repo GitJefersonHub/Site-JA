@@ -1,200 +1,193 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    width: 100%;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 2%;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2%;
 }
 
-/* Contêiner pai que envolve login e cadastro */
 .main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    /* espaçamento entre os blocos */
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5%;
+  padding: 5%;
 }
 
-/* Estilo do login */
 .login-container {
-    background-color: #fff;
-    width: 100%;
-    padding: 2%;
-    border-radius: 2%;
-    box-shadow: 0 0 5% rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 5%;
+  background-color: #fff;
+  width: 100%;
+  padding: 4%;
+  border-radius: 2%;
+  box-shadow: 0 0 5% rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 4%;
 }
 
-/* Estilo do cadastro */
 .cadastrar-container {
-    background-color: #fff;
-    width: 100%;
-    padding: 2%;
-    border-radius: 4%;
-    box-shadow: 0 0 5% rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 5%;
-    margin-top: 20px;
-    /* espaçamento abaixo do login */
+  background-color: #fff;
+  width: 100%;
+  padding: 4%;
+  border-radius: 4%;
+  box-shadow: 0 0 5% rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 4%;
+  margin-top: 5%;
 }
-
 
 h2 {
-    text-align: center;
-    font-size: 500%;
-    margin-bottom: 2%;
-    color: #333;
+  text-align: center;
+  font-size: 500%;
+  margin-bottom: 2%;
+  color: #333;
 }
 
 label {
-    font-size: 400%;
-    margin-bottom: 2%;
-    color: #555;
+  font-size: 400%;
+  margin-bottom: 2%;
+  color: #555;
 }
 
 input {
-    width: 100%;
-    padding: 3%;
-    font-size: 300%;
-    border: 1px solid #ccc;
-    border-radius: 2%;
-    margin-bottom: 2%;
+  width: 100%;
+  padding: 3%;
+  font-size: 300%;
+  border: 1px solid #ccc;
+  border-radius: 2%;
+  margin-bottom: 2%;
 }
 
 .senha-container {
-    position: relative;
-    display: flex;
-    align-items: center;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .senha-container input {
-    flex: 1;
-    padding-right: 50px;
+  flex: 1;
+  padding-right: 15%;
 }
 
 .toggle-senha {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 350%;
-    cursor: pointer;
-    color: #007bff;
-    user-select: none;
-    transition: color 0.3s ease;
+  position: absolute;
+  right: 4%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 400%;
+  cursor: pointer;
+  color: #007bff;
+  user-select: none;
+  transition: color 0.3s ease;
 }
 
 .toggle-senha:hover {
-    color: #0056b3;
+  color: #0056b3;
 }
 
-/* Botão Entrar */
+.btn-entrar,
+.btn-cadastrar,
+.btn-enviar {
+  width: 100%;
+  padding: 4%;
+  font-size: 340%;
+  border: none;
+  border-radius: 2%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 .btn-entrar {
-    width: 100%;
-    padding: 4%;
-    font-size: 340%;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 2%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-color: #28a745;
+  color: white;
 }
 
 .btn-entrar:hover {
-    background-color: #218838;
+  background-color: #218838;
 }
 
-/* Botão Cadastrar */
 .btn-cadastrar {
-    width: 100%;
-    padding: 4%;
-    font-size: 340%;
-    background-color: #17a2b8;
-    color: white;
-    border: none;
-    border-radius: 2%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-color: #17a2b8;
+  color: white;
 }
 
 .btn-cadastrar:hover {
-    background-color: #117a8b;
+  background-color: #117a8b;
 }
 
-/* Botão Enviar */
 .btn-enviar {
-    width: 100%;
-    padding: 4%;
-    font-size: 340%;
-    background-color: #ffc107;
-    color: black;
-    border: none;
-    border-radius: 2%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-color: #ffc107;
+  color: black;
 }
 
 .btn-enviar:hover {
-    background-color: #e0a800;
+  background-color: #e0a800;
 }
 
-#mensagem {
-    text-align: center;
-    font-size: 400%;
-    margin-top: 4%;
-    color: red;
+#mensagem,
+#mensagemCadastro {
+  text-align: center;
+  font-size: 400%;
+  margin-top: 4%;
+  color: red;
 }
 
 @media (max-width: 768px) {
-    body {
-        padding: 6%;
-    }
+  body {
+    padding: 6%;
+  }
 
-    .login-container {
-        width: 100%;
-        padding: 10%;
-        border-radius: 3%;
-        box-shadow: none;
-    }
+  .main-container {
+    gap: 6%;
+    padding: 6%;
+  }
 
-    h2 {
-        font-size: 7%;
-        margin-bottom: 6%;
-    }
+  .login-container,
+  .cadastrar-container {
+    padding: 6%;
+    border-radius: 3%;
+    box-shadow: none;
+  }
 
-    label {
-        font-size: 5%;
-    }
+  h2 {
+    font-size: 250%;
+    margin-bottom: 4%;
+  }
 
-    input {
-        font-size: 5%;
-        padding: 4%;
-    }
+  label {
+    font-size: 200%;
+    margin-bottom: 2%;
+  }
 
-    button {
-        font-size: 5%;
-        padding: 5%;
-    }
+  input {
+    font-size: 180%;
+    padding: 4%;
+  }
 
-    #mensagem {
-        font-size: 4.5%;
-    }
+  .toggle-senha {
+    font-size: 200%;
+  }
 
-    .toggle-senha {
-        font-size: 4%;
-    }
+  .btn-entrar,
+  .btn-cadastrar,
+  .btn-enviar {
+    font-size: 200%;
+    padding: 5%;
+  }
+
+  #mensagem,
+  #mensagemCadastro {
+    font-size: 200%;
+    margin-top: 5%;
+  }
 }

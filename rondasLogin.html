@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
   <link rel="stylesheet" href="css/login.css">
 </head>
-
 <body>
   <div class="main-container">
     <div class="login-container">
@@ -27,25 +25,16 @@
         <label for="senha">Senha:</label>
         <div class="senha-container">
           <input type="password" id="senha" required maxlength="6" placeholder="Digite sua senha">
-          <span id="toggleIcon" onclick="toggleSenha()" style="
-            position: absolute;
-            right: 4%;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 400%;
-            cursor: pointer;
-            color: #007bff;
-            user-select: none;
-          ">👁️</span>
+          <span id="toggleIcon" class="toggle-senha" onclick="toggleSenha()">👁️</span>
         </div>
 
         <button type="submit" class="btn-entrar">Entrar</button>
       </form>
       <p id="mensagem"></p>
     </div>
+
     <div class="cadastrar-container">
-      <button type="button" class="btn-cadastrar" id="btnCadastrar"
-        onclick="mostrarFormularioCadastro()">Cadastrar</button>
+      <button type="button" class="btn-cadastrar" id="btnCadastrar" onclick="mostrarFormularioCadastro()">Cadastrar</button>
       <br>
       <form id="formCadastro" style="display: none;">
         <label for="cadNome">Nome:</label>
@@ -63,17 +52,7 @@
         <label for="cadSenha">Senha:</label>
         <div class="senha-container">
           <input type="password" id="cadSenha" required maxlength="6" placeholder="Digite sua senha">
-
-          <span id="toggleIconCadastro" onclick="toggleSenhaCadastro()" style="
-            position: absolute;
-            right: 4%;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 400%;
-            cursor: pointer;
-            color: #007bff;
-            user-select: none;
-          ">👁️</span>
+          <span id="toggleIconCadastro" class="toggle-senha" onclick="toggleSenhaCadastro()">👁️</span>
         </div>
 
         <button type="submit" class="btn-enviar">Enviar</button>
@@ -85,7 +64,5 @@
   <script src="js/rondas/utils.js"></script>
   <script src="js/rondas/cadastro.js"></script>
   <script src="js/rondas/login.js"></script>
-
 </body>
-
 </html>
