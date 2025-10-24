@@ -7,7 +7,8 @@
 </head>
 <body>
   <div class="main-container">
-    <div class="login-container">
+    <!-- Container de Login -->
+    <div class="login-container" id="loginContainer">
       <h2>Login</h2>
       <form id="loginForm">
         <label for="nome">Nome:</label>
@@ -33,10 +34,9 @@
       <p id="mensagem"></p>
     </div>
 
-    <div class="cadastrar-container">
-      <button type="button" class="btn-cadastrar" id="btnCadastrar" onclick="mostrarFormularioCadastro()">Cadastrar</button>
-      <br>
-      <form id="formCadastro" style="display: none;">
+    <!-- Container de Cadastro -->
+    <div class="cadastrar-container" id="cadastroContainer" style="display: none;">
+      <form id="formCadastro">
         <label for="cadNome">Nome:</label>
         <input type="text" id="cadNome" required placeholder="Digite o seu nome">
 
@@ -55,14 +55,15 @@
           <span id="toggleIconCadastro" class="toggle-senha" onclick="toggleSenhaCadastro()">👁️</span>
         </div>
 
-        <button type="submit" class="btn-enviar">Enviar</button>
+        <button type="submit" class="btn-cadastrar">Cadastrar</button>
+        <br><br>
+        <button type="button" class="btn-cancelar" onclick="voltarParaLogin()">Cancelar</button>
       </form>
       <p id="mensagemCadastro"></p>
     </div>
   </div>
 
   <script src="js/rondas/utils.js"></script>
-  <script src="js/rondas/cadastro.js"></script>
   <script src="js/rondas/login.js"></script>
 </body>
 </html>

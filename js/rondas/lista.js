@@ -1,6 +1,6 @@
 // Exibe saudação e dados do usuário logado
 document.getElementById('boasVindas').textContent = gerarSaudacao(dados.nome);
-document.getElementById('infoNome').textContent = `📌 Nome: ${dados.nome}`;
+document.getElementById('infoNome').textContent = `🆔 Nome: ${dados.nome}`;
 document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${dados.matricula}`;
 document.getElementById('infoTelefone').textContent = `📞 Telefone: ${dados.telefone}`;
 document.getElementById('infoEmail').textContent = `📧 E-mail: ${dados.email}`;
@@ -16,7 +16,7 @@ function imprimirLista() {
     return;
   }
 
-  let printContent = '<h2>Lista de Usuários</h2><ul style="list-style:none;">';
+  let printContent = '<h2>Usuários Cadastrados</h2><ul style="list-style:none;">';
   usuarios.forEach((user, index) => {
     const estaLogado =
       usuarioLogado &&

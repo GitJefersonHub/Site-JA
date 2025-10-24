@@ -193,40 +193,44 @@ input {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   justify-content: center;
   align-items: center;
   z-index: 999;
 }
 
+/* Modal ocupa 100% da largura */
 .modal-conteudo {
   background-color: #fff;
-  padding: 5%;
+  padding: 6%;
   border-radius: 2%;
   text-align: center;
-  width: 80%;
-  max-width: 400px;
+  width: 96%;
+  max-width: none;
+  box-shadow: none;
 }
 
 .modal-conteudo h3 {
-  font-size: 200%;
-  margin-bottom: 10%;
+  font-size: 4.0rem;
+  margin-bottom: 2%;
+  color: #333;
 }
 
 .modal-conteudo button {
   display: block;
   width: 100%;
-  margin: 5% 0;
-  padding: 4%;
-  font-size: 180%;
+  margin: 4% auto;
+  padding: 5%;
+  font-size: 8.0rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
+/* Estilos individuais */
 .modal-conteudo button:nth-child(2) {
-  background-color: #17a2b8;
+  background-color: #007bff;
   color: white;
 }
 
@@ -239,8 +243,6 @@ input {
   background-color: #dc3545;
   color: white;
 }
-
-
 
 @media (max-width: 768px) {
   body {
@@ -269,5 +271,19 @@ input {
     font-size: 200%;
     padding: 5%;
   }
-}
 
+  .modal-conteudo {
+    padding: 8%;
+  }
+
+  .modal-conteudo h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10%;
+  }
+
+  .modal-conteudo button {
+    font-size: 1.4rem;
+    padding: 6%;
+  }
+
+}

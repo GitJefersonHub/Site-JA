@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Oculta botão e container de cadastro ao carregar
-  document.getElementById('btnCadastrar').style.display = 'none';
-  document.querySelector('.cadastrar-container').style.display = 'none';
+  document.getElementById('loginContainer').style.display = 'block';
+  document.getElementById('cadastroContainer').style.display = 'none';
 });
 
 document.getElementById('loginForm').addEventListener('submit', function (e) {
@@ -22,42 +21,6 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
 
   const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
 
-  // Verifica se existe usuário com nome e matrícula
-  const usuarioExistente = usuarios.find(user =>
-    user.nome === nome && user.matricula === matricula
-  );
-
-  if (!usuarioExistente) {
-    const confirmarCadastro = confirm('Usuário não encontrado.\nDeseja cadastrar com os dados informados?');
-
-    if (confirmarCadastro) {
-      // Exibe botão e container de cadastro
-      document.getElementById('btnCadastrar').style.display = 'block';
-      document.querySelector('.cadastrar-container').style.display = 'block';
-
-      // Preenche o formulário de cadastro com os dados informados
-      document.getElementById('cadNome').value = nome;
-      document.getElementById('cadMatricula').value = matricula;
-      document.getElementById('cadTelefone').value = telefone;
-      document.getElementById('cadEmail').value = email;
-      document.getElementById('cadSenha').value = senha;
-
-      // Exibe o formulário de cadastro
-      mostrarFormularioCadastro();
-    } else {
-      // Limpa os campos do login
-      document.getElementById('loginForm').reset();
-      mensagem.textContent = '';
-
-      // Garante que o botão e container de cadastro permaneçam ocultos
-      document.getElementById('btnCadastrar').style.display = 'none';
-      document.querySelector('.cadastrar-container').style.display = 'none';
-    }
-
-    return;
-  }
-
-  // Verifica credenciais completas
   const credenciaisValidas = usuarios.find(user =>
     user.nome === nome &&
     user.matricula === matricula &&
@@ -66,19 +29,94 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
     user.senha === senha
   );
 
-  if (!credenciaisValidas) {
-    mensagem.textContent = 'Credenciais inválidas.';
+  if (credenciaisValidas) {
+    localStorage.setItem('usuarioLogado', 'true');
+    localStorage.setItem('dadosUsuario', JSON.stringify(credenciaisValidas));
+
+    mensagem.textContent = 'Login bem-sucedido!';
+    mensagem.style.color = 'green';
+    setTimeout(() => {
+      location.replace('rondasPainel.html');
+    }, 1500);
+    return;
+  }
+
+  const confirmarCadastro = confirm('Usuário não encontrado.\nDeseja cadastrar com os dados informados?');
+
+  if (confirmarCadastro) {
+    document.getElementById('loginContainer').style.display = 'none';
+    document.getElementById('cadastroContainer').style.display = 'block';
+
+    document.getElementById('cadNome').value = nome;
+    document.getElementById('cadMatricula').value = matricula;
+    document.getElementById('cadTelefone').value = telefone;
+    document.getElementById('cadEmail').value = email;
+    document.getElementById('cadSenha').value = senha;
+  } else {
+    document.getElementById('loginForm').reset();
+    mensagem.textContent = '';
+  }
+});
+
+document.getElementById('formCadastro').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const nome = document.getElementById('cadNome').value.trim();
+  const matricula = document.getElementById('cadMatricula').value.trim();
+  const telefone = document.getElementById('cadTelefone').value.trim();
+  const email = document.getElementById('cadEmail').value.trim();
+  const senha = document.getElementById('cadSenha').value.trim();
+  const mensagem = document.getElementById('mensagemCadastro');
+
+  if (!nome || !matricula || !telefone || !email || !senha) {
+    mensagem.textContent = 'Todos os campos são obrigatórios.';
     mensagem.style.color = 'red';
     return;
   }
 
-  // Login bem-sucedido
-  localStorage.setItem('usuarioLogado', 'true');
-  localStorage.setItem('dadosUsuario', JSON.stringify(credenciaisValidas));
+  const telefoneValido = /^\(\d{2}\) \d{5}-\d{4}$/.test(telefone);
+  if (!telefoneValido) {
+    mensagem.textContent = 'Telefone inválido. Use o formato (99) 99999-9999.';
+    mensagem.style.color = 'red';
+    return;
+  }
 
-  mensagem.textContent = 'Login bem-sucedido!';
+  const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+  const duplicado = usuarios.find(u =>
+    u.nome === nome &&
+    u.matricula === matricula &&
+    u.telefone === telefone &&
+    u.email === email &&
+    u.senha === senha
+  );
+
+  if (duplicado) {
+    mensagem.textContent = 'Usuário já está cadastrado.';
+    mensagem.style.color = 'red';
+    return;
+  }
+
+  const novoUsuario = { nome, matricula, telefone, email, senha };
+  usuarios.push(novoUsuario);
+  localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+  // Login automático após cadastro
+  localStorage.setItem('usuarioLogado', 'true');
+  localStorage.setItem('dadosUsuario', JSON.stringify(novoUsuario));
+
+  mensagem.textContent = 'Cadastro realizado com sucesso! Redirecionando...';
   mensagem.style.color = 'green';
+
   setTimeout(() => {
     location.replace('rondasPainel.html');
   }, 1500);
 });
+
+// Botão Cancelar
+function voltarParaLogin() {
+  document.getElementById('cadastroContainer').style.display = 'none';
+  document.getElementById('loginContainer').style.display = 'block';
+  document.getElementById('formCadastro').reset();
+  document.getElementById('loginForm').reset();
+}

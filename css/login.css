@@ -96,8 +96,8 @@ input {
 }
 
 .btn-entrar,
-.btn-cadastrar,
-.btn-enviar {
+.btn-cancelar,
+.btn-cadastrar {
   width: 100%;
   padding: 4%;
   font-size: 340%;
@@ -117,7 +117,7 @@ input {
 }
 
 .btn-cadastrar {
-  background-color: #17a2b8;
+  background-color: #28a745;
   color: white;
 }
 
@@ -125,7 +125,7 @@ input {
   background-color: #117a8b;
 }
 
-.btn-enviar {
+.btn-cancelar {
   background-color: #ffc107;
   color: black;
 }
