@@ -1,0 +1,189 @@
+<div id="registrosPonto"></div>
+<div id="registrosQRCode"></div>
+
+<script>
+  let listaPonto = JSON.parse(localStorage.getItem('Ponto')) || [];
+  let listaQRCode = JSON.parse(localStorage.getItem('QRCode')) || [];
+
+  const containerPonto = document.getElementById('registrosPonto');
+  const containerQRCode = document.getElementById('registrosQRCode');
+
+  const meses = [
+    'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
+    'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'
+  ];
+
+  function extrairMesAno(dataStr) {
+    const partes = dataStr.split(' ');
+    const [dia, mes, ano] = partes[0].split('/');
+    return `${mes.padStart(2, '0')}-${ano}`;
+  }
+
+  function formatarDataHora(dataStr) {
+    const partes = dataStr.split(' ');
+    const [dia, mes] = partes[0].split('/');
+    const [hora, minuto] = partes[1].split(':');
+    return `${dia}/${mes} às ${hora}:${minuto}`;
+  }
+
+  function agruparPorMesAno(lista) {
+    const grupos = {};
+    lista.forEach(item => {
+      const chave = extrairMesAno(item.dataHora || item.registro);
+      if (!grupos[chave]) grupos[chave] = [];
+      grupos[chave].push(item);
+    });
+    return grupos;
+  }
+
+  function exibirGrupos(grupos, container, emoji, tipo) {
+    container.innerHTML = '';
+    const chaves = Object.keys(grupos);
+
+    if (chaves.length === 0) {
+      const titulo = document.createElement('h2');
+      titulo.textContent = `${emoji} Registros de ${tipo} - Nenhum registro`;
+      container.appendChild(titulo);
+
+      const ul = document.createElement('ul');
+      ul.style.listStyle = 'none';
+      ul.style.padding = '0';
+
+      const li = document.createElement('li');
+      li.textContent = `Nenhum registro de ${tipo} encontrado.`;
+      li.style.color = 'gray';
+      ul.appendChild(li);
+      container.appendChild(ul);
+
+      const btns = criarBotoes(tipo);
+      container.appendChild(btns);
+      return;
+    }
+
+    chaves.forEach(chave => {
+      const [mesNum, ano] = chave.split('-');
+      const nomeMes = meses[parseInt(mesNum, 10) - 1];
+
+      const titulo = document.createElement('h2');
+      titulo.textContent = `${emoji} Registros de ${tipo} - ${nomeMes}-${ano}`;
+      container.appendChild(titulo);
+
+      const ul = document.createElement('ul');
+      ul.style.listStyle = 'none';
+      ul.style.padding = '0';
+
+      grupos[chave].forEach(item => {
+        const li = document.createElement('li');
+        let texto = `${emoji} ${formatarDataHora(item.dataHora || item.registro)}`;
+        if (item.obs && item.obs.trim() !== '') {
+          texto += `<br><span style="color: gray; font-style: italic;">📝 ${item.obs}</span>`;
+        }
+        li.innerHTML = texto;
+        li.style.marginBottom = '1px';
+        ul.appendChild(li);
+      });
+
+      container.appendChild(ul);
+
+      const btns = criarBotoes(tipo);
+      container.appendChild(btns);
+    });
+  }
+
+  function criarBotoes(tipo) {
+    const div = document.createElement('div');
+    div.style.display = 'flex';
+    div.style.gap = '10px';
+    div.style.marginBottom = '20px';
+
+    const btnImprimir = document.createElement('button');
+    btnImprimir.textContent = tipo === 'Ponto' ? '🖨️ Imprimir Pontos' : '🖨️ Imprimir QR Codes';
+    btnImprimir.onclick = tipo === 'Ponto' ? imprimirPonto : imprimirQRCode;
+
+    const btnExcluir = document.createElement('button');
+    btnExcluir.textContent = tipo === 'Ponto' ? '🗑️ Excluir Pontos' : '🗑️ Excluir QR Codes';
+    btnExcluir.onclick = tipo === 'Ponto' ? excluirPonto : excluirQRCode;
+
+    div.appendChild(btnImprimir);
+    div.appendChild(btnExcluir);
+    return div;
+  }
+
+  function imprimirAgrupado(grupos, emoji, tipo) {
+    let content = '';
+    Object.keys(grupos).forEach(chave => {
+      const [mesNum, ano] = chave.split('-');
+      const nomeMes = meses[parseInt(mesNum, 10) - 1];
+      content += `<h2>${emoji} Registros de ${tipo} - ${nomeMes}-${ano}</h2><ul style="list-style:none;">`;
+
+      grupos[chave].forEach(item => {
+        let linha = `${emoji} ${formatarDataHora(item.dataHora || item.registro)}`;
+        if (item.obs && item.obs.trim() !== '') {
+          linha += `<br><span style="color: gray; font-style: italic;">📝 ${item.obs}</span>`;
+        }
+        content += `<li style="margin-bottom:10px;">${linha}</li>`;
+      });
+
+      content += '</ul>';
+    });
+
+    const printWindow = window.open('', '', 'width=800,height=600');
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>Impressão</title>
+          <style>
+            body { font-family: Arial, sans-serif; padding: 20px; }
+            h2 { text-align: center; margin-top: 40px; }
+            li { margin-bottom: 10px; }
+            span { display: block; margin-top: 4px; }
+          </style>
+        </head>
+        <body>${content}</body>
+      </html>
+    `);
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+  }
+
+  function imprimirPonto() {
+    if (listaPonto.length === 0) {
+      alert('Nenhum ponto registrado.');
+      return;
+    }
+    const grupos = agruparPorMesAno(listaPonto);
+    imprimirAgrupado(grupos, '📍', 'Ponto');
+  }
+
+  function imprimirQRCode() {
+    if (listaQRCode.length === 0) {
+      alert('Nenhum QR Code registrado.');
+      return;
+    }
+    const grupos = agruparPorMesAno(listaQRCode);
+    imprimirAgrupado(grupos, '📲', 'QR Code');
+  }
+
+  function excluirPonto() {
+    if (confirm('Tem certeza que deseja excluir todos os registros de Ponto?')) {
+      localStorage.removeItem('Ponto');
+      listaPonto = [];
+      exibirGrupos({}, containerPonto, '📍', 'Ponto');
+      alert('Registros de Ponto excluídos com sucesso!');
+    }
+  }
+
+  function excluirQRCode() {
+    if (confirm('Tem certeza que deseja excluir todos os registros de QR Code?')) {
+      localStorage.removeItem('QRCode');
+      listaQRCode = [];
+      exibirGrupos({}, containerQRCode, '📲', 'QR Code');
+      alert('Registros de QR Code excluídos com sucesso!');
+    }
+  }
+
+  // Exibe ao carregar
+  exibirGrupos(agruparPorMesAno(listaPonto), containerPonto, '', 'Ponto');
+  exibirGrupos(agruparPorMesAno(listaQRCode), containerQRCode, '', 'QR Code');
+</script>

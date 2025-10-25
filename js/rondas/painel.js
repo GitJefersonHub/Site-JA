@@ -34,19 +34,42 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('infoEmail').textContent = `📧 E-mail: ${dados.email}`;
 });
 
-
-
-// Botão Registrar o Ponto
+// funções dos botões Modal
 function registrar() {
   document.getElementById('modalRegistro').style.display = 'flex';
 }
 
 function registrarPonto() {
+  const agora = new Date().toLocaleString('pt-BR');
+  let observacao = prompt('Deseja adicionar uma observação? (até 50 caracteres)');
+
+  if (observacao === null) {
+    // Usuário cancelou — não registra o ponto
+    alert('Registro cancelado pelo usuário.');
+    fecharModal();
+    return;
+  }
+
+  observacao = observacao.trim();
+  if (observacao === '') {
+    observacao = 'Sem observação a relatar';
+  } else {
+    observacao = observacao.substring(0, 50);
+  }
+
+  const listaPonto = JSON.parse(localStorage.getItem('Ponto')) || [];
+  listaPonto.push({ tipo: 'Ponto', dataHora: agora, obs: observacao });
+  localStorage.setItem('Ponto', JSON.stringify(listaPonto));
   alert('Ponto registrado com sucesso!');
   fecharModal();
 }
 
+
 function registrarQRCode() {
+  const agora = new Date().toLocaleString('pt-BR');
+  const listaQRCode = JSON.parse(localStorage.getItem('QRCode')) || [];
+  listaQRCode.push({ tipo: 'QR Code', dataHora: agora });
+  localStorage.setItem('QRCode', JSON.stringify(listaQRCode));
   alert('QR Code gerado!');
   fecharModal();
 }

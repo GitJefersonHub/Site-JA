@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>Painel do Usuário</title>
   <link rel="stylesheet" href="css/painel.css">
 </head>
+
 <body>
   <div class="painel-container">
     <h2 id="boasVindas"></h2>
@@ -63,20 +65,15 @@
     </div>
   </div>
 
-
-
   <!-- Modal de opções de registro -->
-<div id="modalRegistro" class="modal-registro">
-  <div class="modal-conteudo">
-    <h3>Como deseja registrar o ponto?</h3>
-    <button onclick="registrarPonto()">Registrar</button>
-    <button onclick="registrarQRCode()">QR Code</button>
-    <button onclick="fecharModal()">Fechar</button>
+  <div id="modalRegistro" class="modal-registro">
+    <div class="modal-conteudo">
+      <h3>Como deseja registrar o ponto?</h3>
+      <button onclick="registrarPonto()">Ponto</button>
+      <button onclick="registrarQRCode()">QR Code</button>
+      <button onclick="fecharModal()">Fechar</button>
+    </div>
   </div>
-</div>
-
-
-
 
   <script src="js/rondas/painel.js"></script>
   <script src="js/rondas/relatorios.js"></script>
@@ -85,4 +82,5 @@
   <script src="js/rondas/excluir.js"></script>
   <script src="js/rondas/sair.js"></script>
 </body>
+
 </html>
