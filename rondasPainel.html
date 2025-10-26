@@ -10,7 +10,6 @@
 <body>
   <div class="painel-container">
     <h2 id="boasVindas"></h2>
-
     <p class="lembrete">🔐 Lembre-se: Guarde suas informações de login.</p>
 
     <div class="actions">
@@ -19,49 +18,19 @@
       <button class="btn-ESE" onclick="editarPerfil()">Editar / Salvar / Excluir</button>
 
       <div id="formCadastro" class="form-cadastro">
-        <label for="cadNome">Nome:</label>
-        <input type="text" id="cadNome">
-
-        <label for="cadMatricula">Matrícula:</label>
-        <input type="text" id="cadMatricula" maxlength="6">
-
-        <label for="cadTelefone">Telefone:</label>
-        <input type="tel" id="cadTelefone" placeholder="(99) 99999-9999">
-
-        <label for="cadEmail">E-mail:</label>
-        <input type="email" id="cadEmail">
-
-        <label for="cadSenha">Senha:</label>
-        <input type="password" id="cadSenha" maxlength="6">
-
-        <button class="btn-enviar" onclick="salvarNovoUsuario()">Enviar</button>
+        <!-- Campos de cadastro -->
       </div>
 
       <div id="formEditar" class="form-editar">
-        <label for="editNome">Nome:</label>
-        <input type="text" id="editNome">
-
-        <label for="editMatricula">Matrícula:</label>
-        <input type="text" id="editMatricula">
-
-        <label for="editTelefone">Telefone:</label>
-        <input type="tel" id="editTelefone" placeholder="(99) 99999-9999">
-
-        <label for="editEmail">E-mail:</label>
-        <input type="email" id="editEmail">
-
-        <label for="editSenha">Senha:</label>
-        <div class="senha-container">
-          <input type="password" id="editSenha" maxlength="6">
-          <span id="toggleIcon" class="toggle-senha" onclick="toggleSenha()">👁️</span>
-        </div>
-
-        <button class="btn-salvar" onclick="salvarPerfil()">Salvar Alterações</button>
-        <button class="btn-excluir" onclick="excluir()">Excluir Cadastro</button>
+        <!-- Campos de edição -->
       </div>
 
       <button class="btn-sair" onclick="sair()">Sair</button>
       <button class="btn-lista" onclick="imprimirLista()">Lista</button>
+
+      <!-- Tabelas de Registros -->
+      <div id="tabelaPonto" class="tabela-registros"></div>
+      <div id="tabelaQRCode" class="tabela-registros"></div>
     </div>
   </div>
 
@@ -75,8 +44,10 @@
     </div>
   </div>
 
+  <div id="tabelaPonto"></div>
+  <div id="tabelaQRCode"></div>
+
   <script src="js/rondas/painel.js"></script>
-  <script src="js/rondas/relatorios.js"></script>
   <script src="js/rondas/editarPerfil.js"></script>
   <script src="js/rondas/lista.js"></script>
   <script src="js/rondas/excluir.js"></script>

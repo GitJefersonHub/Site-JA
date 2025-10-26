@@ -1,0 +1,140 @@
+/* Reset e base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fdfdfd;
+  color: #333;
+  padding: clamp(0.75rem, 2vw, 2rem);
+  line-height: 1.6;
+  font-size: clamp(0.75rem, 2.5vw, 1.125rem); /* ajustado para telas pequenas */
+}
+
+/* Título */
+h2 {
+  text-align: center;
+  font-size: clamp(0.6rem, 4vw, 1.75rem); /* cresce suavemente com a tela */
+  margin-bottom: 0.1rem;
+}
+
+/* Tabela responsiva */
+.table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  word-break: break-word;
+}
+
+thead {
+  background-color: #f0f0f0;
+}
+
+th, td {
+  padding: clamp(0.1rem, 0.5vw, 0.75rem); /* espaçamento adaptável */
+  border: 1px solid #ccc;
+  text-align: left;
+  font-size: clamp(0.50rem, 2vw, 1rem); /* fonte adaptável para células */
+}
+
+/* Alternância de cor nas linhas */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Botões */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+button {
+  padding: clamp(0.1rem, 1vw, 0.5rem) clamp(0.75rem, 2vw, 1em); /* padding adaptável */
+  font-size: clamp(0.50rem, 2vw, 1rem); /* fonte adaptável */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: #fff;
+}
+
+button:first-child {
+  background-color: #007bff;
+}
+
+button:first-child:hover {
+  background-color: #0056b3;
+}
+
+button:last-child {
+  background-color: #dc3545;
+}
+
+button:last-child:hover {
+  background-color: #a71d2a;
+}
+
+/* Impressão */
+@media print {
+  body {
+    background: white;
+    color: black;
+    padding: 0;
+    margin: 0;
+    font-size: 10pt;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .button-group, button {
+    display: none !important;
+  }
+
+  .table-wrapper {
+    overflow: visible !important;
+    width: 100%;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* força distribuição proporcional */
+    word-break: break-word;
+    font-size: 10pt;
+  }
+
+  /* Distribuição proporcional das colunas */
+  th:nth-child(1), td:nth-child(1) { width: 12%; }  /* Data */
+  th:nth-child(2), td:nth-child(2) { width: 12%; }  /* Horas */
+  th:nth-child(3), td:nth-child(3) { width: 20%; }  /* Localização */
+  th:nth-child(4), td:nth-child(4) { width: 16%; }  /* Matrícula */
+  th:nth-child(5), td:nth-child(5) { width: 40%; }  /* Observação */
+
+  th, td {
+    border: 1px solid #000;
+    padding: 0.4rem;
+    font-size: 10pt;
+  }
+
+  thead {
+    background-color: #e0e0e0;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f5f5f5;
+  }
+}
