@@ -2,8 +2,8 @@ const listaPonto = JSON.parse(localStorage.getItem('Ponto')) || [];
 
 function obterMesAnoAtual() {
   const meses = [
-    'janeiro','fevereiro','março','abril','maio','junho',
-    'julho','agosto','setembro','outubro','novembro','dezembro'
+    'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
+    'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'
   ];
   const agora = new Date();
   return `${meses[agora.getMonth()]}-${agora.getFullYear()}`;
@@ -33,6 +33,7 @@ function criarTabelaPonto() {
     <tr>
       <th>Data</th>
       <th>Horas</th>
+      <th>Registros</th>
       <th>Localização</th>
       <th>Matrícula</th>
       <th>Observação</th>
@@ -42,7 +43,7 @@ function criarTabelaPonto() {
 
   const tbody = document.createElement('tbody');
   if (listaPonto.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="5">Nenhum registro de Ponto encontrado.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="6">Nenhum registro de Ponto encontrado.</td></tr>`;
   } else {
     listaPonto.forEach(item => {
       const { data, hora } = formatarDataHoraSeparado(item.dataHora || item.registro);
@@ -50,6 +51,7 @@ function criarTabelaPonto() {
       linha.innerHTML = `
         <td>${data}</td>
         <td>${hora}</td>
+        <td>Não informado</td>
         <td>${item.localizacao || 'Não informado'}</td>
         <td>${dadosUsuario.matricula || '---'}</td>
         <td>${item.obs || 'Sem observação'}</td>
@@ -97,6 +99,7 @@ function criarJanelaImpressao(tipo, lista) {
           <tr>
             <th>Data</th>
             <th>Horas</th>
+            <th>Registros</th>
             <th>Localização</th>
             <th>Matrícula</th>
             <th>Observação</th>
@@ -111,6 +114,7 @@ function criarJanelaImpressao(tipo, lista) {
       <tr>
         <td>${data}</td>
         <td>${hora}</td>
+        <td>Não informado</td>
         <td>${item.localizacao || 'Não informado'}</td>
         <td>${dadosUsuario.matricula || '---'}</td>
         <td>${item.obs || 'Sem observação'}</td>
@@ -128,7 +132,7 @@ function criarJanelaImpressao(tipo, lista) {
   win.document.write(`
     <html>
       <head>
-        <title>Impressão</title>
+        <title>Registros de bastão</title>
         <link rel="stylesheet" href="css/relatorios.css">
         <style>
           @media print {
@@ -154,9 +158,16 @@ function criarJanelaImpressao(tipo, lista) {
             table {
               width: 100%;
               border-collapse: collapse;
-              table-layout: auto;
+              table-layout: fixed;
               word-break: break-word;
             }
+
+            th:nth-child(1), td:nth-child(1) { width: 4%; }  /* Data */
+            th:nth-child(2), td:nth-child(2) { width: 4%; }  /* Horas */
+            th:nth-child(3), td:nth-child(3) { width: 8%; }  /* Registros */
+            th:nth-child(4), td:nth-child(4) { width: 8%; }  /* Localização */
+            th:nth-child(5), td:nth-child(5) { width: 6%; }  /* Matrícula */
+            th:nth-child(6), td:nth-child(6) { width: 25%; }  /* Observação */
 
             th, td {
               border: 1px solid #000;

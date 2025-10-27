@@ -39,10 +39,10 @@ thead {
 }
 
 th, td {
-  padding: clamp(0.1rem, 0.5vw, 0.75rem); /* espaçamento adaptável */
+  padding: clamp(0.1rem, 0.1vw, 0.75rem); /* espaçamento adaptável */
   border: 1px solid #ccc;
   text-align: left;
-  font-size: clamp(0.50rem, 2vw, 1rem); /* fonte adaptável para células */
+  font-size: clamp(0.30rem, 1.5vw, 1.5rem); /* fonte adaptável */
 }
 
 /* Alternância de cor nas linhas */
@@ -85,56 +85,3 @@ button:last-child:hover {
 }
 
 /* Impressão */
-@media print {
-  body {
-    background: white;
-    color: black;
-    padding: 0;
-    margin: 0;
-    font-size: 10pt;
-  }
-
-  h2 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-
-  .button-group, button {
-    display: none !important;
-  }
-
-  .table-wrapper {
-    overflow: visible !important;
-    width: 100%;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed; /* força distribuição proporcional */
-    word-break: break-word;
-    font-size: 10pt;
-  }
-
-  /* Distribuição proporcional das colunas */
-  th:nth-child(1), td:nth-child(1) { width: 12%; }  /* Data */
-  th:nth-child(2), td:nth-child(2) { width: 12%; }  /* Horas */
-  th:nth-child(3), td:nth-child(3) { width: 20%; }  /* Localização */
-  th:nth-child(4), td:nth-child(4) { width: 16%; }  /* Matrícula */
-  th:nth-child(5), td:nth-child(5) { width: 40%; }  /* Observação */
-
-  th, td {
-    border: 1px solid #000;
-    padding: 0.4rem;
-    font-size: 10pt;
-  }
-
-  thead {
-    background-color: #e0e0e0;
-  }
-
-  tr:nth-child(even) {
-    background-color: #f5f5f5;
-  }
-}

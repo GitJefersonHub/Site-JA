@@ -126,7 +126,53 @@ function criarJanelaImpressao(tipo, lista) {
   win.document.write(`
     <html>
       <head>
-        <title>Impressão</title>
+        <title>Registros de bastão QR Code</title>
+        <link rel="stylesheet" href="css/relatorios.css">
+        <style>
+      @media print {
+            body {
+              margin: 0;
+              padding: 0;
+              font-size: 10pt;
+              color: black;
+              background: white;
+            }
+
+            h2 {
+              text-align: center;
+              font-size: 1.2rem;
+              margin-bottom: 1rem;
+            }
+
+            .table-wrapper {
+              overflow: visible;
+              width: 100%;
+            }
+
+            table {
+              width: 100%;
+              border-collapse: collapse;
+              table-layout: auto;
+              word-break: break-word;
+            }
+
+            th, td {
+              border: 1px solid #000;
+              padding: 0.4rem;
+              font-size: 10pt;
+            }
+
+            thead {
+              background-color: #e0e0e0;
+            }
+
+            tr:nth-child(even) {
+              background-color: #f5f5f5;
+            }
+          }
+
+        </style>
+        <title>Registros de bastão</title>
         <link rel="stylesheet" href="css/relatorios.css">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
       </head>
