@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Codes Personalizados</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    .qr-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .qr-box {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align:center;">QR Codes Personalizados</h2>
+  <div class="qr-container">
+    <div class="qr-box"><div id="qr1"></div><p>Entrada</p></div>
+    <div class="qr-box"><div id="qr2"></div><p>Capela</p></div>
+    <div class="qr-box"><div id="qr3"></div><p>Bloco B</p></div>
+    <div class="qr-box"><div id="qr4"></div><p>SL 218</p></div>
+    <div class="qr-box"><div id="qr5"></div><p>Saída</p></div>
+  </div>
+
+  <script>
+    new QRCode(document.getElementById("qr1"), "1");
+    new QRCode(document.getElementById("qr2"), "2");
+    new QRCode(document.getElementById("qr3"), "3");
+    new QRCode(document.getElementById("qr4"), "4");
+    new QRCode(document.getElementById("qr5"), "5");
+  </script>
+</body>
+</html>

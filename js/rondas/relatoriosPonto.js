@@ -51,7 +51,7 @@ function criarTabelaPonto() {
       linha.innerHTML = `
         <td>${data}</td>
         <td>${hora}</td>
-        <td>Não informado</td>
+        <td>${item.registro || 'Não informado'}</td>
         <td>${item.localizacao || 'Não informado'}</td>
         <td>${dadosUsuario.matricula || '---'}</td>
         <td>${item.obs || 'Sem observação'}</td>
@@ -114,7 +114,7 @@ function criarJanelaImpressao(tipo, lista) {
       <tr>
         <td>${data}</td>
         <td>${hora}</td>
-        <td>Não informado</td>
+        <td>${item.registro || 'Não informado'}</td>
         <td>${item.localizacao || 'Não informado'}</td>
         <td>${dadosUsuario.matricula || '---'}</td>
         <td>${item.obs || 'Sem observação'}</td>

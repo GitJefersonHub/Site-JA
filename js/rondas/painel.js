@@ -44,7 +44,6 @@ function registrarPonto() {
   let observacao = prompt('Deseja adicionar uma observação? (até 50 caracteres)');
 
   if (observacao === null) {
-    // Usuário cancelou — não registra o ponto
     alert('Registro cancelado pelo usuário.');
     fecharModal();
     return;
@@ -58,21 +57,44 @@ function registrarPonto() {
   }
 
   const listaPonto = JSON.parse(localStorage.getItem('Ponto')) || [];
-  listaPonto.push({ tipo: 'Ponto', dataHora: agora, obs: observacao });
+  listaPonto.push({
+    tipo: 'Ponto',
+    dataHora: agora,
+    obs: observacao,
+    registro: 'Ponto' // ✅ novo campo para preencher a coluna "Registros"
+  });
+
   localStorage.setItem('Ponto', JSON.stringify(listaPonto));
   alert('Ponto registrado com sucesso!');
   fecharModal();
 }
 
-
 function registrarQRCode() {
-  const agora = new Date().toLocaleString('pt-BR');
-  const listaQRCode = JSON.parse(localStorage.getItem('QRCode')) || [];
-  listaQRCode.push({ tipo: 'QR Code', dataHora: agora });
-  localStorage.setItem('QRCode', JSON.stringify(listaQRCode));
-  alert('QR Code gerado!');
-  fecharModal();
+  document.getElementById('reader').style.display = 'block';
+
+  const qr = new Html5Qrcode("reader");
+  qr.start(
+    { facingMode: "environment" }, // câmera traseira
+    {
+      fps: 10,
+      qrbox: 250
+    },
+    (decodedText) => {
+      alert(`QR Code detectado: ${decodedText}`);
+      qr.stop().then(() => {
+        document.getElementById('reader').innerHTML = '';
+        document.getElementById('reader').style.display = 'none';
+      });
+    },
+    (errorMessage) => {
+      // erros de leitura podem ser ignorados
+    }
+  ).catch((err) => {
+    alert("Erro ao iniciar a câmera: " + err);
+  });
 }
+
+
 
 function fecharModal() {
   document.getElementById('modalRegistro').style.display = 'none';
