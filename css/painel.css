@@ -96,9 +96,9 @@ input {
 .btn-ESE,
 .btn-lista,
 .btn-enviar,
-.btn-salvar,
 .btn-sair,
-.btn-excluir {
+.btn-excluir,
+.btn-salvar {
   padding: 4%;
   font-size: 360%;
   border: none;
@@ -107,6 +107,7 @@ input {
   margin: 1%;
   transition: background-color 0.3s ease;
 }
+
 
 .btn-relatorios {
   background-color: #17a2b8;
@@ -182,9 +183,6 @@ input {
   gap: 4%;
   margin-top: 5%;
 }
-
-
-
 
 .modal-registro {
   display: none;

@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${dados.matricula}`;
   document.getElementById('infoTelefone').textContent = `📞 Telefone: ${dados.telefone}`;
   document.getElementById('infoEmail').textContent = `📧 E-mail: ${dados.email}`;
+  document.getElementById('infoSenha').textContent = `👁️ Senha: ${dados.senha}`;
 });
 
 // funções dos botões Modal
@@ -70,30 +71,34 @@ function registrarPonto() {
 }
 
 function registrarQRCode() {
-  document.getElementById('reader').style.display = 'block';
+  const agora = new Date().toLocaleString('pt-BR');
+  let observacao = prompt('Deseja adicionar uma observação para o QR Code? (até 50 caracteres)');
 
-  const qr = new Html5Qrcode("reader");
-  qr.start(
-    { facingMode: "environment" }, // câmera traseira
-    {
-      fps: 10,
-      qrbox: 250
-    },
-    (decodedText) => {
-      alert(`QR Code detectado: ${decodedText}`);
-      qr.stop().then(() => {
-        document.getElementById('reader').innerHTML = '';
-        document.getElementById('reader').style.display = 'none';
-      });
-    },
-    (errorMessage) => {
-      // erros de leitura podem ser ignorados
-    }
-  ).catch((err) => {
-    alert("Erro ao iniciar a câmera: " + err);
+  if (observacao === null) {
+    alert('Registro cancelado pelo usuário.');
+    fecharModal();
+    return;
+  }
+
+  observacao = observacao.trim();
+  if (observacao === '') {
+    observacao = 'Sem observação a relatar';
+  } else {
+    observacao = observacao.substring(0, 50);
+  }
+
+  const listaPonto = JSON.parse(localStorage.getItem('Ponto')) || [];
+  listaPonto.push({
+    tipo: 'QR Code',
+    dataHora: agora,
+    obs: observacao,
+    registro: 'QR Code' // ✅ campo que será exibido na coluna "Registros"
   });
-}
 
+  localStorage.setItem('Ponto', JSON.stringify(listaPonto));
+  alert('QR Code registrado com sucesso!');
+  fecharModal();
+}
 
 
 function fecharModal() {

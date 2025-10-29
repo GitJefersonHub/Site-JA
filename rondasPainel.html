@@ -5,11 +5,19 @@
   <meta charset="UTF-8">
   <title>Painel do Usuário</title>
   <link rel="stylesheet" href="css/painel.css">
+  <link rel="icon" href="caminho/para/seu/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
   <div class="painel-container">
     <h2 id="boasVindas"></h2>
+    <div class="info-usuario">
+      <p id="infoNome"></p>
+      <p id="infoMatricula"></p>
+      <p id="infoTelefone"></p>
+      <p id="infoEmail"></p>
+      <p id="infoSenha"></p>
+    </div>
 
     <p class="lembrete">🔐 Lembre-se: Guarde suas informações de login.</p>
 
@@ -22,8 +30,27 @@
         <!-- Campos de cadastro -->
       </div>
 
-      <div id="formEditar" class="form-editar">
-        <!-- Campos de edição -->
+      <div id="formEditar" class="form-editar" style="display: none;">
+        <label for="editNome">Nome:</label>
+        <input type="text" id="editNome">
+
+        <label for="editMatricula">Matrícula:</label>
+        <input type="text" id="editMatricula">
+
+        <label for="editTelefone">Telefone:</label>
+        <input type="text" id="editTelefone">
+
+        <label for="editEmail">Email:</label>
+        <input type="email" id="editEmail">
+
+        <label for="editSenha">Senha:</label>
+        <div class="senha-container">
+          <input type="password" id="editSenha">
+          <span id="toggleIcon" class="toggle-senha" onclick="toggleSenha()">👁️</span>
+        </div>
+
+        <br>
+        <button class="btn-salvar" onclick="salvarPerfil()">Salvar</button>
       </div>
 
       <button class="btn-sair" onclick="sair()">Sair</button>
@@ -34,11 +61,6 @@
       <div id="tabelaQRCode" class="tabela-registros"></div>
     </div>
   </div>
-
-
-  <div id="reader" style="width:10px; margin:auto;"></div>
-
-
 
   <!-- Modal de opções de registro -->
   <div id="modalRegistro" class="modal-registro">
@@ -53,8 +75,6 @@
   <div id="tabelaPonto"></div>
   <div id="tabelaQRCode"></div>
 
-
-  <script src="https://unpkg.com/html5-qrcode"></script>
   <script src="js/rondas/painel.js"></script>
   <script src="js/rondas/editarPerfil.js"></script>
   <script src="js/rondas/lista.js"></script>
