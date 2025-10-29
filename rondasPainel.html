@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <title>Painel do Usuário</title>
   <link rel="stylesheet" href="css/painel.css">
-  <link rel="icon" href="caminho/para/seu/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <script src="https://unpkg.com/html5-qrcode"></script>
 </head>
 
 <body>
@@ -59,6 +60,12 @@
       <!-- Tabelas de Registros -->
       <div id="tabelaPonto" class="tabela-registros"></div>
       <div id="tabelaQRCode" class="tabela-registros"></div>
+
+      <!-- Leitor de QR Code -->
+      <div id="reader" style="display: none; width: 100%; max-width: 400px; margin: 2rem auto;">
+        <p id="leituraStatus" style="text-align: center; font-size: 240%; color: #555;">Aguardando leitura…</p>
+        <button class="btn-cancelar-leitura" onclick="cancelarLeitura()">Cancelar leitura</button>
+      </div>
     </div>
   </div>
 

@@ -108,6 +108,26 @@ input {
   transition: background-color 0.3s ease;
 }
 
+.btn-cancelar-leitura {
+  background-color: #dc3545;
+  color: white;
+  padding: 4%;
+  font-size: 360%;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 2rem auto;
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cancelar-leitura:hover {
+  background-color: #c82333;
+}
+
+
 
 .btn-relatorios {
   background-color: #17a2b8;
