@@ -52,6 +52,7 @@
 
         <br>
         <button class="btn-salvar" onclick="salvarPerfil()">Salvar</button>
+        <button class="btn-excluir" onclick="excluir()">Excluir</button>
       </div>
 
       <button class="btn-sair" onclick="sair()">Sair</button>
@@ -60,24 +61,34 @@
       <!-- Tabelas de Registros -->
       <div id="tabelaPonto" class="tabela-registros"></div>
       <div id="tabelaQRCode" class="tabela-registros"></div>
-
-      <!-- Leitor de QR Code -->
-      <div id="reader" style="display: none; width: 100%; max-width: 400px; margin: 2rem auto;">
-        <p id="leituraStatus" style="text-align: center; font-size: 240%; color: #555;">Aguardando leitura…</p>
-        <button class="btn-cancelar-leitura" onclick="cancelarLeitura()">Cancelar leitura</button>
-      </div>
     </div>
   </div>
 
   <!-- Modal de opções de registro -->
   <div id="modalRegistro" class="modal-registro">
     <div class="modal-conteudo">
-      <h3>Como deseja registrar o ponto?</h3>
+      <!-- Leitor de QR Code -->
+      <div id="reader" style="display: none; width: 100%; max-width: 400px; margin: 2rem auto;">
+        <p id="leituraStatus" style="text-align: center; font-size: 240%; color: #555;">Aguardando leitura…</p>
+      </div>
+      <h3>Como deseja registrar?</h3>
       <button onclick="registrarPonto()">Ponto</button>
       <button onclick="registrarQRCode()">QR Code</button>
       <button onclick="fecharModal()">Fechar</button>
     </div>
   </div>
+
+  <!-- Modal de observação -->
+  <div id="modalObservacao" class="modal-registro">
+    <div class="modal-conteudo modal-observacao">
+      <h3>Adicionar observação</h3>
+      <textarea id="campoObservacao" maxlength="50" rows="3" class="campo-observacao"></textarea>
+      <p id="contadorObservacao" class="contador-observacao">50 caracteres restantes</p>
+      <button onclick="confirmarObservacao()">Confirmar</button>
+      <button onclick="cancelarObservacao()">Cancelar</button>
+    </div>
+  </div>
+
 
   <div id="tabelaPonto"></div>
   <div id="tabelaQRCode"></div>

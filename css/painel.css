@@ -13,55 +13,58 @@ body {
   align-items: center;
   min-height: 100vh;
   padding: 2%;
+  font-size: clamp(0.8rem, 2.5vw, 1.2rem);
 }
 
 .painel-container {
   background-color: #fff;
   width: 100%;
+  max-width: 1200px;
   padding: 2%;
-  border-radius: 2%;
-  box-shadow: 0 0 5% rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  gap: 5%;
+  gap: 2rem;
 }
 
 h2 {
   text-align: center;
-  font-size: 500%;
-  margin-bottom: 2%;
+  font-size: 3em;
+  margin-bottom: 1rem;
   color: #333;
 }
 
 label {
-  font-size: 400%;
-  margin-bottom: 2%;
+  font-size: 2.0em;
+  margin-bottom: 0.5rem;
   color: #555;
 }
 
 .info {
-  font-size: 260%;
+  font-size: 1.2em;
   color: #555;
-  margin-bottom: 2%;
+  margin-bottom: 0.5rem;
 }
 
 .lembrete {
-  font-size: 240%;
+  font-size: 2.0em;
   color: #888;
-  margin-bottom: 2%;
+  margin-bottom: 1rem;
 }
 
 .actions {
   display: flex;
   flex-direction: column;
-  gap: 4%;
+  gap: 1rem;
 }
 
-input {
-  padding: 3%;
-  font-size: 320%;
+input,
+textarea {
+  padding: 1rem;
+  font-size: 3.0em;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 0.5rem;
 }
 
 .senha-container {
@@ -72,15 +75,15 @@ input {
 
 .senha-container input {
   flex: 1;
-  padding-right: 15%;
+  padding-right: 3rem;
 }
 
 .toggle-senha {
   position: absolute;
-  right: 4%;
+  right: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 400%;
+  font-size: 3.8em;
   cursor: pointer;
   color: #007bff;
   user-select: none;
@@ -91,106 +94,38 @@ input {
   color: #0056b3;
 }
 
-.btn-relatorios,
-.btn-ponto,
-.btn-ESE,
-.btn-lista,
-.btn-enviar,
-.btn-sair,
-.btn-excluir,
-.btn-salvar {
-  padding: 4%;
-  font-size: 360%;
+button {
+  padding: 1rem;
+  font-size: 4.0em;
   border: none;
-  border-radius: 2%;
+  border-radius: 0.5rem;
   cursor: pointer;
-  margin: 1%;
   transition: background-color 0.3s ease;
 }
 
-.btn-cancelar-leitura {
-  background-color: #dc3545;
-  color: white;
-  padding: 4%;
-  font-size: 360%;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  margin: 2rem auto;
-  display: block;
-  width: 100%;
-  max-width: 400px;
-  transition: background-color 0.3s ease;
-}
+.btn-relatorios { background-color: #17a2b8; color: white; }
+.btn-relatorios:hover { background-color: #117a8b; }
 
-.btn-cancelar-leitura:hover {
-  background-color: #c82333;
-}
+.btn-ponto { background-color: #28a745; color: white; }
+.btn-ponto:hover { background-color: #218838; }
 
+.btn-ESE { background-color: #ffc107; color: black; }
+.btn-ESE:hover { background-color: #e0a800; }
 
+.btn-lista { background-color: #6f42c1; color: white; }
+.btn-lista:hover { background-color: #5936a2; }
 
-.btn-relatorios {
-  background-color: #17a2b8;
-  color: white;
-}
+.btn-enviar { background-color: #20c997; color: white; margin-top: 10px; }
+.btn-enviar:hover { background-color: #198754; }
 
-.btn-relatorios:hover {
-  background-color: #117a8b;
-}
-
-.btn-ponto {
-  background-color: #28a745;
-  color: white;
-}
-
-.btn-ponto:hover {
-  background-color: #218838;
-}
-
-.btn-ESE {
-  background-color: #ffc107;
-  color: black;
-}
-
-.btn-ESE:hover {
-  background-color: #e0a800;
-}
-
-.btn-lista {
-  background-color: #6f42c1;
-  color: white;
-}
-
-.btn-lista:hover {
-  background-color: #5936a2;
-}
-
-.btn-enviar {
-  background-color: #20c997;
-  color: white;
-  margin-top: 10px;
-}
-
-.btn-enviar:hover {
-  background-color: #198754;
-}
-
-.btn-salvar {
-  background-color: #fd7e14;
-  color: white;
-  margin-top: 10px;
-}
-
-.btn-salvar:hover {
-  background-color: #e8590c;
-}
+.btn-salvar { background-color: #fd7e14; color: white; margin-top: 10px; }
+.btn-salvar:hover { background-color: #e8590c; }
 
 .btn-sair,
 .btn-excluir {
   background-color: #dc3545;
   color: white;
 }
-
 .btn-sair:hover,
 .btn-excluir:hover {
   background-color: #c82333;
@@ -200,11 +135,13 @@ input {
 #formCadastro {
   display: none;
   flex-direction: column;
-  gap: 4%;
-  margin-top: 5%;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
-.modal-registro {
+/* Modal genérico */
+.modal-registro,
+#modalObservacao {
   display: none;
   position: fixed;
   top: 0;
@@ -217,91 +154,75 @@ input {
   z-index: 999;
 }
 
-/* Modal ocupa 100% da largura */
 .modal-conteudo {
   background-color: #fff;
-  padding: 6%;
-  border-radius: 2%;
+  padding: 2rem;
+  border-radius: 1rem;
   text-align: center;
-  width: 96%;
-  max-width: none;
-  box-shadow: none;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .modal-conteudo h3 {
-  font-size: 4.0rem;
-  margin-bottom: 2%;
+  font-size: 2em;
+  margin-bottom: 1rem;
   color: #333;
 }
 
 .modal-conteudo button {
   display: block;
   width: 100%;
-  margin: 4% auto;
-  padding: 5%;
-  font-size: 8.0rem;
+  margin: 1rem auto;
+  padding: 1rem;
+  font-size: 6.0em;
   border: none;
-  border-radius: 10px;
+  border-radius: 0.5rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-/* Estilos individuais */
 .modal-conteudo button:nth-child(2) {
   background-color: #007bff;
   color: white;
 }
-
 .modal-conteudo button:nth-child(3) {
   background-color: #28a745;
   color: white;
 }
-
 .modal-conteudo button:nth-child(4) {
   background-color: #dc3545;
   color: white;
 }
 
-@media (max-width: 768px) {
-  body {
-    padding: 6%;
-  }
+/* Modal de observação */
+.modal-observacao h3 {
+  font-size: 2em;
+  margin-bottom: 1rem;
+  color: #333;
+}
 
-  .painel-container {
-    width: 100%;
-    padding: 10%;
-    border-radius: 3%;
-  }
+.campo-observacao {
+  width: 100%;
+  font-size: 2.0em;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  resize: none;
+}
 
-  h2 {
-    font-size: 300%;
-  }
+.contador-observacao {
+  text-align: right;
+  font-size: 1em;
+  color: #555;
+  margin-top: 0.5rem;
+}
 
-  label {
-    font-size: 400%;
-  }
-
-  .info {
-    font-size: 200%;
-  }
-
-  .actions button {
-    font-size: 200%;
-    padding: 5%;
-  }
-
-  .modal-conteudo {
-    padding: 8%;
-  }
-
-  .modal-conteudo h3 {
-    font-size: 1.8rem;
-    margin-bottom: 10%;
-  }
-
-  .modal-conteudo button {
-    font-size: 1.4rem;
-    padding: 6%;
-  }
-
+#modalObservacao button:first-of-type {
+  background-color: #28a745;
+  color: white;
+}
+#modalObservacao button:last-of-type {
+  background-color: #dc3545;
+  color: white;
 }

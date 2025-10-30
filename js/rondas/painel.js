@@ -43,39 +43,65 @@ function fecharModal() {
   document.getElementById('modalRegistro').style.display = 'none';
 }
 
-function registrarPonto() {
+// Variáveis para observação
+let tipoRegistro = '';
+let dadosQRCode = null;
+
+// Campo de contagem regressiva
+document.getElementById('campoObservacao').addEventListener('input', () => {
+  const restante = 50 - document.getElementById('campoObservacao').value.length;
+  document.getElementById('contadorObservacao').textContent = `${restante} caracteres restantes`;
+});
+
+function solicitarObservacao(tipo, dados = null) {
+  tipoRegistro = tipo;
+  dadosQRCode = dados;
+  document.getElementById('campoObservacao').value = '';
+  document.getElementById('contadorObservacao').textContent = '50 caracteres restantes';
+  document.getElementById('modalObservacao').style.display = 'flex';
+}
+
+function confirmarObservacao() {
+  let observacao = document.getElementById('campoObservacao').value.trim();
+  if (observacao === '') observacao = 'Sem observação a relatar';
+
   const agora = new Date().toLocaleString('pt-BR');
-  let observacao = prompt('Deseja adicionar uma observação? (até 50 caracteres)');
-
-  if (observacao === null) {
-    alert('Registro cancelado pelo usuário.');
-    fecharModal();
-    return;
-  }
-
-  observacao = observacao.trim();
-  if (observacao === '') {
-    observacao = 'Sem observação a relatar';
-  } else {
-    observacao = observacao.substring(0, 50);
-  }
-
   const listaPonto = JSON.parse(localStorage.getItem('Ponto')) || [];
-  listaPonto.push({
-    tipo: 'Ponto',
+
+  const registro = {
+    tipo: tipoRegistro,
     dataHora: agora,
     obs: observacao,
-    registro: 'Ponto'
-  });
+    registro: tipoRegistro
+  };
 
+  if (tipoRegistro === 'QR Code' && dadosQRCode) {
+    registro.localizacao = `QR Code ${dadosQRCode}`;
+  }
+
+  listaPonto.push(registro);
   localStorage.setItem('Ponto', JSON.stringify(listaPonto));
-  alert('Ponto registrado com sucesso!');
+
+  alert(`${tipoRegistro} registrado com sucesso!`);
+  document.getElementById('modalObservacao').style.display = 'none';
   fecharModal();
+}
+
+function cancelarObservacao() {
+  alert('Registro cancelado pelo usuário.');
+  document.getElementById('modalObservacao').style.display = 'none';
+  fecharModal();
+}
+
+// Botão de ponto
+function registrarPonto() {
+  solicitarObservacao('Ponto');
 }
 
 // Novo fluxo para QR Code
 let leitorAtivo = false;
 let html5QrCodeInstance = null;
+let leituraTimeout = null;
 
 function registrarQRCode() {
   if (leitorAtivo) return;
@@ -85,9 +111,6 @@ function registrarQRCode() {
   readerElement.style.display = 'block';
   readerElement.innerHTML = `
     <p id="leituraStatus" style="text-align: center; font-size: 240%; color: #555;">Aguardando leitura…</p>
-    <button onclick="cancelarLeitura()" style="display: block; margin: 2rem auto; font-size: 240%; padding: 2%; background-color: #dc3545; color: white; border: none; border-radius: 10px; cursor: pointer;">
-      Cancelar leitura
-    </button>
   `;
 
   html5QrCodeInstance = new Html5Qrcode("reader");
@@ -105,42 +128,19 @@ function registrarQRCode() {
       cameraId,
       { fps: 10, qrbox: { width: 250, height: 250 } },
       (decodedText) => {
-        html5QrCodeInstance.stop().then(() => {
-          readerElement.innerHTML = '';
-          readerElement.style.display = 'none';
-          leitorAtivo = false;
+        if (["1", "2", "3", "4", "5"].includes(decodedText)) {
+          clearTimeout(leituraTimeout);
+          html5QrCodeInstance.stop().then(() => {
+            readerElement.innerHTML = '';
+            readerElement.style.display = 'none';
+            leitorAtivo = false;
 
-          let observacao = prompt('Deseja adicionar uma observação para o QR Code? (até 50 caracteres)');
-          if (observacao === null) {
-            alert('Registro cancelado pelo usuário.');
-            fecharModal();
-            return;
-          }
-
-          observacao = observacao.trim();
-          if (observacao === '') {
-            observacao = 'Sem observação a relatar';
-          } else {
-            observacao = observacao.substring(0, 50);
-          }
-
-          const agora = new Date().toLocaleString('pt-BR');
-          const listaPonto = JSON.parse(localStorage.getItem('Ponto')) || [];
-          listaPonto.push({
-            tipo: 'QR Code',
-            dataHora: agora,
-            obs: observacao,
-            registro: 'QR Code',
-            localizacao: `QR Code ${decodedText}`
+            solicitarObservacao('QR Code', decodedText);
+          }).catch(err => {
+            alert("Erro ao parar a câmera: " + err);
+            leitorAtivo = false;
           });
-          localStorage.setItem('Ponto', JSON.stringify(listaPonto));
-
-          alert(`QR Code ${decodedText} registrado com sucesso!`);
-          fecharModal();
-        }).catch(err => {
-          alert("Erro ao parar a câmera: " + err);
-          leitorAtivo = false;
-        });
+        }
       },
       (errorMessage) => {
         // erros de leitura podem ser ignorados
@@ -149,20 +149,20 @@ function registrarQRCode() {
       alert("Erro ao iniciar a câmera: " + err);
       leitorAtivo = false;
     });
+
+    leituraTimeout = setTimeout(() => {
+      html5QrCodeInstance.stop().then(() => {
+        readerElement.innerHTML = '';
+        readerElement.style.display = 'none';
+        leitorAtivo = false;
+        alert("QR Code correspondente não encontrado.");
+        fecharModal();
+      }).catch(err => {
+        alert("Erro ao cancelar leitura: " + err);
+      });
+    }, 15000);
   }).catch(err => {
     alert("Erro ao acessar as câmeras: " + err);
     leitorAtivo = false;
   });
-}
-
-function cancelarLeitura() {
-  if (html5QrCodeInstance) {
-    html5QrCodeInstance.stop().then(() => {
-      document.getElementById('reader').innerHTML = '';
-      document.getElementById('reader').style.display = 'none';
-      leitorAtivo = false;
-    }).catch(err => {
-      alert("Erro ao cancelar leitura: " + err);
-    });
-  }
 }
