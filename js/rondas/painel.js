@@ -122,7 +122,8 @@ function registrarQRCode() {
       return;
     }
 
-    const cameraId = cameras[0].id;
+    const backCamera = cameras.find(cam => cam.label.toLowerCase().includes('back') || cam.label.toLowerCase().includes('rear'));
+    const cameraId = backCamera ? backCamera.id : cameras[0].id;
 
     html5QrCodeInstance.start(
       cameraId,
