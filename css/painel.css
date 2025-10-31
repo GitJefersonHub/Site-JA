@@ -1,7 +1,6 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
 }
 
 body {
@@ -13,7 +12,6 @@ body {
   align-items: center;
   min-height: 100vh;
   padding: 2%;
-  font-size: clamp(0.8rem, 2.5vw, 1.2rem);
 }
 
 .painel-container {
@@ -30,9 +28,21 @@ body {
 
 h2 {
   text-align: center;
-  font-size: 3em;
+  font-size: 3.0em;
   margin-bottom: 1rem;
   color: #333;
+}
+
+.p1 {
+  font-size: 2.6em;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.p2 {
+  font-size: 2.2em;
+  color: #888;
+  margin-bottom: 1rem;
 }
 
 label {
@@ -41,17 +51,7 @@ label {
   color: #555;
 }
 
-.info {
-  font-size: 1.2em;
-  color: #555;
-  margin-bottom: 0.5rem;
-}
 
-.lembrete {
-  font-size: 2.0em;
-  color: #888;
-  margin-bottom: 1rem;
-}
 
 .actions {
   display: flex;
@@ -95,37 +95,66 @@ textarea {
 }
 
 button {
-  padding: 1rem;
-  font-size: 4.0em;
+  padding: 3rem;
+  font-size: 3.4em;
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.btn-relatorios { background-color: #17a2b8; color: white; }
-.btn-relatorios:hover { background-color: #117a8b; }
+.btn-relatorios {
+  background-color: #17a2b8;
+  color: white;
+}
 
-.btn-ponto { background-color: #28a745; color: white; }
-.btn-ponto:hover { background-color: #218838; }
+.btn-relatorios:hover {
+  background-color: #117a8b;
+}
 
-.btn-ESE { background-color: #ffc107; color: black; }
-.btn-ESE:hover { background-color: #e0a800; }
+.btn-ponto {
+  background-color: #28a745;
+  color: white;
+}
 
-.btn-lista { background-color: #6f42c1; color: white; }
-.btn-lista:hover { background-color: #5936a2; }
+.btn-ponto:hover {
+  background-color: #218838;
+}
 
-.btn-enviar { background-color: #20c997; color: white; margin-top: 10px; }
-.btn-enviar:hover { background-color: #198754; }
+.btn-ESE {
+  background-color: #ffc107;
+  color: black;
+}
 
-.btn-salvar { background-color: #fd7e14; color: white; margin-top: 10px; }
-.btn-salvar:hover { background-color: #e8590c; }
+.btn-ESE:hover {
+  background-color: #e0a800;
+}
+
+.btn-lista {
+  background-color: #6f42c1;
+  color: white;
+}
+
+.btn-lista:hover {
+  background-color: #5936a2;
+}
+
+.btn-salvar {
+  background-color: #fd7e14;
+  color: white;
+  margin-top: 10px;
+}
+
+.btn-salvar:hover {
+  background-color: #e8590c;
+}
 
 .btn-sair,
 .btn-excluir {
   background-color: #dc3545;
   color: white;
 }
+
 .btn-sair:hover,
 .btn-excluir:hover {
   background-color: #c82333;
@@ -139,7 +168,9 @@ button {
   margin-top: 2rem;
 }
 
-/* Modal genérico */
+
+
+/* Modal registrar Ponto QR Code */
 .modal-registro,
 #modalObservacao {
   display: none;
@@ -160,12 +191,12 @@ button {
   border-radius: 1rem;
   text-align: center;
   width: 100%;
-  max-width: 600px;
+  max-width: 90%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .modal-conteudo h3 {
-  font-size: 2em;
+  font-size: 3em;
   margin-bottom: 1rem;
   color: #333;
 }
@@ -174,8 +205,8 @@ button {
   display: block;
   width: 100%;
   margin: 1rem auto;
-  padding: 1rem;
-  font-size: 6.0em;
+  padding: 2rem;
+  font-size: 5.0em;
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -186,34 +217,50 @@ button {
   background-color: #007bff;
   color: white;
 }
+
 .modal-conteudo button:nth-child(3) {
   background-color: #28a745;
   color: white;
 }
+
 .modal-conteudo button:nth-child(4) {
   background-color: #dc3545;
   color: white;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Modal de observação */
 .modal-observacao h3 {
-  font-size: 2em;
+  font-size: 3em;
   margin-bottom: 1rem;
   color: #333;
 }
-
+/*Observações inseridas*/
 .campo-observacao {
   width: 100%;
-  font-size: 2.0em;
+  font-size: 1.2em;
   padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   resize: none;
 }
-
-.contador-observacao {
+/*Informações restantes de caracteres*/
+.caracteres {
   text-align: right;
-  font-size: 1em;
+  font-size: 2.4em;
   color: #555;
   margin-top: 0.5rem;
 }
@@ -222,6 +269,7 @@ button {
   background-color: #28a745;
   color: white;
 }
+
 #modalObservacao button:last-of-type {
   background-color: #dc3545;
   color: white;

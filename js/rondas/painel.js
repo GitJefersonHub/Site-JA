@@ -50,14 +50,14 @@ let dadosQRCode = null;
 // Campo de contagem regressiva
 document.getElementById('campoObservacao').addEventListener('input', () => {
   const restante = 50 - document.getElementById('campoObservacao').value.length;
-  document.getElementById('contadorObservacao').textContent = `${restante} caracteres restantes`;
+  document.getElementById('contadorObservacao').textContent = `${restante} restantes`;
 });
 
 function solicitarObservacao(tipo, dados = null) {
   tipoRegistro = tipo;
   dadosQRCode = dados;
   document.getElementById('campoObservacao').value = '';
-  document.getElementById('contadorObservacao').textContent = '50 caracteres restantes';
+  document.getElementById('contadorObservacao').textContent = '50 restantes';
   document.getElementById('modalObservacao').style.display = 'flex';
 }
 
@@ -98,7 +98,9 @@ function registrarPonto() {
   solicitarObservacao('Ponto');
 }
 
-// Novo fluxo para QR Code
+
+
+// Botão QR Code
 let leitorAtivo = false;
 let html5QrCodeInstance = null;
 let leituraTimeout = null;

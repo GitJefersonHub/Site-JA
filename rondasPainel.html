@@ -13,14 +13,14 @@
   <div class="painel-container">
     <h2 id="boasVindas"></h2>
     <div class="info-usuario">
-      <p id="infoNome"></p>
-      <p id="infoMatricula"></p>
-      <p id="infoTelefone"></p>
-      <p id="infoEmail"></p>
-      <p id="infoSenha"></p>
+      <p class="p1" id="infoNome"></p>
+      <p class="p1" id="infoMatricula"></p>
+      <p class="p1" id="infoTelefone"></p>
+      <p class="p1" id="infoEmail"></p>
+      <p class="p1" id="infoSenha"></p>
     </div>
 
-    <p class="lembrete">🔐 Lembre-se: Guarde suas informações de login.</p>
+    <p class="p2">🔐 Lembre-se: Guarde suas informações de login.</p>
 
     <div class="actions">
       <button class="btn-ponto" onclick="registrar()">Registrar o Ponto</button>
@@ -64,14 +64,16 @@
     </div>
   </div>
 
+
+
   <!-- Modal de opções de registro -->
   <div id="modalRegistro" class="modal-registro">
     <div class="modal-conteudo">
       <!-- Leitor de QR Code -->
-      <div id="reader" style="display: none; width: 100%; max-width: 400px; margin: 2rem auto;">
-        <p id="leituraStatus" style="text-align: center; font-size: 240%; color: #555;">Aguardando leitura…</p>
+      <div id="reader" style="display: none; width: 100%; max-width: 600px; margin: 2rem auto;">
+        <p id="leituraStatus" style="text-align: center; font-size: 80%; color: #555;">Aguardando leitura…</p>
       </div>
-      <h3>Como deseja registrar?</h3>
+      <h3>Registrar como:</h3>
       <button onclick="registrarPonto()">Ponto</button>
       <button onclick="registrarQRCode()">QR Code</button>
       <button onclick="fecharModal()">Fechar</button>
@@ -83,7 +85,7 @@
     <div class="modal-conteudo modal-observacao">
       <h3>Adicionar observação</h3>
       <textarea id="campoObservacao" maxlength="50" rows="3" class="campo-observacao"></textarea>
-      <p id="contadorObservacao" class="contador-observacao">50 caracteres restantes</p>
+      <p id="contadorObservacao" class="caracteres">50 restantes</p>
       <button onclick="confirmarObservacao()">Confirmar</button>
       <button onclick="cancelarObservacao()">Cancelar</button>
     </div>
