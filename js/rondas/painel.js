@@ -125,7 +125,7 @@ function registrarQRCode() {
 
     html5QrCodeInstance.start(
       cameraId,
-      { fps: 10, qrbox: { width: 250, height: 250 } },
+      { fps: 10, qrbox: { width: 400, height: 400 } },
       (decodedText) => {
         if (["1", "2", "3", "4", "5"].includes(decodedText)) {
           clearTimeout(leituraTimeout);
