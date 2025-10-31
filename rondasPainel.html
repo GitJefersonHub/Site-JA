@@ -64,14 +64,12 @@
     </div>
   </div>
 
-
-
   <!-- Modal de opções de registro -->
   <div id="modalRegistro" class="modal-registro">
-    <div class="modal-conteudo">
+    <div class="modal-conteudo modal-opcoes">
       <!-- Leitor de QR Code -->
-      <div id="reader" style="display: none; width: 100%; max-width: 600px; margin: 2rem auto;">
-        <p id="leituraStatus" style="text-align: center; font-size: 80%; color: #555;">Aguardando leitura…</p>
+      <div id="reader" class="leitor-qr">
+        <p id="leituraStatus" class="leitura-status">Aguardando leitura…</p>
       </div>
       <h3>Registrar como:</h3>
       <button onclick="registrarPonto()">Ponto</button>
@@ -85,12 +83,11 @@
     <div class="modal-conteudo modal-observacao">
       <h3>Adicionar observação</h3>
       <textarea id="campoObservacao" maxlength="50" rows="3" class="campo-observacao"></textarea>
-      <p id="contadorObservacao" class="caracteres">50 restantes</p>
+      <p id="contadorObservacao" class="contador-observacao">50 restantes</p>
       <button onclick="confirmarObservacao()">Confirmar</button>
       <button onclick="cancelarObservacao()">Cancelar</button>
     </div>
   </div>
-
 
   <div id="tabelaPonto"></div>
   <div id="tabelaQRCode"></div>

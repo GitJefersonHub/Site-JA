@@ -98,8 +98,6 @@ function registrarPonto() {
   solicitarObservacao('Ponto');
 }
 
-
-
 // Botão QR Code
 let leitorAtivo = false;
 let html5QrCodeInstance = null;
@@ -111,9 +109,7 @@ function registrarQRCode() {
   leitorAtivo = true;
   const readerElement = document.getElementById('reader');
   readerElement.style.display = 'block';
-  readerElement.innerHTML = `
-    <p id="leituraStatus" style="text-align: center; font-size: 240%; color: #555;">Aguardando leitura…</p>
-  `;
+  document.getElementById('leituraStatus').textContent = 'Aguardando leitura…';
 
   html5QrCodeInstance = new Html5Qrcode("reader");
 
@@ -134,10 +130,8 @@ function registrarQRCode() {
         if (["1", "2", "3", "4", "5"].includes(decodedText)) {
           clearTimeout(leituraTimeout);
           html5QrCodeInstance.stop().then(() => {
-            readerElement.innerHTML = '';
             readerElement.style.display = 'none';
             leitorAtivo = false;
-
             solicitarObservacao('QR Code', decodedText);
           }).catch(err => {
             alert("Erro ao parar a câmera: " + err);
@@ -155,7 +149,6 @@ function registrarQRCode() {
 
     leituraTimeout = setTimeout(() => {
       html5QrCodeInstance.stop().then(() => {
-        readerElement.innerHTML = '';
         readerElement.style.display = 'none';
         leitorAtivo = false;
         alert("QR Code correspondente não encontrado.");

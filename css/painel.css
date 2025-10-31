@@ -170,9 +170,8 @@ button {
 
 
 
-/* Modal registrar Ponto QR Code */
-.modal-registro,
-#modalObservacao {
+/* Modal base */
+.modal-registro {
   display: none;
   position: fixed;
   top: 0;
@@ -190,13 +189,13 @@ button {
   padding: 2rem;
   border-radius: 1rem;
   text-align: center;
-  width: 100%;
-  max-width: 90%;
+  width: 90%;
+  max-width: 1200px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .modal-conteudo h3 {
-  font-size: 3em;
+  font-size: 4em;
   margin-bottom: 1rem;
   color: #333;
 }
@@ -206,71 +205,59 @@ button {
   width: 100%;
   margin: 1rem auto;
   padding: 2rem;
-  font-size: 5.0em;
+  font-size: 4.0em;
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.modal-conteudo button:nth-child(2) {
-  background-color: #007bff;
-  color: white;
-}
-
 .modal-conteudo button:nth-child(3) {
   background-color: #28a745;
   color: white;
 }
-
 .modal-conteudo button:nth-child(4) {
+  background-color: #007bff;
+  color: white;
+}
+.modal-conteudo button:nth-child(5) {
   background-color: #dc3545;
   color: white;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Modal de observação */
 .modal-observacao h3 {
-  font-size: 3em;
+  font-size: 4.0em;
   margin-bottom: 1rem;
   color: #333;
 }
-/*Observações inseridas*/
+/*Informações inseridas*/
 .campo-observacao {
   width: 100%;
-  font-size: 1.2em;
+  font-size: 1.6em;
   padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   resize: none;
 }
-/*Informações restantes de caracteres*/
-.caracteres {
+/*Caractéres restantes*/
+.contador-observacao {
   text-align: right;
-  font-size: 2.4em;
+  font-size: 2.0em;
   color: #555;
   margin-top: 0.5rem;
 }
 
-#modalObservacao button:first-of-type {
-  background-color: #28a745;
-  color: white;
+/* Leitor de QR Code */
+.leitor-qr {
+  display: none;
+  width: 100%;
+  max-width: 600px;
+  margin: 1rem auto;
 }
 
-#modalObservacao button:last-of-type {
-  background-color: #dc3545;
-  color: white;
+.leitura-status {
+  text-align: center;
+  font-size: 2.8em;
+  color: #555;
 }
