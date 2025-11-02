@@ -30,7 +30,7 @@ h2 {
 table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: auto;
+  table-layout: auto; /* ← permite ajuste automático */
   word-break: break-word;
 }
 
@@ -39,10 +39,9 @@ thead {
 }
 
 th, td {
-  padding: clamp(0.1rem, 0.1vw, 0.75rem); /* espaçamento adaptável */
   border: 1px solid #ccc;
   text-align: left;
-  font-size: clamp(0.30rem, 1.5vw, 1.5rem); /* fonte adaptável */
+  font-size: clamp(0.26rem, 1.5vw, 1.5rem); /* fonte adaptável */
 }
 
 /* Alternância de cor nas linhas */
@@ -85,4 +84,4 @@ button:last-child:hover {
   background-color: #a71d2a;
 }
 
-/* Impressão */
+/* Impressão no relatoriosPonto.js */

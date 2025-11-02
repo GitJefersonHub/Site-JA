@@ -21,7 +21,7 @@ function criarTabelaPonto() {
   container.innerHTML = '';
 
   const h2 = document.createElement('h2');
-  h2.textContent = `📋 Registros de Ponto - ${obterMesAnoAtual()}`;
+  h2.textContent = `📋 Registros de Bastão - ${obterMesAnoAtual()}`;
   container.appendChild(h2);
 
   const wrapper = document.createElement('div');
@@ -30,15 +30,17 @@ function criarTabelaPonto() {
   const table = document.createElement('table');
   const thead = document.createElement('thead');
   thead.innerHTML = `
-    <tr>
-      <th>Data</th>
-      <th>Horas</th>
-      <th>Registros</th>
-      <th>Localização</th>
-      <th>Matrícula</th>
-      <th>Observação</th>
-    </tr>
-  `;
+  <tr>
+    <th>Data</th>
+    <th>Horas</th>
+    <th>Registros</th>
+    <th>Localização</th>
+    <th>Nome</th>
+    <th>Matríc</th>
+    <th>Observação</th>
+  </tr>
+`;
+
   table.appendChild(thead);
 
   const tbody = document.createElement('tbody');
@@ -49,13 +51,15 @@ function criarTabelaPonto() {
       const { data, hora } = formatarDataHoraSeparado(item.dataHora || item.registro);
       const linha = document.createElement('tr');
       linha.innerHTML = `
-        <td>${data}</td>
-        <td>${hora}</td>
-        <td>${item.registro || 'Não informado'}</td>
-        <td>${item.localizacao || 'Não informado'}</td>
-        <td>${dadosUsuario.matricula || '---'}</td>
-        <td>${item.obs || 'Sem observação'}</td>
-      `;
+  <td>${data}</td>
+  <td>${hora}</td>
+  <td>${item.registro || 'Não informado'}</td>
+  <td>${item.localizacao || 'Não informado'}</td>
+  <td>${dadosUsuario.nome || '---'}</td>
+  <td>${dadosUsuario.matricula || '---'}</td>
+  <td>${item.obs || 'Sem observação'}</td>
+`;
+
       tbody.appendChild(linha);
     });
   }
@@ -101,7 +105,8 @@ function criarJanelaImpressao(tipo, lista) {
             <th>Horas</th>
             <th>Registros</th>
             <th>Localização</th>
-            <th>Matrícula</th>
+            <th>Nome</th>
+            <th>Matríc</th>
             <th>Observação</th>
           </tr>
         </thead>
@@ -116,6 +121,7 @@ function criarJanelaImpressao(tipo, lista) {
         <td>${hora}</td>
         <td>${item.registro || 'Não informado'}</td>
         <td>${item.localizacao || 'Não informado'}</td>
+        <td>${dadosUsuario.nome || '---'}</td>
         <td>${dadosUsuario.matricula || '---'}</td>
         <td>${item.obs || 'Sem observação'}</td>
       </tr>
@@ -135,55 +141,36 @@ function criarJanelaImpressao(tipo, lista) {
         <title>Registros de bastão</title>
         <link rel="stylesheet" href="css/relatorios.css">
         <style>
-          @media print {
-            body {
-              margin: 0;
-              padding: 0;
-              font-size: 10pt;
-              color: black;
-              background: white;
-            }
-
-            h2 {
-              text-align: center;
-              font-size: 1.2rem;
-              margin-bottom: 1rem;
-            }
-
-            .table-wrapper {
-              overflow: visible;
-              width: 100%;
-            }
-
-            table {
-              width: 100%;
-              border-collapse: collapse;
-              table-layout: fixed;
-              word-break: break-word;
-            }
-
-            th:nth-child(1), td:nth-child(1) { width: 4%; }  /* Data */
-            th:nth-child(2), td:nth-child(2) { width: 4%; }  /* Horas */
-            th:nth-child(3), td:nth-child(3) { width: 8%; }  /* Registros */
-            th:nth-child(4), td:nth-child(4) { width: 8%; }  /* Localização */
-            th:nth-child(5), td:nth-child(5) { width: 6%; }  /* Matrícula */
-            th:nth-child(6), td:nth-child(6) { width: 25%; }  /* Observação */
-
-            th, td {
-              border: 1px solid #000;
-              padding: 0.4rem;
-              font-size: 10pt;
-            }
-
-            thead {
-              background-color: #e0e0e0;
-            }
-
-            tr:nth-child(even) {
-              background-color: #f5f5f5;
-            }
+        @media print {
+          body {
+            margin: 0;
+            padding: 0;
+            font-size: 10pt;
+            color: black;
+            background: white;
           }
-        </style>
+
+          h2 {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+          }
+
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: auto;
+          }
+
+          th, td {
+            border: 1px solid #000;
+            padding: 0.1rem;
+            font-size: 10pt;
+            text-align: left;
+          }
+        }
+      </style>
+
       </head>
       <body>${content}</body>
     </html>

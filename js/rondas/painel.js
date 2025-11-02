@@ -76,7 +76,7 @@ function confirmarObservacao() {
   };
 
   if (tipoRegistro === 'QR Code' && dadosQRCode) {
-    registro.localizacao = `QR Code ${dadosQRCode}`;
+    registro.registro = `QR Code ${dadosQRCode}`;
   }
 
   listaPonto.push(registro);
