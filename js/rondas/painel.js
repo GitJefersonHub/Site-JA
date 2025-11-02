@@ -43,6 +43,20 @@ function fecharModal() {
   document.getElementById('modalRegistro').style.display = 'none';
 }
 
+// Mapeamento de QR Codes para nomes legíveis
+const identificacoesQRCode = {
+  "0": "Abertura",
+  "1": "1° Andar",
+  "2": "2° Andar",
+  "3": "3° Andar",
+  "4": "4° Andar",
+  "5": "5° Andar",
+  "6": "Externo A",
+  "7": "Externo B",
+  "8": "Externo C",
+  "9": "Fechamento"
+};
+
 // Variáveis para observação
 let tipoRegistro = '';
 let dadosQRCode = null;
@@ -71,18 +85,20 @@ function confirmarObservacao() {
   const registro = {
     tipo: tipoRegistro,
     dataHora: agora,
-    obs: observacao,
-    registro: tipoRegistro
+    obs: observacao
   };
 
   if (tipoRegistro === 'QR Code' && dadosQRCode) {
-    registro.registro = `QR Code ${dadosQRCode}`;
+    const nomeQRCode = identificacoesQRCode[dadosQRCode] || `QR Code ${dadosQRCode}`;
+    registro.registro = nomeQRCode;
+  } else {
+    registro.registro = tipoRegistro;
   }
 
   listaPonto.push(registro);
   localStorage.setItem('Ponto', JSON.stringify(listaPonto));
 
-  alert(`${tipoRegistro} registrado com sucesso!`);
+  alert(`${registro.registro} registrado com sucesso!`);
   document.getElementById('modalObservacao').style.display = 'none';
   fecharModal();
 }
@@ -127,7 +143,7 @@ function registrarQRCode() {
       cameraId,
       { fps: 10, qrbox: { width: 400, height: 400 } },
       (decodedText) => {
-        if (["1", "2", "3", "4", "5"].includes(decodedText)) {
+        if (Object.keys(identificacoesQRCode).includes(decodedText)) {
           clearTimeout(leituraTimeout);
           html5QrCodeInstance.stop().then(() => {
             readerElement.style.display = 'none';
