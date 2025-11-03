@@ -70,6 +70,25 @@ document.getElementById('campoObservacao').addEventListener('input', () => {
 function solicitarObservacao(tipo, dados = null) {
   tipoRegistro = tipo;
   dadosQRCode = dados;
+
+  // Verifica se leitura está dentro do intervalo de 12h após abertura
+  if (tipo === 'QR Code' && dados !== "0") {
+    const aberturaHora = localStorage.getItem('aberturaHora');
+    if (!aberturaHora) {
+      alert("Você precisa registrar a Abertura antes de continuar.");
+      return;
+    }
+
+    const agora = new Date();
+    const abertura = new Date(aberturaHora);
+    const limite = new Date(abertura.getTime() + 12 * 60 * 60 * 1000);
+
+    if (agora < abertura || agora > limite) {
+      alert("Fora do intervalo permitido entre Abertura e Fechamento.");
+      return;
+    }
+  }
+
   document.getElementById('campoObservacao').value = '';
   document.getElementById('contadorObservacao').textContent = '50 restantes';
   document.getElementById('modalObservacao').style.display = 'flex';
@@ -79,18 +98,37 @@ function confirmarObservacao() {
   let observacao = document.getElementById('campoObservacao').value.trim();
   if (observacao === '') observacao = 'Sem observação a relatar';
 
-  const agora = new Date().toLocaleString('pt-BR');
+  const agora = new Date();
+  const agoraFormatado = agora.toLocaleString('pt-BR');
   const listaPonto = JSON.parse(localStorage.getItem('Ponto')) || [];
 
   const registro = {
     tipo: tipoRegistro,
-    dataHora: agora,
+    dataHora: agoraFormatado,
     obs: observacao
   };
 
   if (tipoRegistro === 'QR Code' && dadosQRCode) {
     const nomeQRCode = identificacoesQRCode[dadosQRCode] || `QR Code ${dadosQRCode}`;
     registro.registro = nomeQRCode;
+
+    // Se for abertura, salva hora e agenda fechamento automático
+    if (dadosQRCode === "0") {
+      localStorage.setItem('aberturaHora', agora.toISOString());
+
+      setTimeout(() => {
+        const listaAtualizada = JSON.parse(localStorage.getItem('Ponto')) || [];
+        const fechamento = {
+          tipo: 'QR Code',
+          dataHora: new Date().toLocaleString('pt-BR'),
+          obs: 'Sem mais',
+          registro: 'Fechamento'
+        };
+        listaAtualizada.push(fechamento);
+        localStorage.setItem('Ponto', JSON.stringify(listaAtualizada));
+        alert('Registro automático de Fechamento realizado.');
+      }, 12 * 60 * 60 * 1000); // 12 horas
+    }
   } else {
     registro.registro = tipoRegistro;
   }
@@ -114,67 +152,36 @@ function registrarPonto() {
   solicitarObservacao('Ponto');
 }
 
-// Botão QR Code
-let leitorAtivo = false;
-let html5QrCodeInstance = null;
-let leituraTimeout = null;
+function iniciarContadorFechamento() {
+  const aberturaHora = localStorage.getItem('aberturaHora');
+  const contadorEl = document.getElementById('contadorFechamento');
 
-function registrarQRCode() {
-  if (leitorAtivo) return;
+  if (!aberturaHora || !contadorEl) return;
 
-  leitorAtivo = true;
-  const readerElement = document.getElementById('reader');
-  readerElement.style.display = 'block';
-  document.getElementById('leituraStatus').textContent = 'Aguardando leitura…';
+  function atualizarContador() {
+    const agora = new Date();
+    const abertura = new Date(aberturaHora);
+    const limite = new Date(abertura.getTime() + 12 * 60 * 60 * 1000);
+    const restanteMs = limite - agora;
 
-  html5QrCodeInstance = new Html5Qrcode("reader");
-
-  Html5Qrcode.getCameras().then(cameras => {
-    if (!cameras || cameras.length === 0) {
-      alert("Nenhuma câmera disponível.");
-      leitorAtivo = false;
+    if (restanteMs <= 0) {
+      contadorEl.textContent = "⏱️ Tempo encerrado: aguardando fechamento automático.";
       return;
     }
 
-    const backCamera = cameras.find(cam => cam.label.toLowerCase().includes('back') || cam.label.toLowerCase().includes('rear'));
-    const cameraId = backCamera ? backCamera.id : cameras[0].id;
+    const horas = Math.floor(restanteMs / (1000 * 60 * 60));
+    const minutos = Math.floor((restanteMs % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((restanteMs % (1000 * 60)) / 1000);
 
-    html5QrCodeInstance.start(
-      cameraId,
-      { fps: 10, qrbox: { width: 400, height: 400 } },
-      (decodedText) => {
-        if (Object.keys(identificacoesQRCode).includes(decodedText)) {
-          clearTimeout(leituraTimeout);
-          html5QrCodeInstance.stop().then(() => {
-            readerElement.style.display = 'none';
-            leitorAtivo = false;
-            solicitarObservacao('QR Code', decodedText);
-          }).catch(err => {
-            alert("Erro ao parar a câmera: " + err);
-            leitorAtivo = false;
-          });
-        }
-      },
-      (errorMessage) => {
-        // erros de leitura podem ser ignorados
-      }
-    ).catch(err => {
-      alert("Erro ao iniciar a câmera: " + err);
-      leitorAtivo = false;
-    });
+    contadorEl.textContent = `⏳ ${horas}:${minutos}:${segundos}`;
+  }
 
-    leituraTimeout = setTimeout(() => {
-      html5QrCodeInstance.stop().then(() => {
-        readerElement.style.display = 'none';
-        leitorAtivo = false;
-        alert("QR Code correspondente não encontrado.");
-        fecharModal();
-      }).catch(err => {
-        alert("Erro ao cancelar leitura: " + err);
-      });
-    }, 15000);
-  }).catch(err => {
-    alert("Erro ao acessar as câmeras: " + err);
-    leitorAtivo = false;
-  });
+  atualizarContador(); // inicial
+  setInterval(atualizarContador, 1000); // atualiza a cada segundo
 }
+
+// Inicia o contador ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+  iniciarContadorFechamento();
+});
+
