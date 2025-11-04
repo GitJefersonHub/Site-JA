@@ -165,7 +165,7 @@ function iniciarContadorFechamento() {
     const restanteMs = limite - agora;
 
     if (restanteMs <= 0) {
-      contadorEl.textContent = "⏱️ Tempo encerrado: aguardando fechamento automático.";
+      contadorEl.textContent = "⏱️ Aguardando nova abertura.";
       return;
     }
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>QR Codes Personalizados</title>
@@ -59,8 +60,14 @@
     .btn-exportar:hover {
       background-color: #0056b3;
     }
+
+    .qr-box {
+      text-align: center;
+      page-break-inside: avoid;
+    }
   </style>
 </head>
+
 <body>
   <!-- Área que será convertida em PDF -->
   <div id="conteudoPDF">
@@ -68,16 +75,46 @@
     <div class="data-hora" id="dataHoraPDF"></div>
 
     <div class="qr-container">
-      <div class="qr-box"><div id="qr0"></div><p>Abertura</p></div>
-      <div class="qr-box"><div id="qr1"></div><p>1° Andar</p></div>
-      <div class="qr-box"><div id="qr2"></div><p>2° Andar</p></div>
-      <div class="qr-box"><div id="qr3"></div><p>3° Andar</p></div>
-      <div class="qr-box"><div id="qr4"></div><p>4° Andar</p></div>
-      <div class="qr-box"><div id="qr5"></div><p>5° Andar</p></div>
-      <div class="qr-box"><div id="qr6"></div><p>Externo A</p></div>
-      <div class="qr-box"><div id="qr7"></div><p>Externo B</p></div>
-      <div class="qr-box"><div id="qr8"></div><p>Externo C</p></div>
-      <div class="qr-box"><div id="qr9"></div><p>Fechamento</p></div>
+      <div class="qr-box">
+        <div id="qr0"></div>
+        <p>Abertura</p>
+      </div>
+      <div class="qr-box">
+        <div id="qr1"></div>
+        <p>1° Andar</p>
+      </div>
+      <div class="qr-box">
+        <div id="qr2"></div>
+        <p>2° Andar</p>
+      </div>
+      <div class="qr-box">
+        <div id="qr3"></div>
+        <p>3° Andar</p>
+      </div>
+      <div class="qr-box">
+        <div id="qr4"></div>
+        <p>4° Andar</p>
+      </div>
+      <div class="qr-box">
+        <div id="qr5"></div>
+        <p>5° Andar</p>
+      </div>
+      <div class="qr-box">
+        <div id="qr6"></div>
+        <p>Externo A</p>
+      </div>
+      <div class="qr-box">
+        <div id="qr7"></div>
+        <p>Externo B</p>
+      </div>
+      <div class="qr-box">
+        <div id="qr8"></div>
+        <p>Externo C</p>
+      </div>
+      <div class="qr-box">
+        <div id="qr9"></div>
+        <p>Fechamento</p>
+      </div>
 
       <!-- 🔧 Para adicionar mais QR Codes:
            1. Crie um novo <div class="qr-box"> com id="qr10", "qr11", etc.
@@ -129,12 +166,12 @@
       const elemento = document.getElementById("conteudoPDF");
 
       const opt = {
-        margin: 0.5, // Margem em polegadas
+        margin: [2, 10, 20, 10], // top, left, bottom, right (em mm)
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
+        html2canvas: { scale: 1.5 },
         jsPDF: {
-          unit: 'in',
-          format: 'letter', // Pode trocar para 'a4' se preferir
+          unit: 'mm',//Quando usar ajuste também margim
+          format: 'a4',//
           orientation: 'portrait'
         }
       };
@@ -145,6 +182,8 @@
         window.open(url, '_blank');
       });
     }
+
   </script>
 </body>
+
 </html>
