@@ -31,6 +31,7 @@ function editarPerfil() {
 
     document.getElementById('editNome').value = dados.nome;
     document.getElementById('editMatricula').value = dados.matricula;
+    document.getElementById('editPosto').value = dados.posto;
     document.getElementById('editTelefone').value = dados.telefone;
     document.getElementById('editEmail').value = dados.email;
     document.getElementById('editSenha').value = dados.senha;
@@ -84,11 +85,12 @@ function toggleSenha() {
 function salvarPerfil() {
   const novoNome = document.getElementById('editNome').value.trim();
   const novaMatricula = document.getElementById('editMatricula').value.trim();
+  const novoPosto = document.getElementById('editPosto').value.trim();
   const novoTelefone = document.getElementById('editTelefone').value.trim();
   const novoEmail = document.getElementById('editEmail').value.trim();
   const novaSenha = document.getElementById('editSenha').value.trim();
 
-  if (!novoNome || !novaMatricula || !novoTelefone || !novoEmail || !novaSenha) {
+  if (!novoNome || !novaMatricula || !novoPosto || !novoTelefone || !novoEmail || !novaSenha) {
     alert('Todos os campos devem ser preenchidos.');
     return;
   }
@@ -102,6 +104,7 @@ function salvarPerfil() {
   const novosDados = {
     nome: novoNome,
     matricula: novaMatricula,
+    posto: novoPosto,
     telefone: novoTelefone,
     email: novoEmail,
     senha: novaSenha

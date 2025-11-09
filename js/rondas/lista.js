@@ -2,6 +2,7 @@
 document.getElementById('boasVindas').textContent = gerarSaudacao(dados.nome);
 document.getElementById('infoNome').textContent = `🆔 Nome: ${dados.nome}`;
 document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${dados.matricula}`;
+document.getElementById('infoPosto').textContent = `🏢 Posto: ${dados.posto}`;
 document.getElementById('infoTelefone').textContent = `📞 Telefone: ${dados.telefone}`;
 document.getElementById('infoEmail').textContent = `📧 E-mail: ${dados.email}`;
 document.getElementById('infoSenha').textContent = `🔒 Senha: ${dados.senha}`;
@@ -22,12 +23,14 @@ function imprimirLista() {
       usuarioLogado &&
       user.nome === usuarioLogado.nome &&
       user.matricula === usuarioLogado.matricula &&
+      user.posto === usuarioLogado.posto &&
       user.email === usuarioLogado.email;
 
     printContent += `
       <li style="margin-bottom: 15px;">
         <strong>${index + 1}. ${user.nome}</strong> ${estaLogado ? '<span style="color: green;">(Logado)</span>' : ''}<br>
         Matrícula: ${user.matricula}<br>
+        Posto: ${user.posto}<br>
         Telefone: ${user.telefone}<br>
         E-mail: ${user.email}<br>
         Senha: ${user.senha}<br>

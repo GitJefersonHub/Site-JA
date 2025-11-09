@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('boasVindas').textContent = gerarSaudacao(dados.nome);
   document.getElementById('infoNome').textContent = `🆔 Nome: ${dados.nome}`;
   document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${dados.matricula}`;
+  document.getElementById('infoPosto').textContent = `🏢 Posto: ${dados.posto}`;
   document.getElementById('infoTelefone').textContent = `📞 Telefone: ${dados.telefone}`;
   document.getElementById('infoEmail').textContent = `📧 E-mail: ${dados.email}`;
   document.getElementById('infoSenha').textContent = `👁️ Senha: ${dados.senha}`;

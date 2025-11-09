@@ -37,6 +37,7 @@ function criarTabelaPonto() {
     <th>Localização</th>
     <th>Nome</th>
     <th>Matríc</th>
+    <th>Posto</th>
     <th>Observação</th>
   </tr>
 `;
@@ -45,7 +46,8 @@ function criarTabelaPonto() {
 
   const tbody = document.createElement('tbody');
   if (listaPonto.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="6">Nenhum registro de Ponto encontrado.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="8">Nenhum registro de Ponto encontrado.</td></tr>`;
+
   } else {
     listaPonto.forEach(item => {
       const { data, hora } = formatarDataHoraSeparado(item.dataHora || item.registro);
@@ -57,6 +59,7 @@ function criarTabelaPonto() {
   <td>${item.localizacao || 'Não informado'}</td>
   <td>${dadosUsuario.nome || '---'}</td>
   <td>${dadosUsuario.matricula || '---'}</td>
+  <td>${dadosUsuario.posto || '---'}</td>
   <td>${item.obs || 'Sem observação'}</td>
 `;
 
@@ -107,6 +110,7 @@ function criarJanelaImpressao(tipo, lista) {
             <th>Localização</th>
             <th>Nome</th>
             <th>Matríc</th>
+            <th>Posto</th>
             <th>Observação</th>
           </tr>
         </thead>
@@ -123,6 +127,7 @@ function criarJanelaImpressao(tipo, lista) {
         <td>${item.localizacao || 'Não informado'}</td>
         <td>${dadosUsuario.nome || '---'}</td>
         <td>${dadosUsuario.matricula || '---'}</td>
+        <td>${dadosUsuario.posto || '---'}</td>
         <td>${item.obs || 'Sem observação'}</td>
       </tr>
     `;
@@ -165,7 +170,7 @@ function criarJanelaImpressao(tipo, lista) {
           th, td {
             border: 1px solid #000;
             padding: 0.1rem;
-            font-size: 10pt;
+            font-size: 9pt;
             text-align: left;
           }
         }
