@@ -1,123 +1,242 @@
-/* Estilos Gerais */
+/* ============================ ESTILOS GERAIS ============================ */
 body {
-    background-color: black;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  padding: 0;
+  margin: 2%;
 }
 
-/* Estilo do Cabeçalho */
+/* ============================ CABEÇALHO (NAV) ============================ */
 nav {
-    color: white;
+  width: 100%;
+  text-align: center;
+  color: white;
 }
 
 nav .logo {
-    background-color: blue;
+  background-color: blue;
+  padding: 1vw;
 }
 
 nav .logo a {
-    color: white;
+  color: white;
+  font-size: clamp(0.9rem, 3vw, 5rem);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2vw;
+  padding: 1vw;
+  margin: 0;
 }
 
 nav ul li {
-    background-color: pink;
+  width: 30%;
+  padding: 1vw;
+  border-radius: 1vw;
+  background-color: pink;
 }
 
 nav ul li a {
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
 nav ul li a.disabled {
-    color: grey;
+  pointer-events: none;
+  color: grey;
 }
 
-/* Estilos para Títulos */
+/* ============================ TÍTULOS ============================ */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  text-align: center;
+  margin: 1vw 0;
+  font-size: clamp(0.7rem, 3vw, 5rem);
+}
+
 h1 {
-    color: white;
-    font-size: 170%;
+  color: white;
 }
 
 h2 {
-    color: yellow;
+  color: yellow;
 }
 
 h3 {
-    color: brown;
+  color: brown;
 }
 
 h4 {
-    color: white;
+  color: white;
 }
 
 h5 {
-    color: #007BFF;
+  color: #007BFF;
 }
 
-/* Estilos para Parágrafos */
+/* ============================ PARÁGRAFOS ============================ */
+.p1, .p2, .p3 {
+  font-size: clamp(0.6rem, 3vw, 5rem); /* Fonte responsiva */
+  margin-block: 1em;                   /* Espaçamento vertical uniforme */
+  text-indent: 2em;                    /* Recuo da primeira linha proporcional à fonte */
+  white-space: normal;                 /* Evita preservação de espaços extras */
+  overflow-wrap: break-word;          /* Quebra de linha segura para palavras longas */
+}
+
 .p1 {
-    color: gold;
+  text-align: justify;
+}
+.p2 {
+  text-align: justify;
+}
+.p3 {
+  text-align: left;
+}
+.p4 {
+  font-size: clamp(0.6rem, 3vw, 5rem);
+  text-align: left;
+  text-indent: 2em;
+}
+
+
+
+
+
+
+.p1 {
+  color: gold;
 }
 
 .p2 {
-    color: red;
+  color: red;
 }
 
 .p3 {
-    color: blue;
+  color: blue;
 }
 
-/* Estilos para os Botões */
-.btn-tecnologia:hover,
-.btn-serigrafia:hover {
-    background-color: #007BFF;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.p4 {
+  color: white;
 }
 
-.btn1,
-.btn2,
+/* ============================ BOTÕES ============================ */
 .btn-tecnologia,
-.btn-serigrafia {
-    animation: blinkAlert 1s infinite alternate;
-    color: white;
-    transition: transform 0.3s ease;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+.btn-serigrafia,
+.btn1,
+.btn2 {
+  width: 100%;
+  padding: 0.2vw 2vw;
+  margin: 2vw auto;
+  font-size: clamp(0.8rem, 3vw, 5rem);
+  border: none;
+  border-radius: 1vw;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  animation: blinkAlert 1s infinite alternate;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes blinkAlert {
-    0% {
-        background-color: green;
-    }
-
-    100% {
-        background-color: white;
-        color: blue;
-    }
+.btn-tecnologia:hover,
+.btn-serigrafia:hover,
+.btn1:hover,
+.btn2:hover {
+  background-color: #007BFF;
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .btn1:hover,
 .btn2:hover {
-    background-color: #45a049;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: #45a049;
 }
 
 .btn3 {
-    background-color: #28A745;
-    color: white;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: inline-block;
+  padding: 1vw 10vw;
+  margin: 2vw;
+  font-size: clamp(0.2rem, 3vw, 5rem);
+  border: none;
+  border-radius: 1vw;
+  background-color: #28A745;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn3:hover {
-    background-color: #218838;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: #218838;
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilos para Containers */
-.container-descriçãorifa {
-    color: white;
+/* ============================ ANIMAÇÃO DE ALERTA ============================ */
+@keyframes blinkAlert {
+  0% {
     background-color: green;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  100% {
+    background-color: white;
+    color: blue;
+  }
 }
 
-/* Estilo do Rodapé */
+/* ============================ CONTAINERS ============================ */
+.container-descriçãorifa {
+  width: 95%;
+  margin: 2vw auto;
+  padding: 2vw;
+  background-color: #1e1e1e;
+  border-radius: 1vw;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  color: #f5f5f5;
+  font-size: clamp(1rem, 5vw, 8rem);
+}
+
+.container-descriçãorifa dl {
+  margin: 0;
+  padding: 0;
+}
+
+.container-descriçãorifa dt {
+  font-weight: bold;
+  margin-top: 2vw;
+  color: #ffd700;
+  font-size: clamp(0.7rem, 3vw, 5rem);
+}
+
+.container-descriçãorifa dd {
+  margin-left: 2vw;
+  margin-bottom: 2vw;
+  text-align: justify;
+  line-height: 1.5;
+  color: #e0e0e0;
+  font-size: clamp(0.6rem, 3vw, 5rem);
+  text-indent: 1.5em;
+  /* Recuo proporcional à fonte */
+}
+
+/* ============================ RODAPÉ ============================ */
 footer {
-    background-color: blue;
-    color: white;
+  text-align: center;
+  margin: 2vw;
+  padding: 1vw;
+  border-radius: 1vw;
+  font-size: clamp(0.2rem, 3vw, 5rem);
+  background-color: blue;
+  color: white;
 }
