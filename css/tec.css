@@ -1,51 +1,62 @@
 /* ============================ ESTILOS GERAIS ============================ */
 body {
   background-color: black;
-  display: flex;
-  flex-direction: column;
-
   justify-content: center;
-  padding: 0;
+  align-items: center;
   margin: 2%;
+  font-size: clamp(0.9rem, 4vw, 8rem);
+  /* Base geral maior */
 }
 
 /* ============================ CABEÇALHO (NAV) ============================ */
 nav {
   width: 100%;
   text-align: center;
-  color: white;
-}
-
-nav .logo {
-  background-color: blue;
-  padding: 1vw;
-}
-
-nav .logo a {
-  color: white;
-  font-size: clamp(0.9rem, 3vw, 5rem);
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 2vw;
-  padding: 1vw;
-  margin: 0;
+  padding: 0.2vw;
+  margin: 0 2%;
 }
 
 nav ul li {
-  width: 30%;
-  padding: 1vw;
+  flex: 1;
+  /* Cada li ocupa espaço proporcional */
+  margin: 0 2%;
+  /* Espaçamento fluido */
   border-radius: 1vw;
   background-color: pink;
+  display: flex;
+  /* Permite o botão ocupar toda a largura */
+  justify-content: center;
+  align-items: center;
 }
 
 nav ul li a {
+  display: block;
+  /* Faz o link se comportar como botão */
+  width: 100%;
+  /* Ocupa toda a largura do li */
+  padding: clamp(0.5rem, 2vw, 3rem);
+  /* Padding adaptável */
   text-decoration: none;
   color: white;
+  font-size: clamp(1rem, 4vw, 8rem);
+  /* Fonte cresce com a tela */
+  border-radius: 1vw;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+nav ul li a:hover {
+  background-color: #007BFF;
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 nav ul li a.disabled {
@@ -61,7 +72,7 @@ h4,
 h5 {
   text-align: center;
   margin: 1vw 0;
-  font-size: clamp(0.7rem, 3vw, 5rem);
+  font-size: clamp(1rem, 5vw, 10rem);
 }
 
 h1 {
@@ -85,33 +96,24 @@ h5 {
 }
 
 /* ============================ PARÁGRAFOS ============================ */
-.p1, .p2, .p3 {
-  font-size: clamp(0.6rem, 3vw, 5rem); /* Fonte responsiva */
-  margin-block: 1em;                   /* Espaçamento vertical uniforme */
-  text-indent: 2em;                    /* Recuo da primeira linha proporcional à fonte */
-  white-space: normal;                 /* Evita preservação de espaços extras */
-  overflow-wrap: break-word;          /* Quebra de linha segura para palavras longas */
-}
-
-.p1 {
-  text-align: justify;
-}
-.p2 {
-  text-align: justify;
-}
-.p3 {
-  text-align: left;
-}
+.p1,
+.p2,
+.p3,
 .p4 {
-  font-size: clamp(0.6rem, 3vw, 5rem);
-  text-align: left;
+  hyphens: auto;
+  font-size: clamp(0.7rem, 5vw, 10rem);
   text-indent: 2em;
 }
 
+.p1,
+.p2,
+.p4 {
+  text-align: justify;
+}
 
-
-
-
+.p3 {
+  text-align: left;
+}
 
 .p1 {
   color: gold;
@@ -134,10 +136,10 @@ h5 {
 .btn-serigrafia,
 .btn1,
 .btn2 {
-  width: 100%;
-  padding: 0.2vw 2vw;
-  margin: 2vw auto;
-  font-size: clamp(0.8rem, 3vw, 5rem);
+  width: 84%;
+  padding: 0.80vw 2vw;
+  margin: 1vw auto;
+  font-size: clamp(0.8rem, 5vw, 10rem);
   border: none;
   border-radius: 1vw;
   text-align: center;
@@ -163,11 +165,12 @@ h5 {
 }
 
 .btn3 {
+  width: 95%;
   text-align: center;
   display: inline-block;
   padding: 1vw 10vw;
   margin: 2vw;
-  font-size: clamp(0.2rem, 3vw, 5rem);
+  font-size: clamp(1rem, 4vw, 8rem);
   border: none;
   border-radius: 1vw;
   background-color: #28A745;
@@ -204,7 +207,7 @@ h5 {
   border-radius: 1vw;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   color: #f5f5f5;
-  font-size: clamp(1rem, 5vw, 8rem);
+  font-size: clamp(0.7rem, 5vw, 10rem);
 }
 
 .container-descriçãorifa dl {
@@ -216,18 +219,18 @@ h5 {
   font-weight: bold;
   margin-top: 2vw;
   color: #ffd700;
-  font-size: clamp(0.7rem, 3vw, 5rem);
+  font-size: clamp(0.7rem, 5vw, 10rem);
 }
 
 .container-descriçãorifa dd {
+  hyphens: auto;
   margin-left: 2vw;
   margin-bottom: 2vw;
   text-align: justify;
   line-height: 1.5;
   color: #e0e0e0;
-  font-size: clamp(0.6rem, 3vw, 5rem);
-  text-indent: 1.5em;
-  /* Recuo proporcional à fonte */
+  font-size: clamp(0.7rem, 5vw, 10rem);
+  text-indent: 2em;
 }
 
 /* ============================ RODAPÉ ============================ */
@@ -236,7 +239,7 @@ footer {
   margin: 2vw;
   padding: 1vw;
   border-radius: 1vw;
-  font-size: clamp(0.2rem, 3vw, 5rem);
+  font-size: clamp(0.9rem, 4vw, 8rem);
   background-color: blue;
   color: white;
 }
