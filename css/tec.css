@@ -92,7 +92,7 @@ h5 { color: #007BFF; }
 .btn-serigrafia,
 .btn1,
 .btn2 {
-  width: 100%;
+  width: 98%;
   margin: 1%;
   padding: 1%;
   font-size: clamp(1rem, 5vw, 3rem);

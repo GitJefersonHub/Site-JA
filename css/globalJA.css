@@ -1,1238 +1,325 @@
-/* Telas peq*/
-@media (max-width: 768px) {
-
-	/* Estilos Gerais */
-	body {
-		justify-content: center;
-		align-items: center;
-	}
-
-	/* Container do cabeçalho */
-	.container-nav {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		border-radius: 10px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	}
-
-	/* Estilo do Cabeçalho */
-	nav {
-		width: 100%;
-		text-align: center;
-	}
-
-	nav ul {
-		list-style: none;
-		display: flex;
-		justify-content: center;
-		padding: 4px;
-		margin: 0 1%;
-	}
-
-	nav ul li {
-		width: 40%;
-		margin: 0 20px;
-		border-radius: 4px;
-	}
-
-	nav ul li a {
-		text-decoration: none;
-	}
-
-	nav ul li a.disabled {
-		pointer-events: none;
-	}
-
-	.container-esquerdo {
-		display: flex;
-		justify-content: flex-start;
-		flex-wrap: wrap;
-		width: 100%;
-		box-sizing: border-box;
-	}
-
-	/* Estilos para os Botões do cabeçalho nav*/
-	.btn-tecnologia,
-	.btn-serigrafia {
-		width: 90%;
-		font-size: 4.0vw;
-		padding: 2%;
-		margin: 2%;
-		display: inline-block;
-		cursor: pointer;
-		border-radius: 4px;
-		text-align: center;
-	}
-
-	/* Estilo da Imagem Jeferson Alves */
-	.containerimgJA {
-		align-items: flex-start;
-		margin: 1%;
-
-		img {
-			width: 35%;
-			display: block;
-			margin: 0 auto;
-			border-radius: 10px;
-		}
-	}
-
-	/* 🌤️ Tema Claro (padrão) */
-	.container-weather {
-		width: 100%;
-		margin: 1% auto;
-	}
-
-	.weather-info {
-		hyphens: auto;
-		text-align: justify;
-		border-radius: 10px;
-		font-size: 4.8vw;
-		animation: skyPulse 12s ease infinite;
-		padding: 4px;
-	}
-
-	/* Animação compartilhada */
-	@keyframes skyPulse {
-		0% {
-			background-position: 0% 50%;
-		}
-
-		50% {
-			background-position: 100% 50%;
-		}
-
-		100% {
-			background-position: 0% 50%;
-		}
-	}
-
-	.btn-local {
-		width: 90%;
-		display: block;
-		margin: 10px auto;
-		padding: 6px 10px;
-		border: none;
-		border-radius: 10px;
-		font-size: 4vw;
-		cursor: pointer;
-	}
-
-	/* Estilos para Containers */
-	.container-trabalhando {
-		hyphens: auto;
-		text-align: justify;
-		border-radius: 10px;
-		margin: 1% auto;
-		padding: 4px;
-		overflow-x: auto;
-	}
-
-	.container-tecnologia {
-		border-radius: 10px;
-		margin: 1% auto;
-		overflow-x: auto;
-	}
-
-	.container-tecnologias-exploradas {
-		border-radius: 10px;
-		margin: 1% auto;
-		overflow-x: auto;
-	}
-
-	/* Estilo das colunas */
-	.row {
-		display: flex;
-		justify-content: space-between;
-		flex-wrap: wrap;
-	}
-
-	.column {
-		hyphens: auto;
-		width: 50%;
-		font-size: 3.0vw;
-		box-sizing: border-box;
-	}
-
-	ul {
-		list-style-type: disc;
-	}
-
-	li {
-		margin-bottom: 0%;
-	}
-
-	.container-atualizando {
-		width: 100%;
-		border-radius: 10px;
-		overflow-x: auto;
-		font-size: 4.5vw;
-		margin: 1% auto;
-		padding-left: 2%;
-	}
-
-	.container-serigrafia {
-		margin: 1%;
-		padding: 4px;
-		overflow-x: auto;
-	}
-
-	.container-habilidades {
-		width: 100%;
-		border-radius: 10px;
-		padding-left: 4%;
-		overflow-x: auto;
-		font-size: 4.6vw;
-	}
-
-	.container-casoseja {
-		hyphens: auto;
-		text-align: justify;
-		border-radius: 10px;
-		margin: 1% auto;
-		padding: 4px;
-		overflow-x: auto;
-	}
-
-	.container-doações {
-		border-radius: 10px;
-		padding: 1%;
-		overflow-x: auto;
-		font-size: 4.6vw;
-		margin: 1%;
-	}
-
-	.container-gestores {
-		hyphens: auto;
-		text-align: justify;
-		border-radius: 10px;
-		padding: 2%;
-		overflow-x: auto;
-	}
-
-	/* Container que agrupa as imagens lado a lado */
-	.container-gestores section {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: flex-start;
-		gap: 2%;
-		flex-wrap: wrap;
-		margin: 1% auto;
-	}
-
-	/* Containers individuais de imagem */
-	.containerimgSFV {
-		width: 48%;
-	}
-
-	.containerimgSamuray {
-		width: 48%;
-	}
-
-	.containerimgMetropoles {
-		width: 48%;
-	}
-
-	.containerimgPD {
-		width: 48%;
-	}
-
-	.containerimgsite {
-		width: 48%;
-	}
-
-	.containerimgqrcoderondas {
-		width: 48%;
-	}
-
-	/* Estilo da imagem container gestores*/
-	img {
-		width: 100%;
-		border-radius: 10px;
-		display: block;
-	}
-
-	/* Estilo da Imagem do qrcodecx*/
-	.container-qrcodecx {
-		width: 100%;
-		margin: 1% auto;
-	}
-
-	.container-reservado {
-		margin: 1% auto;
-		overflow-x: auto;
-		font-size: 4.0vw;
-	}
-
-	.container-formulario {
-		border-radius: 10px;
-		margin: 10px auto;
-		padding: 5px;
-		overflow-x: auto;
-	}
-
-	/* Estilo do Formulário */
-	.form-container {
-		padding: 20px;
-		border-radius: 8px;
-	}
-
-	.form-field {
-		margin-bottom: 20px;
-	}
-
-	.form-field label {
-		display: block;
-		margin-bottom: 5px;
-		font-weight: bold;
-		font-size: 4.8vw;
-	}
-
-	.form-field input,
-	.form-field textarea {
-		font-family: 'Arial', sans-serif;
-		width: 100%;
-		padding: 6px;
-		border-radius: 5px;
-		font-size: 4.8vw;
-	}
-
-	/* Estilos para Títulos */
-	h1,
-	h2,
-	h3,
-	h4,
-	h5 {
-		font-size: 5.0vw;
-		text-align: center;
-		margin: 0.5em 0;
-	}
-
-	/* Estilos para Parágrafos */
-	.p1 {
-		hyphens: auto;
-		text-align: justify;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 4.8vw;
-	}
-
-	.p2 {
-		hyphens: auto;
-		text-align: justify;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 4.8vw;
-	}
-
-	.p3 {
-		hyphens: auto;
-		text-align: left;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 4.8vw;
-	}
-
-	.p4 {
-		hyphens: auto;
-		text-align: justify;
-		font-size: 4.8vw;
-	}
-
-	.pass {
-		text-align: right;
-		font-size: 4.8vw;
-	}
-
-	/*Estilos para botões*/
-	.btn1,
-	.btn2 {
-		width: 90%;
-		border: none;
-		padding: 1% 10%;
-		text-align: center;
-		text-decoration: none;
-		cursor: pointer;
-		border-radius: 10px;
-		margin-left: 5%;
-		margin-right: 5%;
-		font-size: 5.0vw;
-	}
-
-	.btn1:hover,
-	.btn2:hover {
-		transform: scale(1.1);
-	}
-
-	.btn3 {
-		border: none;
-		padding: 5% 10%;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 5.0vw;
-		margin: 2%;
-		cursor: pointer;
-		border-radius: 4%;
-	}
-
-	.btn3:hover {
-		transform: scale(1.1);
-	}
-
-	.btn-enviar {
-		text-align: center;
-		display: flex;
-		font-size: 4.4vw;
-		margin: 2%;
-		cursor: pointer;
-		border-radius: 6px;
-	}
-
-	/* Estilo do Rodapé */
-	footer {
-		text-align: center;
-		margin: 1%;
-		padding: 1%;
-		border-radius: 8px;
-		font-size: 4.1vw;
-	}
+/* ESTILOS GERAIS */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* Telas médias */
-@media only screen and (min-width: 769px) and (max-width: 1200px) {
+/* CABEÇALHO (NAV) */
+nav {
+    width: 100%;
+    text-align: center;
+}
 
-	/* Estilos Gerais */
-	body {
-		justify-content: center;
-		align-items: center;
-	}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    /* simplificado */
+    margin: 0 2%;
+}
 
-	/* Container do cabeçalho */
-	.container-nav {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		border-radius: 10px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	}
+nav ul li {
+    flex: 1;
+    margin: 2%;
+    padding: 0;
+    /* simplificado */
+    border-radius: 1vw;
+    background-color: #ff4081;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-	/* Estilo do Cabeçalho */
-	nav {
-		width: 98%;
-		text-align: center;
-	}
+nav ul li a {
+    display: block;
+    width: 100%;
+    padding: clamp(0.2rem, 2vw, 1rem);
+    text-decoration: none;
+    color: white;
+    font-size: clamp(0.4rem, 4vw, 2rem);
+    border-radius: 1vw;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
 
-	nav ul {
-		list-style: none;
-		display: flex;
-		justify-content: center;
-		padding: 4px;
-		margin: 0 1%;
-	}
+nav ul li a:hover {
+    background-color: #007BFF;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
-	nav ul li {
-		width: 44%;
-		margin: 0 20px;
-		border-radius: 6px;
-		padding: 1%;
-	}
+nav ul li a.disabled {
+    pointer-events: none;
+}
 
-	nav ul li a {
-		text-decoration: none;
-	}
+/* Container esquerdo */
+.container-esquerdo {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+}
 
-	nav ul li a.disabled {
-		pointer-events: none;
-	}
+/* Imagem Jeferson Alves */
+.containerimgJA {
+    align-items: flex-start;
+    margin: 1%;
+}
 
-	/* Estilos para os Botões do cabeçalho nav */
-	.btn-tecnologia,
-	.btn-serigrafia {
-		width: 98%;
-		font-size: 2.6vw;
-		padding: 1%;
-		margin: 0%;
-		display: inline-block;
-		cursor: pointer;
-		border-radius: 6px;
-	}
-
-	.container-esquerdo {
-		display: flex;
-		justify-content: flex-start;
-		flex-wrap: wrap;
-		width: 100%;
-		border-radius: 10px;
-		box-sizing: border-box;
-	}
-
-	/* Estilo da Imagem Jeferson Alves */
-	.containerimgJA {
-		width: 44%;
-		margin: 1%;
-	}
-
-	/* Estilo da Imagem */
-	img {
-		width: 100%;
-		align-items: flex-start;
-		border-radius: 20px;
-	}
-
-	/* 🌤️ Tema Claro (padrão) */
-	.container-weather {
-		width: 51%;
-		margin: 1%;
-	}
-
-	.weather-info {
-		width: 100%;
-		hyphens: auto;
-		text-align: justify;
-		padding: 4px;
-		border-radius: 20px;
-		font-size: 2.0vw;
-		animation: skyPulse 12s ease infinite;
-	}
-
-	/* 🌙 Tema Escuro */
-	body.tema-escuro .weather-info {
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-	}
-
-	/* Animação compartilhada */
-	@keyframes skyPulse {
-		0% {
-			background-position: 0% 50%;
-		}
-
-		50% {
-			background-position: 100% 50%;
-		}
-
-		100% {
-			background-position: 0% 50%;
-		}
-	}
-
-	.btn-local {
-		width: 90%;
-		display: block;
-		margin: 10px auto;
-		padding: 6px 10px;
-		border: none;
-		border-radius: 10px;
-		font-size: 2vw;
-		cursor: pointer;
-	}
-
-	.container-trabalhando {
-		width: 34%;
-		border-radius: 20px;
-		margin: 1%;
-		padding: 4px;
-	}
-
-	.container-tecnologia {
-		width: 62%;
-		padding: 2px;
-	}
-
-	.container-tecnologias-exploradas {
-		border-radius: 20px;
-		width: 80%;
-		margin: 1% auto;
-	}
-
-	/* Estilo das colunas */
-	.row {
-		display: flex;
-		justify-content: space-between;
-		margin: 0 auto;
-		flex-wrap: wrap;
-	}
-
-	.column {
-		hyphens: auto;
-		width: 50%;
-		font-size: 2.0vw;
-		box-sizing: border-box;
-	}
-
-	ul {
-		list-style-type: disc;
-	}
-
-	li {
-		margin-bottom: 0%;
-	}
-
-	.container-atualizando {
-		width: 74%;
-		margin: 1% auto;
-		padding-left: 6%;
-		font-size: 3.6vw;
-		border-radius: 20px;
-	}
-
-	.container-serigrafia {
-		width: 60%;
-		margin: 1%;
-	}
-
-	.container-habilidades {
-		width: 38%;
-		border-radius: 20px;
-		margin: 1% auto;
-		font-size: 2.8vw;
-	}
-
-	.container-casoseja {
-		hyphens: auto;
-		width: 80%;
-		text-align: justify;
-		margin: 1% auto;
-		padding: 4px;
-		overflow-x: auto;
-	}
-
-	.container-doações {
-		width: 80%;
-		padding: 4px;
-		overflow-x: auto;
-		font-size: 2.8vw;
-		margin: 1% auto;
-		border-radius: 20px;
-	}
-
-	.container-gestores {
-		width: 78%;
-		hyphens: auto;
-		text-align: justify;
-		border-radius: 20px;
-		padding: 2%;
-		overflow-x: auto;
-		margin: 1% auto;
-	}
-
-	/* Container que agrupa as imagens lado a lado */
-	.container-gestores section {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: flex-start;
-		gap: 2%;
-		flex-wrap: wrap;
-		margin: 1% auto;
-	}
-
-	/* Containers individuais de imagem */
-	.containerimgSFV {
-		width: 48%;
-	}
-
-	.containerimgSamuray {
-		width: 48%;
-	}
-
-	.containerimgMetropoles {
-		width: 48%;
-	}
-
-	.containerimgPD {
-		width: 48%;
-	}
-
-	.containerimgsite {
-		width: 48%;
-	}
-
-	.containerimgqrcoderondas {
-		width: 48%;
-	}
-
-	/* Estilo da imagem container gestores*/
-	img {
-		width: 100%;
-		border-radius: 20px;
-		display: block;
-	}
-
-	/* Estilo da Imagem do qrcodecx*/
-	.container-qrcodecx {
-		width: 32%;
-		margin: 1% auto;
-	}
-
-	.container-reservado {
-		width: 80%;
-		margin: 1% auto;
-		border-radius: 20px;
-	}
-
-	/* Estilos para Títulos */
-	h1,
-	h2,
-	h3,
-	h4,
-	h5 {
-		font-size: 3.8vw;
-		text-align: center;
-		margin: 0.5em 0;
-	}
-
-	/* Estilos para Parágrafos */
-	.p1 {
-		hyphens: auto;
-		text-align: justify;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 3.2vw;
-	}
-
-	.p2 {
-		hyphens: auto;
-		text-align: justify;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 3.2vw;
-	}
-
-	.p3 {
-		hyphens: auto;
-		text-align: left;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 3.2vw;
-	}
-
-	.p4 {
-		hyphens: auto;
-		text-align: justify;
-		font-size: 3.2vw;
-	}
-
-	.pass {
-		text-align: right;
-		font-size: 3.2vw;
-	}
-
-	.btn1,
-	.btn2 {
-		width: 90%;
-		border: none;
-		padding: 1% 10%;
-		text-align: center;
-		text-decoration: none;
-		cursor: pointer;
-		border-radius: 10px;
-		margin-left: 5%;
-		margin-right: 5%;
-		font-size: 3.0vw;
-	}
-
-	.btn1:hover,
-	.btn2:hover {
-		transform: scale(1.1);
-	}
-
-	.btn3 {
-		border: none;
-		padding: 5% 10%;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 5.0vw;
-		margin: 2%;
-		cursor: pointer;
-		border-radius: 4%;
-	}
-
-	.btn3:hover {
-		transform: scale(1.1);
-	}
-
-	.btn-enviar {
-		text-align: center;
-		display: flex;
-		font-size: 2.6vw;
-		margin: 2%;
-		cursor: pointer;
-		border-radius: 6px;
-	}
-
-	.container-formulario {
-		width: 80%;
-		border-radius: 20px;
-		margin: 10px auto;
-		padding: 5px;
-		overflow-x: auto;
-	}
-
-	/* Estilo do Formulário */
-	.form-container {
-		padding: 20px;
-		border-radius: 8px;
-	}
-
-	.form-field {
-		margin-bottom: 20px;
-	}
-
-	.form-field label {
-		display: block;
-		margin-bottom: 5px;
-		font-weight: bold;
-		font-size: 2.4vw;
-	}
-
-	.form-field input,
-	.form-field textarea {
-		font-family: 'Arial', sans-serif;
-		width: 100%;
-		padding: 6px;
-		border-radius: 5px;
-		font-size: 2.8vw;
-	}
-
-	/* Estilo do Rodapé */
-	footer {
-		text-align: center;
-		margin: 1%;
-		padding: 1%;
-		border-radius: 4px;
-		font-size: 4.1vw;
-	}
+.containerimgJA img {
+    width: clamp(120px, 35%, 300px);
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
 }
 
 
-/* Telas grandes*/
-@media only screen and (min-width: 1201px) {
+.container-weather {
+    width: 100%;
+    margin: 1% auto;
+}
 
-	/* Estilos Gerais */
-	body {
-		justify-content: center;
-		align-items: center;
+.weather-info {
+    hyphens: auto;
+    text-align: justify;
+    border-radius: 10px;
+    font-size: clamp(0.2rem, 4.8vw, 2.5rem);
+    animation: skyPulse 12s ease infinite;
+    padding: 4px;
+}
 
-	}
+/* Animação */
+@keyframes skyPulse {
+    0% {
+        background-position: 0% 50%;
+    }
 
-	/* Container do cabeçalho */
-	.container-nav {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		border-radius: 20px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	}
+    50% {
+        background-position: 100% 50%;
+    }
 
-	/* Estilo do Cabeçalho */
-	nav {
-		width: 98%;
-		text-align: center;
-		padding: 2px;
-	}
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
-	nav ul {
-		list-style: none;
-		display: flex;
-		justify-content: center;
-		border-radius: 10px;
-		padding: 4px;
-		margin: 0 1%;
-	}
+.btn-local {
+    width: 90%;
+    display: block;
+    margin: 10px auto;
+    padding: clamp(0.5rem, 2vw, 2rem);
+    border: none;
+    border-radius: 10px;
+    font-size: clamp(0.4rem, 4.5vw, 2.5rem);
+    cursor: pointer;
+}
 
-	nav ul li {
-		width: 40%;
-		margin: 0 10px;
-		border-radius: 10px;
-		padding: 4px;
-	}
+/* Containers */
+.container-trabalhando,
+.container-tecnologia,
+.container-tecnologias-exploradas,
+.container-serigrafia,
+.container-casoseja,
+.container-doações,
+.container-gestores,
+.container-reservado,
+.container-serigrafia,
+.container-atualizando,
+.container-habilidades,
+.container-formulario {
+    border-radius: 10px;
+    margin: 1% auto;
+    padding: 4px;
+    overflow-x: auto;
+    font-size: clamp(0.4rem, 4.5vw, 2.5rem);
+}
 
-	nav ul li a {
-		text-decoration: none;
-	}
+/* Imagens gestores */
+.container-gestores section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2%;
+    flex-wrap: wrap;
+    margin: 1% auto;
+}
 
-	nav ul li a.disabled {
-		pointer-events: none;
-	}
+.containerimgSFV,
+.containerimgSamuray,
+.containerimgMetropoles,
+.containerimgPD,
+.containerimgsite,
+.containerimgqrcoderondas {
+    width: 48%;
+}
 
-	/* Estilos para os Botões do cabeçalho nav */
-	.btn-tecnologia,
-	.btn-serigrafia {
-		width: 94%;
-		font-size: 2.0vw;
-		padding: 1%;
-		margin: 0%;
-		display: inline-block;
-		cursor: pointer;
-		border-radius: 8px;
-	}
+/* Colunas */
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 
-	.container-esquerdo {
-		width: 100%;
-		display: flex;
-		justify-content: flex-start;
-		flex-wrap: wrap;
-		box-sizing: border-box;
-	}
+.column {
+    hyphens: auto;
+    font-size: clamp(0.7rem, 3vw, 2rem);
+    box-sizing: border-box;
+    width: 100%;
+}
 
-	/* Estilo da Imagem Jeferson Alves */
-	.containerimgJA {
-		width: 31%;
-		margin: 8px;
-	}
+ul {
+    list-style-type: disc;
+}
 
-	/* Estilo da Imagem */
-	img {
-		width: 100%;
-		align-items: flex-start;
-		border-radius: 20px;
-	}
+li {
+    margin-bottom: 0;
+}
+/**/
+img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+}
 
-	/* 🌤️ Tema Claro (padrão) */
-	.container-weather {
-		width: 30%;
-		margin: 8px;
-	}
+/* Qrcode */
+.container-qrcodecx {
+    width: 100%;
+    margin: 1% auto;
+}
 
-	.weather-info {
-		width: 100%;
-		hyphens: auto;
-		text-align: justify;
-		border-radius: 20px;
-		font-size: 1.4vw;
-		animation: skyPulse 12s ease infinite;
-		padding: 4px;
-	}
+/* Formulário */
+.form-container {
+    padding: 20px;
+    border-radius: 8px;
+}
 
-	/* 🌙 Tema Escuro */
-	body.tema-escuro .weather-info {
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-	}
+.form-field {
+    margin-bottom: 20px;
+}
 
-	/* Animação compartilhada */
-	@keyframes skyPulse {
-		0% {
-			background-position: 0% 50%;
-		}
+.form-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: clamp(1rem, 4.8vw, 2.5rem);
+}
 
-		50% {
-			background-position: 100% 50%;
-		}
+.form-field input,
+.form-field textarea {
+    font-family: 'Arial', sans-serif;
+    width: 100%;
+    padding: 6px;
+    border-radius: 5px;
+    font-size: clamp(1rem, 4.8vw, 2.5rem);
+    border: 1px solid;
+}
 
-		100% {
-			background-position: 0% 50%;
-		}
-	}
+/* TÍTULOS */
+h1,
+h2,
+h3,
+h4,
+h5 {
+    text-align: center;
+    margin: 1vw 0;
+    font-size: clamp(1rem, 6vw, 3.5rem);
+}
 
-	.btn-local {
-		width: 90%;
-		display: block;
-		margin: 10px auto;
-		padding: 6px 10px;
-		border: none;
-		border-radius: 10px;
-		font-size: 1.6vw;
-		cursor: pointer;
-	}
+/* PARÁGRAFOS */
+.p1,
+.p2,
+.p3,
+.p4 {
+    hyphens: auto;
+    font-size: clamp(1rem, 5vw, 2.5rem);
+    text-indent: 2em;
+    margin: 2%;
+}
 
-	/* Espaçamento personalizado entre os containers */
-	.container-trabalhando {
-		width: 34%;
-		border-radius: 20px;
-		padding: 4px;
-		margin: 8px;
-	}
+.p1,
+.p2,
+.p4 {
+    text-align: justify;
+}
 
-	.container-tecnologia {
-		width: 80%;
-		margin: 1% auto;
-	}
+.p3 {
+    text-align: left;
+}
 
-	.container-tecnologias-exploradas {
-		border-radius: 20px;
-		width: 80%;
-		margin: 1% auto;
-	}
+.pass {
+    text-align: right;
+}
 
-	/* Estilo das colunas */
-	.row {
-		display: flex;
-		justify-content: space-between;
-		margin: 0 auto;
-		flex-wrap: wrap;
-	}
+/* BOTÕES */
+.btn-tecnologia,
+.btn-serigrafia,
+.btn1,
+.btn2 {
+    width: 98%;
+    margin: 1%;
+    padding: 1%;
+    font-size: clamp(1rem, 5vw, 3rem);
+    border: none;
+    border-radius: 1vw;
+    text-align: center;
+    cursor: pointer;
+    animation: blinkAlert 1s infinite alternate;
+    transition: transform 0.3s ease;
+}
 
-	.column {
-		hyphens: auto;
-		width: 50%;
-		font-size: 2.0vw;
-		box-sizing: border-box;
-	}
+.btn-tecnologia:hover,
+.btn-serigrafia:hover,
+.btn1:hover,
+.btn2:hover {
+    transform: scale(1.1);
+}
 
-	ul {
-		list-style-type: disc;
-	}
+.btn3 {
+    text-align: center;
+    display: inline-block;
+    padding: 1%;
+    margin: 1%;
+    font-size: clamp(0.4rem, 4vw, 2rem);
+    border: none;
+    border-radius: 1vw;
+    cursor: pointer;
+}
 
-	li {
-		margin-bottom: 0%;
-	}
+.btn3:hover {
+    transform: scale(1.1);
+}
 
-	.container-atualizando {
-		width: 60%;
-		margin: 1% auto;
-		padding-left: 6%;
-		font-size: 2.6vw;
-		border-radius: 20px;
-	}
+.btn-enviar {
+    text-align: center;
+    display: flex;
+    font-size: 4.4vw;
+    margin: 2%;
+    cursor: pointer;
+    border-radius: 6px;
+}
 
-	.container-casoseja {
-		hyphens: auto;
-		width: 80%;
-		text-align: justify;
-		margin: 1% auto;
-		padding: 4px;
-		overflow-x: auto;
-	}
+.btn-enviar {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
 
-	/* Estilo da Imagem do qrcodecx*/
-	.container-qrcodecx {
-		width: 32%;
-		margin: 1% auto;
-	}
+/* ANIMAÇÃO DE ALERTA */
 
-	.container-doações {
-		width: 80%;
-		padding: 1%;
-		overflow-x: auto;
-		font-size: 2.8vw;
-		margin: 1% auto;
-		border-radius: 20px;
-	}
+.form-field input,
+.form-field textarea {
+    border: 1px solid;
+}
 
-	.container-gestores {
-		width: 78%;
-		hyphens: auto;
-		text-align: justify;
-		border-radius: 20px;
-		padding: 2%;
-		overflow-x: auto;
-		margin: 1% auto;
-	}
-
-	/* Container que agrupa as imagens lado a lado */
-	.container-gestores section {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: flex-start;
-		gap: 2%;
-		flex-wrap: wrap;
-		margin: 1% auto;
-	}
-
-	/* Containers individuais de imagem */
-	.containerimgSFV {
-		width: 48%;
-	}
-
-	.containerimgSamuray {
-		width: 48%;
-	}
-
-	.containerimgMetropoles {
-		width: 48%;
-	}
-
-	.containerimgPD {
-		width: 48%;
-	}
-
-	.containerimgsite {
-		width: 48%;
-	}
-
-	.containerimgqrcoderondas {
-		width: 48%;
-	}
-
-	/* Estilo da imagem container gestores*/
-	img {
-		width: 100%;
-		border-radius: 10%;
-		display: block;
-	}
-
-
-	/* Estilo da Imagem do qrcodecx*/
-	.container-qrcodecx {
-		width: 30%;
-		margin: 1% auto;
-	}
-
-	.container-serigrafia {
-		width: 66%;
-	}
-
-	.container-habilidades {
-		width: 30%;
-		border-radius: 20px;
-		font-size: 2.0vw;
-		margin: 1%;
-		padding: 4px;
-	}
-
-	.container-reservado {
-		width: 80%;
-		border-radius: 20px;
-		margin: 1% auto;
-	}
-
-	/* Estilos para Títulos */
-	h1,
-	h2,
-	h3,
-	h4,
-	h5 {
-		font-size: 3.6vw;
-		text-align: center;
-		margin: 0.5em 0;
-	}
-
-	/* Estilos para Parágrafos */
-	.p1 {
-		hyphens: auto;
-		text-align: justify;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 3.2vw;
-	}
-
-	.p2 {
-		hyphens: auto;
-		text-align: justify;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 3.2vw;
-	}
-
-	.p3 {
-		hyphens: auto;
-		text-align: left;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 3.2vw;
-	}
-
-	.p4 {
-		hyphens: auto;
-		text-align: justify;
-		font-size: 3.2vw;
-	}
-
-	.pass {
-		text-align: right;
-		font-size: 3.2vw;
-	}
-
-	.btn1,
-	.btn2 {
-		width: 90%;
-		border: none;
-		padding: 1% 10%;
-		text-align: center;
-		text-decoration: none;
-		cursor: pointer;
-		border-radius: 20px;
-		margin-left: 5%;
-		margin-right: 5%;
-		font-size: 3.0vw;
-	}
-
-	.btn1:hover,
-	.btn2:hover {
-		transform: scale(1.1);
-	}
-
-	.btn3 {
-		border: none;
-		padding: 5% 10%;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 5.0vw;
-		margin: 2%;
-		cursor: pointer;
-		border-radius: 4%;
-	}
-
-	.btn3:hover {
-		transform: scale(1.1);
-	}
-
-	.btn-enviar {
-		padding: 1%;
-		margin: 1%;
-		text-align: center;
-		display: flex;
-		font-size: 2.8vw;
-		margin: 2%;
-		cursor: pointer;
-		border-radius: 10px;
-	}
-
-	.container-formulario {
-		width: 80%;
-		border-radius: 20px;
-		margin: 10px auto;
-		padding: 5px;
-		overflow-x: auto;
-		font-size: 1.6vw;
-	}
-
-	/* Estilo do Formulário */
-	.form-container {
-		padding: 20px;
-		border-radius: 8px;
-	}
-
-	.form-field {
-		margin-bottom: 20px;
-	}
-
-	.form-field label {
-		display: block;
-		margin-bottom: 5px;
-		font-weight: bold;
-		font-size: 2.4vw;
-	}
-
-	.form-field input,
-	.form-field textarea {
-		font-family: 'Arial', sans-serif;
-		width: 100%;
-		padding: 6px;
-		border-radius: 5px;
-		font-size: 2.8vw;
-
-	}
-
-	/* Estilo do Rodapé */
-	footer {
-		text-align: center;
-		margin: 1%;
-		padding: 1%;
-		border-radius: 4px;
-		font-size: 2.1vw;
-	}
+/* RODAPÉ */
+footer {
+    text-align: center;
+    border-radius: 1vw;
+    padding: 1%;
+    margin: 1%;
+    font-size: clamp(0.4rem, 4vw, 2rem);
 }
