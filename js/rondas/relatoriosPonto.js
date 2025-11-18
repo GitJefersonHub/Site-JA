@@ -31,13 +31,13 @@ function criarTabelaPonto() {
   const thead = document.createElement('thead');
   thead.innerHTML = `
   <tr>
+  <th>Nome</th>
+    <th>Matríc</th>
+    <th>Posto</th>
     <th>Data</th>
     <th>Horas</th>
     <th>Registros</th>
     <th>Localização</th>
-    <th>Nome</th>
-    <th>Matríc</th>
-    <th>Posto</th>
     <th>Observação</th>
   </tr>
 `;
@@ -53,13 +53,13 @@ function criarTabelaPonto() {
       const { data, hora } = formatarDataHoraSeparado(item.dataHora || item.registro);
       const linha = document.createElement('tr');
       linha.innerHTML = `
+      <td>${dadosUsuario.nome || '---'}</td>
+  <td>${dadosUsuario.matricula || '---'}</td>
+  <td>${dadosUsuario.posto || '---'}</td>
   <td>${data}</td>
   <td>${hora}</td>
   <td>${item.registro || 'Não informado'}</td>
   <td>${item.localizacao || 'Não informado'}</td>
-  <td>${dadosUsuario.nome || '---'}</td>
-  <td>${dadosUsuario.matricula || '---'}</td>
-  <td>${dadosUsuario.posto || '---'}</td>
   <td>${item.obs || 'Sem observação'}</td>
 `;
 
@@ -74,8 +74,8 @@ function criarTabelaPonto() {
   const btns = document.createElement('div');
   btns.className = 'button-group';
   btns.innerHTML = `
-    <button onclick="imprimirPonto()">🖨️ Imprimir Pontos</button>
-    <button onclick="excluirPonto()">🗑️ Excluir Pontos</button>
+    <button onclick="imprimirPonto()">🖨️ Imprimir Registros</button>
+    <button onclick="excluirPonto()">🗑️ Excluir Registros</button>
   `;
   container.appendChild(btns);
 }
@@ -85,15 +85,15 @@ function imprimirPonto() {
     alert('Nenhum ponto registrado.');
     return;
   }
-  criarJanelaImpressao('Ponto', listaPonto);
+  criarJanelaImpressao('Jornada', listaPonto);
 }
 
 function excluirPonto() {
-  if (confirm('Tem certeza que deseja excluir todos os registros de Ponto?')) {
+  if (confirm('Tem certeza que deseja excluir todos os registros?')) {
     localStorage.removeItem('Ponto');
     listaPonto.length = 0;
     criarTabelaPonto();
-    alert('Registros de Ponto excluídos com sucesso!');
+    alert('Registros excluídos com sucesso!');
   }
 }
 
@@ -104,13 +104,13 @@ function criarJanelaImpressao(tipo, lista) {
       <table>
         <thead>
           <tr>
+          <th>Nome</th>
+            <th>Matríc</th>
+            <th>Posto</th>
             <th>Data</th>
             <th>Horas</th>
             <th>Registros</th>
             <th>Localização</th>
-            <th>Nome</th>
-            <th>Matríc</th>
-            <th>Posto</th>
             <th>Observação</th>
           </tr>
         </thead>
@@ -121,13 +121,13 @@ function criarJanelaImpressao(tipo, lista) {
     const { data, hora } = formatarDataHoraSeparado(item.dataHora || item.registro);
     return `
       <tr>
+      <td>${dadosUsuario.nome || '---'}</td>
+        <td>${dadosUsuario.matricula || '---'}</td>
+        <td>${dadosUsuario.posto || '---'}</td>
         <td>${data}</td>
         <td>${hora}</td>
         <td>${item.registro || 'Não informado'}</td>
         <td>${item.localizacao || 'Não informado'}</td>
-        <td>${dadosUsuario.nome || '---'}</td>
-        <td>${dadosUsuario.matricula || '---'}</td>
-        <td>${dadosUsuario.posto || '---'}</td>
         <td>${item.obs || 'Sem observação'}</td>
       </tr>
     `;
