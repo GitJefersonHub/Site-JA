@@ -37,8 +37,8 @@ function criarTabelaPonto() {
     <th>Data</th>
     <th>Horas</th>
     <th>Registros</th>
-    <th>Localização</th>
     <th>Observação</th>
+    <th>Localização</th>
   </tr>
 `;
 
@@ -59,8 +59,8 @@ function criarTabelaPonto() {
   <td>${data}</td>
   <td>${hora}</td>
   <td>${item.registro || 'Não informado'}</td>
-  <td>${item.localizacao || 'Não informado'}</td>
   <td>${item.obs || 'Sem observação'}</td>
+  <td>${item.localizacao || 'Não informado'}</td>
 `;
 
       tbody.appendChild(linha);
@@ -110,8 +110,8 @@ function criarJanelaImpressao(tipo, lista) {
             <th>Data</th>
             <th>Horas</th>
             <th>Registros</th>
-            <th>Localização</th>
             <th>Observação</th>
+            <th>Localização</th>
           </tr>
         </thead>
         <tbody>
@@ -127,8 +127,8 @@ function criarJanelaImpressao(tipo, lista) {
         <td>${data}</td>
         <td>${hora}</td>
         <td>${item.registro || 'Não informado'}</td>
-        <td>${item.localizacao || 'Não informado'}</td>
         <td>${item.obs || 'Sem observação'}</td>
+        <td>${item.localizacao || 'Não informado'}</td>
       </tr>
     `;
   }).join('');

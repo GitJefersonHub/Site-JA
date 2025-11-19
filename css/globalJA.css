@@ -56,15 +56,6 @@ nav ul li a.disabled {
     pointer-events: none;
 }
 
-/* Container esquerdo */
-.container-esquerdo {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    width: 100%;
-    box-sizing: border-box;
-}
-
 /* Imagem Jeferson Alves */
 .containerimgJA {
     align-items: flex-start;
@@ -132,11 +123,13 @@ nav ul li a.disabled {
 .container-atualizando,
 .container-habilidades,
 .container-formulario {
-    border-radius: 10px;
+    hyphens: auto;
     margin: 1% auto;
+    text-align: justify;
+    border-radius: 10px;
+    font-size: clamp(0.2rem, 4.8vw, 2.5rem);
+    animation: skyPulse 12s ease infinite;
     padding: 4px;
-    overflow-x: auto;
-    font-size: clamp(0.4rem, 4.5vw, 2.5rem);
 }
 
 /* Imagens gestores */
@@ -168,9 +161,8 @@ nav ul li a.disabled {
 
 .column {
     hyphens: auto;
-    font-size: clamp(0.7rem, 3vw, 2rem);
+    font-size: clamp(0.8rem, 3vw, 2rem);
     box-sizing: border-box;
-    width: 100%;
 }
 
 ul {
@@ -180,6 +172,7 @@ ul {
 li {
     margin-bottom: 0;
 }
+
 /**/
 img {
     width: 100%;
