@@ -42,26 +42,21 @@ body.tema-escuro .weather-info {
     color: white;
 }
 
-/* Colunas */
-.row {
-    color: #007BFF;
-}
-
 /* Containers específicos */
 .container-trabalhando { background-color: green; }
 .container-tecnologia { background-color: transparent; }
-.container-tecnologias-exploradas { background-color: white; }
-.container-atualizando { background-color: green; color: yellow; }
+.container-tecnologias-exploradas { background-color: white; color: #007BFF; font-size: clamp(0.8rem, 3vw, 2rem); }
+.container-atualizando { background-color: green; color: yellow; font-size: clamp(1rem, 5vw, 2.5rem); }
 .container-serigrafia { background-color: transparent; }
-.container-habilidades { background-color: green; color: yellow; }
+.container-habilidades { background-color: green; color: yellow; font-size: clamp(1rem, 5vw, 2.5rem); }
 .container-casoseja { background-color: transparent; }
 .container-gestores { background-color: #363636; }
-.container-doações { background-color: #1E90FF; }
-
+.container-doações { background-color: #008080; }
+.container-formulario { background-color: white; }
+.form-container-formulario { background-color: #f9f9f9; }
 .form-field input,
 .form-field textarea {
-    border: 1px solid #ccc;
-}
+    border: 1px solid #ccc; }
 
 /* ============================ TÍTULOS ============================ */
 h1 { color: white; }
@@ -133,20 +128,6 @@ h5 { color: #007BFF; }
         background-color: white;
         color: blue;
     }
-}
-
-.container-formulario {
-    background-color: white;
-}
-
-/* Estilo do Formulário */
-.form-container-formulario {
-    background-color: #f9f9f9;
-}
-
-.form-field input,
-.form-field textarea {
-    border: 1px solid #ccc;
 }
 
 /* ============================ RODAPÉ ============================ */
