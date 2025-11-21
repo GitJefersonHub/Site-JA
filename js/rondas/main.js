@@ -52,10 +52,10 @@ const identificacoesQRCode = {
   "3": "3° Andar",
   "4": "4° Andar",
   "5": "5° Andar",
-  "6": "Externo A",
-  "7": "Externo B",
-  "8": "Externo C",
-  "9": "Fechamento"
+  "6": "Estacionamento",
+  "7": "Térreo",
+  "8": "Capela",
+  "9": "Bloco A/B"
 };
 
 // Variáveis para observação
@@ -96,8 +96,15 @@ function solicitarObservacao(tipo, dados = null) {
 }
 
 function confirmarObservacao() {
-  let observacao = document.getElementById('campoObservacao').value.trim();
-  if (observacao === '') observacao = 'Sem observação a relatar';
+  const campo = document.getElementById('campoObservacao');
+  const observacao = (campo?.value || '').trim();
+
+  // Exige que o usuário digite algo; não insere mais texto automático
+  if (!observacao) {
+    alert('Insira alguma observação');
+    campo?.focus();
+    return;
+  }
 
   const agora = new Date();
   const agoraFormatado = agora.toLocaleString('pt-BR');
@@ -142,6 +149,7 @@ function confirmarObservacao() {
   fecharModal();
 }
 
+
 function cancelarObservacao() {
   alert('Registro cancelado pelo usuário.');
   document.getElementById('modalObservacao').style.display = 'none';
@@ -150,7 +158,7 @@ function cancelarObservacao() {
 
 // Botão de ponto
 function registrarPonto() {
-  solicitarObservacao('Ponto');
+  solicitarObservacao('Móvel');
 }
 
 function iniciarContadorFechamento() {

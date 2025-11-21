@@ -36,7 +36,7 @@ function criarTabelaPonto() {
     <th>Posto</th>
     <th>Data</th>
     <th>Horas</th>
-    <th>Registros</th>
+    <th>Ambiênte</th>
     <th>Observação</th>
     <th>Localização</th>
   </tr>
@@ -109,7 +109,7 @@ function criarJanelaImpressao(tipo, lista) {
             <th>Posto</th>
             <th>Data</th>
             <th>Horas</th>
-            <th>Registros</th>
+            <th>Ambiênte</th>
             <th>Observação</th>
             <th>Localização</th>
           </tr>
