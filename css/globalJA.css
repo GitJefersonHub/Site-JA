@@ -131,6 +131,7 @@ nav ul li a.disabled {
     margin: 1% auto;
 }
 
+.container-qrcodecx,
 .containerimgSFV,
 .containerimgSamuray,
 .containerimgMetropoles,
@@ -138,6 +139,7 @@ nav ul li a.disabled {
 .containerimgsite,
 .containerimgqrcoderondas {
     width: clamp(120px, 35%, 300px);
+    margin: 1% auto;
 }
 
 /**/
@@ -145,12 +147,6 @@ img {
     width: 100%;
     border-radius: 10px;
     display: block;
-}
-
-/* Qrcode */
-.container-qrcodecx {
-    width: 100%;
-    margin: 1% auto;
 }
 
 /* Formulário */
