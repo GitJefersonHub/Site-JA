@@ -1,7 +1,7 @@
 // Proteção contra acesso direto sem login
 const dados = JSON.parse(localStorage.getItem('dadosUsuario'));
 
-if (!dados || !dados.nome || !dados.matricula || !dados.telefone || !dados.email || !dados.senha) {
+if (!dados || !dados.nome || !dados.matricula || !dados.localizacao || !dados.posto || !dados.email || !dados.senha) {
   alert('Dados de usuário inválidos. Faça login novamente.');
   localStorage.removeItem('usuarioLogado');
   localStorage.removeItem('dadosUsuario');
@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('boasVindas').textContent = gerarSaudacao(dados.nome);
   document.getElementById('infoNome').textContent = `🆔 Nome: ${dados.nome}`;
   document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${dados.matricula}`;
+  document.getElementById('infoLocalizacao').textContent = `📍 Local: ${dados.localizacao}`;
   document.getElementById('infoPosto').textContent = `🏢 Posto: ${dados.posto}`;
-  document.getElementById('infoTelefone').textContent = `📞 Telefone: ${dados.telefone}`;
   document.getElementById('infoEmail').textContent = `📧 E-mail: ${dados.email}`;
   document.getElementById('infoSenha').textContent = `👁️ Senha: ${dados.senha}`;
 });
@@ -52,7 +52,7 @@ const identificacoesQRCode = {
   "3": "3° Andar",
   "4": "4° Andar",
   "5": "5° Andar",
-  "6": "Estacionamento",
+  "6": "Veículos",
   "7": "Térreo",
   "8": "Capela",
   "9": "Bloco A/B"
@@ -64,7 +64,7 @@ let dadosQRCode = null;
 
 // Campo de contagem regressiva
 document.getElementById('campoObservacao').addEventListener('input', () => {
-  const restante = 50 - document.getElementById('campoObservacao').value.length;
+  const restante = 60 - document.getElementById('campoObservacao').value.length;
   document.getElementById('contadorObservacao').textContent = `${restante} restantes`;
 });
 
@@ -91,7 +91,7 @@ function solicitarObservacao(tipo, dados = null) {
   }
 
   document.getElementById('campoObservacao').value = '';
-  document.getElementById('contadorObservacao').textContent = '50 restantes';
+  document.getElementById('contadorObservacao').textContent = '60 restantes';
   document.getElementById('modalObservacao').style.display = 'flex';
 }
 
@@ -149,7 +149,6 @@ function confirmarObservacao() {
   fecharModal();
 }
 
-
 function cancelarObservacao() {
   alert('Registro cancelado pelo usuário.');
   document.getElementById('modalObservacao').style.display = 'none';
@@ -193,4 +192,3 @@ function iniciarContadorFechamento() {
 document.addEventListener('DOMContentLoaded', () => {
   iniciarContadorFechamento();
 });
-

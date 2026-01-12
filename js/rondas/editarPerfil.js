@@ -32,36 +32,10 @@ function editarPerfil() {
     document.getElementById('editNome').value = dados.nome;
     document.getElementById('editMatricula').value = dados.matricula;
     document.getElementById('editPosto').value = dados.posto;
-    document.getElementById('editTelefone').value = dados.telefone;
+    document.getElementById('editLocalizacao').value = dados.localizacao;
     document.getElementById('editEmail').value = dados.email;
     document.getElementById('editSenha').value = dados.senha;
-
-    aplicarMascaraTelefone('editTelefone');
   }
-}
-
-function aplicarMascaraTelefone(idCampo) {
-  const campo = document.getElementById(idCampo);
-
-  campo.addEventListener('input', function (e) {
-    let input = e.target.value.replace(/\D/g, '').slice(0, 11); // mantém apenas números
-    let formatted = '';
-
-    if (input.length > 0) {
-      formatted += '(' + input.substring(0, 2);
-    }
-    if (input.length >= 3) {
-      formatted += ') ' + input.substring(2, 7);
-    }
-    if (input.length >= 8) {
-      formatted += '-' + input.substring(7, 11);
-    }
-
-    e.target.value = formatted;
-  });
-
-  // Garante que o campo já esteja formatado corretamente ao carregar
-  campo.dispatchEvent(new Event('input'));
 }
 
 function toggleSenha() {
@@ -86,18 +60,12 @@ function salvarPerfil() {
   const novoNome = document.getElementById('editNome').value.trim();
   const novaMatricula = document.getElementById('editMatricula').value.trim();
   const novoPosto = document.getElementById('editPosto').value.trim();
-  const novoTelefone = document.getElementById('editTelefone').value.trim();
+  const novaLocalizacao = document.getElementById('editLocalizacao').value.trim();
   const novoEmail = document.getElementById('editEmail').value.trim();
   const novaSenha = document.getElementById('editSenha').value.trim();
 
-  if (!novoNome || !novaMatricula || !novoPosto || !novoTelefone || !novoEmail || !novaSenha) {
+  if (!novoNome || !novaMatricula || !novoPosto || !novaLocalizacao || !novoEmail || !novaSenha) {
     alert('Todos os campos devem ser preenchidos.');
-    return;
-  }
-
-  const telefoneValido = /^\(\d{2}\) \d{5}-\d{4}$/.test(novoTelefone);
-  if (!telefoneValido) {
-    alert('Telefone inválido. Use o formato (99) 99999-9999.');
     return;
   }
 
@@ -105,7 +73,7 @@ function salvarPerfil() {
     nome: novoNome,
     matricula: novaMatricula,
     posto: novoPosto,
-    telefone: novoTelefone,
+    localizacao: novaLocalizacao,
     email: novoEmail,
     senha: novaSenha
   };
@@ -131,7 +99,7 @@ function salvarPerfil() {
   // Atualiza visual do painel
   document.getElementById('infoNome').textContent = `📌 Nome: ${novoNome}`;
   document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${novaMatricula}`;
-  document.getElementById('infoTelefone').textContent = `📞 Telefone: ${novoTelefone}`;
+  document.getElementById('infoLocalizacao').textContent = `📍 Local: ${novaLocalizacao}`;
   document.getElementById('infoEmail').textContent = `📧 E-mail: ${novoEmail}`;
   document.getElementById('infoSenha').textContent = `🔒 Senha: ${novaSenha}`;
   document.getElementById('formEditar').style.display = 'none';

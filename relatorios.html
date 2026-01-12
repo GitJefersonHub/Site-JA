@@ -13,7 +13,6 @@
 
 <body>
   <main>
-
     <!-- Tabela de ponto -->
     <section id="tabelaPonto"></section>
 
@@ -21,9 +20,30 @@
     <section id="tabelaQRCode"></section>
   </main>
 
-  <!-- Scripts em ordem correta -->
-  <script src="js/rondas/relatoriosBase.js"></script>
-  <script src="js/rondas/relatoriosPonto.js"></script>
+  <!-- Inicialização: proteger acesso e expor dados do usuário para os relatórios -->
+  <script>
+    (function initRelatoriosContext() {
+      const usuarioLogado = localStorage.getItem('usuarioLogado');
+      const dadosUsuario = JSON.parse(localStorage.getItem('dadosUsuario') || '{}');
+
+      // Proteção de acesso
+      if (!usuarioLogado || !dadosUsuario || !dadosUsuario.nome || !dadosUsuario.matricula || !dadosUsuario.posto || !dadosUsuario.localizacao || !dadosUsuario.email || !dadosUsuario.senha) {
+        alert('Acesso inválido. Faça login novamente.');
+        localStorage.removeItem('usuarioLogado');
+        localStorage.removeItem('dadosUsuario');
+        location.replace('rondasLogin.html');
+        return;
+      }
+
+      // Expor global para scripts de relatório
+      window.dadosUsuario = dadosUsuario;
+    })();
+  </script>
+
+  <!-- Scripts em ordem correta (usar defer) -->
+  <script src="js/rondas/relatoriosBase.js" defer></script>
+  <script src="js/rondas/relatoriosPonto.js" defer></script>
+  <script src="js/rondas/relatoriosQRCode.js" defer></script>
   
 </body>
 </html>

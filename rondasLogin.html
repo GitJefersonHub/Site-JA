@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
   <link rel="stylesheet" href="css/login.css">
 </head>
-
 <body>
   <div class="main-container">
     <!-- Container de Login -->
@@ -19,12 +17,11 @@
         <label for="matricula">Matrícula:</label>
         <input type="text" id="matricula" required maxlength="6" placeholder="Digite sua matrícula">
 
-        <!-- Novo campo: Posto -->
+        <label for="localizacao">Local:</label>
+        <input type="text" id="localizacao" required placeholder="Estabelecimento / Empresa">
+
         <label for="posto">Posto:</label>
         <input type="text" id="posto" required placeholder="Digite seu posto de serviço">
-
-        <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" required placeholder="(99) 99999-9999">
 
         <label for="email">E-mail:</label>
         <input type="email" id="email" required placeholder="Digite o seu Email">
@@ -49,12 +46,12 @@
         <label for="cadMatricula">Matrícula:</label>
         <input type="text" id="cadMatricula" required maxlength="6" placeholder="Digite sua matrícula">
 
-        <!-- Novo campo: Posto -->
+        <label for="cadLocalizacao">Local:</label>
+        <input type="text" id="cadLocalizacao" required placeholder="Estabelecimento / Empresa">
+
         <label for="cadPosto">Posto:</label>
         <input type="text" id="cadPosto" required placeholder="Digite seu posto de serviço">
 
-        <label for="cadTelefone">Telefone:</label>
-        <input type="tel" id="cadTelefone" required placeholder="(99) 99999-9999">
 
         <label for="cadEmail">E-mail:</label>
         <input type="email" id="cadEmail" required placeholder="Digite o seu Email">
@@ -76,5 +73,4 @@
   <script src="js/rondas/utils.js"></script>
   <script src="js/rondas/login.js"></script>
 </body>
-
 </html>

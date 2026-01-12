@@ -1,4 +1,5 @@
 const listaPonto = JSON.parse(localStorage.getItem('Ponto')) || [];
+const dadosUsuario = JSON.parse(localStorage.getItem('dadosUsuario')) || {};
 
 function obterMesAnoAtual() {
   const meses = [
@@ -31,38 +32,36 @@ function criarTabelaPonto() {
   const thead = document.createElement('thead');
   thead.innerHTML = `
   <tr>
-  <th>Nome</th>
+    <th>Nome</th>
     <th>Matríc</th>
+    <th>Local</th>
     <th>Posto</th>
     <th>Data</th>
     <th>Horas</th>
     <th>Ambiênte</th>
     <th>Observação</th>
-    <th>Localização</th>
   </tr>
-`;
-
+  `;
   table.appendChild(thead);
 
   const tbody = document.createElement('tbody');
   if (listaPonto.length === 0) {
     tbody.innerHTML = `<tr><td colspan="8">Nenhum registro de Ponto encontrado.</td></tr>`;
-
   } else {
     listaPonto.forEach(item => {
       const { data, hora } = formatarDataHoraSeparado(item.dataHora || item.registro);
       const linha = document.createElement('tr');
       linha.innerHTML = `
-      <td>${dadosUsuario.nome || '---'}</td>
-  <td>${dadosUsuario.matricula || '---'}</td>
-  <td>${dadosUsuario.posto || '---'}</td>
-  <td>${data}</td>
-  <td>${hora}</td>
-  <td>${item.registro || 'Não informado'}</td>
-  <td>${item.obs || 'Sem observação'}</td>
-  <td>${item.localizacao || 'Não informado'}</td>
-`;
-
+        <td>${dadosUsuario.nome || '---'}</td>
+        <td>${dadosUsuario.matricula || '---'}</td>
+        <td>${dadosUsuario.localizacao || 'Não informado'}</td>
+        <td>${dadosUsuario.posto || '---'}</td>
+        <td>${data}</td>
+        <td>${hora}</td>
+        <td>${item.registro || 'Não informado'}</td>
+        <td>${item.obs || 'Sem observação'}</td>
+        
+      `;
       tbody.appendChild(linha);
     });
   }
@@ -104,14 +103,14 @@ function criarJanelaImpressao(tipo, lista) {
       <table>
         <thead>
           <tr>
-          <th>Nome</th>
+            <th>Nome</th>
             <th>Matríc</th>
+            <th>Local</th>
             <th>Posto</th>
             <th>Data</th>
             <th>Horas</th>
             <th>Ambiênte</th>
             <th>Observação</th>
-            <th>Localização</th>
           </tr>
         </thead>
         <tbody>
@@ -121,14 +120,15 @@ function criarJanelaImpressao(tipo, lista) {
     const { data, hora } = formatarDataHoraSeparado(item.dataHora || item.registro);
     return `
       <tr>
-      <td>${dadosUsuario.nome || '---'}</td>
+        <td>${dadosUsuario.nome || '---'}</td>
         <td>${dadosUsuario.matricula || '---'}</td>
+        <td>${dadosUsuario.localizacao || 'Não informado'}</td>
         <td>${dadosUsuario.posto || '---'}</td>
         <td>${data}</td>
         <td>${hora}</td>
         <td>${item.registro || 'Não informado'}</td>
         <td>${item.obs || 'Sem observação'}</td>
-        <td>${item.localizacao || 'Não informado'}</td>
+        
       </tr>
     `;
   }).join('');
@@ -154,19 +154,16 @@ function criarJanelaImpressao(tipo, lista) {
             color: black;
             background: white;
           }
-
           h2 {
             text-align: center;
             font-size: 1.2rem;
             margin-bottom: 1rem;
           }
-
           table {
             width: 100%;
             border-collapse: collapse;
             table-layout: auto;
           }
-
           th, td {
             border: 1px solid #000;
             padding: 0.1rem;
@@ -174,8 +171,7 @@ function criarJanelaImpressao(tipo, lista) {
             text-align: left;
           }
         }
-      </style>
-
+        </style>
       </head>
       <body>${content}</body>
     </html>
