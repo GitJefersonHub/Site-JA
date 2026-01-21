@@ -10,11 +10,9 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
   const matricula = document.getElementById('matricula').value.trim();
   const posto = document.getElementById('posto').value.trim(); // Novo campo
   const localizacao = document.getElementById('localizacao').value.trim(); // substitui telefone
-  const email = document.getElementById('email').value.trim();
-  const senha = document.getElementById('senha').value.trim();
   const mensagem = document.getElementById('mensagem');
 
-  if (!nome || !matricula || !posto || !localizacao || !email || !senha) {
+  if (!nome || !matricula || !posto || !localizacao) {
     mensagem.textContent = 'Todos os campos são obrigatórios.';
     mensagem.style.color = 'red';
     return;
@@ -26,9 +24,7 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
     user.nome === nome &&
     user.matricula === matricula &&
     user.posto === posto &&
-    user.localizacao === localizacao &&
-    user.email === email &&
-    user.senha === senha
+    user.localizacao === localizacao
   );
 
   if (credenciaisValidas) {
@@ -53,8 +49,6 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
     document.getElementById('cadMatricula').value = matricula;
     document.getElementById('cadPosto').value = posto;
     document.getElementById('cadLocalizacao').value = localizacao;
-    document.getElementById('cadEmail').value = email;
-    document.getElementById('cadSenha').value = senha;
   } else {
     document.getElementById('loginForm').reset();
     mensagem.textContent = '';
@@ -68,11 +62,9 @@ document.getElementById('formCadastro').addEventListener('submit', function (e) 
   const matricula = document.getElementById('cadMatricula').value.trim();
   const posto = document.getElementById('cadPosto').value.trim(); // Novo campo
   const localizacao = document.getElementById('cadLocalizacao').value.trim(); // substitui telefone
-  const email = document.getElementById('cadEmail').value.trim();
-  const senha = document.getElementById('cadSenha').value.trim();
   const mensagem = document.getElementById('mensagemCadastro');
 
-  if (!nome || !matricula || !posto || !localizacao || !email || !senha) {
+  if (!nome || !matricula || !posto || !localizacao) {
     mensagem.textContent = 'Todos os campos são obrigatórios.';
     mensagem.style.color = 'red';
     return;
@@ -84,9 +76,7 @@ document.getElementById('formCadastro').addEventListener('submit', function (e) 
     u.nome === nome &&
     u.matricula === matricula &&
     u.posto === posto &&
-    u.localizacao === localizacao &&
-    u.email === email &&
-    u.senha === senha
+    u.localizacao === localizacao
   );
 
   if (duplicado) {
@@ -95,7 +85,7 @@ document.getElementById('formCadastro').addEventListener('submit', function (e) 
     return;
   }
 
-  const novoUsuario = { nome, matricula, posto, localizacao, email, senha };
+  const novoUsuario = { nome, matricula, posto, localizacao };
   usuarios.push(novoUsuario);
   localStorage.setItem('usuarios', JSON.stringify(usuarios));
 

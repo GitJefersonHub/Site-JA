@@ -27,7 +27,7 @@
       const dadosUsuario = JSON.parse(localStorage.getItem('dadosUsuario') || '{}');
 
       // Proteção de acesso
-      if (!usuarioLogado || !dadosUsuario || !dadosUsuario.nome || !dadosUsuario.matricula || !dadosUsuario.posto || !dadosUsuario.localizacao || !dadosUsuario.email || !dadosUsuario.senha) {
+      if (!usuarioLogado || !dadosUsuario || !dadosUsuario.nome || !dadosUsuario.matricula || !dadosUsuario.posto || !dadosUsuario.localizacao) {
         alert('Acesso inválido. Faça login novamente.');
         localStorage.removeItem('usuarioLogado');
         localStorage.removeItem('dadosUsuario');

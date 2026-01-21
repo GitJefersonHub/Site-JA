@@ -4,8 +4,6 @@ document.getElementById('infoNome').textContent = `🆔 Nome: ${dados.nome}`;
 document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${dados.matricula}`;
 document.getElementById('infoLocalizacao').textContent = `📍 Localização: ${dados.localizacao}`;
 document.getElementById('infoPosto').textContent = `🏢 Posto: ${dados.posto}`;
-document.getElementById('infoEmail').textContent = `📧 E-mail: ${dados.email}`;
-document.getElementById('infoSenha').textContent = `🔒 Senha: ${dados.senha}`;
 
 // Função para imprimir lista de usuários
 function imprimirLista() {
@@ -23,8 +21,7 @@ function imprimirLista() {
       usuarioLogado &&
       user.nome === usuarioLogado.nome &&
       user.matricula === usuarioLogado.matricula &&
-      user.posto === usuarioLogado.posto &&
-      user.email === usuarioLogado.email;
+      user.posto === usuarioLogado.posto;
 
     printContent += `
       <li style="margin-bottom: 15px;">
@@ -32,8 +29,6 @@ function imprimirLista() {
         Matrícula: ${user.matricula}<br>
         Local: ${user.localizacao}<br>
         Posto: ${user.posto}<br>
-        E-mail: ${user.email}<br>
-        Senha: ${user.senha}<br>
       </li>
     `;
   });

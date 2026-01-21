@@ -33,27 +33,7 @@ function editarPerfil() {
     document.getElementById('editMatricula').value = dados.matricula;
     document.getElementById('editPosto').value = dados.posto;
     document.getElementById('editLocalizacao').value = dados.localizacao;
-    document.getElementById('editEmail').value = dados.email;
-    document.getElementById('editSenha').value = dados.senha;
   }
-}
-
-function toggleSenha() {
-  const senhaInput = document.getElementById('editSenha');
-  const toggleIcon = document.getElementById('toggleIcon');
-
-  senhaInput.type = senhaInput.type === 'password' ? 'text' : 'password';
-  toggleIcon.textContent = senhaInput.type === 'password' ? '👁️' : '🙈';
-
-  // Estilização mantida
-  toggleIcon.style.position = 'absolute';
-  toggleIcon.style.right = '4%';
-  toggleIcon.style.top = '50%';
-  toggleIcon.style.transform = 'translateY(-50%)';
-  toggleIcon.style.fontSize = '400%';
-  toggleIcon.style.cursor = 'pointer';
-  toggleIcon.style.color = '#007bff';
-  toggleIcon.style.userSelect = 'none';
 }
 
 function salvarPerfil() {
@@ -64,7 +44,7 @@ function salvarPerfil() {
   const novoEmail = document.getElementById('editEmail').value.trim();
   const novaSenha = document.getElementById('editSenha').value.trim();
 
-  if (!novoNome || !novaMatricula || !novoPosto || !novaLocalizacao || !novoEmail || !novaSenha) {
+  if (!novoNome || !novaMatricula || !novoPosto || !novaLocalizacao) {
     alert('Todos os campos devem ser preenchidos.');
     return;
   }
@@ -73,9 +53,7 @@ function salvarPerfil() {
     nome: novoNome,
     matricula: novaMatricula,
     posto: novoPosto,
-    localizacao: novaLocalizacao,
-    email: novoEmail,
-    senha: novaSenha
+    localizacao: novaLocalizacao
   };
 
   const dados = JSON.parse(localStorage.getItem('dadosUsuario'));
@@ -87,7 +65,6 @@ function salvarPerfil() {
   const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
   const index = usuarios.findIndex(u =>
     u.matricula === dados.matricula &&
-    u.email === dados.email &&
     u.nome === dados.nome
   );
 
@@ -100,8 +77,6 @@ function salvarPerfil() {
   document.getElementById('infoNome').textContent = `📌 Nome: ${novoNome}`;
   document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${novaMatricula}`;
   document.getElementById('infoLocalizacao').textContent = `📍 Local: ${novaLocalizacao}`;
-  document.getElementById('infoEmail').textContent = `📧 E-mail: ${novoEmail}`;
-  document.getElementById('infoSenha').textContent = `🔒 Senha: ${novaSenha}`;
   document.getElementById('formEditar').style.display = 'none';
 
   alert('Perfil atualizado com sucesso!\n\nPor segurança, você será desconectado e deverá fazer login novamente com os novos dados.');

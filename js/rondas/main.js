@@ -1,7 +1,7 @@
 // Proteção contra acesso direto sem login
 const dados = JSON.parse(localStorage.getItem('dadosUsuario'));
 
-if (!dados || !dados.nome || !dados.matricula || !dados.localizacao || !dados.posto || !dados.email || !dados.senha) {
+if (!dados || !dados.nome || !dados.matricula || !dados.localizacao || !dados.posto ) {
   alert('Dados de usuário inválidos. Faça login novamente.');
   localStorage.removeItem('usuarioLogado');
   localStorage.removeItem('dadosUsuario');
@@ -31,8 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('infoMatricula').textContent = `📌 Matrícula: ${dados.matricula}`;
   document.getElementById('infoLocalizacao').textContent = `📍 Local: ${dados.localizacao}`;
   document.getElementById('infoPosto').textContent = `🏢 Posto: ${dados.posto}`;
-  document.getElementById('infoEmail').textContent = `📧 E-mail: ${dados.email}`;
-  document.getElementById('infoSenha').textContent = `👁️ Senha: ${dados.senha}`;
 });
 
 // funções dos botões Modal

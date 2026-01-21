@@ -13,8 +13,7 @@ function excluir() {
 
   const atualizados = usuarios.filter(user =>
     !(user.nome === dados.nome &&
-      user.matricula === dados.matricula &&
-      user.email === dados.email)
+      user.matricula === dados.matricula)
   );
 
   localStorage.setItem('usuarios', JSON.stringify(atualizados));
