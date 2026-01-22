@@ -34,25 +34,16 @@ table {
   word-break: break-word;
 }
 
-/* cabeçalho */
-th {
-  background-color: green;
-  border: 1px solid;
-  text-align: center;
-  font-size: clamp(0.26rem, 1.5vw, 1.5rem); /* fonte adaptável */
-  color: white;
+thead {
+  background-color: #f0f0f0;
 }
-/* linhas */
-td {
+
+th, td {
   border: 1px solid #ccc;
   text-align: left;
   font-size: clamp(0.26rem, 1.5vw, 1.5rem); /* fonte adaptável */
 }
 
-/* Alternância de cor nas linhas */
-tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
 
 /* Botões */
 .button-group {

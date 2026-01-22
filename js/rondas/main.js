@@ -62,7 +62,7 @@ let dadosQRCode = null;
 
 // Campo de contagem regressiva
 document.getElementById('campoObservacao').addEventListener('input', () => {
-  const restante = 120 - document.getElementById('campoObservacao').value.length;
+  const restante = 116 - document.getElementById('campoObservacao').value.length;
   document.getElementById('contadorObservacao').textContent = `${restante} restantes`;
 });
 
@@ -90,7 +90,7 @@ function solicitarObservacao(tipo, dados = null) {
   }
 
   document.getElementById('campoObservacao').value = '';
-  document.getElementById('contadorObservacao').textContent = '120 restantes';
+  document.getElementById('contadorObservacao').textContent = '116 restantes';
   document.getElementById('modalObservacao').style.display = 'flex';
 }
 
