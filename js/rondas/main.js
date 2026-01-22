@@ -62,7 +62,7 @@ let dadosQRCode = null;
 
 // Campo de contagem regressiva
 document.getElementById('campoObservacao').addEventListener('input', () => {
-  const restante = 60 - document.getElementById('campoObservacao').value.length;
+  const restante = 120 - document.getElementById('campoObservacao').value.length;
   document.getElementById('contadorObservacao').textContent = `${restante} restantes`;
 });
 
@@ -70,7 +70,8 @@ function solicitarObservacao(tipo, dados = null) {
   tipoRegistro = tipo;
   dadosQRCode = dados;
 
-  // Verifica se leitura está dentro do intervalo de 12h após abertura
+  // Verifica se leitura está dentro do intervalo de 12h após abertura // Verifica se leitura está dentro do intervalo de 12h após abertura
+
   if (tipo === 'QR Code' && dados !== "0") {
     const aberturaHora = localStorage.getItem('aberturaHora');
     if (!aberturaHora) {
@@ -89,7 +90,7 @@ function solicitarObservacao(tipo, dados = null) {
   }
 
   document.getElementById('campoObservacao').value = '';
-  document.getElementById('contadorObservacao').textContent = '60 restantes';
+  document.getElementById('contadorObservacao').textContent = '120 restantes';
   document.getElementById('modalObservacao').style.display = 'flex';
 }
 

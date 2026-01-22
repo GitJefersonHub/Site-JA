@@ -34,11 +34,16 @@ table {
   word-break: break-word;
 }
 
-thead {
-  background-color: #f0f0f0;
+/* cabeçalho */
+th {
+  background-color: green;
+  border: 1px solid;
+  text-align: center;
+  font-size: clamp(0.26rem, 1.5vw, 1.5rem); /* fonte adaptável */
+  color: white;
 }
-
-th, td {
+/* linhas */
+td {
   border: 1px solid #ccc;
   text-align: left;
   font-size: clamp(0.26rem, 1.5vw, 1.5rem); /* fonte adaptável */

@@ -28,46 +28,63 @@ function criarTabelaPonto() {
   const wrapper = document.createElement('div');
   wrapper.className = 'table-wrapper';
 
-  const table = document.createElement('table');
-  const thead = document.createElement('thead');
-  thead.innerHTML = `
-  <tr>
-    <th>Nome</th>
-    <th>Matríc</th>
-    <th>Local</th>
-    <th>Posto</th>
-    <th>Data</th>
-    <th>Horas</th>
-    <th>Ambiênte</th>
-    <th>Observação</th>
-  </tr>
-  `;
-  table.appendChild(thead);
-
-  const tbody = document.createElement('tbody');
   if (listaPonto.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="8">Nenhum registro de Ponto encontrado.</td></tr>`;
+    wrapper.innerHTML = `<p>Nenhum registro de Ponto encontrado.</p>`;
   } else {
+    // Tabela de login (fixa, com 2 linhas)
+    const tableLogin = document.createElement('table');
+    tableLogin.innerHTML = `
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Matrícula</th>
+          <th>Localização</th>
+          <th>Posto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>${dadosUsuario.nome || '---'}</td>
+          <td>${dadosUsuario.matricula || '---'}</td>
+          <td>${dadosUsuario.localizacao || 'Não informado'}</td>
+          <td>${dadosUsuario.posto || '---'}</td>
+        </tr>
+      </tbody>
+    `;
+
+    // Tabela de registros (linhas variáveis)
+    const tableRegistro = document.createElement('table');
+    tableRegistro.innerHTML = `
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Horas</th>
+          <th>Ambiente</th>
+          <th>Observação</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyRegistro"></tbody>
+    `;
+
+    const tbodyRegistro = tableRegistro.querySelector('#tbodyRegistro');
+
     listaPonto.forEach(item => {
       const { data, hora } = formatarDataHoraSeparado(item.dataHora || item.registro);
-      const linha = document.createElement('tr');
-      linha.innerHTML = `
-        <td>${dadosUsuario.nome || '---'}</td>
-        <td>${dadosUsuario.matricula || '---'}</td>
-        <td>${dadosUsuario.localizacao || 'Não informado'}</td>
-        <td>${dadosUsuario.posto || '---'}</td>
+
+      const linhaRegistro = document.createElement('tr');
+      linhaRegistro.innerHTML = `
         <td>${data}</td>
         <td>${hora}</td>
         <td>${item.registro || 'Não informado'}</td>
         <td>${item.obs || 'Sem observação'}</td>
-        
       `;
-      tbody.appendChild(linha);
+      tbodyRegistro.appendChild(linhaRegistro);
     });
+
+    wrapper.appendChild(tableLogin);
+    wrapper.appendChild(tableRegistro);
   }
 
-  table.appendChild(tbody);
-  wrapper.appendChild(table);
   container.appendChild(wrapper);
 
   const btns = document.createElement('div');
@@ -104,34 +121,43 @@ function criarJanelaImpressao(tipo, lista) {
         <thead>
           <tr>
             <th>Nome</th>
-            <th>Matríc</th>
-            <th>Local</th>
+            <th>Matrícula</th>
+            <th>Localização</th>
             <th>Posto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>${dadosUsuario.nome || '---'}</td>
+            <td>${dadosUsuario.matricula || '---'}</td>
+            <td>${dadosUsuario.localizacao || 'Não informado'}</td>
+            <td>${dadosUsuario.posto || '---'}</td>
+          </tr>
+        </tbody>
+      </table>
+      <table>
+        <thead>
+          <tr>
             <th>Data</th>
             <th>Horas</th>
-            <th>Ambiênte</th>
+            <th>Ambiente</th>
             <th>Observação</th>
           </tr>
         </thead>
         <tbody>
   `;
 
-  content += lista.map(item => {
+  lista.forEach(item => {
     const { data, hora } = formatarDataHoraSeparado(item.dataHora || item.registro);
-    return `
+    content += `
       <tr>
-        <td>${dadosUsuario.nome || '---'}</td>
-        <td>${dadosUsuario.matricula || '---'}</td>
-        <td>${dadosUsuario.localizacao || 'Não informado'}</td>
-        <td>${dadosUsuario.posto || '---'}</td>
         <td>${data}</td>
         <td>${hora}</td>
         <td>${item.registro || 'Não informado'}</td>
         <td>${item.obs || 'Sem observação'}</td>
-        
       </tr>
     `;
-  }).join('');
+  });
 
   content += `
         </tbody>
@@ -145,33 +171,6 @@ function criarJanelaImpressao(tipo, lista) {
       <head>
         <title>Registros de bastão</title>
         <link rel="stylesheet" href="css/relatorios.css">
-        <style>
-        @media print {
-          body {
-            margin: 0;
-            padding: 0;
-            font-size: 10pt;
-            color: black;
-            background: white;
-          }
-          h2 {
-            text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-          }
-          table {
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: auto;
-          }
-          th, td {
-            border: 1px solid #000;
-            padding: 0.1rem;
-            font-size: 9pt;
-            text-align: left;
-          }
-        }
-        </style>
       </head>
       <body>${content}</body>
     </html>
