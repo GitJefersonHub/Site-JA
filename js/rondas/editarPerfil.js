@@ -41,8 +41,6 @@ function salvarPerfil() {
   const novaMatricula = document.getElementById('editMatricula').value.trim();
   const novoPosto = document.getElementById('editPosto').value.trim();
   const novaLocalizacao = document.getElementById('editLocalizacao').value.trim();
-  const novoEmail = document.getElementById('editEmail').value.trim();
-  const novaSenha = document.getElementById('editSenha').value.trim();
 
   if (!novoNome || !novaMatricula || !novoPosto || !novaLocalizacao) {
     alert('Todos os campos devem ser preenchidos.');
@@ -79,7 +77,6 @@ function salvarPerfil() {
   document.getElementById('infoLocalizacao').textContent = `📍 Local: ${novaLocalizacao}`;
   document.getElementById('formEditar').style.display = 'none';
 
-  alert('Perfil atualizado com sucesso!\n\nPor segurança, você será desconectado e deverá fazer login novamente com os novos dados.');
-  localStorage.removeItem('usuarioLogado');
-  window.location.replace('rondasLogin.html'); // evita voltar ao formulário
+  // Apenas confirma sucesso sem deslogar
+  alert('Alterações realizadas com sucesso');
 }
