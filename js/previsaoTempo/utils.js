@@ -46,7 +46,7 @@ const i18nLabels = {
 
 // 🌤️ Categorias e ícones climáticos
 const weatherCategories = {
-  clear: { codes: [0], day: '☀️🌞', night: '🌙' },
+  clear: { codes: [0], day: '☀️', night: '🌙' },
   partlyCloudy: { codes: [1], day: '⛅', night: '☁️' }, // obs: Lua com nuvens
   cloudy: { codes: [2], day: '☁️', night: '☁️' },
   foggy: { codes: [3, 45, 48], day: '🌫️', night: '🌫️' },
