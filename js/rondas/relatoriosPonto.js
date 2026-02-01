@@ -31,14 +31,14 @@ function criarTabelaPonto() {
   if (listaPonto.length === 0) {
     wrapper.innerHTML = `<p>Nenhum registro de Ponto encontrado.</p>`;
   } else {
-    // Tabela de login (fixa, com 2 linhas)
+    // Tabela de login (fixa)
     const tableLogin = document.createElement('table');
     tableLogin.innerHTML = `
       <thead>
         <tr>
           <th>Nome</th>
           <th>Matrícula</th>
-          <th>Localização</th>
+          <th>Local</th>
           <th>Posto</th>
         </tr>
       </thead>
@@ -61,6 +61,7 @@ function criarTabelaPonto() {
           <th>Horas</th>
           <th>Ambiente</th>
           <th>Observação</th>
+          <th>Localização</th>
         </tr>
       </thead>
       <tbody id="tbodyRegistro"></tbody>
@@ -71,12 +72,18 @@ function criarTabelaPonto() {
     listaPonto.forEach(item => {
       const { data, hora } = formatarDataHoraSeparado(item.dataHora || item.registro);
 
+      let localizacaoHtml = item.localizacao || 'Não encontrada';
+      if (item.localizacao && item.localizacao !== 'Não encontrada') {
+        localizacaoHtml = `<a href="https://www.google.com/maps/search/?api=1&query=${item.localizacao}" target="_blank">${item.localizacao}</a>`;
+      }
+
       const linhaRegistro = document.createElement('tr');
       linhaRegistro.innerHTML = `
         <td>${data}</td>
         <td>${hora}</td>
         <td>${item.registro || 'Não informado'}</td>
         <td>${item.obs || 'Sem observação'}</td>
+        <td>${localizacaoHtml}</td>
       `;
       tbodyRegistro.appendChild(linhaRegistro);
     });
@@ -122,7 +129,7 @@ function criarJanelaImpressao(tipo, lista) {
           <tr>
             <th>Nome</th>
             <th>Matrícula</th>
-            <th>Localização</th>
+            <th>Local</th>
             <th>Posto</th>
           </tr>
         </thead>
@@ -142,6 +149,7 @@ function criarJanelaImpressao(tipo, lista) {
             <th>Horas</th>
             <th>Ambiente</th>
             <th>Observação</th>
+            <th>Localização</th>
           </tr>
         </thead>
         <tbody>
@@ -149,12 +157,19 @@ function criarJanelaImpressao(tipo, lista) {
 
   lista.forEach(item => {
     const { data, hora } = formatarDataHoraSeparado(item.dataHora || item.registro);
+
+    let localizacaoHtml = item.localizacao || 'Não encontrada';
+    if (item.localizacao && item.localizacao !== 'Não encontrada') {
+      localizacaoHtml = `<a href="https://www.google.com/maps/search/?api=1&query=${item.localizacao}" target="_blank">${item.localizacao}</a>`;
+    }
+
     content += `
       <tr>
         <td>${data}</td>
         <td>${hora}</td>
         <td>${item.registro || 'Não informado'}</td>
         <td>${item.obs || 'Sem observação'}</td>
+        <td>${localizacaoHtml}</td>
       </tr>
     `;
   });

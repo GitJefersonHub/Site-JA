@@ -62,15 +62,13 @@ let dadosQRCode = null;
 
 // Campo de contagem regressiva
 document.getElementById('campoObservacao').addEventListener('input', () => {
-  const restante = 116 - document.getElementById('campoObservacao').value.length;
+  const restante = 70 - document.getElementById('campoObservacao').value.length;
   document.getElementById('contadorObservacao').textContent = `${restante} restantes`;
 });
 
 function solicitarObservacao(tipo, dados = null) {
   tipoRegistro = tipo;
   dadosQRCode = dados;
-
-  // Verifica se leitura está dentro do intervalo de 12h após abertura // Verifica se leitura está dentro do intervalo de 12h após abertura
 
   if (tipo === 'QR Code' && dados !== "0") {
     const aberturaHora = localStorage.getItem('aberturaHora');
@@ -90,15 +88,33 @@ function solicitarObservacao(tipo, dados = null) {
   }
 
   document.getElementById('campoObservacao').value = '';
-  document.getElementById('contadorObservacao').textContent = '116 restantes';
+  document.getElementById('contadorObservacao').textContent = '70 restantes';
   document.getElementById('modalObservacao').style.display = 'flex';
+}
+
+// 🔍 Função para obter localização atual em formato "lat,lon"
+function obterLocalizacaoAtual(callback) {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const lat = pos.coords.latitude.toFixed(6);
+        const lon = pos.coords.longitude.toFixed(6);
+        callback(`${lat},${lon}`);
+      },
+      () => {
+        callback('Não encontrada');
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+    );
+  } else {
+    callback('Não encontrada');
+  }
 }
 
 function confirmarObservacao() {
   const campo = document.getElementById('campoObservacao');
   const observacao = (campo?.value || '').trim();
 
-  // Exige que o usuário digite algo; não insere mais texto automático
   if (!observacao) {
     alert('Insira alguma observação');
     campo?.focus();
@@ -112,14 +128,14 @@ function confirmarObservacao() {
   const registro = {
     tipo: tipoRegistro,
     dataHora: agoraFormatado,
-    obs: observacao
+    obs: observacao,
+    registro: tipoRegistro
   };
 
   if (tipoRegistro === 'QR Code' && dadosQRCode) {
     const nomeQRCode = identificacoesQRCode[dadosQRCode] || `QR Code ${dadosQRCode}`;
     registro.registro = nomeQRCode;
 
-    // Se for abertura, salva hora e agenda fechamento automático
     if (dadosQRCode === "0") {
       localStorage.setItem('aberturaHora', agora.toISOString());
 
@@ -129,23 +145,26 @@ function confirmarObservacao() {
           tipo: 'QR Code',
           dataHora: new Date().toLocaleString('pt-BR'),
           obs: 'Sem mais',
-          registro: 'Fechamento'
+          registro: 'Fechamento',
+          localizacao: 'Não encontrada'
         };
         listaAtualizada.push(fechamento);
         localStorage.setItem('Ponto', JSON.stringify(listaAtualizada));
         alert('Registro automático de Fechamento realizado.');
-      }, 12 * 60 * 60 * 1000); // 12 horas
+      }, 12 * 60 * 60 * 1000);
     }
-  } else {
-    registro.registro = tipoRegistro;
   }
 
-  listaPonto.push(registro);
-  localStorage.setItem('Ponto', JSON.stringify(listaPonto));
+  // Captura localização ANTES de salvar
+  obterLocalizacaoAtual((loc) => {
+    registro.localizacao = loc;
+    listaPonto.push(registro);
+    localStorage.setItem('Ponto', JSON.stringify(listaPonto));
 
-  alert(`${registro.registro} registrado com sucesso!`);
-  document.getElementById('modalObservacao').style.display = 'none';
-  fecharModal();
+    alert(`${registro.registro} registrado com sucesso!`);
+    document.getElementById('modalObservacao').style.display = 'none';
+    fecharModal();
+  });
 }
 
 function cancelarObservacao() {
@@ -183,11 +202,10 @@ function iniciarContadorFechamento() {
     contadorEl.textContent = `⏳ ${horas}:${minutos}:${segundos}`;
   }
 
-  atualizarContador(); // inicial
-  setInterval(atualizarContador, 1000); // atualiza a cada segundo
+  atualizarContador();
+  setInterval(atualizarContador, 1000);
 }
 
-// Inicia o contador ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
   iniciarContadorFechamento();
 });
