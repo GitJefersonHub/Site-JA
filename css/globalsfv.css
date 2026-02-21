@@ -302,47 +302,6 @@
 		font-size: 4.8vw;
 	}
 
-	/* Estilos para Títulos */
-	h1,
-	h2,
-	h3,
-	h4,
-	h5 {
-		font-size: 5.0vw;
-		text-align: center;
-		margin: 0.5em 0;
-	}
-
-	/* Estilos para Parágrafos */
-	.p1 {
-		hyphens: auto;
-		text-align: justify;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 4.6vw;
-	}
-
-	.p2 {
-		hyphens: auto;
-		text-align: justify;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 4.6vw;
-	}
-
-	.p3 {
-		hyphens: auto;
-		text-align: left;
-		margin: 0 1%;
-		text-indent: 10%;
-		font-size: 4.6vw;
-	}
-
-	.p4 {
-		hyphens: auto;
-		text-align: justify;
-		font-size: 4.6vw;
-	}
 
 	/*Estilos para botões*/
 	.btn1,

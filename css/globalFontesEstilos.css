@@ -1,0 +1,47 @@
+/* TÍTULOS */
+h1,
+h2,
+h3,
+h4,
+h5 {
+    text-align: center;
+    margin: 1vw 0;
+    font-size: clamp(1rem, 6vw, 3.5rem);
+}
+
+/* PARÁGRAFOS */
+.p1,
+.p2,
+.p4,
+.p5,
+.p6,
+.p7,
+.p8,
+.p9,
+.p10,
+.p11,
+.p12,
+.p13,
+.p14,
+.p15,
+.p16 {
+    hyphens: auto;
+    font-size: clamp(1rem, 5vw, 2.5rem);
+    text-indent: 2em;
+    margin: 2%;
+}
+
+.p15,
+.p8,
+.p16 {
+    text-align: justify;
+}
+
+.p3 {
+    text-align: left;
+    font-size: clamp(0.4rem, 4vw, 2rem);
+}
+
+.pass {
+    text-align: right;
+}

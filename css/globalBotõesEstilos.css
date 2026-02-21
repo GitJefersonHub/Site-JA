@@ -1,0 +1,111 @@
+.btn-local {
+    width: 90%;
+    display: block;
+    margin: 10px auto;
+    padding: clamp(0.5rem, 2vw, 2rem);
+    border: none;
+    border-radius: 10px;
+    font-size: clamp(0.4rem, 4.5vw, 2.5rem);
+    cursor: pointer;
+}
+
+/* ============================ BOTÕES ============================ */
+.btn-tecnologia,
+.btn-serigrafia,
+.btn1,
+.btn2 {
+    width: 98%;
+    margin: 1%;
+    padding: 1%;
+    font-size: clamp(1rem, 5vw, 3rem);
+    border: none;
+    border-radius: 1vw;
+    text-align: center;
+    cursor: pointer;
+    animation: blinkAlert 1s infinite alternate;
+    transition: transform 0.3s ease;
+}
+
+.btn-tecnologia:hover,
+.btn-serigrafia:hover,
+.btn1:hover,
+.btn2:hover {
+    transform: scale(1.1);
+}
+
+/* Animação */
+@keyframes skyPulse {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Estilos para BOTÕES */
+.btn3,
+.btn4,
+.btn5,
+.btn6,
+.btn7,
+.btn8,
+.btn9,
+.btn10 {
+    text-align: center;
+    display: inline-block;
+    padding: 1%;
+    margin: 1%;
+    font-size: clamp(0.4rem, 4vw, 2rem);
+    border: none;
+    border-radius: 1vw;
+    cursor: pointer;
+}
+
+.btn3:hover {
+    transform: scale(1.1);
+}
+
+.btn-local,
+.btn-vidéo,
+.btn-convenção,
+.btn-portaria,
+.btn-pro,
+.btn-A,
+.btn-B,
+.btn-C,
+.btn-D,
+.btn-H,
+.btn-J,
+.btn-L,
+.btn-M,
+.btn-N,
+.btn-R,
+.btn-T,
+.btn-P {
+  border-radius: 1vw;
+  text-align: center; /* Alinhamento do texto */
+  text-decoration: none; /* Sem sublinhado */
+  display: block; /* Posição do botão */
+  margin: 1% auto;
+  padding: 1% 1%;
+  font-size: clamp(0.4rem, 4vw, 2rem);
+}
+
+.btn-enviar {
+    text-align: center;
+    display: flex;
+    font-size: 4.4vw;
+    margin: 2%;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.btn-enviar {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}

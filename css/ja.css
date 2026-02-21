@@ -58,19 +58,6 @@ body.tema-escuro .weather-info {
 .form-field textarea {
     border: 1px solid #ccc; }
 
-/* ============================ TÍTULOS ============================ */
-h1 { color: white; }
-h2 { color: yellow; }
-h3 { color: brown; }
-h4 { color: white; }
-h5 { color: #007BFF; }
-
-/* ============================ PARÁGRAFOS ============================ */
-.pass { color: #87CEEB; }
-.p1 { color: gold; }
-.p2 { color: red; }
-.p3 { color: #007BFF; }
-.p4 { color: white; }
 
 /* ============================ BOTÕES ============================ */
 .btn-tecnologia,

@@ -1,0 +1,149 @@
+/* ============================ ANIMAÇÃO DE ALERTA ============================ */
+@keyframes blinkAlert {
+  0% {
+    background-color: green;
+  }
+
+  100% {
+    background-color: white;
+    color: blue;
+  }
+}
+
+/* ============================ BOTÕES ============================ */
+.btn-tecnologia,
+.btn-serigrafia,
+.btn1,
+.btn2 {
+  color: white;
+  animation: blinkAlert 1s infinite alternate;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.btn-tecnologia:hover,
+.btn-serigrafia:hover,
+.btn1:hover,
+.btn2:hover {
+  background-color: #007BFF;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn1:hover,
+.btn2:hover {
+  background-color: #45a049;
+}
+
+.btn3,
+.btn4,
+.btn5,
+.btn6,
+.btn7,
+.btn8,
+.btn9,
+.btn10 {
+  background-color: #28A745;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn3:hover {
+  background-color: #218838;
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Estilos para BOTÕES */
+.btn-local {
+  background-color: #F5FFFA; /* Cor de fundo do botão */
+}
+
+.btn-vidéo {
+  background-color: #F5FFFA; /* Cor de fundo do botão */
+}
+
+.btn-convenção {
+  background-color: #F5FFFA; /* Cor de fundo do botão */
+}
+
+.btn-portaria {
+  background-color: #F5FFFA; /* Cor de fundo do botão */
+}
+
+.btn-pro {
+  background-color: #F5FFFA; /* Cor de fundo do botão */
+}
+
+.btn-A {
+  background-color: #F5FFFA; /* Cor de fundo do botão */
+}
+
+.btn-B {
+  background-color: #F0FFF0; /* Cor de fundo do botão */
+}
+
+.btn-C {
+  background-color: #E0FFFF; /* Cor de fundo do botão */
+}
+
+.btn-D {
+  background-color: #E6E6FA; /* Cor de fundo do botão */
+}
+
+.btn-H {
+  background-color: #FFE4E1; /* Cor de fundo do botão */
+}
+
+.btn-J {
+  background-color: #FAFAD2; /* Cor de fundo do botão */
+}
+
+.btn-L {
+  background-color: #FAF0E6; /* Cor de fundo do botão */
+}
+
+.btn-M {
+  background-color: #F5F5F5; /* Cor de fundo do botão */
+}
+
+.btn-N {
+  background-color: #FFC0CB; /* Cor de fundo do botão */
+}
+
+.btn-R {
+  background-color: #FFB6C1; /* Cor de fundo do botão */
+}
+
+.btn-T {
+  background-color: #DDA0DD; /* Cor de fundo do botão */
+}
+
+.btn-P {
+  background-color: #F5DEB3; /* Cor de fundo do botão */ 
+}
+
+.btn-local,
+.btn-vidéo,
+.btn-convenção,
+.btn-portaria,
+.btn-pro,
+.btn-A,
+.btn-B,
+.btn-C,
+.btn-D,
+.btn-H,
+.btn-J,
+.btn-L,
+.btn-M,
+.btn-N,
+.btn-R,
+.btn-T,
+.btn-P {
+  color: #28A745; /* Cor do texto */
+}
+
+.btn-enviar {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}

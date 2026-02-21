@@ -1,0 +1,30 @@
+/* Estilos para o BODY */
+body.Metr {
+  background-color: #4F4F4F;
+}
+
+/* Estilos para o menu de navegação */
+.navbar {
+  background-color: green;
+}
+.logo {
+  color: white;
+  background-color: blueviolet;
+}
+
+/* Estilos para IMAGENS */
+.Metr {
+  background-image: url('');
+  .Metr {
+  width: 48%;
+  height: 48%;
+  padding-left: 26%;
+  }
+}
+/* ============================ RODAPÉ ============================ */
+footer {
+  background-color: blue;
+  color: white;
+}
+
+

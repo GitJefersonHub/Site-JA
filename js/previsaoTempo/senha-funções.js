@@ -98,55 +98,71 @@ function verificarSenhaSamurai() {
     });
 }
 
-// Função para Metropoles
-function verificarSenhaSFV() {
-  const maxTentativasSFV = 3;
-  const tempoBloqueioHorasSFV = 1;
 
-  const tentativas = parseInt(localStorage.getItem('tentativasSFV') || '0');
-  const bloqueadoAte = localStorage.getItem('bloqueadoAteSFV');
+
+
+
+
+
+
+
+
+// Função para Metropoles
+function verificarSenhaMetropoles() {
+  const maxTentativasMetropoles = 30;
+  const tempoBloqueioHorasMetropoles = 1;
+
+  const tentativas = parseInt(localStorage.getItem('tentativasMetropoles') || '0');
+  const bloqueadoAte = localStorage.getItem('bloqueadoAteMetropoles');
 
   if (bloqueadoAte && Date.now() < parseInt(bloqueadoAte)) {
     const restante = Math.ceil((parseInt(bloqueadoAte) - Date.now()) / 60000);
-    alert(`Acesso ao SFV bloqueado. Tente novamente em ${restante} minutos.`);
+    alert(`Acesso ao Metropoles bloqueado. Tente novamente em ${restante} minutos.`);
     return;
   }
 
-  if (tentativas >= maxTentativasSFV) {
-    const horaFutura = Date.now() + tempoBloqueioHorasSFV * 60 * 60 * 1000;
-    localStorage.setItem('bloqueadoAteSFV', horaFutura.toString());
-    localStorage.removeItem('tentativasSFV');
-    alert(`Você excedeu o número de tentativas para SFV. Bloqueado por ${tempoBloqueioHorasSFV} hora(s).`);
+  if (tentativas >= maxTentativasMetropoles) {
+    const horaFutura = Date.now() + tempoBloqueioHorasMetropoles * 60 * 60 * 1000;
+    localStorage.setItem('bloqueadoAteMetropoles', horaFutura.toString());
+    localStorage.removeItem('tentativasMetropoes');
+    alert(`Você excedeu o número de tentativas para Metropoles. Bloqueado por ${tempoBloqueioHorasMetropoles} hora(s).`);
     return;
   }
 
-  const senha = prompt(`Digite a senha para acessar SFV (tentativas restantes: ${maxTentativasSFV - tentativas})`);
+  const senha = prompt(`Digite a senha para acessar Metropoles (tentativas restantes: ${maxTentativasMetropoles - tentativas})`);
   if (!senha) return;
 
   fetch('/.netlify/functions/checkPassword', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ senha, tipo: 'sfv' })
+    body: JSON.stringify({ senha, tipo: 'Metropoles' })
   })
     .then(res => res.json())
     .then(data => {
       if (data.autorizado) {
-        localStorage.removeItem('tentativasSFV');
-        localStorage.removeItem('bloqueadoAteSFV');
-        window.location.href = '/sfv.html';
+        localStorage.removeItem('tentativasMetropoles');
+        localStorage.removeItem('bloqueadoAteMetropoles');
+        window.location.href = '/Metropoles.html';
       } else {
-        localStorage.setItem('tentativasSFV', tentativas + 1);
-        const restantes = maxTentativasSFV - (tentativas + 1);
+        localStorage.setItem('tentativasMetropoles', tentativas + 1);
+        const restantes = maxTentativasMetropoles - (tentativas + 1);
         alert(restantes > 0
-          ? `Senha incorreta para SFV. Você ainda tem ${restantes} tentativa(s).`
-          : `Senha incorreta. Você será bloqueado por ${tempoBloqueioHorasSFV} hora(s).`);
+          ? `Senha incorreta para Metropoles. Você ainda tem ${restantes} tentativa(s).`
+          : `Senha incorreta. Você será bloqueado por ${tempoBloqueioHorasMetropoles} hora(s).`);
       }
     })
     .catch(err => {
-      console.error("Erro ao verificar senha SFV:", err);
+      console.error("Erro ao verificar senha Metropoles:", err);
       alert("Erro ao verificar senha.");
     });
 }
+
+
+
+
+
+
+
 
 // Função para Ponto Digital
 function verificarSenhaPontoDigital() {

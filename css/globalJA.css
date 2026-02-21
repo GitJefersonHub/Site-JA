@@ -69,32 +69,6 @@ nav ul li a.disabled {
     border-radius: 10px;
 }
 
-/* Animação */
-@keyframes skyPulse {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-.btn-local {
-    width: 90%;
-    display: block;
-    margin: 10px auto;
-    padding: clamp(0.5rem, 2vw, 2rem);
-    border: none;
-    border-radius: 10px;
-    font-size: clamp(0.4rem, 4.5vw, 2.5rem);
-    cursor: pointer;
-}
-
 /* Containers */
 .container-weather,
 .container-trabalhando,
@@ -174,106 +148,6 @@ img {
     border-radius: 5px;
     font-size: clamp(1rem, 4.8vw, 2.5rem);
     border: 1px solid;
-}
-
-/* TÍTULOS */
-h1,
-h2,
-h3,
-h4,
-h5 {
-    text-align: center;
-    margin: 1vw 0;
-    font-size: clamp(1rem, 6vw, 3.5rem);
-}
-
-/* PARÁGRAFOS */
-.p1,
-.p2,
-.p3,
-.p4 {
-    hyphens: auto;
-    font-size: clamp(1rem, 5vw, 2.5rem);
-    text-indent: 2em;
-    margin: 2%;
-}
-
-.p1,
-.p2,
-.p4 {
-    text-align: justify;
-}
-
-.p3 {
-    text-align: left;
-}
-
-.pass {
-    text-align: right;
-}
-
-/* ============================ BOTÕES ============================ */
-.btn-tecnologia,
-.btn-serigrafia,
-.btn1,
-.btn2 {
-  width: 98%;
-  margin: 1%;
-  padding: 1%;
-  font-size: clamp(1rem, 5vw, 3rem);
-  border: none;
-  border-radius: 1vw;
-  text-align: center;
-  cursor: pointer;
-  color: white;
-  animation: blinkAlert 1s infinite alternate;
-  transition: transform 0.3s ease;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
-.btn-tecnologia:hover,
-.btn-serigrafia:hover,
-.btn1:hover,
-.btn2:hover {
-  background-color: #007BFF;
-  transform: scale(1.1);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.btn1:hover, .btn2:hover { background-color: #45a049; }
-
-.btn3 {
-  text-align: center;
-  display: inline-block;
-  padding: 1%;
-  margin: 1%;
-  font-size: clamp(0.4rem, 4vw, 2rem);
-  border: none;
-  border-radius: 1vw;
-  background-color: #28A745;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.btn3:hover {
-  background-color: #218838;
-  transform: scale(1.1);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.btn-enviar {
-    text-align: center;
-    display: flex;
-    font-size: 4.4vw;
-    margin: 2%;
-    cursor: pointer;
-    border-radius: 6px;
-}
-
-.btn-enviar {
-    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 /* RODAPÉ */
