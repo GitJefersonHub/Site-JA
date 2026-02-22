@@ -37,7 +37,7 @@ body.tema-escuro .weather-info {
     color: #e0e0e0;
 }
 
-.btn-local {
+.btn-localDispositivo {
     background-color: #45a049;
     color: white;
 }
@@ -45,77 +45,17 @@ body.tema-escuro .weather-info {
 /* Containers específicos */
 .container-trabalhando { background-color: green; }
 .container-tecnologia { background-color: transparent; }
-.container-tecnologias-exploradas { background-color: white; color: #007BFF; font-size: clamp(0.8rem, 3vw, 2rem); }
-.container-atualizando { background-color: green; color: yellow; font-size: clamp(1rem, 5vw, 2.5rem); }
+.container-tecnologias-exploradas { background-color: white; color: #007BFF; }
+.container-atualizando { background-color: green; color: yellow; }
 .container-serigrafia { background-color: transparent; }
-.container-habilidades { background-color: green; color: yellow; font-size: clamp(1rem, 5vw, 2.5rem); }
+.container-habilidades { background-color: green; color: yellow; }
 .container-casoseja { background-color: transparent; }
 .container-gestores { background-color: #363636; }
 .container-doações { background-color: #008080; }
 .container-formulario { background-color: white; }
 .form-container-formulario { background-color: #f9f9f9; }
 .form-field input,
-.form-field textarea {
-    border: 1px solid #ccc; }
-
-
-/* ============================ BOTÕES ============================ */
-.btn-tecnologia,
-.btn-serigrafia,
-.btn1,
-.btn2 {
-    color: white;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
-.btn-tecnologia:hover,
-.btn-serigrafia:hover,
-.btn1:hover,
-.btn2:hover {
-    background-color: #007BFF;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.btn1:hover,
-.btn2:hover {
-    background-color: #45a049;
-}
-
-.btn3 {
-    background-color: #28A745;
-    color: white;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.btn3:hover {
-    background-color: #218838;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.btn-enviar {
-    background-color: #45a049;
-    color: white;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
-.btn-enviar:hover {
-    background-color: #007BFF;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* ============================ ANIMAÇÃO DE ALERTA ============================ */
-@keyframes blinkAlert {
-    0% {
-        background-color: green;
-    }
-
-    100% {
-        background-color: white;
-        color: blue;
-    }
-}
+.form-field textarea { border: 1px solid #ccc; }
 
 /* ============================ RODAPÉ ============================ */
 footer {

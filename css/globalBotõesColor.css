@@ -56,7 +56,7 @@
 
 
 /* Estilos para BOTÕES */
-.btn-local {
+.btn-localMetropoles {
   background-color: #F5FFFA; /* Cor de fundo do botão */
 }
 
@@ -124,7 +124,7 @@
   background-color: #F5DEB3; /* Cor de fundo do botão */ 
 }
 
-.btn-local,
+.btn-localMetropoles,
 .btn-vidéo,
 .btn-convenção,
 .btn-portaria,
@@ -145,5 +145,6 @@
 }
 
 .btn-enviar {
+  background-color: #45a049;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }

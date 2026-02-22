@@ -1,15 +1,41 @@
-/* TÍTULOS */
-h1,
-h2,
-h3,
-h4,
-h5 {
-    text-align: center;
-    margin: 1vw 0;
-    font-size: clamp(1rem, 6vw, 3.5rem);
+nav ul li a {
+    font-size: clamp(0.4rem, 4vw, 2rem);
 }
 
-/* PARÁGRAFOS */
+.weather-info {
+    font-size: clamp(0.9rem, 2vw, 1.5rem);
+}
+/*============================ TÍTULOS ================================*/
+h1 {
+  font-size: clamp(1.2rem, 5vw, 4rem);
+  text-align: center;
+}
+
+h2 {
+  font-size: clamp(1.1rem, 4vw, 3rem);
+  text-align: center;
+}
+
+h3 {
+  font-size: clamp(1rem, 3vw, 2.5rem);
+  text-align: center;
+}
+
+h4 {
+  font-size: clamp(0.9rem, 2.5vw, 2rem);
+  text-align: center;
+}
+
+h5 {
+  font-size: clamp(0.8rem, 2vw, 1.5rem);
+  text-align: center;
+}
+
+small {
+  font-size: clamp(0.7rem, 1.5vw, 1rem);
+}
+
+/*=============================== PARÁGRAFOS =================================*/
 .p1,
 .p2,
 .p4,
@@ -26,14 +52,15 @@ h5 {
 .p15,
 .p16 {
     hyphens: auto;
-    font-size: clamp(1rem, 5vw, 2.5rem);
+    font-size: clamp(0.9rem, 2vw, 1.5rem);
     text-indent: 2em;
     margin: 2%;
 }
 
-.p15,
-.p8,
-.p16 {
+li, ul {
+    font-size: clamp(0.9rem, 2.5vw, 2rem);
+}
+.p8 {
     text-align: justify;
 }
 
@@ -44,4 +71,66 @@ h5 {
 
 .pass {
     text-align: right;
+    font-size: clamp(0.9rem, 2vw, 1.5rem);
+}
+
+/* ============================ BOTÕES ============================ */
+.btn-tecnologia,
+.btn-serigrafia,
+.btn1,
+.btn2 {
+    font-size: clamp(1rem, 5vw, 3rem);
+}
+
+/* Estilos para BOTÕES */
+.btn3,
+.btn4,
+.btn5,
+.btn6,
+.btn7,
+.btn8,
+.btn9,
+.btn10 {
+    font-size: clamp(0.4rem, 4vw, 2rem);
+}
+
+.btn-localDispositivo {
+    font-size: clamp(0.6rem, 2vw, 1.5rem);
+}
+.btn-vidéo,
+.btn-convenção,
+.btn-portaria,
+.btn-pro,
+.btn-A,
+.btn-B,
+.btn-C,
+.btn-D,
+.btn-H,
+.btn-J,
+.btn-L,
+.btn-M,
+.btn-N,
+.btn-R,
+.btn-T,
+.btn-P {
+    font-size: clamp(0.9rem, 2vw, 1.5rem);
+}
+
+.btn-enviar {
+    font-size: clamp(0.9rem, 2vw, 1.5rem);
+}
+
+/*================================== Formulário ===============================*/
+.form-field label {
+    font-size: clamp(1rem, 4.8vw, 2.5rem);
+}
+
+.form-field input,
+.form-field textarea {
+    font-size: clamp(1rem, 4.8vw, 2.5rem);
+}
+
+/*================================== RODAPÉ ====================================*/
+footer {
+    font-size: clamp(0.4rem, 4vw, 2rem);
 }

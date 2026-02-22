@@ -64,8 +64,7 @@ export async function getWeather(latitude, longitude) {
     }
 
     html += `
-<button class="btn-local" onclick="window.open('${mapsUrl}', '_blank')">
-📍 ${enderecoCompleto}
+<button class="btn-localDispositivo" onclick="window.open('${mapsUrl}', '_blank')">${enderecoCompleto}
 </button>`;
 
     const selic = selicRateRes.status === 'fulfilled' && typeof selicRateRes.value?.selic === 'number'
