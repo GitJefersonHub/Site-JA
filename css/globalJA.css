@@ -24,7 +24,6 @@ nav ul li {
     margin: 2%;
     padding: 0; /* simplificado */
     border-radius: 1vw;
-    background-color: #ff4081;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,18 +34,16 @@ nav ul li a {
     width: 100%;
     padding: clamp(0.2rem, 2vw, 1rem);
     text-decoration: none;
-    color: white;
     border-radius: 1vw;
     text-align: center;
     cursor: pointer;
     transition: transform 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 nav ul li a:hover {
-    background-color: #007BFF;
+   
     transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  
 }
 
 nav ul li a.disabled {
@@ -108,7 +105,7 @@ nav ul li a.disabled {
 .containerimgPD,
 .containerimgsite,
 .containerimgqrcoderondas {
-    width: clamp(120px, 35%, 300px);
+    width: clamp(20px, 45%, 400px);
     margin: 1% auto;
 }
 

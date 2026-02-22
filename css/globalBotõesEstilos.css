@@ -1,11 +1,13 @@
 .btn-localDispositivo {
-    width: 90%;
-    display: block;
-    margin: 10px auto;
-    padding: clamp(0.5rem, 2vw, 2rem);
+    width: 98%;
     border: none;
-    border-radius: 10px;
     cursor: pointer;
+    border-radius: 1vw;
+    text-align: center; /* Alinhamento do texto */
+    text-decoration: none; /* Sem sublinhado */
+    display: block; /* Posição do botão */
+    margin: 1% auto;
+    padding: 1% 1%;
 }
 
 /* ============================ BOTÕES ============================ */
