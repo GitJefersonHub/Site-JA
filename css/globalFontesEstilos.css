@@ -2,17 +2,6 @@
 /*Segundo valor (vw) → tamanho fluido proporcional à largura da tela.*/
 /*Terceiro valor (rem) → tamanho máximo (limita o crescimento em telas muito grandes, como 4K).*/
 
-nav ul li a {
-    font-size: clamp(0.4rem, 2vw, 3rem);  
-}
-
-.weather-info {
-    font-size: clamp(1rem, 2vw, 3rem);
-}
-
-.btn-localDispositivo {
-    font-size: clamp(1rem, 2vw, 3rem);
-}
 /*============================ TÍTULOS ================================*/
 h1 {
   font-size: clamp(1.5rem, 3vw, 4rem);
@@ -54,7 +43,8 @@ h5 {
 .p13,
 .p14,
 .p15,
-.p16 {
+.p16,
+.weather-info  {
     hyphens: auto;
     text-align: justify;
     font-size: clamp(1.1rem, 3vw, 4rem);
@@ -62,7 +52,7 @@ h5 {
     margin: 1%;
 }
 
-li, ul, ol {
+li, ul, ol, dl {
     font-size: clamp(0.9rem, 3vw, 4rem);
     margin-left: 1%;
 }
@@ -86,7 +76,7 @@ li, ul, ol {
 .btn-serigrafia,
 .btn1,
 .btn2 {
-    font-size: clamp(1rem, 3vw, 4rem);
+    font-size: clamp(1.1rem, 3vw, 4rem);
 }
 
 /* Estilos para BOTÕES */
@@ -98,9 +88,10 @@ li, ul, ol {
 .btn8,
 .btn9,
 .btn10 {
-    font-size: clamp(0.9rem, 3vw, 4rem);
+    font-size: clamp(1.1rem, 3vw, 4rem);
 }
 
+.btn-localDispositivo,
 .btn-localMetropoles,
 .btn-vidéo,
 .btn-convenção,
@@ -118,21 +109,21 @@ li, ul, ol {
 .btn-R,
 .btn-T,
 .btn-P {
-    font-size: clamp(0.9rem, 3vw, 4rem);
+    font-size: clamp(1.1rem, 3vw, 4rem);
 }
 
 .btn-enviar {
-    font-size: clamp(0.9rem, 2vw, 1.5rem);
+    font-size: clamp(0.9rem, 2vw, 3rem);
 }
 
 /*================================== Formulário ===============================*/
 .form-field label {
-    font-size: clamp(1rem, 4.8vw, 2.5rem);
+    font-size: clamp(1.1rem, 3vw, 4rem);
 }
 
 .form-field input,
 .form-field textarea {
-    font-size: clamp(1rem, 4.8vw, 2.5rem);
+    font-size: clamp(0.8rem, 3vw, 4rem);
 }
 
 /*================================== RODAPÉ ====================================*/
