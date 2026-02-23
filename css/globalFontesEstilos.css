@@ -3,39 +3,39 @@
 /*Terceiro valor (rem) → tamanho máximo (limita o crescimento em telas muito grandes, como 4K).*/
 
 nav ul li a {
-    font-size: clamp(0.4rem, 4vw, 2rem);  
+    font-size: clamp(0.4rem, 2vw, 3rem);  
 }
 
 .weather-info {
-    font-size: clamp(0.9rem, 2vw, 3rem);
+    font-size: clamp(1rem, 2vw, 3rem);
 }
 
 .btn-localDispositivo {
-    font-size: clamp(0.6rem, 2vw, 3rem);
+    font-size: clamp(1rem, 2vw, 3rem);
 }
 /*============================ TÍTULOS ================================*/
 h1 {
-  font-size: clamp(1.2rem, 4vw, 4rem);
+  font-size: clamp(1.5rem, 3vw, 4rem);
   text-align: center;
 }
 
 h2 {
-  font-size: clamp(1.1rem, 3.8vw, 3rem);
+  font-size: clamp(1.4rem, 3vw, 4rem);
   text-align: center;
 }
 
 h3 {
-  font-size: clamp(1rem, 3.6vw, 2.5rem);
+  font-size: clamp(1.4rem, 3vw, 4rem);
   text-align: center;
 }
 
 h4 {
-  font-size: clamp(0.9rem, 3.4vw, 2rem);
+  font-size: clamp(1.3rem, 3vw, 4rem);
   text-align: center;
 }
 
 h5 {
-  font-size: clamp(0.8rem, 3.2vw, 1.5rem);
+  font-size: clamp(1.2rem, 3vw, 4rem);
   text-align: center;
 }
 
@@ -57,27 +57,28 @@ h5 {
 .p16 {
     hyphens: auto;
     text-align: justify;
-    font-size: clamp(1rem, 3vw, 4rem);
+    font-size: clamp(1.1rem, 3vw, 4rem);
     text-indent: 2em;
     margin: 1%;
 }
 
 li, ul, ol {
-    font-size: clamp(0.8rem, 3vw, 4rem);
-    margin-left: 2%;
+    font-size: clamp(0.9rem, 3vw, 4rem);
+    margin-left: 1%;
 }
 .p8 {
     text-align: justify;
+    font-size: clamp(0.9rem, 3vw, 4rem);
 }
 
 .p3 {
     text-align: left;
-    font-size: clamp(0.4rem, 4vw, 2rem);
+    font-size: clamp(0.9rem, 3vw, 4rem);
 }
 
 .pass {
     text-align: right;
-    font-size: clamp(0.9rem, 2vw, 1.5rem);
+    font-size: clamp(0.9rem, 3vw, 4rem);
 }
 
 /* ============================ BOTÕES ============================ */
@@ -85,7 +86,7 @@ li, ul, ol {
 .btn-serigrafia,
 .btn1,
 .btn2 {
-    font-size: clamp(1rem, 5vw, 3rem);
+    font-size: clamp(1rem, 3vw, 4rem);
 }
 
 /* Estilos para BOTÕES */
@@ -97,9 +98,10 @@ li, ul, ol {
 .btn8,
 .btn9,
 .btn10 {
-    font-size: clamp(0.4rem, 4vw, 2rem);
+    font-size: clamp(0.9rem, 3vw, 4rem);
 }
 
+.btn-localMetropoles,
 .btn-vidéo,
 .btn-convenção,
 .btn-portaria,
@@ -116,7 +118,7 @@ li, ul, ol {
 .btn-R,
 .btn-T,
 .btn-P {
-    font-size: clamp(0.9rem, 2vw, 1.5rem);
+    font-size: clamp(0.9rem, 3vw, 4rem);
 }
 
 .btn-enviar {
