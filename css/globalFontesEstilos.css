@@ -2,6 +2,9 @@
 /*Segundo valor (vw) → tamanho fluido proporcional à largura da tela.*/
 /*Terceiro valor (rem) → tamanho máximo (limita o crescimento em telas muito grandes, como 4K).*/
 
+.weather-info  {
+    font-size: clamp(1.01rem, 3vw, 4rem);
+}
 /*============================ TÍTULOS ================================*/
 h1 {
   font-size: clamp(1.5rem, 3vw, 4rem);
@@ -43,8 +46,7 @@ h5 {
 .p13,
 .p14,
 .p15,
-.p16,
-.weather-info  {
+.p16  {
     hyphens: auto;
     text-align: justify;
     font-size: clamp(1.1rem, 3vw, 4rem);
@@ -128,5 +130,5 @@ li, ul, ol, dl {
 
 /*================================== RODAPÉ ====================================*/
 footer {
-    font-size: clamp(0.4rem, 4vw, 2rem);
+    font-size: clamp(0.4rem, 3vw, 4rem);
 }
