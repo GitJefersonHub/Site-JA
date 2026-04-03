@@ -23,11 +23,14 @@ h2 {
 
 /* Tabela responsiva */
 .table-wrapper {
+  border-radius: 1%;
+  background-color: #9ACD32;
   overflow-x: auto;
   width: 100%;
 }
 
 table {
+  background-color: #FFFAFA;
   width: 100%;
   border-collapse: collapse;
   table-layout: auto; /* ← permite ajuste automático */
@@ -35,15 +38,20 @@ table {
 }
 
 thead {
-  background-color: #f0f0f0;
+  background-color: #FFDEAD;
 }
 
-th, td {
-  border: 1px solid #ccc;
-  text-align: left;
+th {
+  border: 1px solid rgb(193, 196, 191);
+  text-align: center;
   font-size: clamp(0.26rem, 1.5vw, 1.5rem); /* fonte adaptável */
 }
 
+td {
+  border: 1px solid #DCDCDC;
+  text-align: left;
+  font-size: clamp(0.26rem, 1.5vw, 1.5rem); /* fonte adaptável */
+}
 
 /* Botões */
 .button-group {

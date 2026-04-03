@@ -213,15 +213,19 @@ button {
 }
 
 .modal-conteudo button:nth-child(3) {
-  background-color: #28a745;
+  background-color: #008000;
   color: white;
 }
 .modal-conteudo button:nth-child(4) {
-  background-color: #007bff;
+  background-color: blue;
   color: white;
 }
 .modal-conteudo button:nth-child(5) {
-  background-color: #dc3545;
+  background-color: #3c3b41;
+  color: white;
+}
+.modal-conteudo button:nth-child(6) {
+  background-color: red;
   color: white;
 }
 
@@ -240,9 +244,26 @@ button {
   border-radius: 0.5rem;
   resize: none;
 }
+
+
+.campo-resumo {
+  width: 100%;
+  font-size: 3.0em;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  resize: none;
+}
 /*Caractéres restantes*/
 .contador-observacao {
   text-align: right;
+  font-size: 2.0em;
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+.contador-resumo {
+  text-align:justify ;
   font-size: 2.0em;
   color: #555;
   margin-top: 0.5rem;

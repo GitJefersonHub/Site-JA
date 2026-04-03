@@ -13,14 +13,13 @@
 
 <body>
   <main>
-    <!-- Tabela de ponto -->
+    <!-- Área para renderização dinâmica das tabelas -->
     <section id="tabelaPonto"></section>
-
-    <!-- Tabela de QR Code -->
     <section id="tabelaQRCode"></section>
+    <section id="tabelaResumo"></section>
   </main>
 
-  <!-- Inicialização: proteger acesso e expor dados do usuário para os relatórios -->
+  <!-- Inicialização de contexto -->
   <script>
     (function initRelatoriosContext() {
       const usuarioLogado = localStorage.getItem('usuarioLogado');
@@ -35,15 +34,14 @@
         return;
       }
 
-      // Expor global para scripts de relatório
+      // Expor globalmente para os scripts de relatório
       window.dadosUsuario = dadosUsuario;
     })();
   </script>
 
-  <!-- Scripts em ordem correta (usar defer) -->
+  <!-- Scripts principais -->
   <script src="js/rondas/relatoriosBase.js" defer></script>
   <script src="js/rondas/relatoriosPonto.js" defer></script>
   <script src="js/rondas/relatoriosQRCode.js" defer></script>
-  
 </body>
 </html>

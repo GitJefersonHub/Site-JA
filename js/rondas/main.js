@@ -1,7 +1,7 @@
 // Proteção contra acesso direto sem login
 const dados = JSON.parse(localStorage.getItem('dadosUsuario'));
 
-if (!dados || !dados.nome || !dados.matricula || !dados.localizacao || !dados.posto ) {
+if (!dados || !dados.nome || !dados.matricula || !dados.localizacao || !dados.posto) {
   alert('Dados de usuário inválidos. Faça login novamente.');
   localStorage.removeItem('usuarioLogado');
   localStorage.removeItem('dadosUsuario');
@@ -205,6 +205,66 @@ function iniciarContadorFechamento() {
   atualizarContador();
   setInterval(atualizarContador, 1000);
 }
+
+
+// Função para abrir modal de resumo
+function abrirModalResumo() {
+  document.getElementById('modalRegistro').style.display = 'none';
+  document.getElementById('campoResumo').value = '';
+  document.getElementById('contadorResumo').textContent = '2000 restantes';
+  document.getElementById('modalResumo').style.display = 'flex';
+}
+
+// Confirmar resumo
+function confirmarResumo() {
+  const campo = document.getElementById('campoResumo');
+  const resumoTexto = (campo?.value || '').trim();
+
+  if (!resumoTexto) {
+    alert('Por favor, insira um resumo da jornada.');
+    campo?.focus();
+    return;
+  }
+
+  const agora = new Date();
+  const dataHora = agora.toLocaleString('pt-BR');
+  const dadosUsuario = JSON.parse(localStorage.getItem('dadosUsuario')) || {};
+  const listaResumo = JSON.parse(localStorage.getItem('Resumo')) || [];
+
+  const registroResumo = {
+    dataHora,
+    resumo: resumoTexto,
+    nome: dadosUsuario.nome || '---',
+    matricula: dadosUsuario.matricula || '---',
+    localizacao: dadosUsuario.localizacao || 'Não informado',
+    posto: dadosUsuario.posto || '---'
+  };
+
+  listaResumo.push(registroResumo);
+  localStorage.setItem('Resumo', JSON.stringify(listaResumo));
+
+  alert('Resumo registrado com sucesso!');
+  document.getElementById('modalResumo').style.display = 'none';
+  criarTabelaResumo();
+}
+
+// Cancelar resumo
+function cancelarResumo() {
+  document.getElementById('modalResumo').style.display = 'none';
+}
+
+// Atualizar contador de caracteres
+document.addEventListener('DOMContentLoaded', () => {
+  const campoResumo = document.getElementById('campoResumo');
+  if (campoResumo) {
+    campoResumo.addEventListener('input', () => {
+      const restante = 2000 - campoResumo.value.length;
+      document.getElementById('contadorResumo').textContent = `${restante} restantes`;
+    });
+  }
+});
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   iniciarContadorFechamento();

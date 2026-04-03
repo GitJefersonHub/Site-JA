@@ -26,24 +26,17 @@
       <button class="btn-relatorios" onclick="window.location.href='relatorios.html'">Relatórios</button>
       <button class="btn-ESE" onclick="editarPerfil()">Editar / Salvar / Excluir</button>
 
-      <div id="formCadastro" class="form-cadastro">
-        <!-- Campos de cadastro -->
-      </div>
-
+      <div id="formCadastro" class="form-cadastro"></div>
       <div id="formEditar" class="form-editar" style="display: none;">
         <label for="editNome">Nome:</label>
         <input type="text" id="editNome">
-
         <label for="editMatricula">Matrícula:</label>
         <input type="text" id="editMatricula">
-
         <label for="editLocalizacao">Local:</label>
         <input type="text" id="editLocalizacao">
-
         <label for="editPosto">Posto:</label>
         <input type="text" id="editPosto">
         <br>
-        
         <button class="btn-salvar" onclick="salvarPerfil()">Salvar</button>
         <button class="btn-excluir" onclick="excluir()">Excluir</button>
       </div>
@@ -54,19 +47,20 @@
       <!-- Tabelas de Registros -->
       <div id="tabelaPonto" class="tabela-registros"></div>
       <div id="tabelaQRCode" class="tabela-registros"></div>
+      <div id="tabelaResumo" class="tabela-registros"></div>
     </div>
   </div>
 
   <!-- Modal de opções de registro -->
   <div id="modalRegistro" class="modal-registro">
     <div class="modal-conteudo modal-opcoes">
-      <!-- Leitor de QR Code -->
       <div id="reader" class="leitor-qr">
         <p id="leituraStatus" class="leitura-status">Aguardando leitura…</p>
       </div>
       <h3>Registrar como:</h3>
       <button onclick="registrarPonto()">Registro Móvel</button>
-      <button onclick="registrarQRCode()">QR Code</button>
+      <button onclick="registrarQRCode()">Registro QR Code</button>
+      <button onclick="abrirModalResumo()">Registro Resumo</button>
       <button onclick="fecharModal()">Fechar</button>
     </div>
   </div>
@@ -74,7 +68,7 @@
   <!-- Modal de observação -->
   <div id="modalObservacao" class="modal-registro">
     <div class="modal-conteudo modal-observacao">
-      <h3>Adicionar observação</h3>
+      <h3>Observação:</h3>
       <textarea id="campoObservacao" maxlength="70" rows="3" class="campo-observacao"></textarea>
       <p id="contadorObservacao" class="contador-observacao">70 restantes</p>
       <button onclick="confirmarObservacao()">Confirmar</button>
@@ -82,8 +76,16 @@
     </div>
   </div>
 
-  <div id="tabelaPonto"></div>
-  <div id="tabelaQRCode"></div>
+  <!-- Modal de resumo -->
+  <div id="modalResumo" class="modal-registro">
+    <div class="modal-conteudo modal-resumo">
+      <h3>Resumo:</h3>
+      <textarea id="campoResumo" maxlength="2000" rows="4" class="campo-resumo"></textarea>
+      <p id="contadorResumo" class="contador-resumo">2000 restantes</p>
+      <button onclick="confirmarResumo()">Confirmar</button>
+      <button onclick="cancelarResumo()">Cancelar</button>
+    </div>
+  </div>
 
   <script src="js/rondas/main.js"></script>
   <script src="js/rondas/botaoQR.js"></script>
@@ -92,4 +94,5 @@
   <script src="js/rondas/excluir.js"></script>
   <script src="js/rondas/sair.js"></script>
 </body>
+
 </html>
