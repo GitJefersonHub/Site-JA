@@ -264,8 +264,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
   iniciarContadorFechamento();
 });
