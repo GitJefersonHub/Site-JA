@@ -18,7 +18,7 @@ function criarTabelaPonto() {
       <thead>
         <tr>
           <th>Nome</th>
-          <th>Matrícula</th>
+          <th>Matríc</th>
           <th>Local</th>
           <th>Posto</th>
         </tr>

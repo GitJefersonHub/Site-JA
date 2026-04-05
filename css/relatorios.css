@@ -29,7 +29,7 @@ h2 {
 }
 
 table {
-  background-color: #F5F5F5;
+  background-color: #F0F8FF;
   width: 100%;
   border-collapse: collapse;
   table-layout: auto;
@@ -37,19 +37,19 @@ table {
 }
 
 thead {
-  background-color: #B0E0E6;
+  background-color: #00FFFF;
 }
 
 th {
-  border: 1px solid #C0C0C0;
+  border: 1px solid #ADD8E6;
   text-align: center;
-  font-size: clamp(0.26rem, 1.5vw, 1.5rem);
+  font-size: clamp(0.36rem, 2vw, 2.5rem);
 }
 
 td {
-  border: 1px solid #C0C0C0;
+  border: 1px solid #ADD8E6;
   text-align: left;
-  font-size: clamp(0.26rem, 1.5vw, 1.5rem);
+  font-size: clamp(0.36rem, 2vw, 2.5rem);
 }
 
 /* Botões */

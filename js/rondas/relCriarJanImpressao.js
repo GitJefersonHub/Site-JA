@@ -6,7 +6,7 @@ function criarJanelaImpressao(tipo, listaPonto, listaResumo) {
         <thead>
           <tr>
             <th>Nome</th>
-            <th>Matrícula</th>
+            <th>Matríc</th>
             <th>Local</th>
             <th>Posto</th>
           </tr>
@@ -75,7 +75,15 @@ function criarJanelaImpressao(tipo, listaPonto, listaResumo) {
       // Converter quebras de linha em parágrafos com indentação
       const textoFormatado = item.resumo
         .split(/\n+/)
-        .map(par => `<p style="text-indent: 20px; margin: 0 0 8px 0;">${par}</p>`)
+        .map(par => `<p style="
+            text-indent: 20px; 
+            margin: 0 0 8px 0; 
+            hyphens: auto; 
+            word-break: break-word; 
+            overflow-wrap: break-word;
+          ">
+            ${par}
+          </p>`)
         .join('');
 
       content += `

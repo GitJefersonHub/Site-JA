@@ -5,6 +5,11 @@ function registrarResumo() {
   document.getElementById('modalResumo').style.display = 'flex';
 }
 
+
+
+
+
+
 function criarTabelaResumo() { 
   const tabelaResumo = document.getElementById("tabelaResumo");
   tabelaResumo.innerHTML = '';
@@ -25,12 +30,22 @@ function criarTabelaResumo() {
       <tbody id="tbodyResumo"></tbody>
     `;
 
-    const tbodyResumo = table.querySelector('#tbodyResumo');
+     const tbodyResumo = table.querySelector('#tbodyResumo');
     listaResumo.forEach(item => {
-      // ✅ Converter quebras de linha em parágrafos com indentação
+      // ✅ Converter quebras de linha em parágrafos com indentação e hifenização
       const textoFormatado = item.resumo
         .split(/\n+/)
-        .map(par => `<p style="text-indent: 20px; margin: 0 0 8px 0;">${par}</p>`)
+        .map(par => `
+          <p style="
+            text-indent: 20px; 
+            margin: 0 0 8px 0; 
+            hyphens: auto; 
+            word-break: break-word; 
+            overflow-wrap: break-word;
+          ">
+            ${par}
+          </p>
+        `)
         .join('');
 
       const linha = document.createElement('tr');
@@ -55,6 +70,19 @@ function criarTabelaResumo() {
 
   tabelaResumo.appendChild(wrapper);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Confirmar resumo
 function confirmarResumo() {
