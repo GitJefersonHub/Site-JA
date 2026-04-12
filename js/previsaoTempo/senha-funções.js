@@ -215,108 +215,52 @@ function verificarSenhaPontoDigital() {
 }
 
 
-// Função para site
-function verificarSenhasite() {
-  const maxTentativassite = 3;
-  const tempoBloqueioHorassite = 1;
+// Função para Janete
+function verificarSenhaJanete() {
+  const maxTentativasJanete = 3;
+  const tempoBloqueioHorasJanete = 1;
 
-  const tentativas = parseInt(localStorage.getItem('tentativassite') || '0');
-  const bloqueadoAte = localStorage.getItem('bloqueadoAtesite');
+  const tentativas = parseInt(localStorage.getItem('tentativasJanete') || '0');
+  const bloqueadoAte = localStorage.getItem('bloqueadoAteJanete');
 
   if (bloqueadoAte && Date.now() < parseInt(bloqueadoAte)) {
     const restante = Math.ceil((parseInt(bloqueadoAte) - Date.now()) / 60000);
-    alert(`Acesso ao site bloqueado. Tente novamente em ${restante} minutos.`);
+    alert(`Acesso a Janete bloqueado. Tente novamente em ${restante} minutos.`);
     return;
   }
 
-  if (tentativas >= maxTentativassite) {
-    const horaFutura = Date.now() + tempoBloqueioHorasSFV * 60 * 60 * 1000;
-    localStorage.setItem('bloqueadoAtesite', horaFutura.toString());
-    localStorage.removeItem('tentativassite');
-    alert(`Você excedeu o número de tentativas para site. Bloqueado por ${tempoBloqueioHorassite} hora(s).`);
+  if (tentativas >= maxTentativasJanete) {
+    const horaFutura = Date.now() + tempoBloqueioHorasJanete * 60 * 60 * 1000;
+    localStorage.setItem('bloqueadoAteJanete', horaFutura.toString());
+    localStorage.removeItem('tentativasJanete');
+    alert(`Você excedeu o número de tentativas para Janete. Bloqueado por ${tempoBloqueioHorasJanete} hora(s).`);
     return;
   }
 
-  const senha = prompt(`Digite a senha para acessar site (tentativas restantes: ${maxTentativassite - tentativas})`);
+  const senha = prompt(`Digite a senha para acessar Janete (tentativas restantes: ${maxTentativasJanete - tentativas})`);
   if (!senha) return;
 
   fetch('/.netlify/functions/checkPassword', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ senha, tipo: 'site' })
+    body: JSON.stringify({ senha, tipo: 'Janete' })
   })
     .then(res => res.json())
     .then(data => {
       if (data.autorizado) {
-        localStorage.removeItem('tentativassite');
-        localStorage.removeItem('bloqueadoAteSFV');
-        window.location.href = '/site.html';
+        localStorage.removeItem('tentativasJanete');
+        localStorage.removeItem('bloqueadoAteJanete');
+        window.location.href = '/Janete.html';
       } else {
-        localStorage.setItem('tentativassite', tentativas + 1);
-        const restantes = maxTentativassite - (tentativas + 1);
+        localStorage.setItem('tentativasJanete', tentativas + 1);
+        const restantes = maxTentativasJanete - (tentativas + 1);
         alert(restantes > 0
-          ? `Senha incorreta para site. Você ainda tem ${restantes} tentativa(s).`
-          : `Senha incorreta. Você será bloqueado por ${tempoBloqueioHorasSFV} hora(s).`);
+          ? `Senha incorreta para Janete. Você ainda tem ${restantes} tentativa(s).`
+          : `Senha incorreta. Você será bloqueado por ${tempoBloqueioHorasJanete} hora(s).`);
       }
     })
     .catch(err => {
-      console.error("Erro ao verificar senha site:", err);
-      alert("Erro ao verificar senha.");
-    });
-}
-
-
-
-
-
-
-
-// Função para Segurança
-function verificarSenhaSFV() {
-  const maxTentativasSFV = 3;
-  const tempoBloqueioHorasSFV = 1;
-
-  const tentativas = parseInt(localStorage.getItem('tentativasSFV') || '0');
-  const bloqueadoAte = localStorage.getItem('bloqueadoAteSFV');
-
-  if (bloqueadoAte && Date.now() < parseInt(bloqueadoAte)) {
-    const restante = Math.ceil((parseInt(bloqueadoAte) - Date.now()) / 60000);
-    alert(`Acesso ao SFV bloqueado. Tente novamente em ${restante} minutos.`);
-    return;
-  }
-
-  if (tentativas >= maxTentativasSFV) {
-    const horaFutura = Date.now() + tempoBloqueioHorasSFV * 60 * 60 * 1000;
-    localStorage.setItem('bloqueadoAteSFV', horaFutura.toString());
-    localStorage.removeItem('tentativasSFV');
-    alert(`Você excedeu o número de tentativas para SFV. Bloqueado por ${tempoBloqueioHorasSFV} hora(s).`);
-    return;
-  }
-
-  const senha = prompt(`Digite a senha para acessar SFV (tentativas restantes: ${maxTentativasSFV - tentativas})`);
-  if (!senha) return;
-
-  fetch('/.netlify/functions/checkPassword', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ senha, tipo: 'sfv' })
-  })
-    .then(res => res.json())
-    .then(data => {
-      if (data.autorizado) {
-        localStorage.removeItem('tentativasSFV');
-        localStorage.removeItem('bloqueadoAteSFV');
-        window.location.href = '/sfv.html';
-      } else {
-        localStorage.setItem('tentativasSFV', tentativas + 1);
-        const restantes = maxTentativasSFV - (tentativas + 1);
-        alert(restantes > 0
-          ? `Senha incorreta para SFV. Você ainda tem ${restantes} tentativa(s).`
-          : `Senha incorreta. Você será bloqueado por ${tempoBloqueioHorasSFV} hora(s).`);
-      }
-    })
-    .catch(err => {
-      console.error("Erro ao verificar senha SFV:", err);
+      console.error("Erro ao verificar senha Janete:", err);
       alert("Erro ao verificar senha.");
     });
 }

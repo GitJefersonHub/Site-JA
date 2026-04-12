@@ -6,7 +6,7 @@ exports.handler = async (event) => {
   const senhaSamurai = process.env.SAMURAI_PASSWORD;
   const senhaMetropoles = process.env.METROPOLES_PASSWORD;
   const senhaPontoDigital = process.env.PONTODIGITAL_PASSWORD;
-  const senhasite = process.env.SITE_PASSWORD;
+  const senhaJanete = process.env.JANETE_PASSWORD;
 
   let autorizado = false;
 
@@ -18,7 +18,7 @@ exports.handler = async (event) => {
     autorizado = true;
   } else if (tipo === 'PontoDigital' && senha === senhaPontoDigital) {
     autorizado = true;
-  } else if (tipo === 'site' && senha === senhasite) {
+  } else if (tipo === 'Janete' && senha === senhaJanete) {
     autorizado = true;
   }
 
