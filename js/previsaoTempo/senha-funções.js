@@ -98,15 +98,6 @@ function verificarSenhaSamurai() {
     });
 }
 
-
-
-
-
-
-
-
-
-
 // Função para Metropoles
 function verificarSenhaMetropoles() {
   const maxTentativasMetropoles = 30;
@@ -157,13 +148,6 @@ function verificarSenhaMetropoles() {
     });
 }
 
-
-
-
-
-
-
-
 // Função para Ponto Digital
 function verificarSenhaPontoDigital() {
   const maxTentativasPonto = 3;
@@ -213,7 +197,6 @@ function verificarSenhaPontoDigital() {
       alert("Erro ao verificar senha.");
     });
 }
-
 
 // Função para Janete
 function verificarSenhaJanete() {

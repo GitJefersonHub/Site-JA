@@ -36,6 +36,10 @@
 
     .qr-box {
       text-align: center;
+      flex: 0 1 120px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+      margin-bottom: 15px;
     }
 
     .qr-box p {
@@ -61,70 +65,79 @@
       background-color: #0056b3;
     }
 
-    .qr-box {
-      text-align: center;
-      page-break-inside: avoid;
+    /* Cabeçalho e rodapé fixos na impressão */
+    @media print {
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #conteudoPDF {
+        margin: 25mm 10mm 25mm 10mm; /* espaço para cabeçalho e rodapé */
+      }
+
+      header, footer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        height: 15mm;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #555;
+      }
+
+      header {
+        top: 0;
+      }
+
+      footer {
+        bottom: 0;
+      }
+
+      .qr-box {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
     }
   </style>
 </head>
 
 <body>
+  <header>
+    <h2>QR Codes Personalizados</h2>
+  </header>
+
+  <footer>
+    <p>Gerado em: <span id="dataHoraPDF"></span></p>
+  </footer>
+
   <!-- Área que será convertida em PDF -->
   <div id="conteudoPDF">
-    <h2>QR Codes Personalizados</h2>
-    <div class="data-hora" id="dataHoraPDF"></div>
-
     <div class="qr-container">
-      <div class="qr-box">
-        <div id="qr0"></div>
-        <p>Abertura</p>
-      </div>
-      <div class="qr-box">
-        <div id="qr1"></div>
-        <p>1° Andar</p>
-      </div>
-      <div class="qr-box">
-        <div id="qr2"></div>
-        <p>2° Andar</p>
-      </div>
-      <div class="qr-box">
-        <div id="qr3"></div>
-        <p>3° Andar</p>
-      </div>
-      <div class="qr-box">
-        <div id="qr4"></div>
-        <p>4° Andar</p>
-      </div>
-      <div class="qr-box">
-        <div id="qr5"></div>
-        <p>5° Andar</p>
-      </div>
-      <div class="qr-box">
-        <div id="qr6"></div>
-        <p>Veículos</p>
-      </div>
-      <div class="qr-box">
-        <div id="qr7"></div>
-        <p>Térreo</p>
-      </div>
-      <div class="qr-box">
-        <div id="qr8"></div>
-        <p>Capela</p>
-      </div>
-      <div class="qr-box">
-        <div id="qr9"></div>
-        <p>Bloco A/B</p>
-      </div>
-
-      <!-- 🔧 Para adicionar mais QR Codes:
-           1. Crie um novo <div class="qr-box"> com id="qr10", "qr11", etc.
-           2. Adicione o nome de identificação no <p>.
-           3. Inclua o novo código na lista 'codigos' no script abaixo.
-      -->
+      <div class="qr-box"><div id="qr0"></div><p>Abertura</p></div>
+      <div class="qr-box"><div id="qr1"></div><p>1° Andar</p></div>
+      <div class="qr-box"><div id="qr2"></div><p>2° Andar</p></div>
+      <div class="qr-box"><div id="qr3"></div><p>3° Andar</p></div>
+      <div class="qr-box"><div id="qr4"></div><p>4° Andar</p></div>
+      <div class="qr-box"><div id="qr5"></div><p>5° Andar</p></div>
+      <div class="qr-box"><div id="qr6"></div><p>Veículos</p></div>
+      <div class="qr-box"><div id="qr7"></div><p>Térreo</p></div>
+      <div class="qr-box"><div id="qr8"></div><p>Capela</p></div>
+      <div class="qr-box"><div id="qr9"></div><p>Bloco A/B</p></div>
+      <div class="qr-box"><div id="qr10"></div><p>a</p></div>
+      <div class="qr-box"><div id="qr11"></div><p>b</p></div>
+      <div class="qr-box"><div id="qr12"></div><p>c</p></div>
+      <div class="qr-box"><div id="qr13"></div><p>d</p></div>
+      <div class="qr-box"><div id="qr14"></div><p>e</p></div>
+      <div class="qr-box"><div id="qr15"></div><p>f</p></div>
+      <div class="qr-box"><div id="qr16"></div><p>g</p></div>
+      <div class="qr-box"><div id="qr17"></div><p>h</p></div>
+      <div class="qr-box"><div id="qr18"></div><p>i</p></div>
+      <div class="qr-box"><div id="qr19"></div><p>j</p></div>
     </div>
-  </div>
 
-  <button class="btn-exportar" onclick="visualizarPDF()">👁️ Visualizar PDF</button>
+    <button class="btn-exportar" onclick="visualizarPDF()">👁️ Visualizar PDF</button>
+  </div>
 
   <script>
     // Lista de códigos que serão convertidos em QR Codes
@@ -138,19 +151,29 @@
       { id: "qr6", valor: "6" },
       { id: "qr7", valor: "7" },
       { id: "qr8", valor: "8" },
-      { id: "qr9", valor: "9" }
+      { id: "qr9", valor: "9" },
+      { id: "qr10", valor: "10" },
+      { id: "qr11", valor: "11" },
+      { id: "qr12", valor: "12" },
+      { id: "qr13", valor: "13" },
+      { id: "qr14", valor: "14" },
+      { id: "qr15", valor: "15" },
+      { id: "qr16", valor: "16" },
+      { id: "qr17", valor: "17" },
+      { id: "qr18", valor: "18" },
+      { id: "qr19", valor: "19" }
     ];
 
     // Gera os QR Codes
     codigos.forEach(c => {
       new QRCode(document.getElementById(c.id), {
         text: c.valor,
-        width: 128,
-        height: 128
+        width: 100,
+        height: 100
       });
     });
 
-    // Insere data e hora atual no PDF
+    // Insere data e hora atual no rodapé
     const agora = new Date();
     const formatado = agora.toLocaleString('pt-BR', {
       day: '2-digit',
@@ -159,19 +182,19 @@
       hour: '2-digit',
       minute: '2-digit'
     });
-    document.getElementById("dataHoraPDF").textContent = `Gerado em: ${formatado}`;
+    document.getElementById("dataHoraPDF").textContent = formatado;
 
     // Visualiza o PDF em nova aba
     function visualizarPDF() {
       const elemento = document.getElementById("conteudoPDF");
 
       const opt = {
-        margin: [2, 10, 20, 10], // top, left, bottom, right (em mm)
+        margin: [1, 5, 10, 5],
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { scale: 1.5 },
         jsPDF: {
-          unit: 'mm',//Quando usar ajuste também margim
-          format: 'a4',//
+          unit: 'mm',
+          format: 'a4',
           orientation: 'portrait'
         }
       };
@@ -182,7 +205,6 @@
         window.open(url, '_blank');
       });
     }
-
   </script>
 </body>
 

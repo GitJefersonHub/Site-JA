@@ -53,7 +53,17 @@ const identificacoesQRCode = {
   "6": "Veículos",
   "7": "Térreo",
   "8": "Capela",
-  "9": "Bloco A/B"
+  "9": "Bloco A/B",
+  "10": "A",
+  "11": "B",
+  "12": "C",
+  "13": "D",
+  "14": "E",
+  "15": "F",
+  "16": "G",
+  "17": "H",
+  "18": "I",
+  "19": "J"
 };
 
 // Variáveis para observação
