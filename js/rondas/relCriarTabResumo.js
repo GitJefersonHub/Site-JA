@@ -5,11 +5,6 @@ function registrarResumo() {
   document.getElementById('modalResumo').style.display = 'flex';
 }
 
-
-
-
-
-
 function criarTabelaResumo() { 
   const tabelaResumo = document.getElementById("tabelaResumo");
   tabelaResumo.innerHTML = '';

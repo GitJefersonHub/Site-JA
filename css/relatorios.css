@@ -39,17 +39,17 @@ table {
 thead {
   background-color: #00FFFF;
 }
-
+/*titulos*/
 th {
   border: 1px solid #ADD8E6;
   text-align: center;
   font-size: clamp(0.36rem, 2vw, 2.5rem);
 }
-
+/*Linhas de input na tabela*/
 td {
   border: 1px solid #ADD8E6;
   text-align: left;
-  font-size: clamp(0.36rem, 2vw, 2.5rem);
+  font-size: clamp(0.34rem, 2vw, 2.5rem);
 }
 
 /* Botões */

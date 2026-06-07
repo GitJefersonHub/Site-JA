@@ -1,9 +1,10 @@
+// Função para criar tabela de registros
 function criarTabelaPonto() {
   const container = document.getElementById('tabelaPonto');
   container.innerHTML = '';
 
   const h2 = document.createElement('h2');
-  h2.textContent = `📋 Registros de Bastão - ${obterMesAnoAtual()}`;
+  h2.textContent = `📋 Registros de Bastão  "${obterMesAnoAtual()}".`;
   container.appendChild(h2);
 
   const wrapper = document.createElement('div');
@@ -12,7 +13,7 @@ function criarTabelaPonto() {
   if (listaPonto.length === 0) {
     wrapper.innerHTML = `<p>Nenhum registro de Ponto encontrado.</p>`;
   } else {
-    // Tabela de login (fixa)
+    // Tabela de login
     const tableLogin = document.createElement('table');
     tableLogin.innerHTML = `
       <thead>
@@ -33,7 +34,7 @@ function criarTabelaPonto() {
       </tbody>
     `;
 
-    // Tabela de registros (linhas variáveis)
+    // Tabela de registros
     const tableRegistro = document.createElement('table');
     tableRegistro.innerHTML = `
       <thead>
@@ -51,7 +52,7 @@ function criarTabelaPonto() {
     const tbodyRegistro = tableRegistro.querySelector('#tbodyRegistro');
 
     listaPonto.forEach(item => {
-      const { data, hora } = formatarDataHoraSeparado(item.dataHora || item.registro);
+      const { data, hora } = formatarDataHoraSeparado(item.dataHora);
 
       let localizacaoHtml = item.localizacao || 'Não encontrada';
       if (item.localizacao && item.localizacao !== 'Não encontrada') {
@@ -74,13 +75,12 @@ function criarTabelaPonto() {
   }
 
   container.appendChild(wrapper);
-
 }
 
 criarTabelaPonto();
 
+// Impressão
 function imprimirPonto() {
-  // Carrega os resumos também
   const listaResumo = JSON.parse(localStorage.getItem('Resumo')) || [];
 
   if (listaPonto.length === 0 && listaResumo.length === 0) {
@@ -91,14 +91,13 @@ function imprimirPonto() {
   criarJanelaImpressao('Jornada', listaPonto, listaResumo);
 }
 
+// Exclusão
 function excluirPonto() {
   if (confirm('Tem certeza que deseja excluir todos os registros?')) {
-    // Remove registros de ponto
     localStorage.removeItem('Ponto');
     listaPonto.length = 0;
     criarTabelaPonto();
 
-    // Remove registros de resumo
     localStorage.removeItem('Resumo');
     listaResumo.length = 0;
     criarTabelaResumo();
@@ -106,3 +105,4 @@ function excluirPonto() {
     alert('Registros excluídos com sucesso!');
   }
 }
+

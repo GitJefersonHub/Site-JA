@@ -1,6 +1,6 @@
 function criarJanelaImpressao(tipo, listaPonto, listaResumo) {
   let content = `
-    <h2>📋 Registros de ${tipo} - ${obterMesAnoAtual()}</h2>
+    <h2>📋 Registros de ${tipo}  "${obterMesAnoAtual()}".</h2>
     <div class="table-wrapper">
       <table>
         <thead>

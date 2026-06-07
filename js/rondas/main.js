@@ -49,7 +49,7 @@ const identificacoesQRCode = {
   "2": "2° Andar",
   "3": "3° Andar",
   "4": "4° Andar",
-  "5": "5° Andar",
+  "5": "Elevador",
   "6": "Veículos",
   "7": "Térreo",
   "8": "Capela",
@@ -72,7 +72,7 @@ let dadosQRCode = null;
 
 // Campo de contagem regressiva
 document.getElementById('campoObservacao').addEventListener('input', () => {
-  const restante = 52 - document.getElementById('campoObservacao').value.length;
+  const restante = 48 - document.getElementById('campoObservacao').value.length;
   document.getElementById('contadorObservacao').textContent = `${restante} restantes`;
 });
 
@@ -98,7 +98,7 @@ function solicitarObservacao(tipo, dados = null) {
   }
 
   document.getElementById('campoObservacao').value = '';
-  document.getElementById('contadorObservacao').textContent = '52 restantes';
+  document.getElementById('contadorObservacao').textContent = '48 restantes';
   document.getElementById('modalObservacao').style.display = 'flex';
 }
 
@@ -132,15 +132,15 @@ function confirmarObservacao() {
   }
 
   const agora = new Date();
-  const agoraFormatado = agora.toLocaleString('pt-BR');
   const listaPonto = JSON.parse(localStorage.getItem('Ponto')) || [];
 
   const registro = {
     tipo: tipoRegistro,
-    dataHora: agoraFormatado,
+    dataHora: agora.toISOString(), // salva em ISO
     obs: observacao,
     registro: tipoRegistro
   };
+
 
   if (tipoRegistro === 'QR Code' && dadosQRCode) {
     const nomeQRCode = identificacoesQRCode[dadosQRCode] || `QR Code ${dadosQRCode}`;
@@ -237,18 +237,18 @@ function confirmarResumo() {
   }
 
   const agora = new Date();
-  const dataHora = agora.toLocaleString('pt-BR');
   const dadosUsuario = JSON.parse(localStorage.getItem('dadosUsuario')) || {};
   const listaResumo = JSON.parse(localStorage.getItem('Resumo')) || [];
 
   const registroResumo = {
-    dataHora,
+    dataHora: agora.toISOString(), // salva em ISO
     resumo: resumoTexto,
     nome: dadosUsuario.nome || '---',
     matricula: dadosUsuario.matricula || '---',
     localizacao: dadosUsuario.localizacao || 'Não informado',
     posto: dadosUsuario.posto || '---'
   };
+
 
   listaResumo.push(registroResumo);
   localStorage.setItem('Resumo', JSON.stringify(listaResumo));
