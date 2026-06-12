@@ -48,7 +48,7 @@ const identificacoesQRCode = {
   "1": "1° Andar",
   "2": "2° Andar",
   "3": "3° Andar",
-  "4": "4° Andar",
+  "4": "Portão",
   "5": "Elevador",
   "6": "Veículos",
   "7": "Térreo",
